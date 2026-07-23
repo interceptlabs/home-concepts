@@ -13,7 +13,7 @@ Requirements for the side-by-side review deliverable. Each maps to roadmap phase
 - [x] **FOUND-02**: Topic chunks are mapped to a derived sub-page content model — every "area of interest" has verbatim sub-page copy ready for all three concepts to route to
 - [x] **FOUND-03**: Shared Fritz brand layer (design tokens, fonts, canonical 8-path logo assets) is mirrored from the intercept-brand-kit SSoT and used by all three concepts
 - [ ] **FOUND-04**: A copy-diff QA gate script verifies each concept's rendered text against the canonical content source (verbatim rule mechanically enforced)
-- [ ] **FOUND-05**: A local preview server serves all three concepts plus a gallery index page for side-by-side review on one port
+- [x] **FOUND-05**: A local preview server serves all three concepts plus a gallery index page for side-by-side review on one port
 
 ### Concept A — "Accenture, but better" (editorial)
 
@@ -84,7 +84,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FOUND-02 | Phase 1 | Complete |
 | FOUND-03 | Phase 1 | Complete |
 | FOUND-04 | Phase 1 | Pending |
-| FOUND-05 | Phase 1 | Pending |
+| FOUND-05 | Phase 1 | Complete |
 | CONA-01 | Phase 2 | Pending |
 | CONA-02 | Phase 2 | Pending |
 | CONA-03 | Phase 2 | Pending |
