@@ -21,10 +21,74 @@
     "h2": "We love a chewy problem.",
     "lead": "Four that global tech keeps bringing us.",
     "items": [
-      { "key": "intelligence", "tabEyebrow": "Intelligence", "tabName": "Research is stale by the time you act." },
-      { "key": "visibility", "tabEyebrow": "Visibility", "tabName": "AI now sits between you and the buyer." },
-      { "key": "velocity", "tabEyebrow": "Velocity", "tabName": "Content and campaigns can’t keep pace with the market." },
-      { "key": "activation", "tabEyebrow": "Activation", "tabName": "Content and campaigns get produced, then never reach the right people." }
+      {
+        "key": "intelligence",
+        "tabEyebrow": "Intelligence",
+        "tabName": "Research is stale by the time you act.",
+        "num": "01",
+        "name": "The Intelligence Problem",
+        "quote": "My research is stale by the time we act on it, and we’re always a step behind the market.",
+        "attrib": "A CMO, networking infrastructure brand",
+        "tells": [
+          "Traditional research is too slow and too expensive for the pace we move at.",
+          "The findings come back telling us what we already knew.",
+          "We can never be sure we’re not hearing from the same panel of people again."
+        ],
+        "signalNum": "45%",
+        "signalLbl": "of the data marketers use to make business decisions is incomplete, inaccurate, or out of date. (Adverity, State of Marketing Data Quality, 2025)",
+        "bridge": "We triangulate live signals no single source can see on its own, keeping go-to-market current and putting on-demand account research in sellers’ hands."
+      },
+      {
+        "key": "visibility",
+        "tabEyebrow": "Visibility",
+        "tabName": "AI now sits between you and the buyer.",
+        "num": "02",
+        "name": "The Visibility Problem",
+        "quote": "We’ve spent our entire careers understanding human buyers. We have no idea how to influence the AI now deciding what they see.",
+        "attrib": "A VP Marketing, semiconductor brand",
+        "tells": [
+          "ChatGPT, Gemini, Copilot, and AI Overviews now sit between you and the buyer.",
+          "The content that persuades a human does not win an engine. Winning one takes content built for it on purpose.",
+          "Leadership wants the score moved now, but the training behind the answers is already locked."
+        ],
+        "signalNum": "51%",
+        "signalLbl": "Of B2B software buyers now begin their research in an AI chatbot rather than a search engine. (G2 Buyer Behavior Report, 2025)",
+        "bridge": "Through voice-of-customer research, we learn how buyers actually prompt the AI engines. We then simulate thousands of those prompts across industries, buying journeys, and personas to map where you show up and where you don’t. From there, we build the content and campaigns that make you the answer buyers get."
+      },
+      {
+        "key": "velocity",
+        "tabEyebrow": "Velocity",
+        "tabName": "Content and campaigns can’t keep pace with the market.",
+        "num": "03",
+        "name": "The Velocity Problem",
+        "quote": "By the time our content and campaigns are ready, the moment has passed.",
+        "attrib": "A Global Campaigns Director, enterprise platform",
+        "tells": [
+          "Every persona, account, and buying stage needs its own version, and there are too many to pre-produce.",
+          "Too many review layers, and agencies that don’t know the subject matter, so we end up rewriting everything.",
+          "The team keeps shrinking while the demand keeps growing, so we have to move faster with less."
+        ],
+        "signalNum": "78%",
+        "signalLbl": "of marketers say they need more personalized content than they’re able to produce. (Salesforce, State of Marketing, 2026)",
+        "bridge": "We triangulate live signals, then run human-led ideas, hero content, and positioning through an AI-native content and campaign engine. It versions that work for every persona, account, stage, and language, and gets it to your execution teams fast enough to meet the moment."
+      },
+      {
+        "key": "activation",
+        "tabEyebrow": "Activation",
+        "tabName": "Content and campaigns get produced, then never reach the right people.",
+        "num": "04",
+        "name": "The Activation Problem",
+        "quote": "We produce more content and campaigns than ever, but most of it never reaches the right people, and our partners rarely pick it up.",
+        "attrib": "A VP of Demand Generation, enterprise platform",
+        "tells": [
+          "We produce more content and campaign kits than anyone can use, and no one knows what to reach for when.",
+          "Partners are buried in generic campaigns from every vendor, and adapting ours takes more resources than they have.",
+          "We can’t always tell where our audience is paying attention, so we keep defaulting to the same channels."
+        ],
+        "signalNum": "",
+        "signalLbl": "Most B2B technology revenue flows through indirect channels, yet most co-marketing content never gets activated.",
+        "bridge": "We run activation through our 10-point go-to-market flywheel, so every stage fires together, and the right content reaches the right person at the right time. Then we equip your channel partners to extend that reach into markets your own team can’t cover alone."
+      }
     ]
   },
   "os": {
@@ -32,16 +96,154 @@
     "h2": "The AI-native layer behind better work.",
     "lead": "You get the latest AI models and tools, plus our proprietary capabilities, working on your campaigns. We bring the enterprise rigor, so all of it meets the privacy, legal, and governance standards you’re held to. See how it works.",
     "flows": [
-      { "key": "intelligence", "tabLabel": "The Intelligence Problem" },
-      { "key": "visibility", "tabLabel": "The Visibility Problem" },
-      { "key": "velocity", "tabLabel": "The Velocity Problem" },
-      { "key": "activation", "tabLabel": "The Activation Problem" }
+      {
+        "key": "intelligence",
+        "tabLabel": "The Intelligence Problem",
+        "job": "Bring every signal together so you’re never a step behind.",
+        "layer": "Campaign Studio",
+        "stages": [
+          { "tag": "Diagnostic", "name": "Aggregate the signals", "agents": ["Watchtower", "Signal", "Dive"], "desc": "Pull together real-time market signals, what buyers are downloading and the topics they’re searching, and AI-powered desk research, so you see shifts as they happen." },
+          { "tag": "Core", "name": "Scan the competition", "agents": ["Geo", "Dive"], "desc": "Run a continuous competitive scan across search, AI engines, paid social, content, and brand, and track how their messaging and positioning shift over time." },
+          { "tag": "Innovation", "name": "Map the account", "agents": ["Radar"], "desc": "Map each buying committee’s priorities, pain points, and the events their execs attend, then recommend the content to put in front of them." },
+          { "tag": "Outcome", "name": "Greater go-to-market precision", "agents": [], "desc": "You know the pain points, priorities, and buying triggers at the industry, persona, and account level, plus the competitive landscape, so you can design go-to-market campaigns with far greater precision." }
+        ]
+      },
+      {
+        "key": "visibility",
+        "tabLabel": "The Visibility Problem",
+        "job": "Show up when buyers ask the AI engines, and build the content that gets you cited.",
+        "layer": "Campaign Studio",
+        "stages": [
+          { "tag": "Diagnostic", "name": "Test the prompts buyers actually use", "agents": ["Geo"], "desc": "Learn how real buyers prompt the engines, then run those prompts across ChatGPT, Gemini, Copilot, and AI Overviews to see where you surface and where you’re left out." },
+          { "tag": "Core", "name": "Map the content gaps", "agents": ["Index"], "desc": "Find where your content is missing, thin, or unreadable to search engines, compared to the questions buyers are actually asking." },
+          { "tag": "Innovation", "name": "Build the content that gets cited", "agents": ["Atom"], "desc": "We don’t stop at the gaps. We build content that engines can read and cite, structured using our BETA framework (Best-fit, Evidence, Trade-offs, Answerability)." },
+          { "tag": "Outcome", "name": "You become the answer", "agents": [], "desc": "When buyers ask the AI engines, you’re in the answer they get, because the content is built to be cited." }
+        ]
+      },
+      {
+        "key": "velocity",
+        "tabLabel": "The Velocity Problem",
+        "job": "Produce the right content fast enough to move with the market.",
+        "layer": "Campaign Studio",
+        "stages": [
+          { "tag": "Diagnostic", "name": "Pinpoint what to produce", "agents": ["Watchtower"], "desc": "Read what the market needs right now, from the shifts and gaps Intelligence and Visibility surfaced, and pinpoint the content and campaigns worth making." },
+          { "tag": "Core", "name": "Audit what you have", "agents": ["Index"], "desc": "Run an agentic audit of your existing content and campaigns to see how well-positioned you are to meet that, and where you fall short." },
+          { "tag": "Innovation", "name": "Atomize and hyper-personalize", "agents": ["Atom", "Cortex"], "desc": "Atomize what you have into hyper-personalized variants by segment, account, and stage, pre-tested with neuroscience data so the strongest creative goes out." },
+          { "tag": "Outcome", "name": "Right content, ready to activate", "agents": [], "desc": "You have the right content and campaigns to meet each customer segment’s real-time needs, and you’re set up to activate." }
+        ]
+      },
+      {
+        "key": "activation",
+        "tabLabel": "The Activation Problem",
+        "job": "Get the right content in front of the right people at the right time, across your channels and partners.",
+        "layer": "Partner Demand Center",
+        "stages": [
+          { "tag": "Diagnostic", "name": "Decide where to focus", "agents": ["Watchtower"], "desc": "Pinpoint which segments, accounts, and markets need to move, global or regional, and the business impact you’re driving. AI-powered propensity modeling narrows it to the accounts most likely to convert." },
+          { "tag": "Core", "name": "Pick the right channels and the right content", "agents": ["Atom"], "desc": "Whether your execution partners run it or we do, we pick the right channels for each audience and make sure the content is purpose-built for them." },
+          { "tag": "Innovation", "name": "Arm the channel and the field", "agents": ["Taylor", "Telly", "Sales Dojo"], "desc": "Channel partners get campaign agents that adapt your global campaigns and run them in market fast. AI call-downs generate and qualify regional leads, and sellers rehearse against simulated audiences." },
+          { "tag": "Outcome", "name": "Your campaigns run in every market", "agents": [], "desc": "Everyone executing is aligned and equipped, whether that’s your team, a partner, or us. The right regional accounts are in focus, and your channel partners are executing your campaigns in market." }
+        ]
+      }
     ]
   },
   "agents": {
     "eyebrow": "the agent roster",
     "h2": "Meet the capabilities inside InterceptOS.",
-    "lead": "InterceptOS includes a growing set of AI-powered capabilities that support strategy, content, sales, and channel work. Choose a category to see what each one helps your team do."
+    "lead": "InterceptOS includes a growing set of AI-powered capabilities that support strategy, content, sales, and channel work. Choose a category to see what each one helps your team do.",
+    "categories": ["Strategy", "Content & Creative", "Sales Enablement", "Channel Empowerment"],
+    "items": [
+      {
+        "key": "watchtower", "name": "Watchtower", "type": "Audience signals", "role": "Real-time signals and persona playbooks.",
+        "primary": "strategy", "cats": ["strategy", "sales"],
+        "desc": "Watchtower tracks stance and intent across a windowed sample of 20 million people globally, then surfaces sentiment shifts, trigger events, and buyer signals within hours.",
+        "solves": ["The Intelligence Problem", "The Visibility Problem"],
+        "sample": "For Microsoft, Watchtower ran global ITDM and BDM persona studies across SMC and Enterprise to shape the customer-journey toolkit its partners use."
+      },
+      {
+        "key": "dive", "name": "Dive", "type": "Deep research", "role": "Deep research on markets, buyers, and competitors.",
+        "primary": "strategy", "cats": ["strategy"],
+        "desc": "Dive researches vendor websites, public signals, analyst coverage, and competitor positioning shifts, then turns the findings into briefs your team can act on.",
+        "solves": ["The Intelligence Problem", "The Visibility Problem"],
+        "sample": "For AMD’s PRO Component campaign, Dive mapped the system integrator landscape across five regions: APJ, EMEA, India, LATAM, and North America."
+      },
+      {
+        "key": "camille", "name": "Camille", "type": "Synthetic buyer twins", "role": "Synthetic buyer twins for neuroscience-led message testing.",
+        "primary": "strategy", "cats": ["strategy", "content"],
+        "desc": "Camille tests messaging, content, and creative against modeled ITDM and BDM buyer reactions before the work reaches a real audience.",
+        "solves": ["The Intelligence Problem", "The Velocity Problem"],
+        "sample": "For Logitech, Camille scored three event-theme directions against a modeled enterprise buying committee on stopping power, buyer relevance, value clarity, and emotional resonance."
+      },
+      {
+        "key": "geo", "name": "Geo", "type": "GEO performance tracking", "role": "GEO performance tracking and opportunity audits.",
+        "primary": "strategy", "cats": ["strategy"],
+        "desc": "Geo tracks where your brand appears across ChatGPT, Gemini, Copilot, and AI Overviews. It shows where you are cited, where you are missed, and which content gaps to fix before the next leadership readout.",
+        "solves": ["The Visibility Problem"],
+        "sample": "For Qualcomm, Geo ran 557 buyer-validated prompts across five AI engines, 2,785 responses, to show how Snapdragon is framed against competing silicon and Apple, and where to close the gaps."
+      },
+      {
+        "key": "cam", "name": "Cam", "type": "Synthetic video", "role": "AI video production for stories and live-shoot style clips.",
+        "primary": "content", "cats": ["content"],
+        "desc": "Cam creates synthetic-presenter videos in multiple languages, so teams can produce consistent video without coordinating every SME shoot.",
+        "solves": ["The Velocity Problem"],
+        "sample": "For SAP, Cam piloted an AI avatar video series through Intercept Labs, producing synthetic-presenter videos that cut production costs 55% and timelines 23%."
+      },
+      {
+        "key": "cortex", "name": "Cortex", "type": "Creative intelligence", "role": "Neuroscience-led creative validation.",
+        "primary": "content", "cats": ["content"],
+        "desc": "Cortex tests creative for attention, recall, and emotional response before media spend is committed. It is trained on brainwave and eye-tracking data from 300,000+ users.",
+        "solves": ["The Velocity Problem"],
+        "sample": "For Lenovo IDG, Cortex tested webinar creative and picked the direction that drove the strongest engagement."
+      },
+      {
+        "key": "atom", "name": "Atom", "type": "Content atomization", "role": "Content atomization and upcycling engine.",
+        "primary": "content", "cats": ["content", "channel"],
+        "desc": "Atom turns a hero asset into tailored variants for specific personas, segments, industries, and journey stages. Brand-safety scans help keep each version aligned before it goes live.",
+        "solves": ["The Visibility Problem", "The Velocity Problem"],
+        "sample": "For HP Workforce Solutions, Atom atomized hero content into tailored variants for each buying-committee persona, fueling a cross-sell campaign that drove 398% deal-size lift and 13.5× pipeline growth."
+      },
+      {
+        "key": "lens", "name": "Lens", "type": "AI photography", "role": "Modular photoshoots with consistent people and devices.",
+        "primary": "content", "cats": ["content"],
+        "desc": "Lens creates photorealistic lifestyle imagery with consistent characters, scenes, and devices, so teams can produce on-brand campaign visuals without booking a full shoot every time.",
+        "solves": ["The Velocity Problem"],
+        "sample": "For Microsoft, Lens built an AI photography engine that produced culturally relevant, OEM-flexible imagery for channel partners worldwide."
+      },
+      {
+        "key": "index", "name": "Index", "type": "Content audit", "role": "Content audit and journey mapping.",
+        "primary": "content", "cats": ["content"],
+        "desc": "Index maps your content inventory against buyer-journey stages, identifies the gaps, and shows what needs to be created, updated, or retired.",
+        "solves": ["The Visibility Problem", "The Velocity Problem"],
+        "sample": "For AMD’s PRO Technologies global relaunch, Index audited the existing content against the buyer journey and mapped the gaps to close before launch."
+      },
+      {
+        "key": "telly", "name": "Telly", "type": "Call-down agents", "role": "Call-down agents for outbound qualification.",
+        "primary": "sales", "cats": ["sales", "channel"],
+        "desc": "Telly runs brand-trained call-down programs that qualify prospects, clean data, and prompt next-best actions such as webinar registration, trial activation, or follow-up.",
+        "solves": ["The Activation Problem"],
+        "sample": "HP used Telly for the Concierge Program Junior BDR, delivering 1,600 live conversations, 320 sales-ready leads, and 3× more cost-effective outreach than human reps."
+      },
+      {
+        "key": "salesdojo", "name": "Sales Dojo", "type": "Customer scenario simulations", "role": "Customer scenario simulations for sales reps.",
+        "primary": "sales", "cats": ["sales"],
+        "desc": "Sales Dojo gives reps a brand-trained buyer simulation where they can practice pitches, handle objections, and improve their talk track before a live customer conversation.",
+        "solves": ["The Activation Problem", "The Intelligence Problem"],
+        "sample": "As part of an exploration, we set up a Copilot+ PC practice environment in Sales Dojo where reps could rehearse pitching to different members of the buying committee."
+      },
+      {
+        "key": "radar", "name": "Radar", "type": "Account intelligence platform", "role": "Live account intelligence on demand for your sellers.",
+        "primary": "sales", "cats": ["sales"],
+        "desc": "Radar identifies the members of each buying committee, reads the market signals and events around them, and recommends the sales plays to run for each account.",
+        "solves": ["The Intelligence Problem", "The Activation Problem"],
+        "sample": "HP used Radar to give sellers on-demand account intelligence, delivering account briefs within 48 hours."
+      },
+      {
+        "key": "taylor", "name": "Taylor", "type": "Intelligent campaign assistant", "role": "Campaign adaptation for channel partners.",
+        "primary": "channel", "cats": ["channel"],
+        "desc": "Taylor gives your channel partners an agent trained on your brand guidelines and the campaign bill of materials. Partners upload their own assets, and Taylor shows them how to adapt the campaign to their brand and layer in their own offerings and services. A deterministic QA agent checks every output before it goes out.",
+        "solves": ["The Activation Problem"],
+        "sample": "HP and Intel use Taylor to help their channel partners quickly create high-quality, on-brand marketing rooted in shared HP, Intel, and Windows 11 messaging."
+      }
+    ]
   },
   "work": {
     "eyebrow": "the proof",
@@ -54,7 +256,16 @@
         "tag": "Account-based marketing",
         "name": "AI-powered ABX for Workforce Solutions",
         "summary": "Cross-sell GTM across HP’s Workforce Solutions portfolio, with a buying-committee surround strategy and AI-powered customer journeys tailored per role and stage.",
-        "metric": { "num": "398%", "label": "Incremental deal-size lift" }
+        "metric": { "num": "398%", "label": "Incremental deal-size lift" },
+        "challenge": "HP needed to cross-sell across the Workforce Solutions portfolio, a complex mix of AI PCs, meeting room solutions, and services, into established enterprise accounts. The buying committee was scattered across roles, and traditional ABM playbooks were over-relying on uniform creative.",
+        "approach": "We built a buying-committee surround strategy and purpose-built customer journeys, powered by AI-driven content tailored per persona and journey stage. Atom recomposed the hero asset into thousands of brand-safe variants targeted at each committee member’s role and context.",
+        "results": [
+          "398% incremental deal-size lift versus control group",
+          "13.5× higher pipeline growth versus control group",
+          "Pattern is now Intercept’s reference ABX motion for enterprise OEMs",
+          "5 x B2B marketing awards including Hermes Creative Awards (2026), MarCom (2025), and CMA Awards (2025)."
+        ],
+        "agents": "Atom"
       },
       {
         "key": "intel-abm",
@@ -62,7 +273,16 @@
         "tag": "Account-based marketing",
         "name": "Award-winning ABM for enterprise cloud migration",
         "summary": "Precision ABX targeting 250 enterprise accounts. We anchored the cloud-migration story in clear metaphors, paired with GenAI personalization and an intent-led nurture engine.",
-        "metric": { "num": "$70M", "label": "Pipeline value generated" }
+        "metric": { "num": "$70M", "label": "Pipeline value generated" },
+        "challenge": "Intel needed to drive demand for a complex cloud solution into a tightly-scoped 250 enterprise accounts. The story was hard to explain to the right buyers, and off-the-shelf ABM tools weren’t built for the precision required.",
+        "approach": "We simplified the cloud-migration story with clear metaphors, built an intent-led nurture engine for DevOps and FinOps audiences, and powered the creative with GenAI personalization. A risk-free 12-month trial accelerated adoption decisions inside the target accounts.",
+        "results": [
+          "$70M in pipeline value generated",
+          "96% of 250 targeted enterprise accounts reached",
+          "1,800 qualified leads, 3.6× the target",
+          "7 x B2B marketing awards, including Echo (2024), CMA (2024), MarCom (2024), ANA B2 (2025), Elevation (2025), Hermes (2025), and dotCoMM."
+        ],
+        "agents": "Atom · Camille (multi-agent program)"
       },
       {
         "key": "sap-video",
@@ -70,7 +290,17 @@
         "tag": "AI-powered video production",
         "name": "Award-winning AI avatars for multilingual videos at scale",
         "summary": "A modular 5-part story framework, AI avatars across 140+ languages, and a shared system anyone at SAP could use. Pilot scaled from a 12-video proof point to 100+ in production, with 55% lower production costs and 23% faster delivery.",
-        "metric": { "num": "55%", "label": "Reduction in production costs" }
+        "metric": { "num": "55%", "label": "Reduction in production costs" },
+        "challenge": "SAP powers over two-thirds of the world’s transactions, demanding constant engagement across markets and languages. Video was the most powerful channel, but without a shared system, content was duplicated, costs ballooned, and brand consistency slipped across regions.",
+        "approach": "We used AI avatars to speed production across 140+ languages, then built the scalable system around it: a global playbook for narrative and brand standards, streamlined intake forms, a shared tracker for cross-region visibility, and a modular 5-part story framework (Intro, Value, Challenge, Demo, CTA) that turns product demos into narratives. Every video carries transparent AI disclosure, and the avatars mirror global audiences for relatability.",
+        "results": [
+          "55% reduction in production costs",
+          "23% faster production timelines",
+          "Scaled from a 12-video pilot to 100+ videos in active production",
+          "AI avatar videos delivered across 140+ languages",
+          "2× Gold at the Hermes Creative Awards 2025 in the AI-Assisted Video Production and the Emerging Tech Innovation categories"
+        ],
+        "agents": "Cam"
       }
     ]
   },
