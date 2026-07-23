@@ -1,0 +1,197 @@
+{
+  "meta": {
+    "source_url": "https://interceptgroup.com/",
+    "source_file": "reference/live-homepage/index.html",
+    "capture_date": "2026-07-23",
+    "cross_checked_against": "~/Creative-Projects/intercept-website-staging/home.html",
+    "frozen": true
+  },
+  "hero": {
+    "kicker": "Award-winning B2B marketing for global tech",
+    "h1_html": "We turn your most <em>ambitious</em> briefs into <em>proven</em> outcomes<span class=\"dot\">.</span>",
+    "sub": "Marketing teams are increasingly pressured to adopt AI, but most don’t know where to start. Intercept is the frontier B2B agency for global tech, helping clients use AI to make the keep-the-lights-on work more efficient and power the innovation that redefines the buyer experience.",
+    "cta": { "label": "Explore more", "href": "#problems" }
+  },
+  "clients": {
+    "label": "You’re in good company",
+    "logos": ["Microsoft", "SAP", "HP", "Lenovo", "Cisco", "AMD", "Qualcomm", "Logitech", "Nokia", "TELUS", "Staples", "BMC"]
+  },
+  "problems": {
+    "eyebrow": "what we solve",
+    "h2": "We love a chewy problem.",
+    "lead": "Four that global tech keeps bringing us.",
+    "items": [
+      { "key": "intelligence", "tabEyebrow": "Intelligence", "tabName": "Research is stale by the time you act." },
+      { "key": "visibility", "tabEyebrow": "Visibility", "tabName": "AI now sits between you and the buyer." },
+      { "key": "velocity", "tabEyebrow": "Velocity", "tabName": "Content and campaigns can’t keep pace with the market." },
+      { "key": "activation", "tabEyebrow": "Activation", "tabName": "Content and campaigns get produced, then never reach the right people." }
+    ]
+  },
+  "os": {
+    "eyebrow": "InterceptOS",
+    "h2": "The AI-native layer behind better work.",
+    "lead": "You get the latest AI models and tools, plus our proprietary capabilities, working on your campaigns. We bring the enterprise rigor, so all of it meets the privacy, legal, and governance standards you’re held to. See how it works.",
+    "flows": [
+      { "key": "intelligence", "tabLabel": "The Intelligence Problem" },
+      { "key": "visibility", "tabLabel": "The Visibility Problem" },
+      { "key": "velocity", "tabLabel": "The Velocity Problem" },
+      { "key": "activation", "tabLabel": "The Activation Problem" }
+    ]
+  },
+  "agents": {
+    "eyebrow": "the agent roster",
+    "h2": "Meet the capabilities inside InterceptOS.",
+    "lead": "InterceptOS includes a growing set of AI-powered capabilities that support strategy, content, sales, and channel work. Choose a category to see what each one helps your team do."
+  },
+  "work": {
+    "eyebrow": "the proof",
+    "h2": "Three engagements that delivered verified outcomes.",
+    "lead": "A snapshot of recent work for global tech brands. Open any case for the full brief, the work, and the results.",
+    "cases": [
+      {
+        "key": "hp-abx",
+        "client": "HP",
+        "tag": "Account-based marketing",
+        "name": "AI-powered ABX for Workforce Solutions",
+        "summary": "Cross-sell GTM across HP’s Workforce Solutions portfolio, with a buying-committee surround strategy and AI-powered customer journeys tailored per role and stage.",
+        "metric": { "num": "398%", "label": "Incremental deal-size lift" }
+      },
+      {
+        "key": "intel-abm",
+        "client": "Intel",
+        "tag": "Account-based marketing",
+        "name": "Award-winning ABM for enterprise cloud migration",
+        "summary": "Precision ABX targeting 250 enterprise accounts. We anchored the cloud-migration story in clear metaphors, paired with GenAI personalization and an intent-led nurture engine.",
+        "metric": { "num": "$70M", "label": "Pipeline value generated" }
+      },
+      {
+        "key": "sap-video",
+        "client": "SAP",
+        "tag": "AI-powered video production",
+        "name": "Award-winning AI avatars for multilingual videos at scale",
+        "summary": "A modular 5-part story framework, AI avatars across 140+ languages, and a shared system anyone at SAP could use. Pilot scaled from a 12-video proof point to 100+ in production, with 55% lower production costs and 23% faster delivery.",
+        "metric": { "num": "55%", "label": "Reduction in production costs" }
+      }
+    ]
+  },
+  "labs": {
+    "label": "Intercept Labs",
+    "h2_html": "For the work that <span class=\"hl\">has no playbook.</span>",
+    "body": "Intercept Labs is how we co-invest with clients to test first-of-its-kind ideas, reduce the risk of trying something new, and turn the best experiments into repeatable capability inside InterceptOS.",
+    "cta": { "label": "Build with Labs", "href": "#pitchLabs" },
+    "stat": { "num": "Up to 50%", "label": "Project co-investment" }
+  },
+  "insights": {
+    "eyebrow": "Hear From The Frontier",
+    "h2": "How other B2B marketers are putting AI to work.",
+    "lead": "ChatB2B is your front-row seat to AI in B2B marketing. Hear from the marketing leaders and practitioners adopting and scaling AI inside their teams.",
+    "episodes": [
+      {
+        "episode": "Episode 19",
+        "show": "ChatB2B",
+        "title": "Building the backend for AI agents",
+        "guest": { "name": "Patrick Vuong", "role": "Former Director of Product Management, Moderne" },
+        "summary": "Patrick on the backend infrastructure that makes AI agents reliable. Multi-agent orchestration in production, why marketing teams lack backend readiness, and designing systems for agents alongside humans.",
+        "links": [
+          { "label": "Spotify", "href": "https://open.spotify.com/episode/0vnMR61WLUmS94YUeNRTby" },
+          { "label": "Apple", "href": "https://podcasts.apple.com/us/podcast/building-the-backend-for-ai-agents-with-patrick-vuong/id1840415344?i=1000770795263" },
+          { "label": "YouTube", "href": "https://www.youtube.com/watch?v=t3xY3tqU9YI" }
+        ],
+        "tile_href": "https://open.spotify.com/episode/0vnMR61WLUmS94YUeNRTby"
+      },
+      {
+        "episode": "Episode 18",
+        "show": "ChatB2B",
+        "title": "The rise of the senior IC in the AI era",
+        "guest": { "name": "Jaynie Miller", "role": "Worldwide Product Marketing Lead, HP" },
+        "summary": "Jaynie on transitioning from management to senior individual contributor at a major tech company. How AI is reshaping product marketing, sales enablement, and partner enablement, plus the organizational restructuring the AI era is forcing.",
+        "links": [
+          { "label": "Spotify", "href": "https://open.spotify.com/episode/1vD0gtTpZppIt61dcVH56r" },
+          { "label": "Apple", "href": "https://podcasts.apple.com/us/podcast/the-rise-of-the-senior-ic-in-the-ai-era-with-jaynie-miller/id1840415344?i=1000768597543" },
+          { "label": "YouTube", "href": "https://www.youtube.com/watch?v=uDJIwLfLeBA" }
+        ],
+        "tile_href": "https://open.spotify.com/episode/1vD0gtTpZppIt61dcVH56r"
+      },
+      {
+        "episode": "Episode 17",
+        "show": "ChatB2B",
+        "title": "Optimizing AI search: lessons from Sophos",
+        "guest": { "name": "Megan Cabrera", "role": "Former VP Marketing Operations, Sophos" },
+        "summary": "Megan on building an enterprise AI search strategy. Algorithm navigation, community visibility (Reddit), AI procurement challenges, organizational placement of AI roles, and the cybersecurity implications of recent events.",
+        "links": [
+          { "label": "Spotify", "href": "https://open.spotify.com/episode/63Cj9IIK1SYCgCS3BBdAtv" },
+          { "label": "Apple", "href": "https://podcasts.apple.com/us/podcast/optimizing-ai-search-lessons-from-sophos-with-megan/id1840415344?i=1000762801591" },
+          { "label": "YouTube", "href": "https://www.youtube.com/watch?v=jIv_AFVh-Rc" }
+        ],
+        "tile_href": "https://open.spotify.com/episode/63Cj9IIK1SYCgCS3BBdAtv"
+      }
+    ]
+  },
+  "faqs": {
+    "eyebrow": "common questions",
+    "h2": "FAQs.",
+    "items": [
+      {
+        "q": "What is Intercept?",
+        "a": "Intercept is an award-winning B2B marketing agency built for the global technology sector. Established in 2006, we help the world’s largest tech brands turn ambitious briefs into proven outcomes. The majority of our work supports US and international marketing teams across North America, Europe, and Asia. We run an AI-native delivery model that makes the keep-the-lights-on work more efficient, freeing room for the frontier work that redefines the buyer experience."
+      },
+      {
+        "q": "What is InterceptOS?",
+        "a": "InterceptOS is our AI-native operating system for B2B marketing. It standardizes how campaigns are strategized, produced, activated, and measured across teams and partners, built on Intercept’s award-winning frameworks and run as a managed service that de-risks adoption."
+      },
+      {
+        "q": "What is Intercept Labs?",
+        "a": "Intercept Labs is our co-investment model for first-of-its-kind work. When a brief has no precedent, we fund up to half the cost and share the risk to prove it, then fold the breakthrough back into the operating system. Recent Labs work includes an AI avatar video pilot with SAP. Read more.",
+        "a_html": "Intercept Labs is our co-investment model for first-of-its-kind work. When a brief has no precedent, we fund up to half the cost and share the risk to prove it, then fold the breakthrough back into the operating system. Recent Labs work includes an AI avatar video pilot with SAP. <a href=\"#labs\">Read more.</a>"
+      },
+      {
+        "q": "What makes Intercept different?",
+        "a": "We’ve spent nearly two decades inside global tech, so we speak your buyers’ language with no learning curve. That depth has earned more than 130 awards since 2019. We pair it with proprietary buyer intelligence that tracks what the market is really saying when you’re not in the room, and an in-house technology practice that builds our own AI rather than waiting on outside vendors. And because we work with the world’s largest enterprises, privacy, legal, and procurement review is built into how we operate, so innovation never slows the work."
+      },
+      {
+        "q": "What kinds of challenges do you help solve?",
+        "a": "Most agencies don’t really understand the subject matter, so we bring deep expertise in B2B global tech and speak the language of product, channel, and engineering teams. They also miss how the value chain fits together, from ISVs to OEMs to distributors to channel partners, where we know the role each one plays. And right now, many clients are being told to sprint toward AI agents without a clear sense of what that even means. We give them a path through InterceptOS and our innovation sprints, where we identify the right AI use cases, build a proof of concept, and take what works to production."
+      },
+      {
+        "q": "How do you handle security, privacy, and compliance?",
+        "a": "We work with the world’s largest enterprises, so enterprise rigor is built into how we operate. Privacy, legal, and procurement reviews happen from day one, and we sit in those reviews with you. Because we run our AI as a managed service, you don’t have to stand up a new approval workflow every time the technology evolves. We protect the security and compliance posture and carry the model risk, so the innovation work stays above board."
+      },
+      {
+        "q": "Who are your clients?",
+        "a": "We work with global technology brands including Microsoft, SAP, HP, Lenovo, Cisco, AMD, Qualcomm, Logitech, BMC, Nokia, and TELUS."
+      },
+      {
+        "q": "What industries do you work in?",
+        "a": "We support the entire end-to-end technology value chain, from silicon and ISVs to OEMs, hyperscalers, networking infrastructure, distributors, and the channel and partner programs that bring it all to market."
+      },
+      {
+        "q": "How do I get started?",
+        "a": "Book a call to talk through your brief or your challenge, and we’ll figure out the path forward together."
+      },
+      {
+        "q": "Can you work alongside our other agencies?",
+        "a": "Yes. We work with the largest enterprises in the world, where collaboration is the norm, so we partner easily with other agencies and specialists. We believe more good heads on a problem make the work better."
+      },
+      {
+        "q": "How do you measure success?",
+        "a": "We sit down with you at the start to define the KPIs and metrics that matter, then measure against them throughout. That runs from pre-launch testing of how the work will land to in-market tracking of campaign performance, brand health, and the lift the work drives over time."
+      }
+    ]
+  },
+  "convert": {
+    "eyebrow": "start the conversation",
+    "h2": "Give us a chewy problem. Let’s solve it together.",
+    "lead": "Tell us where you are and what you’re trying to do.",
+    "cta": {
+      "heading": "Open the form.",
+      "sub": "Take two minutes to fill out the form, and we’ll get back to you within one business day.",
+      "href": "#convoDrawer"
+    }
+  },
+  "footer": {
+    "tagline": "Powered by curiosity.",
+    "site_links": ["InterceptOS", "Intercept Labs", "Work", "Insights", "Contact"],
+    "trust_links": ["AI Policy", "Privacy Policy", "Terms of Service"],
+    "social_links": ["LinkedIn", "YouTube", "Spotify · ChatB2B"]
+  }
+}
