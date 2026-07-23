@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "derived_from": "content/homepage.json",
+    "frozen": true,
+    "note": "Refs are dot-paths into homepage.json; numeric segments index arrays."
+  },
+  "topics": [
+    {
+      "id": "problems",
+      "label": "Problems",
+      "title_ref": "problems.h2",
+      "source_sections": ["problems"],
+      "teaser_refs": [
+        "problems.eyebrow", "problems.h2", "problems.lead",
+        "problems.items.0.tabEyebrow", "problems.items.0.tabName",
+        "problems.items.1.tabEyebrow", "problems.items.1.tabName",
+        "problems.items.2.tabEyebrow", "problems.items.2.tabName",
+        "problems.items.3.tabEyebrow", "problems.items.3.tabName"
+      ],
+      "full_refs": [
+        "problems.items.0.quote", "problems.items.0.attrib", "problems.items.0.tells", "problems.items.0.signalNum", "problems.items.0.signalLbl", "problems.items.0.bridge",
+        "problems.items.1.quote", "problems.items.1.attrib", "problems.items.1.tells", "problems.items.1.signalNum", "problems.items.1.signalLbl", "problems.items.1.bridge",
+        "problems.items.2.quote", "problems.items.2.attrib", "problems.items.2.tells", "problems.items.2.signalNum", "problems.items.2.signalLbl", "problems.items.2.bridge",
+        "problems.items.3.quote", "problems.items.3.attrib", "problems.items.3.tells", "problems.items.3.signalNum", "problems.items.3.signalLbl", "problems.items.3.bridge"
+      ],
+      "depth_note": "The sub-page presents each problem's full customer quote, attribution, the three recognition 'tells', the market signal stat, and the InterceptOS bridge; the homepage only teases the tab eyebrow and tab name."
+    },
+    {
+      "id": "interceptos",
+      "label": "InterceptOS",
+      "title_ref": "os.h2",
+      "source_sections": ["os", "agents"],
+      "teaser_refs": [
+        "os.eyebrow", "os.h2", "os.lead",
+        "os.flows.0.tabLabel", "os.flows.1.tabLabel", "os.flows.2.tabLabel", "os.flows.3.tabLabel",
+        "agents.eyebrow", "agents.h2", "agents.lead"
+      ],
+      "full_refs": ["os.flows", "agents.categories", "agents.items"],
+      "depth_note": "The sub-page presents each problem's full job/layer/stage flow (with per-stage agents) and the complete 13-agent roster with descriptions, solves, and sample work; the homepage only teases the flow tab labels and category shells."
+    },
+    {
+      "id": "work",
+      "label": "Work",
+      "title_ref": "work.h2",
+      "source_sections": ["work"],
+      "teaser_refs": [
+        "work.eyebrow", "work.h2", "work.lead",
+        "work.cases.0.client", "work.cases.0.tag", "work.cases.0.name", "work.cases.0.summary", "work.cases.0.metric",
+        "work.cases.1.client", "work.cases.1.tag", "work.cases.1.name", "work.cases.1.summary", "work.cases.1.metric",
+        "work.cases.2.client", "work.cases.2.tag", "work.cases.2.name", "work.cases.2.summary", "work.cases.2.metric"
+      ],
+      "full_refs": [
+        "work.cases.0.challenge", "work.cases.0.approach", "work.cases.0.results", "work.cases.0.agents",
+        "work.cases.1.challenge", "work.cases.1.approach", "work.cases.1.results", "work.cases.1.agents",
+        "work.cases.2.challenge", "work.cases.2.approach", "work.cases.2.results", "work.cases.2.agents"
+      ],
+      "depth_note": "Each case gets a dedicated full page with the challenge, approach, results, and featured agents; the homepage card shows only client, tag, name, teaser summary, and headline metric.",
+      "pages": [
+        {
+          "slug": "work-hp-abx",
+          "title_ref": "work.cases.0.name",
+          "content_refs": [
+            "work.cases.0.client", "work.cases.0.tag", "work.cases.0.name", "work.cases.0.summary", "work.cases.0.metric",
+            "work.cases.0.challenge", "work.cases.0.approach", "work.cases.0.results", "work.cases.0.agents"
+          ]
+        },
+        {
+          "slug": "work-intel-abm",
+          "title_ref": "work.cases.1.name",
+          "content_refs": [
+            "work.cases.1.client", "work.cases.1.tag", "work.cases.1.name", "work.cases.1.summary", "work.cases.1.metric",
+            "work.cases.1.challenge", "work.cases.1.approach", "work.cases.1.results", "work.cases.1.agents"
+          ]
+        },
+        {
+          "slug": "work-sap-video",
+          "title_ref": "work.cases.2.name",
+          "content_refs": [
+            "work.cases.2.client", "work.cases.2.tag", "work.cases.2.name", "work.cases.2.summary", "work.cases.2.metric",
+            "work.cases.2.challenge", "work.cases.2.approach", "work.cases.2.results", "work.cases.2.agents"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "labs",
+      "label": "Labs",
+      "title_ref": "labs.h2_html",
+      "source_sections": ["labs"],
+      "teaser_refs": ["labs.label", "labs.h2_html", "labs.body", "labs.cta", "labs.stat"],
+      "full_refs": [],
+      "teaser_only": true,
+      "fabrication_note": "No deeper Labs copy exists anywhere in content/homepage.json beyond the homepage teaser (label, heading, body, CTA, co-investment stat). The Labs sub-page must present this same teaser copy well, at more visual depth, and may never invent additional Labs copy.",
+      "depth_note": "Layout/visual depth only — no additional Labs copy exists to add."
+    },
+    {
+      "id": "insights",
+      "label": "Insights",
+      "title_ref": "insights.h2",
+      "source_sections": ["insights"],
+      "teaser_refs": ["insights.eyebrow", "insights.h2", "insights.lead", "insights.episodes"],
+      "full_refs": [],
+      "teaser_only": true,
+      "fabrication_note": "Insights has no separate teaser/full copy split — homepage.json's insights.episodes already carries each episode's full title, guest, summary, and listen links. The sub-page may only change layout/presentation depth (e.g. a dedicated episodes index), never add or infer new episode copy.",
+      "depth_note": "Sub-page is a layout change, not a copy-depth change; homepage already shows full episode copy."
+    },
+    {
+      "id": "contact",
+      "label": "Contact",
+      "title_ref": "convert.h2",
+      "source_sections": ["convert", "faqs"],
+      "teaser_refs": ["convert.eyebrow", "convert.h2", "convert.lead", "convert.cta"],
+      "full_refs": ["convert.eyebrow", "convert.h2", "convert.lead", "convert.cta", "faqs.eyebrow", "faqs.h2", "faqs.items"],
+      "depth_note": "The sub-page adds the full 11-item FAQ list alongside the homepage's conversation-starter CTA; the homepage shows the CTA tile but no dedicated FAQ list at this depth."
+    }
+  ]
+}
