@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Intercept — Homepage Concepts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/shared/tokens.css">
+<link rel="stylesheet" href="/shared/fonts.css">
+<link rel="stylesheet" href="/shared/motion.css">
+<style>
+  body {
+    background: var(--page);
+    color: var(--fg);
+    padding: var(--sp-80) var(--sp-32) var(--sp-120);
+  }
+  .wrap {
+    max-width: 72rem;
+    margin: 0 auto;
+  }
+  header.site {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--sp-80);
+  }
+  header.site img {
+    width: 180px;
+    height: auto;
+  }
+  .intro h1 {
+    font-size: var(--fs-h1);
+    max-width: 30ch;
+  }
+  .intro p {
+    font-family: var(--font-body);
+    font-size: var(--fs-p2);
+    color: var(--fg-2);
+    max-width: 46ch;
+    margin: var(--sp-24) 0 var(--sp-80);
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-32);
+  }
+  @media (max-width: 900px) {
+    .cards { grid-template-columns: 1fr; }
+  }
+  .card {
+    display: block;
+    background: var(--surface);
+    border-radius: var(--r-l);
+    padding: var(--sp-32);
+    text-decoration: none;
+    color: inherit;
+    transition: transform var(--dur-med) var(--ease-inout-sine),
+                background var(--dur-med) var(--ease-inout-sine);
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    background: var(--surface-2);
+  }
+  .card .kicker {
+    font-family: var(--font-mono);
+    font-size: var(--fs-label-l1);
+    color: var(--fg-3);
+  }
+  .card h2 {
+    font-size: var(--fs-h4);
+    margin: var(--sp-16) 0 var(--sp-16);
+  }
+  .card p {
+    font-family: var(--font-body);
+    font-size: var(--fs-p4);
+    color: var(--fg-2);
+    margin: 0 0 var(--sp-24);
+  }
+  .status {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: var(--fs-label-l2);
+    color: var(--flarepop);
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="site">
+      <img src="/shared/logo/lockup.svg" alt="Intercept">
+    </header>
+
+    <div class="intro">
+      <h1>Homepage concepts.</h1>
+      <p>Three directions, one content source. Side-by-side review.</p>
+    </div>
+
+    <div class="cards">
+      <a class="card" href="concept-a/">
+        <span class="kicker">Concept A</span>
+        <h2>Editorial</h2>
+        <p>An editorial card grid with one strong hero statement. Accenture, but better.</p>
+        <span class="status">In build — Phase 2</span>
+      </a>
+
+      <a class="card" href="concept-b/">
+        <span class="kicker">Concept B</span>
+        <h2>Full-Screen Video</h2>
+        <p>A full-bleed ambient video hero with labeled hotspots and progressive reveal.</p>
+        <span class="status">In build — Phase 3</span>
+      </a>
+
+      <a class="card" href="concept-c/">
+        <span class="kicker">Concept C</span>
+        <h2>Experimental WebGL/3D</h2>
+        <p>A three.js spatial navigation metaphor with an accessible DOM mirror.</p>
+        <span class="status">In build — Phase 4</span>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
