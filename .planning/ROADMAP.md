@@ -30,7 +30,13 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Running `qa/copy-diff.py` against the canonical content source produces a pass/fail report the concepts can be checked against.
   4. Shared Fritz brand assets (design tokens, fonts, canonical 8-path logo) exist in `shared/`, mirrored from the intercept-brand-kit source of truth, ready for import by all three concepts.
   5. A local static server runs and serves the repo skeleton (`concept-a/`, `concept-b/`, `concept-c/`, asset directories) plus a placeholder gallery index on one port.
-**Plans**: TBD
+**Plans**: 4 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Canonical verbatim content capture (homepage.json + subpages.json + SOURCE.md)
+- [ ] 01-02-PLAN.md — Shared Fritz brand layer (tokens + aliases, fonts, motion, static 8-path lockup, rules README)
+- [ ] 01-03-PLAN.md — Copy-diff QA gate (qa/copy-diff.py, fixture-proven, data-copy + fallback modes)
+- [ ] 01-04-PLAN.md — Repo skeleton, serve.sh on :4340, Fritz-branded review gallery
 
 ### Phase 2: Concept A — Editorial ("Accenture, but better")
 **Goal**: A visitor can browse an editorial, card-driven homepage with one strong hero statement and click through to focused sub-pages — executed with tighter craft than the Accenture reference.
@@ -86,7 +92,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 (Phases 2, 3, 4 depen
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Content Foundation & Shared Brand Layer | 0/TBD | Not started | - |
+| 1. Content Foundation & Shared Brand Layer | 0/4 | Not started | - |
 | 2. Concept A — Editorial | 0/TBD | Not started | - |
 | 3. Concept B — Full-Screen Video | 0/TBD | Not started | - |
 | 4. Concept C — Experimental WebGL/3D | 0/TBD | Not started | - |
