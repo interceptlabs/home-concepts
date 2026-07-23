@@ -12,7 +12,7 @@ Three structurally unrelated homepage concepts (editorial card-grid, full-screen
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Content Foundation & Shared Brand Layer** - Canonical verbatim content, shared Fritz brand assets, copy-diff gate, and repo/server skeleton exist before any concept work starts
+- [x] **Phase 1: Content Foundation & Shared Brand Layer** - Canonical verbatim content, shared Fritz brand assets, copy-diff gate, and repo/server skeleton exist before any concept work starts (completed 2026-07-23)
 - [ ] **Phase 2: Concept A — Editorial ("Accenture, but better")** - Editorial card-grid homepage with single hero + primary CTA and click-through sub-pages
 - [ ] **Phase 3: Concept B — Full-Screen Video** - Full-bleed ambient video hero with labeled hotspots, progressive reveal, and click-through sub-pages
 - [ ] **Phase 4: Concept C — Experimental WebGL/3D** - three.js spatial navigation metaphor with an accessible DOM mirror and device-tiered rendering
@@ -30,12 +30,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Running `qa/copy-diff.py` against the canonical content source produces a pass/fail report the concepts can be checked against.
   4. Shared Fritz brand assets (design tokens, fonts, canonical 8-path logo) exist in `shared/`, mirrored from the intercept-brand-kit source of truth, ready for import by all three concepts.
   5. A local static server runs and serves the repo skeleton (`concept-a/`, `concept-b/`, `concept-c/`, asset directories) plus a placeholder gallery index on one port.
-**Plans**: 4 plans (3/4 complete)
+**Plans**: 4 plans (4/4 complete)
 
 Plans:
 - [x] 01-01-PLAN.md — Canonical verbatim content capture (homepage.json + subpages.json + SOURCE.md) (completed 2026-07-23)
 - [x] 01-02-PLAN.md — Shared Fritz brand layer (tokens + aliases, fonts, motion, static 8-path lockup, rules README) (completed 2026-07-23)
-- [ ] 01-03-PLAN.md — Copy-diff QA gate (qa/copy-diff.py, fixture-proven, data-copy + fallback modes)
+- [x] 01-03-PLAN.md — Copy-diff QA gate (qa/copy-diff.py, fixture-proven, data-copy + fallback modes) (completed 2026-07-23)
 - [x] 01-04-PLAN.md — Repo skeleton, serve.sh on :4340, Fritz-branded review gallery (completed 2026-07-23)
 
 ### Phase 2: Concept A — Editorial ("Accenture, but better")
@@ -92,7 +92,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 (Phases 2, 3, 4 depen
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Content Foundation & Shared Brand Layer | 3/4 | In Progress | - |
+| 1. Content Foundation & Shared Brand Layer | 4/4 | Complete   | 2026-07-23 |
 | 2. Concept A — Editorial | 0/TBD | Not started | - |
 | 3. Concept B — Full-Screen Video | 0/TBD | Not started | - |
 | 4. Concept C — Experimental WebGL/3D | 0/TBD | Not started | - |
