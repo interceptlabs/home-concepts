@@ -11,7 +11,7 @@ Requirements for the side-by-side review deliverable. Each maps to roadmap phase
 
 - [ ] **FOUND-01**: Canonical homepage copy is captured verbatim from the live interceptgroup.com homepage (Variant A) into a single chunked content source (`content/homepage.json`), frozen after capture
 - [ ] **FOUND-02**: Topic chunks are mapped to a derived sub-page content model — every "area of interest" has verbatim sub-page copy ready for all three concepts to route to
-- [ ] **FOUND-03**: Shared Fritz brand layer (design tokens, fonts, canonical 8-path logo assets) is mirrored from the intercept-brand-kit SSoT and used by all three concepts
+- [x] **FOUND-03**: Shared Fritz brand layer (design tokens, fonts, canonical 8-path logo assets) is mirrored from the intercept-brand-kit SSoT and used by all three concepts
 - [ ] **FOUND-04**: A copy-diff QA gate script verifies each concept's rendered text against the canonical content source (verbatim rule mechanically enforced)
 - [ ] **FOUND-05**: A local preview server serves all three concepts plus a gallery index page for side-by-side review on one port
 
@@ -82,7 +82,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 |-------------|-------|--------|
 | FOUND-01 | Phase 1 | Pending |
 | FOUND-02 | Phase 1 | Pending |
-| FOUND-03 | Phase 1 | Pending |
+| FOUND-03 | Phase 1 | Complete |
 | FOUND-04 | Phase 1 | Pending |
 | FOUND-05 | Phase 1 | Pending |
 | CONA-01 | Phase 2 | Pending |
