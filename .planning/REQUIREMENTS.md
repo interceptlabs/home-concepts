@@ -80,13 +80,37 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| (populated by roadmap) | | |
+| FOUND-01 | Phase 1 | Pending |
+| FOUND-02 | Phase 1 | Pending |
+| FOUND-03 | Phase 1 | Pending |
+| FOUND-04 | Phase 1 | Pending |
+| FOUND-05 | Phase 1 | Pending |
+| CONA-01 | Phase 2 | Pending |
+| CONA-02 | Phase 2 | Pending |
+| CONA-03 | Phase 2 | Pending |
+| CONA-04 | Phase 2 | Pending |
+| CONA-05 | Phase 2 | Pending |
+| CONA-06 | Phase 2 | Pending |
+| CONB-01 | Phase 3 | Pending |
+| CONB-02 | Phase 3 | Pending |
+| CONB-03 | Phase 3 | Pending |
+| CONB-04 | Phase 3 | Pending |
+| CONB-05 | Phase 3 | Pending |
+| CONC-01 | Phase 4 | Pending |
+| CONC-02 | Phase 4 | Pending |
+| CONC-03 | Phase 4 | Pending |
+| CONC-04 | Phase 4 | Pending |
+| CONC-05 | Phase 4 | Pending |
+| QA-01 | Phase 5 | Pending |
+| QA-02 | Phase 5 | Pending |
+| QA-03 | Phase 5 | Pending |
+| QA-04 | Phase 5 | Pending |
 
 **Coverage:**
-- v1 requirements: 20 total
-- Mapped to phases: 0
-- Unmapped: 20 ⚠️
+- v1 requirements: 25 total
+- Mapped to phases: 25
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-07-23*
-*Last updated: 2026-07-23 after initial definition*
+*Last updated: 2026-07-23 after roadmap creation*

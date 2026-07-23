@@ -1,0 +1,93 @@
+# Roadmap: Intercept Homepage Concepts
+
+## Overview
+
+Three structurally unrelated homepage concepts (editorial card-grid, full-screen video, experimental WebGL/3D) are built from one frozen, verbatim content source and one shared Fritz brand layer, then reviewed side by side. Phase 1 builds the shared foundation every concept depends on — canonical content, brand tokens, and the copy-diff QA gate — so drift across three parallel builds is prevented mechanically rather than caught late. Phases 2, 3, and 4 build each concept as a fully isolated unit (lowest-risk editorial concept first, video second, experimental WebGL last), all depending only on Phase 1 and therefore buildable in parallel. Phase 5 closes the project with a cross-concept QA pass and the side-by-side review gallery Jon actually looks at.
+
+## Phases
+
+**Phase Numbering:**
+- Integer phases (1, 2, 3): Planned milestone work
+- Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
+
+Decimal phases appear between their surrounding integers in numeric order.
+
+- [ ] **Phase 1: Content Foundation & Shared Brand Layer** - Canonical verbatim content, shared Fritz brand assets, copy-diff gate, and repo/server skeleton exist before any concept work starts
+- [ ] **Phase 2: Concept A — Editorial ("Accenture, but better")** - Editorial card-grid homepage with single hero + primary CTA and click-through sub-pages
+- [ ] **Phase 3: Concept B — Full-Screen Video** - Full-bleed ambient video hero with labeled hotspots, progressive reveal, and click-through sub-pages
+- [ ] **Phase 4: Concept C — Experimental WebGL/3D** - three.js spatial navigation metaphor with an accessible DOM mirror and device-tiered rendering
+- [ ] **Phase 5: Cross-Concept QA & Review Packaging** - Brand/copy verification across all three concepts and a side-by-side review gallery for Jon
+
+## Phase Details
+
+### Phase 1: Content Foundation & Shared Brand Layer
+**Goal**: The canonical content and brand foundation exists so all three concepts build from a single verified source without copy or brand drift.
+**Depends on**: Nothing (first phase)
+**Requirements**: FOUND-01, FOUND-02, FOUND-03, FOUND-04, FOUND-05
+**Success Criteria** (what must be TRUE):
+  1. A single `content/homepage.json` exists containing every homepage content chunk transcribed verbatim from the live interceptgroup.com homepage (Variant A), plus a `content/SOURCE.md` provenance note, and is frozen after capture.
+  2. Every homepage content chunk has a corresponding derived sub-page entry with verbatim sub-page copy, ready for all three concepts to route to.
+  3. Running `qa/copy-diff.py` against the canonical content source produces a pass/fail report the concepts can be checked against.
+  4. Shared Fritz brand assets (design tokens, fonts, canonical 8-path logo) exist in `shared/`, mirrored from the intercept-brand-kit source of truth, ready for import by all three concepts.
+  5. A local static server runs and serves the repo skeleton (`concept-a/`, `concept-b/`, `concept-c/`, asset directories) plus a placeholder gallery index on one port.
+**Plans**: TBD
+
+### Phase 2: Concept A — Editorial ("Accenture, but better")
+**Goal**: A visitor can browse an editorial, card-driven homepage with one strong hero statement and click through to focused sub-pages — executed with tighter craft than the Accenture reference.
+**Depends on**: Phase 1
+**Requirements**: CONA-01, CONA-02, CONA-03, CONA-04, CONA-05, CONA-06
+**Success Criteria** (what must be TRUE):
+  1. The homepage opens with one strong hero statement and one primary CTA — no rotating hero carousel, no abstract tagline.
+  2. Content is organized into an editorial card grid with oversized type, and each card/section shows one visually primary, content-specific CTA label (never a generic "Expand" reused everywhere).
+  3. A trust-signal block presents specific proof points transcribed from the canonical content, executed with restraint rather than vague claims.
+  4. Clicking a card navigates to its derived sub-page (via cross-document View Transition where supported, plain navigation otherwise) showing that card's full verbatim content.
+  5. Kinetic type accents animate sparingly on scroll/hover with sine ease-in-out (no gratuitous motion), and all imagery is real-stock (Pexels-class) or ComfyUI-generated per brand rules (no neon/glow AI slop).
+**Plans**: TBD
+
+### Phase 3: Concept B — Full-Screen Video
+**Goal**: A visitor experiences a full-bleed video homepage with a clear progressive-reveal mechanism instead of a wall of text, and can click through to focused sub-pages.
+**Depends on**: Phase 1
+**Requirements**: CONB-01, CONB-02, CONB-03, CONB-04, CONB-05
+**Success Criteria** (what must be TRUE):
+  1. The homepage hero plays a full-bleed muted ambient video automatically (`autoplay muted playsinline loop`, poster frame, WebM+MP4 sources) sourced from quality stock footage or ComfyUI generation.
+  2. Visible, labeled hotspot overlays sit over video regions — no mystery-meat — and each hotspot shows its label on hover and on keyboard focus.
+  3. Clicking a hotspot first reveals an inline chapter preview panel, then navigates to the full derived sub-page for that content area.
+  4. With `prefers-reduced-motion` set, the homepage renders a static poster frame with standard visible navigation instead of video, and no sound ever autoplays.
+  5. The video hero stays within a sane byte budget with poster-frame LCP protection and produces no layout shift when the video loads.
+**Plans**: TBD
+
+### Phase 4: Concept C — Experimental WebGL/3D
+**Goal**: A visitor navigates a 3D-space homepage that uses WebGL as the reveal/navigation metaphor while remaining fully usable through standard web conventions, with or without WebGL.
+**Depends on**: Phase 1
+**Requirements**: CONC-01, CONC-02, CONC-03, CONC-04, CONC-05
+**Success Criteria** (what must be TRUE):
+  1. The hero/nav zone renders a three.js 3D scene as the spatial navigation metaphor, while content below the fold remains standard performant DOM.
+  2. Clickable 3D objects/hotspots show visible hover AND keyboard-focus labels, and activating one (mouse, keyboard, or touch) routes to its derived sub-page.
+  3. Scrolling drives camera/scene movement while native scroll physics, the browser back button, and deep links all continue to work normally — no scroll-jacking.
+  4. A semantic DOM mirror of the same navigation is keyboard-navigable and screen-reader readable, and is shown outright instead of the 3D scene when WebGL is unavailable or reduced-motion is set.
+  5. On lower-tier hardware (integrated GPU / mobile), the scene runs at a clamped, degraded quality tier instead of stalling, crashing, or rendering blank.
+**Plans**: TBD
+
+### Phase 5: Cross-Concept QA & Review Packaging
+**Goal**: All three concepts are verified together against brand and copy rules, and Jon can review all three side by side in one place.
+**Depends on**: Phase 2, Phase 3, Phase 4
+**Requirements**: QA-01, QA-02, QA-03, QA-04
+**Success Criteria** (what must be TRUE):
+  1. The Fritz brand QA pass confirms all three concepts comply (Flarepop-only colored text, apex-up triangles, mark never decoration, hard-step gradients, no rule lines, banned tagline absent) with no outstanding violations.
+  2. The copy-diff gate confirms 100% verbatim match between each concept's rendered text and the canonical content source, for all three concepts.
+  3. Each concept renders responsively across mobile/tablet/desktop with acceptable LCP, and each concept has at least 2-3 working derived sub-pages reachable by direct load, click-through, and browser back button.
+  4. The repo-root gallery index shows all three concepts side by side with representative captures, ready for Jon's review.
+**Plans**: TBD
+
+## Progress
+
+**Execution Order:**
+Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 (Phases 2, 3, 4 depend only on Phase 1 and may be built in parallel)
+
+| Phase | Plans Complete | Status | Completed |
+|-------|----------------|--------|-----------|
+| 1. Content Foundation & Shared Brand Layer | 0/TBD | Not started | - |
+| 2. Concept A — Editorial | 0/TBD | Not started | - |
+| 3. Concept B — Full-Screen Video | 0/TBD | Not started | - |
+| 4. Concept C — Experimental WebGL/3D | 0/TBD | Not started | - |
+| 5. Cross-Concept QA & Review Packaging | 0/TBD | Not started | - |
