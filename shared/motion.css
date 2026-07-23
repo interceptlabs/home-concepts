@@ -1,0 +1,6 @@
+:root {
+  --ease-inout-sine: cubic-bezier(0.37, 0, 0.63, 1);
+  --dur-short: 400ms;
+  --dur-med:   800ms;
+  --dur-long:  1400ms;
+}

@@ -1,0 +1,218 @@
+/* Intercept Brand Kit — design tokens
+   Source: Figma file kBo4gZ2BvhqHCtqTVkBbYq (Intercept Brand Kit), pages <Colours>, <Typography>,
+   <Border Radius>, <Opacity>, <Stroke>, <Padding/Spacing>.
+   Naming preserved verbatim from Figma variable names where possible. */
+
+:root {
+  /* === Brand color families (each 100 lightest → 500 darkest) === */
+
+  /* Flarepop — primary magenta */
+  --flarepop-100: #ff00e5;
+  --flarepop-200: #df00be;
+  --flarepop-300: #a8008c;
+  --flarepop-400: #700063;
+  --flarepop-500: #39003a;
+
+  /* Bitvoid — purple */
+  --bitvoid-100: #9359fe;
+  --bitvoid-200: #7a3df0;
+  --bitvoid-300: #5e2cc9;
+  --bitvoid-400: #3e1f8f;
+  --bitvoid-500: #24135a;
+
+  /* Bitbloom — violet (sibling to bitvoid) */
+  --bitbloom-100: #b64fff;
+  --bitbloom-200: #9a3fe0;
+  --bitbloom-300: #7c30b8;
+  --bitbloom-400: #5c238a;
+  --bitbloom-500: #3b165c;
+
+  /* Wiretree — green */
+  --wiretree-100: #00d862;
+  --wiretree-200: #00b553;
+  --wiretree-300: #008f42;
+  --wiretree-400: #006632;
+  --wiretree-500: #003d1e;
+
+  /* Nightwire — indigo */
+  --nightwire-100: #503da6;
+  --nightwire-200: #42338c;
+  --nightwire-300: #332872;
+  --nightwire-400: #241e57;
+  --nightwire-500: #16133b;
+
+  /* Coolsweep — blue */
+  --coolsweep-100: #1a7aff;
+  --coolsweep-200: #1666d6;
+  --coolsweep-300: #1251ad;
+  --coolsweep-400: #0d3d85;
+  --coolsweep-500: #08285c;
+
+  /* Laserwave — cyan */
+  --laserwave-100: #00d7f2;
+  --laserwave-200: #00b7cc;
+  --laserwave-300: #0092a6;
+  --laserwave-400: #006d80;
+  --laserwave-500: #00485a;
+
+  /* Siren — system red (errors / destructive) */
+  --siren-100: #f50041;
+  --siren-200: #cc0036;
+  --siren-300: #a3002b;
+  --siren-400: #7a0020;
+  --siren-500: #520015;
+
+  /* Volts (aka Bolt) — system yellow (warnings) */
+  --volts-100: #f5c800;
+  --volts-200: #d1aa00;
+  --volts-300: #a88a00;
+  --volts-400: #7f6900;
+  --volts-500: #574900;
+
+  /* === Neutrals === */
+
+  /* Halo — lights (100 = white) */
+  --halo-100: #ffffff;
+  --halo-200: #f5f7ff;
+  --halo-300: #e6e9f5;
+  --halo-400: #d1d6e6;
+  --halo-500: #b8bed1;
+
+  /* Carbon — darks (500 = page bg / blackest) */
+  --carbon-100: #3a3a4a;
+  --carbon-200: #2c2c3a;
+  --carbon-300: #1f1f2a;
+  --carbon-400: #14141c;
+  --carbon-500: #0a0a0f;
+
+  /* One-off */
+  --earth: #1e1405;
+
+  /* === Semantic mappings (Intercept dark canvas by default) === */
+  --bg-page:        var(--carbon-500); /* #0a0a0f */
+  --bg-surface:     var(--carbon-300); /* #1f1f2a — cards, panels */
+  --bg-surface-hi:  var(--carbon-200); /* #2c2c3a — borders / sub-surfaces */
+  --bg-surface-max: var(--carbon-100); /* #3a3a4a — input fills */
+  --fg-primary:     var(--halo-100);   /* #ffffff */
+  --fg-secondary:   var(--halo-500);   /* #b8bed1 */
+  --fg-muted:       var(--halo-400);   /* #d1d6e6 */
+  --accent:         var(--flarepop-100);  /* #ff00e5 — primary brand */
+  --accent-deep:    var(--flarepop-400);  /* hover / pressed */
+  --divider:        rgba(8, 7, 5, 0.08);
+  --danger:         var(--siren-100);
+  --warning:        var(--volts-100);
+  --success:        var(--wiretree-100);
+  --info:           var(--coolsweep-100);
+
+  /* === Typography === */
+  --font-display: 'Instrument Sans', system-ui, sans-serif;  /* headings */
+  --font-body:    'Inter', system-ui, sans-serif;            /* body copy */
+  --font-mono:    'Geist Mono', ui-monospace, monospace;     /* accents, data, labels */
+
+  /* Heading scale (Instrument Sans Bold, line-height 1.3) */
+  --fs-h1: 56px; --fs-h2: 48px; --fs-h3: 40px;
+  --fs-h4: 32px; --fs-h5: 24px; --fs-h6: 20px;
+  --lh-heading: 1.3;
+  --fw-heading: 700;
+
+  /* Body scale (Inter, line-height 1.5) */
+  --fs-p1: 24px; --fs-p2: 20px; --fs-p3: 18px;
+  --fs-p4: 16px; --fs-p5: 14px; --fs-p6: 12px;
+  --lh-body: 1.5;
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-bold:    700;
+
+  /* Accent / data (Geist Mono Bold) */
+  --fs-label-l1: 12px; --fs-label-l2: 10px;
+  --fs-data-l:   40px; --fs-data-m:   32px; --fs-data-s: 24px;
+
+  /* === Spacing scale (px) === */
+  --sp-0:   0;
+  --sp-4:   4px;
+  --sp-8:   8px;
+  --sp-12:  12px;
+  --sp-16:  16px;
+  --sp-24:  24px;
+  --sp-32:  32px;
+  --sp-40:  40px;
+  --sp-48:  48px;
+  --sp-80:  80px;
+  --sp-120: 120px;
+
+  /* === Border radius scale === */
+  --r-reset: 0;
+  --r-xs:    4px;
+  --r-s:     8px;
+  --r-m:     12px;
+  --r-l:     16px;
+  --r-xl:    24px;
+  --r-round: 9999px;
+
+  /* === Stroke / border width scale === */
+  --bw-reset: 0;
+  --bw-s:     1px;     /* default */
+  --bw-m:     1.5px;   /* thick */
+  --bw-l:     2px;     /* extra thick */
+  --bw-xl:    4px;     /* highlight */
+
+  /* === Opacity scale === */
+  --op-0:   0;
+  --op-20:  0.20;
+  --op-30:  0.30;
+  --op-50:  0.50;
+  --op-80:  0.80;
+  --op-100: 1;
+}
+
+/* === Base resets keyed to tokens === */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg-page);
+  color: var(--fg-primary);
+  font-family: var(--font-body);
+  font-size: var(--fs-p4);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-heading);
+  line-height: var(--lh-heading);
+  margin: 0;
+}
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+h4 { font-size: var(--fs-h4); }
+h5 { font-size: var(--fs-h5); }
+h6 { font-size: var(--fs-h6); }
+.label, .mono { font-family: var(--font-mono); font-weight: var(--fw-bold); }
+
+/* ── Variant-A shorthand aliases ─────────────────────────────
+   Maps the shorthand custom-property names Variant A's own CSS
+   uses onto the brand-kit canonical ramp. Aliases NEVER hold raw
+   hex — every alias points at a canonical token above. */
+:root {
+  --flarepop:  var(--flarepop-100);
+  --coolsweep: var(--coolsweep-100);
+  --wiretree:  var(--wiretree-100);
+  --page:      var(--bg-page);
+  --surface:   var(--bg-surface);
+  --fg:        var(--fg-primary);
+
+  /* Additional Variant-A shorthands with a clean canonical match
+     (verified by exact hex equivalence against the dark-theme
+     values in reference/live-homepage/index.html, lines 34-49).
+     --flarepop-200 and --flarepop-500 already exist verbatim in
+     the canonical ramp above, so no alias is needed for those.
+     --line/--line-2/--topbar-bg/--tint/--maxw/--logo-ink have no
+     sane canonical equivalent (translucent white borders vs. the
+     solid --divider token, or non-color layout values) and are
+     intentionally NOT aliased — see shared/README.md. */
+  --surface-2: var(--bg-surface-hi);
+  --surface-3: var(--bg-surface-max);
+  --fg-2:      var(--fg-muted);
+  --fg-3:      var(--fg-secondary);
+}
