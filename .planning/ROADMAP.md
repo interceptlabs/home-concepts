@@ -68,8 +68,8 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 03-01-PLAN.md — Video hero homepage shell: full-bleed loop (existing encoded assets), minimal top bar, verbatim hero, 6 labeled hotspots, pause/play control, has-js bootstrap
-- [ ] 03-02-PLAN.md — Six statically-authored chapter-panel dialogs + panels.js (open/close/swap/focus-return) + 3 full sub-pages + @view-transition wiring
+- [x] 03-01-PLAN.md — Video hero homepage shell: full-bleed loop (existing encoded assets), minimal top bar, verbatim hero, 6 labeled hotspots, pause/play control, has-js bootstrap (completed 2026-07-24)
+- [x] 03-02-PLAN.md — Six statically-authored chapter-panel dialogs + panels.js (open/close/swap/focus-return) + 3 full sub-pages + @view-transition wiring (completed 2026-07-24)
 - [ ] 03-03-PLAN.md — Motion polish (@starting-style panels, hero entrance, reduced-motion/visibility/rejection guards) + mechanical QA (copy-diff, brand greps, budget, captures)
 
 ### Phase 4: Concept C — Experimental WebGL/3D
@@ -104,6 +104,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 (Phases 2, 3, 4 depen
 |-------|----------------|--------|-----------|
 | 1. Content Foundation & Shared Brand Layer | 4/4 | Complete    | 2026-07-23 |
 | 2. Concept A — Editorial | 3/3 | Complete    | 2026-07-24 |
-| 3. Concept B — Full-Screen Video | 1/3 | In Progress|  |
+| 3. Concept B — Full-Screen Video | 2/3 | In Progress|  |
 | 4. Concept C — Experimental WebGL/3D | 0/TBD | Not started | - |
 | 5. Cross-Concept QA & Review Packaging | 0/TBD | Not started | - |

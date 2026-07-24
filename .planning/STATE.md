@@ -2,17 +2,17 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 1
+current_plan: 2
 status: in_progress
-stopped_at: Completed 03-01-PLAN.md (Concept B homepage shell — video hero + hotspots)
-last_updated: "2026-07-24T15:58:54.922Z"
+stopped_at: Completed 03-02-PLAN.md (Concept B chapter panels + sub-pages)
+last_updated: "2026-07-24T16:16:34.085Z"
 last_activity: 2026-07-24
 progress:
   total_phases: 5
   completed_phases: 2
   total_plans: 10
-  completed_plans: 8
-  percent: 80
+  completed_plans: 9
+  percent: 90
 ---
 
 # Project State
@@ -22,30 +22,31 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-23)
 
 **Core value:** A visitor never faces a wall of text — content is revealed as needed, and clicking an area of interest takes them to a focused page built from that content.
-**Current focus:** Phase 3 (Concept B — Full-Screen Video) IN PROGRESS — 03-01 (homepage shell) done, next is 03-02 (chapter panels)
+**Current focus:** Phase 3 (Concept B — Full-Screen Video) IN PROGRESS — 03-01 (homepage shell) and 03-02 (chapter panels + sub-pages) done, next is 03-03 (motion polish)
 
 ## Current Position
 
 Phase: 3 of 5 (Concept B — Full-Screen Video) — IN PROGRESS
-Plan: 1 of 3 complete in current phase (03-01 done; 03-02, 03-03 remaining)
-Current Plan: 1
+Plan: 2 of 3 complete in current phase (03-01, 03-02 done; 03-03 remaining)
+Current Plan: 2
 Total Plans in Phase: 3
-Status: Ready for 03-02 (chapter panels / panels.js)
+Status: Ready for 03-03 (motion polish)
 Last activity: 2026-07-24
 
-Progress: [████████░░] 80% (8 of 10 known plans across all phases)
+Progress: [█████████░] 90% (9 of 10 known plans across all phases)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 8
+- Total plans completed: 9
 - Average duration: 25 min
-- Total execution time: 3.36 hours
+- Total execution time: 3.70 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
+| Phase 03 P02 | 40min | 3 tasks | 7 files |
 | Phase 03 P01 | 38min | 2 tasks | 3 files |
 | Phase 02 P03 | 22min | 2 tasks | 8 files |
 | Phase 02 P02 | 7min | 3 tasks | 6 files |
@@ -56,8 +57,8 @@ Progress: [████████░░] 80% (8 of 10 known plans across all p
 | Phase 01 P01 | 20min | 3 tasks | 3 files |
 
 **Recent Trend:**
-- Last 5 plans: 03-01 (38min), 02-03 (22min), 02-02 (7min), 02-01 (25min), 01-04 (15min)
-- Trend: 03-01 ran longer than average — first plan of a new phase carries full context-gathering overhead (reading CONTEXT/RESEARCH/ASSETS.md, cross-checking concept-a idioms, iterating on the automated brand-grep suite), not a sign of rising per-task cost
+- Last 5 plans: 03-02 (40min), 03-01 (38min), 02-03 (22min), 02-02 (7min), 02-01 (25min)
+- Trend: 03-02 ran slightly longer than 03-01 despite reusing established idioms — driven by the sheer copy-chunk volume this plan carries (426 data-copy chunks across 4 pages, including a 173-chunk InterceptOS sub-page) plus full Puppeteer browser verification of six dialogs' open/close/swap/focus-return behavior, not a sign of rising per-task cost
 
 *Updated after each plan completion*
 
@@ -87,6 +88,10 @@ Recent decisions affecting current work:
 - [03-01]: Hotspot constellation coordinates and topbar/hero-copy geometry were built as this plan's own discretionary composition (CONTEXT explicitly left layout geometry + responsive behavior to Claude's discretion); visual balance is deferred to 03-03's capture-based review, not gated in 03-01
 - [03-01]: Topbar CTA and all 6 hotspot buttons are real, correctly `data-panel`-tagged, keyboard-focusable elements that intentionally do nothing on click yet — 03-02's `panels.js` owns wiring every `[data-panel]` element to its dialog
 - [03-01]: `attemptPlay(userInitiated)` in `video.js` gates ambient autoplay behind `prefers-reduced-motion` but always allows an explicit user-initiated play(), with toggle state driven off the video element's own `play`/`pause` events (not manually tracked) so 03-03's visibilitychange/IntersectionObserver pausing bolts on without a rewrite
+- [03-02]: Chapter-panel and sub-page markup generated end-to-end by one-off uncommitted Python scripts that read `content/homepage.json` directly and write the finished HTML files to disk — 426 data-copy chunks across 4 pages passed copy-diff on the first run
+- [03-02]: Discovered `grep -c 'data-copy='` counts matching lines, not attribute occurrences — any generator that packs multiple data-copy spans on one line will undercount against a plan's numeric verify threshold; fixed by splitting every multi-attribute construct to one data-copy element per line
+- [03-02]: Labs panel CTA reuses concept-a's precedent (panel-swap to Contact, never a dead link); Contact's conversion tile is a non-link block since `convert.cta.href` has no real target in this prototype
+- [03-02]: Sub-page scroll-reveal reimplemented as concept-b's own `reveal.js` (idiom borrowed from concept-a's `motion.js`, not a shared file) — concepts stay fully isolated per architecture rules
 
 ### Pending Todos
 
@@ -96,10 +101,10 @@ None yet.
 
 - Phase 4 (Concept C): the specific 3D interaction metaphor (orbit/click-object scene vs. scroll-driven camera fly-through vs. Spline-authored scene) is not yet settled — research flags this for `/gsd:discuss-phase 4` before build.
 - Phase 3 byte-budget arithmetic (CONB-05's remaining half) and JS-disabled visual captures are deliberately deferred to 03-03 per 03-01's own success criteria — not a blocker, just not yet done.
-- Tooling: `gsd-tools state advance-plan`/`update-progress`/`record-metric`/`add-decision` continue to need hand-correction after each run (`advance-plan` still reasons off a stale global plan counter instead of per-phase plan position, `update-progress` wrote `percent: 100` instead of the correct 80%, `record-metric` appended its new table row directly below the `*Updated after each plan completion*` footer instead of inside the table) — recurred again on 03-01's update; still worth a tooling fix.
+- Tooling: `gsd-tools state advance-plan`/`update-progress`/`record-metric`/`add-decision` continue to need hand-correction after each run (`update-progress`'s percent math was correct this time, but `advance-plan` overwrote the frontmatter `status` field with stale body text instead of leaving it `in_progress`, and `record-metric` again appended its new table row directly below the `*Updated after each plan completion*` footer instead of inside the table) — recurred on 03-02's update too; still worth a tooling fix.
 
 ## Session Continuity
 
-Last session: 2026-07-24T15:58:54.922Z
-Stopped at: Completed 03-01-PLAN.md (Concept B homepage shell — video hero + hotspots)
+Last session: 2026-07-24T16:16:34.085Z
+Stopped at: Completed 03-02-PLAN.md (Concept B chapter panels + sub-pages)
 Resume file: None
