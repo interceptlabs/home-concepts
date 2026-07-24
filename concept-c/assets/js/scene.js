@@ -43,6 +43,21 @@ function makeStepGradientMap(steps = 4) {
   return gradientMap;
 }
 
+// ─── Device tier heuristic (RESEARCH Pitfall 3) — decided BEFORE any
+// renderer/material is constructed. hardwareConcurrency is the primary,
+// broadly-supported signal (Safari + Firefox included); deviceMemory is a
+// Chromium-only bonus signal used only when present — never the sole gate;
+// the narrow-viewport check is the Safari/Firefox fallback for devices that
+// expose neither API. Returns 'low' | 'full'. ────────────────────────────
+function deviceTier() {
+  const cores = navigator.hardwareConcurrency;
+  if (typeof cores === 'number' && cores <= 4) return 'low';
+  const mem = navigator.deviceMemory;
+  if (typeof mem === 'number' && mem <= 4) return 'low';
+  if (matchMedia('(max-width: 768px)').matches) return 'low';
+  return 'full';
+}
+
 // ─── Apex-up right-triangle prism geometry — right angle at (0,0)/(w,0),
 // apex at (0,h). Fritz rule: apex up, right angle at base, lean via
 // rotation.z only (never inverted). ─────────────────────────────────────────
@@ -83,20 +98,29 @@ const CAMERA_PATH_POINTS = [
   [0.6, 2.1, -44],
 ];
 
-function initScene({ animated }) {
+function initScene({ animated, tier }) {
   const mount = document.querySelector('.scene-mount');
   if (!mount) return;
+
+  const lowTier = tier === 'low';
 
   const canvas = document.createElement('canvas');
   mount.appendChild(canvas);
 
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'low-power' });
+  // Tier decided by the caller, before this renderer is ever constructed —
+  // low tier drops antialiasing outright (RESEARCH Pitfall 3 / CONC-05).
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: !lowTier, powerPreference: 'low-power' });
   if (animated) {
-    const isSmallScreen = matchMedia('(max-width: 768px)').matches;
-    renderer.setPixelRatio(isSmallScreen ? Math.min(window.devicePixelRatio, 1.5) : Math.min(window.devicePixelRatio, 2));
+    if (lowTier) {
+      renderer.setPixelRatio(1);
+    } else {
+      const isSmallScreen = matchMedia('(max-width: 768px)').matches;
+      renderer.setPixelRatio(isSmallScreen ? Math.min(window.devicePixelRatio, 1.5) : Math.min(window.devicePixelRatio, 2));
+    }
   } else {
-    // static-scene: DPR forced to 1, no rAF loop, no parallax (Open
-    // Questions recommendation — a frozen real scene, not the flat backdrop).
+    // static-scene: DPR forced to 1 regardless of tier, no rAF loop, no
+    // parallax (Open Questions recommendation — a frozen real scene, not
+    // the flat backdrop).
     renderer.setPixelRatio(1);
   }
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -119,7 +143,8 @@ function initScene({ animated }) {
   const ambient = new THREE.AmbientLight(undefined, 0.35);
   scene.add(ambient);
 
-  const gradientMap = makeStepGradientMap(4);
+  // Low tier: 3 hard steps (still within the locked 3-5 range); full tier: 4.
+  const gradientMap = makeStepGradientMap(lowTier ? 3 : 4);
   const meshes = OBJECT_DEFS.map((def) => {
     const [w, h, d] = def.size;
     const geometry = def.kind === 'prism' ? makePrismGeometry(w, h, d) : new THREE.BoxGeometry(w, h, d);
@@ -208,6 +233,9 @@ function initScene({ animated }) {
     }
   }
   window.addEventListener('resize', resize);
+  // Belt-and-braces alongside 'resize' — some browsers fire orientation
+  // changes without a corresponding resize event on the same tick.
+  window.addEventListener('orientationchange', resize);
 
   if (!animated) {
     // One-shot overview framing showing all 6 objects; re-projected +
@@ -283,9 +311,10 @@ function initScene({ animated }) {
     mesh.rotation.y = mesh.userData.baseRotationY + Math.sin((elapsed / period) * Math.PI * 2) * amp;
   }
 
-  // Cursor parallax — pointer-fine + non-reduced-motion only, never on touch.
+  // Cursor parallax — pointer-fine + non-reduced-motion only, never on touch,
+  // never on a low-tier device (CONC-05: parallax never registered on low tier).
   const prefersReducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const parallaxEnabled = matchMedia('(hover: hover) and (pointer: fine)').matches && !prefersReducedMotion;
+  const parallaxEnabled = !lowTier && matchMedia('(hover: hover) and (pointer: fine)').matches && !prefersReducedMotion;
   const parallaxTarget = new THREE.Vector2(0, 0);
   if (parallaxEnabled) {
     window.addEventListener('pointermove', (event) => {
@@ -356,17 +385,23 @@ function initScene({ animated }) {
 }
 
 function boot() {
+  // Decision tree order (locked): no-webgl check first, then reduced-motion,
+  // then device tier — tier is computed before ANY renderer construction and
+  // applies inside both the animated and static-scene paths below.
   if (!hasWebGL2()) {
     document.documentElement.classList.add('no-webgl');
     return;
   }
   const prefersReducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const tier = deviceTier();
+  // Logged for the capture rig / SUMMARY — never gates styling on its own.
+  document.documentElement.dataset.sceneTier = tier;
   if (prefersReducedMotion) {
     document.documentElement.classList.add('webgl', 'static-scene');
-    initScene({ animated: false });
+    initScene({ animated: false, tier });
   } else {
     document.documentElement.classList.add('webgl');
-    initScene({ animated: true });
+    initScene({ animated: true, tier });
   }
 }
 

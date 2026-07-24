@@ -107,8 +107,8 @@ html.no-webgl .field-backdrop {
 }
 .btn-cta:hover { opacity: var(--op-80); }
 .btn-cta:focus-visible {
-  outline: var(--bw-l) solid var(--flarepop);
-  outline-offset: 4px;
+  outline: var(--bw-l) solid var(--fg);
+  outline-offset: 3px;
 }
 
 /* ── Scroll runway — 400vh dolly track under an animated 3D scene, a
@@ -294,6 +294,24 @@ html.webgl:not(.static-scene) .topic-index {
   html { scroll-behavior: smooth; }
 }
 
+/* ── Reduced-motion overrides — belt-and-braces alongside scene.js's own
+   static-scene JS gate (which already renders once, with no rAF/parallax/
+   idle rotation). Forces every CSS animation/transition added across
+   04-01/04-02 to complete instantly: label marker scale, CTA/link hover
+   fades, footer/episode link color fades. Smooth scroll already collapses
+   to instant above via the no-preference wrapper — not duplicated here. ── */
+@media (prefers-reduced-motion: reduce) {
+  .concept-c *,
+  .concept-c *::before,
+  .concept-c *::after,
+  .subpage *,
+  .subpage *::before,
+  .subpage *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 .below-fold .wrap {
   max-width: 64rem;
   margin-inline: auto;
@@ -368,8 +386,8 @@ html.webgl:not(.static-scene) .topic-index {
 }
 .btn-secondary:hover { opacity: var(--op-80); }
 .btn-secondary:focus-visible {
-  outline: var(--bw-l) solid var(--flarepop);
-  outline-offset: 4px;
+  outline: var(--bw-l) solid var(--fg);
+  outline-offset: 3px;
 }
 
 /* #convert — non-link conversion tile (convert.cta.href has no real target
@@ -425,6 +443,10 @@ html.webgl:not(.static-scene) .topic-index {
 }
 .footer__links a { color: var(--fg-2); transition: color var(--dur-short) var(--ease-inout-sine); }
 .footer__links a:hover { color: var(--fg); }
+.footer__links a:focus-visible {
+  outline: var(--bw-l) solid var(--fg);
+  outline-offset: 2px;
+}
 .footer__trust, .footer__social {
   display: flex;
   flex-direction: column;
@@ -455,6 +477,10 @@ html.webgl:not(.static-scene) .topic-index {
   background: var(--surface);
 }
 .page-header__lockup .lockup-svg { height: 1.75rem; width: auto; display: block; }
+.page-header__lockup:focus-visible {
+  outline: var(--bw-l) solid var(--fg);
+  outline-offset: 2px;
+}
 .page-header__back {
   font-family: var(--font-mono);
   font-size: var(--fs-label-l1);
@@ -464,6 +490,10 @@ html.webgl:not(.static-scene) .topic-index {
   transition: color var(--dur-short) var(--ease-inout-sine);
 }
 .page-header__back:hover { color: var(--flarepop); }
+.page-header__back:focus-visible {
+  outline: var(--bw-l) solid var(--fg);
+  outline-offset: 2px;
+}
 
 .page-hero { padding-block: clamp(2.5rem, 6vw, 6rem); }
 .page-hero .wrap { max-width: 64rem; margin-inline: auto; padding-inline: clamp(1.25rem, 5vw, 4rem); }
@@ -665,6 +695,10 @@ html.webgl:not(.static-scene) .topic-index {
 }
 .episode-block__title a { transition: color var(--dur-short) var(--ease-inout-sine); }
 .episode-block__title a:hover { color: var(--flarepop); }
+.episode-block__title a:focus-visible {
+  outline: var(--bw-l) solid var(--fg);
+  outline-offset: 2px;
+}
 .episode-block__guest { color: var(--fg-2); font-size: var(--fs-p4); margin-bottom: var(--sp-16); }
 .episode-block__summary { color: var(--fg-2); font-size: var(--fs-p4); margin-bottom: var(--sp-24); }
 .episode-block__links {
@@ -677,3 +711,7 @@ html.webgl:not(.static-scene) .topic-index {
 }
 .episode-block__links a { color: var(--fg); transition: color var(--dur-short) var(--ease-inout-sine); }
 .episode-block__links a:hover { color: var(--flarepop); }
+.episode-block__links a:focus-visible {
+  outline: var(--bw-l) solid var(--fg);
+  outline-offset: 2px;
+}
