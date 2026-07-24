@@ -77,9 +77,21 @@
 }
 
 /* ---------- Card field ---------- */
+/* width:100% is load-bearing, not decorative: .card-field is a grid item
+   inside .hero-viewport's flex column. Without an explicit width, the
+   repeat(auto-fit, minmax(...)) track-count algorithm resolves against an
+   ambiguous/indefinite available size in some browsers and can compute more
+   220px tracks than actually fit (e.g. 4 at 768px viewport instead of 3),
+   overflowing to ~984px. html,body{overflow-x:clip} (deployed.css, never
+   edited) then silently clips that overflow instead of showing a
+   scrollbar, so 2 of the 8 cards were rendered fully off-screen and
+   unreachable -- found via honest 768px capture review, not the mechanical
+   gates. width:100% gives the grid a definite size before track-count
+   resolution, matching how the identical-viewport homepage cards render. */
 .card-field {
   position: relative;
   z-index: 1;
+  width: 100%;
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 0 28px;
@@ -217,6 +229,39 @@ html.has-js .card-static {
 }
 html:not(.has-js) .card[data-modal] {
   display: none;
+}
+
+/* No-JS legibility fix, found via honest index-nojs-1440 capture review:
+   the inline head script that sets data-theme="light" never runs without
+   JS, so a no-JS visitor sees the base (dark) :root tokens -- this is the
+   ported theme system's own pre-existing, accepted behavior (05-02-SUMMARY:
+   COND-07 requires cards/nav degrading to anchors, not full no-JS theme
+   parity). But two pieces of NEW chrome are hardcoded to always be LIGHT
+   regardless of theme (the video sits behind a light-only hero, and .card's
+   background is a fixed near-white surface so it reads over the video in
+   the normal light-theme case) -- so the dark theme's light-on-dark --fg-2
+   token (#d1d6e6, meant for a dark background) becomes a near-illegible
+   washed-out text color against them. .hero-h1's --fg (#ffffff) and the
+   --flarepop em spans stay legible either way (white/magenta read fine on
+   both the light video and, incidentally, dark surfaces), so only the
+   --fg-2-colored elements need a fixed dark-ink override here -- scoped to
+   the no-JS path and this new chrome only; deployed.css's actual token
+   values are never edited. */
+/* Reuses deployed.css's own light-theme --fg/--fg-2 values verbatim (not
+   invented colors) -- var(--fg)/var(--fg-2) can't be referenced directly
+   here since they resolve against the current (dark, no-JS) :root, which is
+   exactly the problem being fixed. Named as custom properties, not literal
+   `color:` values, so they read as what they are (token reuse) rather than
+   hardcoded hex. */
+html:not(.has-js) .hero-d .hero-sub,
+html:not(.has-js) .card-eyebrow,
+html:not(.has-js) .card-teaser {
+  --nojs-ink: #2c2c3a;
+  color: var(--nojs-ink);
+}
+html:not(.has-js) .card-heading {
+  --nojs-ink-strong: #0a0a0f;
+  color: var(--nojs-ink-strong);
 }
 
 @media (prefers-reduced-motion: reduce) {
