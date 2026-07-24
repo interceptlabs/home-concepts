@@ -45,6 +45,10 @@
   outline: 2px solid var(--fg);
   outline-offset: 2px;
 }
+/* Without JS the toggle has no handler — hide it (also fixes its no-JS contrast). */
+html:not(.has-js) .hero-video-layer .video-toggle {
+  display: none;
+}
 
 /* ---------- Hero viewport: hero copy + card field over the video ---------- */
 /* min-height, NOT a fixed height — if the card field overflows a small
