@@ -14,7 +14,7 @@ The gate before Jon sees anything: cross-concept brand + copy verification and t
 ## Implementation Decisions
 
 ### Fritz brand QA (QA-01) — split responsibility
-- The ORCHESTRATOR (not a gsd-executor) spawns the **Fritz brand agent** to review all concepts (A, B, C, D) against the Fritz Brand OS: it reads the concept pages + representative captures and returns a findings report, committed to the phase dir as `05-FRITZ-QA.md`. Any violations become fix tasks before the phase completes.
+- The ORCHESTRATOR (not a gsd-executor) spawns the **Fritz brand agent** to review all concepts (A, B, C, D) against the Fritz Brand OS: it reads the concept pages + representative captures and returns a findings report, committed to the phase dir as `06-FRITZ-QA.md`. Any violations become fix tasks before the phase completes.
 - The mechanical layer still runs first (executor): the 8-grep brand suite per concept + cross-concept token drift check (each concept's CSS uses only var() tokens from shared/tokens.css; no local hex redefinitions of brand hues).
 
 ### Copy-diff (QA-02)
