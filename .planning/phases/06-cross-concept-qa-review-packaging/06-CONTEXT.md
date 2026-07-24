@@ -1,4 +1,4 @@
-# Phase 5: Cross-Concept QA & Review Packaging - Context
+# Phase 6: Cross-Concept QA & Review Packaging - Context
 
 **Gathered:** 2026-07-24 (auto mode)
 **Status:** Ready for planning
@@ -14,18 +14,18 @@ The gate before Jon sees anything: cross-concept brand + copy verification and t
 ## Implementation Decisions
 
 ### Fritz brand QA (QA-01) — split responsibility
-- The ORCHESTRATOR (not a gsd-executor) spawns the **Fritz brand agent** to review all three concepts against the Fritz Brand OS: it reads the concept pages + representative captures and returns a findings report, committed to the phase dir as `05-FRITZ-QA.md`. Any violations become fix tasks before the phase completes.
+- The ORCHESTRATOR (not a gsd-executor) spawns the **Fritz brand agent** to review all concepts (A, B, C, D) against the Fritz Brand OS: it reads the concept pages + representative captures and returns a findings report, committed to the phase dir as `05-FRITZ-QA.md`. Any violations become fix tasks before the phase completes.
 - The mechanical layer still runs first (executor): the 8-grep brand suite per concept + cross-concept token drift check (each concept's CSS uses only var() tokens from shared/tokens.css; no local hex redefinitions of brand hues).
 
 ### Copy-diff (QA-02)
-- One run of `python3 qa/copy-diff.py --all concept-a concept-b concept-c` (or equivalent per-concept invocations) — must exit 0 across all 14 pages (A: 6, B: 4, C: 4). Record chunk totals in the phase SUMMARY (expected 430 + 340 + 282).
+- One run of `python3 qa/copy-diff.py --all concept-a concept-b concept-c` (or equivalent per-concept invocations) — must exit 0 across all 14 pages (A: 6, B: 4, C: 4, D: per its own plan — substring mode for ported modules). Record chunk totals in the phase SUMMARY (expected 430 + 340 + 282 + D’s totals).
 
 ### Responsive + sub-page proof (QA-03)
-- Verify from existing evidence + fresh spot-checks: each concept has ≥2-3 working derived sub-pages (A: 5, B: 3, C: 3 — already true; link-integrity re-run cross-concept), responsive captures exist at 390/768/1440 for each concept's homepage, no horizontal overflow.
+- Verify from existing evidence + fresh spot-checks: each concept has ≥2-3 working derived sub-pages (A: 5, B: 3, C: 3, D: per plan — mostly true; link-integrity re-run cross-concept), responsive captures exist at 390/768/1440 for each concept's homepage, no horizontal overflow.
 - LCP sanity: gallery + three homepages served locally; check poster/hero load path (no render-blocking regressions). Lightweight — full Lighthouse is out of scope for a local prototype review.
 
 ### Review gallery (QA-04)
-- Rebuild root `index.html` as the final review surface: dark Fritz page, lockup, three concept cards side-by-side, each with:
+- Rebuild root `index.html` as the final review surface: dark Fritz page, lockup, four concept cards side-by-side (A, B, C, D), each with:
   - A real screenshot thumbnail (copy the best 1440 homepage capture per concept into `assets/gallery/`)
   - Concept name + one-line wayfinding description (gallery chrome is meta-UI wayfinding text, NOT site copy — the copy-immutability rule governs site content; keep gallery text minimal and factual)
   - A "what to try" hint list (3 bullets max per concept: e.g. A "click a work card", B "click a hotspot label", C "scroll through the field")
@@ -46,7 +46,7 @@ The gate before Jon sees anything: cross-concept brand + copy verification and t
 ## Specific Ideas
 
 - Jon: "use /fritz too" — this phase is where Fritz signs off. The Fritz agent's canon: Figma kit `kBo4gZ2BvhqHCtqTVkBbYq` SSoT, triangles apex-up, mark never decoration, Flarepop-only colored text, hard-step gradients, NO rule lines, banned tagline, static centered lockup, sine easing.
-- The deliverable is a side-by-side review for Jon at http://localhost:4340/ — one page that lets him open all three concepts and compare.
+- The deliverable is a side-by-side review for Jon at http://localhost:4340/ — one page that lets him open all concepts (A, B, C, D) and compare.
 
 </specifics>
 
@@ -78,5 +78,5 @@ The gate before Jon sees anything: cross-concept brand + copy verification and t
 
 ---
 
-*Phase: 05-cross-concept-qa-review-packaging*
+*Phase: 06-cross-concept-qa-review-packaging*
 *Context gathered: 2026-07-24*
