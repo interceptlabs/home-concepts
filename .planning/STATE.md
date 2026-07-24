@@ -2,17 +2,17 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 2
+current_plan: 3
 status: completed
-stopped_at: Completed 05-02-PLAN.md
-last_updated: "2026-07-24T20:59:34.112Z"
+stopped_at: Completed 05-03-PLAN.md
+last_updated: "2026-07-24T21:32:02.468Z"
 last_activity: 2026-07-24
 progress:
   total_phases: 6
-  completed_phases: 4
+  completed_phases: 5
   total_plans: 19
-  completed_plans: 16
-  percent: 84
+  completed_plans: 17
+  percent: 89
 ---
 
 # Project State
@@ -22,30 +22,31 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-23)
 
 **Core value:** A visitor never faces a wall of text — content is revealed as needed, and clicking an area of interest takes them to a focused page built from that content.
-**Current focus:** Phase 5 (Concept D — Home Variant) IN PROGRESS — Plan 05-02 (card/modal reveal shell: 8 cards, 8 module dialogs, hero video) complete. Next: 05-03 (standalone pages).
+**Current focus:** Phase 5 (Concept D — Home Variant) COMPLETE — all 3 plans done, COND-01 through COND-07 all satisfied. Next: Phase 6 (cross-concept QA + gallery packaging).
 
 ## Current Position
 
-Phase: 5 of 6 (Concept D — Home Variant) — IN PROGRESS
-Plan: 2 of 3 complete in current phase (05-01, 05-02 done; 05-03 remains)
-Current Plan: 2
+Phase: 5 of 6 (Concept D — Home Variant) — COMPLETE
+Plan: 3 of 3 complete in current phase (05-01, 05-02, 05-03 all done)
+Current Plan: 3
 Total Plans in Phase: 3
-Status: Plan 05-02 complete — ready to execute 05-03
+Status: Phase 5 complete — ready for `/gsd:plan-phase 6`
 Last activity: 2026-07-24
 
-Progress: [████████▓░] 84% (16 of 19 known plans across all phases)
+Progress: [█████████░] 89% (17 of 19 known plans across all phases)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 15
-- Average duration: 26 min
-- Total execution time: 6.43 hours
+- Total plans completed: 17
+- Average duration: 27 min
+- Total execution time: 7.43 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
+| Phase 05 P03 | 30min | 3 tasks | 17 files |
 | Phase 05 P02 | 23min | 3 tasks | 4 files |
 | Phase 05 P01 | 28min | 3 tasks | 11 files |
 | Phase 04 P04 (gap closure) | 26min | 3 tasks | 13 files |
@@ -64,8 +65,8 @@ Progress: [████████▓░] 84% (16 of 19 known plans across all 
 | Phase 01 P01 | 20min | 3 tasks | 3 files |
 
 **Recent Trend:**
-- Last 5 plans: 05-02 (23min), 05-01 (28min), 04-04 (26min), 04-03 (24min), 04-02 (20min)
-- Trend: 05-02 built concept-d's card/modal reveal shell (hero video layer + 8 cards + 8 DOM-resident `<dialog>` module wrappers), verified end-to-end with a 41-assertion Puppeteer suite covering both research-identified landmine fixes (drawer-scaffold top-layer stacking, hidden-canvas re-measure). An honest capture review (not just mechanical gates) caught a real illegible-hero-text bug from an inherited deployed.css color override; the Puppeteer suite itself caught a dialog-close-event race and a CSS float/sticky interaction that silently ate every modal-close click — all three fixed and re-verified before completion.
+- Last 5 plans: 05-03 (30min), 05-02 (23min), 05-01 (28min), 04-04 (26min), 04-03 (24min)
+- Trend: 05-03 built the 4 standalone section pages (os/labs/work/contact.html) from the same ported modules, then closed Phase 5 with a full mechanical + honest-visual QA sweep (link-integrity checker, 34-assertion nav suite, brand greps, both copy gates, 10 reviewed captures). Found and fixed 4 real bugs: deployed.js's shared init crashing on any page missing a module (a deployment shape the single-page deployed site never needed), a dead in-page FAQ anchor, a 768px card-grid overflow silently clipped by deployed.css's own overflow-x:clip, and a no-JS/dark-theme-fallback contrast failure on the hero-sub and all 8 fallback cards — all four scoped to new chrome or defensive script guards, zero ported-module changes.
 
 *Updated after each plan completion*
 
@@ -116,6 +117,8 @@ Recent decisions affecting current work:
 - [05-01]: `qa/concept-d-script-diff.py` is the permanent, mutation-tested compensating gate for the 113 canonical chunks that live only inside deployed.js's data objects (invisible to `qa/copy-diff.py`'s static-HTML gate) — it will run in every subsequent 05-* plan's verification and again in Phase 6
 - [Phase 05-02]: [05-02]: Dropped .hero-a from the new hero section (kept .hero) — .hero-a carries deployed.css's light-theme override that forces a dark-island color set built for the ORIGINAL dark hero video, which rendered concept-d's new light-video hero copy illegible white-on-white; found via honest capture review (mechanical gates don't check color contrast)
 - [Phase 05-02]: [05-02]: Single-instance drawer-scaffold reparenting (dialog.appendChild on open, document.body.appendChild on close) per the plan's locked interfaces, with an ownership guard in the close listener (only reparent home if the scaffold is still parented in the closing dialog) — fixes a real race where a dialog's queued 'close' event could yank the scaffold out from under a different, newly-active dialog during the InterceptOS->Agents bridge
+- [Phase 05-03]: Concept D uses substring-mode copy-diff + concept-d-script-diff.py instead of shared/README's annotated data-copy convention (locked, documented exception for this phase since Concept D ports the deployed page's own JS-templated data objects verbatim)
+- [Phase 05-03]: deployed.js needed 6 minimal null-guards (buildSolve/renderFlow/renderAgents/closeAgentDetail/agentDetailClose+Backdrop) to survive standalone pages that carry only a subset of the 8 modules -- a deployment shape the single continuously-scrolling deployed site never needed
 
 ### Pending Todos
 
@@ -125,11 +128,11 @@ None yet.
 
 - Phase 4 (Concept C) is now FULLY COMPLETE INCLUDING GAP CLOSURE — all 5 requirements (CONC-01 through CONC-05) implemented and verified across 04-01/04-02/04-03, and the single gap 04-VERIFICATION.md found (camera-framing desync, CONC-01/CONC-03) is closed by 04-04 with a permanent headless regression gate (`qa/camera-framing-check.mjs`). No open items remain for this phase.
 - Phase 3 (Concept B) is fully complete — CONB-01 through CONB-05 all done and verified in 03-03. No open items remain for this phase.
-- Phase 5 (Concept D) Plans 01 and 02 complete — COND-01, COND-02, COND-03, COND-04, COND-05, COND-06, COND-07 all satisfied (COND-06's homepage half via 05-02, standalone-page half deferred to 05-03). No open items from 05-01/05-02; only 05-03 (standalone pages: os/labs/work/contact.html) remains for this phase.
-- Tooling: `gsd-tools state advance-plan`/`update-progress`/`record-metric`/`add-decision`/`record-session` continue to need hand-correction after each run. On this run: `advance-plan` returned `advanced:false, reason:"last_plan"` and left `current_plan`/`Total Plans in Phase` at Phase 4's stale value of 4 because it doesn't reset when a new phase's plan sequence starts (Phase 5 has 3 plans, not 4) — hand-corrected to `current_plan:1`/`Total Plans in Phase: 3` here. `record-metric` again appended its new table row below the `*Updated after each plan completion*` footer instead of inside the table — moved by hand. `update-progress`'s 79%/15-of-19 output was actually CORRECT this run (it counts *-PLAN.md/*-SUMMARY.md files across ALL phase directories on disk, including Phase 6's 2 already-drafted PLAN.md files with 0 summaries yet — not a bug, just worth noting for future runs so it isn't mistaken for one). This has recurred on every plan since at least 04-01 — still worth a tooling fix for the `advance-plan` phase-transition case specifically.
+- Phase 5 (Concept D) is now FULLY COMPLETE — all 3 plans (05-01, 05-02, 05-03) done; COND-01 through COND-07 all satisfied, including COND-06's standalone-page half (substring copy-diff + script-diff gates green on all 4 new pages) and the phase-closing link-integrity/nav/capture QA sweep. No open items remain for this phase. One pre-existing, out-of-scope bug logged (not fixed): `concept-d/about.html`'s skip-link targets a `<main>` with no `id="main"` — verified identical in the staging source itself, see `.planning/phases/05-concept-d-home-variant/deferred-items.md`.
+- Tooling: `gsd-tools state advance-plan`/`update-progress`/`record-metric`/`add-decision`/`record-session` continue to need hand-correction after each run. On this run: `advance-plan` and `update-progress` both correctly recognized Phase 5 as complete (`completed_phases:5`, 89%/17-of-19) — no phase-transition bug this time. `record-metric` again appended its new table row below the `*Updated after each plan completion*` footer instead of inside the table — moved by hand, along with the stale "Current Position"/"Current focus" prose (these are never auto-updated by any gsd-tools command and were still describing 05-02 as the latest state).
 
 ## Session Continuity
 
-Last session: 2026-07-24T20:59:34.109Z
-Stopped at: Completed 05-02-PLAN.md
-Resume file: .planning/phases/05-concept-d-home-variant/05-03-PLAN.md
+Last session: 2026-07-24T21:32:02.466Z
+Stopped at: Completed 05-03-PLAN.md
+Resume file: None

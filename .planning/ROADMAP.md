@@ -16,7 +16,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 2: Concept A — Editorial ("Accenture, but better")** - Editorial card-grid homepage with single hero + primary CTA and click-through sub-pages (completed 2026-07-24)
 - [x] **Phase 3: Concept B — Full-Screen Video** - Full-bleed ambient video hero with labeled hotspots, progressive reveal, and click-through sub-pages (completed 2026-07-24)
 - [x] **Phase 4: Concept C — Experimental WebGL/3D** - three.js spatial navigation metaphor with an accessible DOM mirror and device-tiered rendering (completed 2026-07-24)
-- [ ] **Phase 5: Concept D — Home Variant (light video + module cards)** - Deployed sections revealed via enticing cards + modals over a light video field
+- [x] **Phase 5: Concept D — Home Variant (light video + module cards)** - Deployed sections revealed via enticing cards + modals over a light video field (completed 2026-07-24)
 - [ ] **Phase 6: Cross-Concept QA & Review Packaging** - Brand/copy verification across all three concepts and a side-by-side review gallery for Jon
 
 ## Phase Details
@@ -133,5 +133,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 (Phases 2, 3, 4
 | 2. Concept A — Editorial | 3/3 | Complete    | 2026-07-24 |
 | 3. Concept B — Full-Screen Video | 3/3 | Complete    | 2026-07-24 |
 | 4. Concept C — Experimental WebGL/3D | 4/4 | Complete    | 2026-07-24 |
-| 5. Concept D — Home Variant (light video + module cards) | 2/3 | In Progress|  |
+| 5. Concept D — Home Variant (light video + module cards) | 3/3 | Complete   | 2026-07-24 |
 | 6. Cross-Concept QA & Review Packaging | 0/2 | Not started | - |
