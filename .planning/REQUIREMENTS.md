@@ -40,12 +40,22 @@ Requirements for the side-by-side review deliverable. Each maps to roadmap phase
 - [x] **CONC-04**: A semantic DOM mirror is built alongside the 3D layer — keyboard navigable, screen-reader readable, and shown outright when WebGL is unavailable or reduced-motion is set
 - [x] **CONC-05**: Device-tiered rendering (DPR clamp, capability detection, graceful degradation) keeps the scene usable on integrated GPUs and mobile
 
+### Concept D — Home Variant (light video + module cards) — ADDED 2026-07-24 pivot
+
+- [ ] **COND-01**: Sticky nav + logo treatment mirrored from the latest deployed bundle (staging home.html): InterceptOS, Intercept Labs, Work, About, Insights, Contact
+- [ ] **COND-02**: Full-screen light, positive motion-graphics video background (autoplay muted playsinline loop, poster, WebM+MP4, reduced-motion static fallback) with light-mode UI
+- [ ] **COND-03**: Small enticing topic cards (redundant with nav), one per home-page section module, laid over the video
+- [ ] **COND-04**: Clicking a card expands a modal window containing the COMPLETE existing section module — deployed design preserved (markup/styles/behavior ported from the staging bundle)
+- [ ] **COND-05**: Nav routes to standalone pages carrying that content (section pages from the same modules; About/Insights/ChatB2B mirrored from the deployed bundle)
+- [ ] **COND-06**: Module fidelity gate — module copy verbatim vs canonical source (copy-diff substring mode) and modules visually faithful to the deployed sections
+- [ ] **COND-07**: Modals are accessible (focus trap, Esc, focus return), cards are real buttons, keyboard path complete, no scroll-jacking
+
 ### Cross-cutting QA
 
-- [ ] **QA-01**: Fritz brand QA pass on all three concepts before review (Flarepop-only colored text, apex-up triangles, mark never decoration, hard-step gradients, no rule lines, banned tagline absent)
-- [ ] **QA-02**: Copy-diff gate passes on all three concepts (verbatim transcription confirmed)
-- [ ] **QA-03**: All three concepts are responsive (mobile/tablet/desktop) with acceptable LCP; each concept ships at least 2-3 working derived sub-pages proving the click-through model
-- [ ] **QA-04**: Review gallery presents all three concepts side-by-side with captures, ready for Jon
+- [ ] **QA-01**: Fritz brand QA pass on all concepts before review (Flarepop-only colored text, apex-up triangles, mark never decoration, hard-step gradients, no rule lines, banned tagline absent)
+- [ ] **QA-02**: Copy-diff gate passes on all concepts (verbatim transcription confirmed)
+- [ ] **QA-03**: All concepts are responsive (mobile/tablet/desktop) with acceptable LCP; each concept ships at least 2-3 working derived sub-pages proving the click-through model
+- [ ] **QA-04**: Review gallery presents all concepts side-by-side with captures, ready for Jon
 
 ## v2 Requirements
 
@@ -101,14 +111,21 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CONC-03 | Phase 4 | Complete |
 | CONC-04 | Phase 4 | Complete |
 | CONC-05 | Phase 4 | Complete |
-| QA-01 | Phase 5 | Pending |
-| QA-02 | Phase 5 | Pending |
-| QA-03 | Phase 5 | Pending |
-| QA-04 | Phase 5 | Pending |
+| COND-01 | Phase 5 | Pending |
+| COND-02 | Phase 5 | Pending |
+| COND-03 | Phase 5 | Pending |
+| COND-04 | Phase 5 | Pending |
+| COND-05 | Phase 5 | Pending |
+| COND-06 | Phase 5 | Pending |
+| COND-07 | Phase 5 | Pending |
+| QA-01 | Phase 6 | Pending |
+| QA-02 | Phase 6 | Pending |
+| QA-03 | Phase 6 | Pending |
+| QA-04 | Phase 6 | Pending |
 
 **Coverage:**
-- v1 requirements: 25 total
-- Mapped to phases: 25
+- v1 requirements: 32 total
+- Mapped to phases: 32
 - Unmapped: 0 ✓
 
 ---

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Three structurally unrelated homepage concepts (editorial card-grid, full-screen video, experimental WebGL/3D) are built from one frozen, verbatim content source and one shared Fritz brand layer, then reviewed side by side. Phase 1 builds the shared foundation every concept depends on — canonical content, brand tokens, and the copy-diff QA gate — so drift across three parallel builds is prevented mechanically rather than caught late. Phases 2, 3, and 4 build each concept as a fully isolated unit (lowest-risk editorial concept first, video second, experimental WebGL last), all depending only on Phase 1 and therefore buildable in parallel. Phase 5 closes the project with a cross-concept QA pass and the side-by-side review gallery Jon actually looks at.
+Three structurally unrelated homepage concepts (editorial card-grid, full-screen video, experimental WebGL/3D) are built from one frozen, verbatim content source and one shared Fritz brand layer, then reviewed side by side. Phase 1 builds the shared foundation every concept depends on — canonical content, brand tokens, and the copy-diff QA gate — so drift across three parallel builds is prevented mechanically rather than caught late. Phases 2, 3, and 4 build each concept as a fully isolated unit (lowest-risk editorial concept first, video second, experimental WebGL last), all depending only on Phase 1 and therefore buildable in parallel. Phase 5 (added 2026-07-24 pivot) builds Concept D — a speculative variant of the deployed homepage with light-mode full-screen video and expanding module cards. Phase 6 closes the project with a cross-concept QA pass and the side-by-side review gallery Jon actually looks at.
 
 ## Phases
 
@@ -16,7 +16,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 2: Concept A — Editorial ("Accenture, but better")** - Editorial card-grid homepage with single hero + primary CTA and click-through sub-pages (completed 2026-07-24)
 - [x] **Phase 3: Concept B — Full-Screen Video** - Full-bleed ambient video hero with labeled hotspots, progressive reveal, and click-through sub-pages (completed 2026-07-24)
 - [x] **Phase 4: Concept C — Experimental WebGL/3D** - three.js spatial navigation metaphor with an accessible DOM mirror and device-tiered rendering (completed 2026-07-24)
-- [ ] **Phase 5: Cross-Concept QA & Review Packaging** - Brand/copy verification across all three concepts and a side-by-side review gallery for Jon
+- [ ] **Phase 5: Concept D — Home Variant (light video + module cards)** - Deployed sections revealed via enticing cards + modals over a light video field
+- [ ] **Phase 6: Cross-Concept QA & Review Packaging** - Brand/copy verification across all three concepts and a side-by-side review gallery for Jon
 
 ## Phase Details
 
@@ -89,7 +90,19 @@ Plans:
 - [x] 04-02-PLAN.md — Below-fold verbatim sections (problems/labs/convert/footer) + 3 sub-pages (interceptos, consolidated work, new insights) + @view-transition and smooth-scroll routing (completed 2026-07-24)
 - [x] 04-03-PLAN.md — Reduced-motion frozen scene, focus-visible treatment, device-tier degradation + phase-closing QA (copy-diff all, 8-grep suite, link integrity, 18 reviewed captures) (completed 2026-07-24)
 
-### Phase 5: Cross-Concept QA & Review Packaging
+### Phase 5: Concept D — Home Variant (light video + module cards)
+**Goal**: A speculative variant of the deployed homepage: sticky nav + logo kept, light-mode UI over a full-screen light motion-graphics video, small enticing cards that expand into modals carrying the complete existing section modules, nav routing to full pages.
+**Depends on**: Phase 1 (content), staging bundle (deployed section modules)
+**Requirements**: COND-01, COND-02, COND-03, COND-04, COND-05, COND-06, COND-07
+**Success Criteria** (what must be TRUE):
+  1. The homepage shows the staging bundle's sticky nav/logo over a full-screen light positive motion-graphics video (already sourced at concept-d/assets/video/) in light mode.
+  2. Every home-page section module is reachable as a small card that expands into an accessible modal containing the complete module with its deployed design intact.
+  3. Nav items route to standalone pages carrying that content; About/Insights link to mirrored deployed pages.
+  4. Module copy verifies verbatim against the canonical source (substring mode) and the modules read visually faithful to the deployed sections.
+  5. Reduced-motion, no-JS, keyboard, and Esc/focus-return paths all work.
+**Plans**: TBD
+
+### Phase 6: Cross-Concept QA & Review Packaging
 **Goal**: All three concepts are verified together against brand and copy rules, and Jon can review all three side by side in one place.
 **Depends on**: Phase 2, Phase 3, Phase 4
 **Requirements**: QA-01, QA-02, QA-03, QA-04
@@ -98,7 +111,11 @@ Plans:
   2. The copy-diff gate confirms 100% verbatim match between each concept's rendered text and the canonical content source, for all three concepts.
   3. Each concept renders responsively across mobile/tablet/desktop with acceptable LCP, and each concept has at least 2-3 working derived sub-pages reachable by direct load, click-through, and browser back button.
   4. The repo-root gallery index shows all three concepts side by side with representative captures, ready for Jon's review.
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 05-01-PLAN.md — Mechanical cross-concept QA (copy-diff 430/340/282, 8-grep suite ×3, token drift, link integrity gate, camera gate) + final Fritz review gallery with real capture thumbnails
+- [ ] 05-02-PLAN.md — Review packaging: REVIEW.md for Jon + REQUIREMENTS/STATE/ROADMAP closeout (QA-01/QA-04 sign-off stays with the orchestrator after the Fritz agent gate between the two plans)
 
 ## Progress
 
@@ -111,4 +128,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 (Phases 2, 3, 4 depen
 | 2. Concept A — Editorial | 3/3 | Complete    | 2026-07-24 |
 | 3. Concept B — Full-Screen Video | 3/3 | Complete    | 2026-07-24 |
 | 4. Concept C — Experimental WebGL/3D | 4/4 | Complete    | 2026-07-24 |
-| 5. Cross-Concept QA & Review Packaging | 0/TBD | Not started | - |
+| 5. Cross-Concept QA & Review Packaging | 0/2 | Not started | - |

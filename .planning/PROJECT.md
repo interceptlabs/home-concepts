@@ -19,6 +19,9 @@ Full-bleed video homepage with a clever progressive-reveal mechanism for content
 ### Concept C — Experimental WebGL/3D
 The most experimental of the three — WebGL / three.js or similar 3D-space mechanism as the navigation/reveal metaphor — while still adhering to UI conventions and best practices (clear affordances, accessible fallbacks, no mystery-meat navigation). Same progressive-disclosure principle: minimal copy up front, content revealed as needed, click-through to derived pages.
 
+### Concept D — Home Variant (2026-07-24 pivot, Jon's direction)
+A speculative variant of the deployed homepage, for Jon + Claude to iterate on: keep the sticky nav and logo treatment; light mode; full-screen light/positive "emergent motion graphics" video background; the existing home sections (fine functionally and visually) are NOT redesigned — they are revealed independently via small enticing cards that expand into modal windows carrying the complete section modules; nav clicks go to full pages. Content mirrors the latest deployed bundle (the one with about.html, insights hub, chatb2b.html).
+
 ## Requirements
 
 ### Validated
@@ -73,6 +76,7 @@ Existing state:
 | Content derived from live Variant A homepage | Copy is immutable; concepts restructure, not rewrite | — Pending |
 | Fritz agent QA gate on every concept | Jon: "use /fritz too" — brand integrity owned by Fritz | — Pending |
 | Auto-advance GSD chain | Jon: "go /gsd with auto advance" | — Pending |
+| 07-24 pivot: Concept D home variant | Jon: sections are fine as designed — reveal them independently (cards→modals) over a light positive video; mirror deployed bundle | — Pending |
 
 ---
 *Last updated: 2026-07-23 after initialization*
