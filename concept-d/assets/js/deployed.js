@@ -339,6 +339,7 @@ function openAgent(k){
   _openModal(agentDetailOverlay);
 }
 function closeAgentDetail(){
+  if(!agentDetailOverlay) return;
   const was = agentDetailOverlay.classList.contains('is-open');
   agentsStage.classList.remove('is-detail');
   agentDetailOverlay.classList.remove('is-open');
