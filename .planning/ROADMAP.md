@@ -119,7 +119,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 06-01-PLAN.md — Mechanical cross-concept QA (copy-diff A/B/C 430/340/282 + D substring 71 + script-diff 13, four brand grep suites, token drift, link integrity, camera gate, video budgets) + final four-card Fritz review gallery with real capture thumbnails
+- [x] 06-01-PLAN.md — Mechanical cross-concept QA (copy-diff A/B/C 430/340/282 + D substring 71 + script-diff 13, four brand grep suites, token drift, link integrity, camera gate, video budgets) + final four-card Fritz review gallery with real capture thumbnails
 - [ ] 06-02-PLAN.md — Review packaging: REVIEW.md for Jon + REQUIREMENTS closeout (QA-01 marked only on the orchestrator-run Fritz agent gate 06-FRITZ-QA.md committed between the two waves)
 
 ## Progress
@@ -134,4 +134,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 (Phases 2, 3, 4
 | 3. Concept B — Full-Screen Video | 3/3 | Complete    | 2026-07-24 |
 | 4. Concept C — Experimental WebGL/3D | 4/4 | Complete    | 2026-07-24 |
 | 5. Concept D — Home Variant (light video + module cards) | 3/3 | Complete    | 2026-07-24 |
-| 6. Cross-Concept QA & Review Packaging | 0/2 | Not started | - |
+| 6. Cross-Concept QA & Review Packaging | 1/2 | In Progress|  |

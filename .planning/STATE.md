@@ -2,17 +2,17 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 3
-status: completed
-stopped_at: Completed 05-03-PLAN.md
-last_updated: "2026-07-24T21:44:24.924Z"
+current_plan: 1
+status: in_progress
+stopped_at: Completed 06-01-PLAN.md
+last_updated: "2026-07-24T22:11:06.591Z"
 last_activity: 2026-07-24
 progress:
   total_phases: 6
   completed_phases: 5
   total_plans: 19
-  completed_plans: 17
-  percent: 89
+  completed_plans: 18
+  percent: 95
 ---
 
 # Project State
@@ -22,30 +22,31 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-23)
 
 **Core value:** A visitor never faces a wall of text — content is revealed as needed, and clicking an area of interest takes them to a focused page built from that content.
-**Current focus:** Phase 5 (Concept D — Home Variant) COMPLETE — all 3 plans done, COND-01 through COND-07 all satisfied. Next: Phase 6 (cross-concept QA + gallery packaging).
+**Current focus:** Phase 6 (Cross-Concept QA & Review Packaging) IN PROGRESS — 06-01 complete (full mechanical QA suite green across all 4 concepts + root gallery rebuilt as the final 4-card Fritz review surface). Next: the Fritz brand agent gate (`06-FRITZ-QA.md`, orchestrator-run) must clear before 06-02.
 
 ## Current Position
 
-Phase: 5 of 6 (Concept D — Home Variant) — COMPLETE
-Plan: 3 of 3 complete in current phase (05-01, 05-02, 05-03 all done)
-Current Plan: 3
-Total Plans in Phase: 3
-Status: Phase 5 complete — ready for `/gsd:plan-phase 6`
+Phase: 6 of 6 (Cross-Concept QA & Review Packaging) — IN PROGRESS
+Plan: 1 of 2 complete in current phase (06-01 done, 06-02 remaining)
+Current Plan: 1
+Total Plans in Phase: 2
+Status: 06-01 complete — awaiting Fritz brand agent gate (orchestrator-run, between waves) before 06-02
 Last activity: 2026-07-24
 
-Progress: [█████████░] 89% (17 of 19 known plans across all phases)
+Progress: [██████████] 95% (18 of 19 known plans across all phases)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 17
-- Average duration: 27 min
-- Total execution time: 7.43 hours
+- Total plans completed: 18
+- Average duration: 26 min
+- Total execution time: 7.83 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
+| Phase 06 P01 | 24min | 2 tasks | 7 files |
 | Phase 05 P03 | 30min | 3 tasks | 17 files |
 | Phase 05 P02 | 23min | 3 tasks | 4 files |
 | Phase 05 P01 | 28min | 3 tasks | 11 files |
@@ -65,8 +66,8 @@ Progress: [█████████░] 89% (17 of 19 known plans across all 
 | Phase 01 P01 | 20min | 3 tasks | 3 files |
 
 **Recent Trend:**
-- Last 5 plans: 05-03 (30min), 05-02 (23min), 05-01 (28min), 04-04 (26min), 04-03 (24min)
-- Trend: 05-03 built the 4 standalone section pages (os/labs/work/contact.html) from the same ported modules, then closed Phase 5 with a full mechanical + honest-visual QA sweep (link-integrity checker, 34-assertion nav suite, brand greps, both copy gates, 10 reviewed captures). Found and fixed 4 real bugs: deployed.js's shared init crashing on any page missing a module (a deployment shape the single-page deployed site never needed), a dead in-page FAQ anchor, a 768px card-grid overflow silently clipped by deployed.css's own overflow-x:clip, and a no-JS/dark-theme-fallback contrast failure on the hero-sub and all 8 fallback cards — all four scoped to new chrome or defensive script guards, zero ported-module changes.
+- Last 5 plans: 06-01 (24min), 05-03 (30min), 05-02 (23min), 05-01 (28min), 04-04 (26min)
+- Trend: 06-01 ran the full mechanical QA suite across all four concepts in one consolidated pass (copy-diff ×4, script-diff, camera-framing, 4 brand-grep chains, token-drift, both video-budget checks, and a new stdlib cross-concept link-integrity checker covering 23 files/557+ links) — everything green with zero drift since phase close — then rebuilt root `index.html` as the final 4-card Fritz review gallery with an inlined lockup (fixing the same currentColor-via-img-src bug 03-03 found) and pre-cropped real thumbnails. Zero rule-1-4 auto-fixes needed; one checker false-positive (a JS-hash-route link) resolved by extending the documented allowlist, not by touching concept-d.
 
 *Updated after each plan completion*
 
@@ -119,6 +120,7 @@ Recent decisions affecting current work:
 - [Phase 05-02]: [05-02]: Single-instance drawer-scaffold reparenting (dialog.appendChild on open, document.body.appendChild on close) per the plan's locked interfaces, with an ownership guard in the close listener (only reparent home if the scaffold is still parented in the closing dialog) — fixes a real race where a dialog's queued 'close' event could yank the scaffold out from under a different, newly-active dialog during the InterceptOS->Agents bridge
 - [Phase 05-03]: Concept D uses substring-mode copy-diff + concept-d-script-diff.py instead of shared/README's annotated data-copy convention (locked, documented exception for this phase since Concept D ports the deployed page's own JS-templated data objects verbatim)
 - [Phase 05-03]: deployed.js needed 6 minimal null-guards (buildSolve/renderFlow/renderAgents/closeAgentDetail/agentDetailClose+Backdrop) to survive standalone pages that carry only a subset of the 8 modules -- a deployment shape the single continuously-scrolling deployed site never needed
+- [Phase 06]: [06-01]: Gallery thumbnails pre-cropped server-side (PIL, top 900px) to exact 16:10 rather than shipping full fullPage captures + relying solely on CSS crop; new cross-concept link-integrity checker (stdlib Python) covers root + all 22 concept HTML files with a documented allowlist (added 1 new entry: concept-d/index.html's #episodes link is a verified JS-hash-route in mirrored insights-hub.html, not a dead link)
 
 ### Pending Todos
 
@@ -129,10 +131,11 @@ None yet.
 - Phase 4 (Concept C) is now FULLY COMPLETE INCLUDING GAP CLOSURE — all 5 requirements (CONC-01 through CONC-05) implemented and verified across 04-01/04-02/04-03, and the single gap 04-VERIFICATION.md found (camera-framing desync, CONC-01/CONC-03) is closed by 04-04 with a permanent headless regression gate (`qa/camera-framing-check.mjs`). No open items remain for this phase.
 - Phase 3 (Concept B) is fully complete — CONB-01 through CONB-05 all done and verified in 03-03. No open items remain for this phase.
 - Phase 5 (Concept D) is now FULLY COMPLETE — all 3 plans (05-01, 05-02, 05-03) done; COND-01 through COND-07 all satisfied, including COND-06's standalone-page half (substring copy-diff + script-diff gates green on all 4 new pages) and the phase-closing link-integrity/nav/capture QA sweep. No open items remain for this phase. One pre-existing, out-of-scope bug logged (not fixed): `concept-d/about.html`'s skip-link targets a `<main>` with no `id="main"` — verified identical in the staging source itself, see `.planning/phases/05-concept-d-home-variant/deferred-items.md`.
-- Tooling: `gsd-tools state advance-plan`/`update-progress`/`record-metric`/`add-decision`/`record-session` continue to need hand-correction after each run. On this run: `advance-plan` and `update-progress` both correctly recognized Phase 5 as complete (`completed_phases:5`, 89%/17-of-19) — no phase-transition bug this time. `record-metric` again appended its new table row below the `*Updated after each plan completion*` footer instead of inside the table — moved by hand, along with the stale "Current Position"/"Current focus" prose (these are never auto-updated by any gsd-tools command and were still describing 05-02 as the latest state).
+- Tooling: `gsd-tools state advance-plan`/`update-progress`/`record-metric`/`add-decision`/`record-session` continue to need hand-correction after each run. On this run: `advance-plan` was a no-op (`advanced:false`, still reported the stale `current_plan:3`/`total_plans:3` from Phase 5's own count, since the tool has no explicit "current phase" field to detect Phase 6 started) — hand-set `current_plan:1`/`status:in_progress` to reflect 06-01 done, 06-02 remaining. `update-progress` computed the correct `completed:18/total:19` (95%) but the frontmatter it wrote showed `percent:89` (stale/wrong) — hand-corrected to 95 to match the tool's own reported math. `record-metric` again appended its new table row below the `*Updated after each plan completion*` footer instead of inside the table — moved by hand. The "Current Position"/"Current focus" prose (never auto-updated by any gsd-tools command) was also hand-updated to describe Phase 6/06-01 instead of the stale Phase 5 description.
+- Phase 6 (Cross-Concept QA & Review Packaging): 06-01 complete — full mechanical QA suite green across all four concepts (copy-diff, script-diff, camera-framing, brand greps ×4, token-drift, video budgets, new cross-concept link-integrity checker) + root gallery rebuilt with real thumbnails and an inlined lockup, both captures honestly reviewed with zero issues found. Per 06-CONTEXT.md, the Fritz brand agent gate (`06-FRITZ-QA.md`) is an ORCHESTRATOR-run step (not a gsd-executor task) that must happen between 06-01 and 06-02 — any violations become fix tasks before 06-02 runs.
 
 ## Session Continuity
 
-Last session: 2026-07-24T21:32:02.466Z
-Stopped at: Completed 05-03-PLAN.md
+Last session: 2026-07-24T22:11:06.588Z
+Stopped at: Completed 06-01-PLAN.md
 Resume file: None

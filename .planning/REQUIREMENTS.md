@@ -53,9 +53,9 @@ Requirements for the side-by-side review deliverable. Each maps to roadmap phase
 ### Cross-cutting QA
 
 - [ ] **QA-01**: Fritz brand QA pass on all concepts before review (Flarepop-only colored text, apex-up triangles, mark never decoration, hard-step gradients, no rule lines, banned tagline absent)
-- [ ] **QA-02**: Copy-diff gate passes on all concepts (verbatim transcription confirmed)
-- [ ] **QA-03**: All concepts are responsive (mobile/tablet/desktop) with acceptable LCP; each concept ships at least 2-3 working derived sub-pages proving the click-through model
-- [ ] **QA-04**: Review gallery presents all concepts side-by-side with captures, ready for Jon
+- [x] **QA-02**: Copy-diff gate passes on all concepts (verbatim transcription confirmed)
+- [x] **QA-03**: All concepts are responsive (mobile/tablet/desktop) with acceptable LCP; each concept ships at least 2-3 working derived sub-pages proving the click-through model
+- [x] **QA-04**: Review gallery presents all concepts side-by-side with captures, ready for Jon
 
 ## v2 Requirements
 
@@ -119,9 +119,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | COND-06 | Phase 5 | Complete |
 | COND-07 | Phase 5 | Complete |
 | QA-01 | Phase 6 | Pending |
-| QA-02 | Phase 6 | Pending |
-| QA-03 | Phase 6 | Pending |
-| QA-04 | Phase 6 | Pending |
+| QA-02 | Phase 6 | Complete |
+| QA-03 | Phase 6 | Complete |
+| QA-04 | Phase 6 | Complete |
 
 **Coverage:**
 - v1 requirements: 32 total
