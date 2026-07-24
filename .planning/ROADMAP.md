@@ -65,7 +65,12 @@ Plans:
   3. Clicking a hotspot first reveals an inline chapter preview panel, then navigates to the full derived sub-page for that content area.
   4. With `prefers-reduced-motion` set, the homepage renders a static poster frame with standard visible navigation instead of video, and no sound ever autoplays.
   5. The video hero stays within a sane byte budget with poster-frame LCP protection and produces no layout shift when the video loads.
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — Video hero homepage shell: full-bleed loop (existing encoded assets), minimal top bar, verbatim hero, 6 labeled hotspots, pause/play control, has-js bootstrap
+- [ ] 03-02-PLAN.md — Six statically-authored chapter-panel dialogs + panels.js (open/close/swap/focus-return) + 3 full sub-pages + @view-transition wiring
+- [ ] 03-03-PLAN.md — Motion polish (@starting-style panels, hero entrance, reduced-motion/visibility/rejection guards) + mechanical QA (copy-diff, brand greps, budget, captures)
 
 ### Phase 4: Concept C — Experimental WebGL/3D
 **Goal**: A visitor navigates a 3D-space homepage that uses WebGL as the reveal/navigation metaphor while remaining fully usable through standard web conventions, with or without WebGL.
@@ -99,6 +104,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 (Phases 2, 3, 4 depen
 |-------|----------------|--------|-----------|
 | 1. Content Foundation & Shared Brand Layer | 4/4 | Complete    | 2026-07-23 |
 | 2. Concept A — Editorial | 3/3 | Complete    | 2026-07-24 |
-| 3. Concept B — Full-Screen Video | 0/TBD | Not started | - |
+| 3. Concept B — Full-Screen Video | 0/3 | Not started | - |
 | 4. Concept C — Experimental WebGL/3D | 0/TBD | Not started | - |
 | 5. Cross-Concept QA & Review Packaging | 0/TBD | Not started | - |
