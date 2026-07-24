@@ -84,7 +84,19 @@
         // Close any drawer left open inside this dialog (deployed.js
         // global) before moving the scaffold back out.
         if (typeof window.closeAll === "function") window.closeAll();
-        reparentInto(document.body);
+        // Guard against the InterceptOS->Agents bridge race: a dialog's
+        // native 'close' event fires via a QUEUED task, not synchronously
+        // with .close() — so by the time this listener runs, the bridge
+        // below may have already reparented the scaffold into a DIFFERENT
+        // dialog that opened in the meantime (dlg-os closes, dlg-agents
+        // opens, both synchronously; dlg-os's belated close event must not
+        // then yank the scaffold back out of the now-active dlg-agents).
+        // Only move the scaffold home if it's still parented inside THIS
+        // dialog — otherwise leave it with its new, current owner.
+        var stillOwnsScaffold = scaffoldNodes.some(function (node) {
+          return node.parentElement === dialog;
+        });
+        if (stillOwnsScaffold) reparentInto(document.body);
         if (lastInvoker) lastInvoker.focus();
       });
     })(dialogs[d]);

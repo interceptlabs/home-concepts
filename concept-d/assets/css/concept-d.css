@@ -63,8 +63,15 @@
 /* Additive neutralization of the ported .hero rule's hairline divider
    (deployed.css) for this new floating-over-video context — deployed.css
    itself is never edited. Typography (.kick/.hero-h1/.hero-sub/
-   .hero-ctas) still comes from the ported .hero/.hero-a ancestor classes
-   kept on this same element. */
+   .hero-ctas) still comes from the ported .hero ancestor class kept on
+   this same element.
+
+   Deliberately NOT using .hero-a here (unlike the deployed markup): that
+   class carries deployed.css's ":root[data-theme='light'] .hero-a" rule,
+   which forces the hero into a dark-island color set (--fg:#fff etc.) —
+   correct for the ORIGINAL deployed hero (a dark video + dark scrim, even
+   in light mode), but wrong for concept-d's new light video, which needs
+   the normal light-theme --fg (dark ink) to stay legible. */
 .hero-d {
   border-bottom:0;
 }
@@ -172,10 +179,18 @@ dialog.module-modal section {
   border-bottom:0;
 }
 .modal-close {
+  /* position:sticky (not float+sticky — floats can quietly demote a
+     sticky element out of the "positioned" paint layer, which is what
+     caused the close button to render UNDER the ported module section in
+     testing) always establishes its own stacking context, and the
+     explicit z-index makes the paint order unambiguous regardless. */
   position: sticky;
   top: 12px;
-  float: right;
-  margin-left: 12px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
   width: 36px;
   height: 36px;
   border: 1px solid var(--line);
