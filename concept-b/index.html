@@ -3,48 +3,78 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Concept B — Full-Screen Video</title>
+<script>document.documentElement.classList.add('has-js')</script>
+<title>Concept B — Full-Screen Video · Intercept</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="/concept-b/assets/video/hero-poster.jpg" fetchpriority="high">
 <link rel="stylesheet" href="/shared/tokens.css">
 <link rel="stylesheet" href="/shared/fonts.css">
 <link rel="stylesheet" href="/shared/motion.css">
-<style>
-  body {
-    background: var(--page);
-    color: var(--fg);
-    font-family: var(--font-display);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: var(--sp-32);
-  }
-  .placeholder { max-width: 40rem; }
-  .placeholder p {
-    font-family: var(--font-body);
-    color: var(--fg-2);
-    margin: var(--sp-16) 0 var(--sp-40);
-  }
-  .placeholder a {
-    font-family: var(--font-mono);
-    font-size: var(--fs-label-l1);
-    color: var(--fg);
-    text-decoration: none;
-    padding: var(--sp-8) var(--sp-16);
-    background: var(--surface);
-    border-radius: var(--r-s);
-    transition: opacity var(--dur-med) var(--ease-inout-sine);
-  }
-  .placeholder a:hover { opacity: var(--op-80); }
-</style>
+<link rel="stylesheet" href="/concept-b/assets/css/concept-b.css">
 </head>
-<body>
-  <div class="placeholder">
-    <h1>Concept B — Full-Screen Video</h1>
-    <p>Landing in Phase 3</p>
-    <a href="/">← Back to gallery</a>
+<body class="concept-b">
+  <div class="hero-stage">
+    <video class="hero-stage__video"
+      autoplay muted playsinline loop preload="metadata"
+      poster="/concept-b/assets/video/hero-poster.jpg"
+      aria-hidden="true" tabindex="-1" disablepictureinpicture>
+      <source src="/concept-b/assets/video/hero-loop-1080.webm" type="video/webm">
+      <source src="/concept-b/assets/video/hero-loop-1080.mp4" type="video/mp4">
+    </video>
+
+    <header class="topbar">
+      <div class="topbar__brand">
+        <img src="/shared/logo/lockup.svg" alt="Intercept">
+      </div>
+      <button class="btn-cta"
+        data-panel="contact"
+        data-copy="convert.eyebrow">start the conversation</button>
+    </header>
+
+    <div class="hero-copy-wrap">
+      <div class="hero-copy">
+        <p class="kicker mono hero__kicker" data-copy="hero.kicker">Award-winning B2B marketing for global tech</p>
+        <h1 class="hero__h1" data-copy="hero.h1_html"><span class="line">We turn your most <em>ambitious</em></span> <span class="line">briefs into <em>proven</em> outcomes<span class="dot">.</span></span></h1>
+      </div>
+      <nav class="nojs-nav" aria-label="Continue without JavaScript">
+        <a href="/concept-b/pages/problems.html">Problems</a>
+        <a href="/concept-b/pages/interceptos.html">InterceptOS</a>
+        <a href="/concept-b/pages/work.html">Work</a>
+      </nav>
+    </div>
+
+    <!-- Hotspot labels are content-model navigation labels sourced from content/subpages.json's topic list (Problems / InterceptOS / Work / Labs / Insights / Contact) — structural navigation, not brand copy. -->
+    <nav class="hotspot-nav" aria-label="Explore">
+      <button class="hotspot" data-panel="problems" style="--x:10%;--y:14%">
+        <span class="hotspot__marker" aria-hidden="true"></span>
+        <span class="hotspot__label">Problems</span>
+      </button>
+      <button class="hotspot" data-panel="interceptos" style="--x:34%;--y:10%">
+        <span class="hotspot__marker" aria-hidden="true"></span>
+        <span class="hotspot__label">InterceptOS</span>
+      </button>
+      <button class="hotspot" data-panel="work" style="--x:66%;--y:16%">
+        <span class="hotspot__marker" aria-hidden="true"></span>
+        <span class="hotspot__label">Work</span>
+      </button>
+      <button class="hotspot" data-panel="labs" style="--x:90%;--y:42%">
+        <span class="hotspot__marker" aria-hidden="true"></span>
+        <span class="hotspot__label">Labs</span>
+      </button>
+      <button class="hotspot" data-panel="insights" style="--x:88%;--y:68%">
+        <span class="hotspot__marker" aria-hidden="true"></span>
+        <span class="hotspot__label">Insights</span>
+      </button>
+      <button class="hotspot" data-panel="contact" style="--x:64%;--y:88%">
+        <span class="hotspot__marker" aria-hidden="true"></span>
+        <span class="hotspot__label">Contact</span>
+      </button>
+    </nav>
+
+    <button class="video-toggle" aria-pressed="true">Pause</button>
   </div>
+
+  <script src="/concept-b/assets/js/video.js" defer></script>
 </body>
 </html>

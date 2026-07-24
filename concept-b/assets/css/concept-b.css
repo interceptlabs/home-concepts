@@ -1,0 +1,215 @@
+/* Concept B — full-screen video hero shell (CONB-01, CONB-02, CONB-05)
+   Structural contract established here — 03-02 (chapter panels) and
+   03-03 (motion polish) build against these exact class names. Tokens
+   only; never a raw brand hex; no gradients of any kind (the video is
+   the visual field); no rule-line dividers (no border-top/bottom, no
+   horizontal-rule elements) — space/weight/alignment only. */
+
+.hero-stage {
+  position: relative;
+  height: 100vh;
+  height: 100svh; /* svh (not dvh) — stays stable while mobile toolbars animate; dvh would visibly resize the video */
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--page);
+}
+
+.hero-stage__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* ── Top bar — lockup left, convert CTA right, layered above the video ── */
+.topbar {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-24);
+  padding: var(--sp-16) clamp(1.25rem, 4vw, 3rem);
+}
+.topbar__brand img {
+  height: 1.75rem;
+  width: auto;
+  display: block;
+}
+
+.btn-cta {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-l1);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--flarepop);
+  color: var(--page);
+  border: none;
+  padding: var(--sp-16) var(--sp-24);
+  border-radius: var(--r-s);
+  cursor: pointer;
+  transition: opacity var(--dur-short) var(--ease-inout-sine);
+}
+.btn-cta:hover { opacity: var(--op-80); }
+.btn-cta:focus-visible {
+  outline: var(--bw-l) solid var(--flarepop);
+  outline-offset: 4px;
+}
+
+/* ── Hero copy — verbatim kicker + h1, flat legibility layer behind it ── */
+.hero-copy-wrap {
+  position: absolute;
+  z-index: 2;
+  left: clamp(1.25rem, 5vw, 4rem);
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: min(46%, 640px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-24);
+  padding: var(--sp-24);
+  border-radius: var(--r-m);
+  /* Flat single-alpha overlay — never a gradient/vignette (no-scrims rule) */
+  background-color: rgb(10 10 15 / 40%);
+}
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-16);
+}
+.hero__kicker {
+  font-size: var(--fs-label-l1);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+.hero__h1 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-heading);
+  font-size: clamp(2rem, 1rem + 4vw, 4.5rem);
+  line-height: 1.05;
+  text-wrap: balance;
+  margin: 0;
+}
+.hero__h1 em {
+  font-style: normal;
+  color: var(--flarepop);
+}
+.hero__h1 .dot { color: var(--flarepop); }
+
+/* ── No-JS fallback — visible by default, hidden once .has-js lands ──── */
+.nojs-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-16);
+}
+.nojs-nav a {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-l1);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.has-js .nojs-nav { display: none; }
+
+/* ── Hotspot constellation — always-visible labels, ≥44px hit areas ──── */
+.hotspot-nav {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none; /* clicks pass through empty field to the video; buttons re-enable below */
+}
+.hotspot {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-8);
+  min-width: 44px;
+  min-height: 44px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-l1);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--fg);
+  background-color: rgb(10 10 15 / 35%);
+  border: none;
+  border-radius: var(--r-round);
+  padding: var(--sp-12) var(--sp-16);
+  cursor: pointer;
+  transition: background-color var(--dur-short) var(--ease-inout-sine),
+              opacity var(--dur-short) var(--ease-inout-sine);
+}
+.hotspot:hover { background-color: rgb(10 10 15 / 55%); }
+.hotspot:focus-visible {
+  outline: var(--bw-l) solid var(--flarepop);
+  outline-offset: 4px;
+}
+.hotspot__marker {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--r-round);
+  background: var(--flarepop); /* marker is a background fill, not colored text */
+  flex-shrink: 0;
+}
+.hotspot__label { line-height: 1; }
+
+/* ── Pause/play control — visible chrome, WCAG 2.2.2 ─────────────────── */
+.video-toggle {
+  position: absolute;
+  z-index: 2;
+  left: var(--sp-24);
+  bottom: var(--sp-24);
+  min-width: 44px;
+  min-height: 44px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-l1);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--fg);
+  background-color: rgb(10 10 15 / 45%);
+  border: none;
+  border-radius: var(--r-round);
+  padding: var(--sp-12) var(--sp-24);
+  cursor: pointer;
+  transition: opacity var(--dur-short) var(--ease-inout-sine);
+}
+.video-toggle:hover { opacity: var(--op-80); }
+.video-toggle:focus-visible {
+  outline: var(--bw-l) solid var(--flarepop);
+  outline-offset: 4px;
+}
+
+/* ── Small screens — edge-anchored hotspot row, no percentage collisions ─
+   Below 768px the constellation's --x/--y coordinates are dropped in
+   favor of a wrapped flex row pinned above the bottom edge, so labels
+   never overlap the hero copy or each other on narrow viewports. */
+@media (max-width: 767px) {
+  .hero-copy-wrap {
+    left: var(--sp-16);
+    right: var(--sp-16);
+    max-width: none;
+    top: 34%;
+  }
+  .hotspot-nav {
+    inset: auto var(--sp-16) 5.5rem var(--sp-16);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--sp-8);
+    pointer-events: auto;
+  }
+  .hotspot {
+    position: static;
+    transform: none;
+  }
+}
