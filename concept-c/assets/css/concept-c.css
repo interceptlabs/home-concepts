@@ -80,6 +80,7 @@ html.no-webgl .field-backdrop {
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 4;
+  background: var(--page);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -125,7 +126,8 @@ html.webgl:not(.static-scene) .scroll-runway {
 
 .hero-copy {
   position: relative;
-  z-index: 1;
+  z-index: 3;
+  pointer-events: none;
   min-height: 100svh;
   max-width: min(640px, 90%);
   display: flex;
@@ -249,10 +251,22 @@ html:not(.has-js) .topic-label {
 html.webgl:not(.static-scene) .topic-index {
   display: flex;
 }
+@media (max-width: 699px) {
+  .topic-index {
+    top: auto;
+    bottom: max(1rem, env(safe-area-inset-bottom));
+    transform: none;
+    right: 1rem;
+    gap: var(--sp-8);
+  }
+}
 .topic-index a {
   display: flex;
   align-items: center;
   gap: var(--sp-8);
+  background: var(--surface);
+  padding: 4px 8px;
+  border-radius: var(--r-s);
   font-family: var(--font-mono);
   font-size: var(--fs-label-l2);
   letter-spacing: 0.04em;

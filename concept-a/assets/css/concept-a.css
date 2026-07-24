@@ -85,7 +85,7 @@
   padding: var(--sp-16) clamp(1.25rem, 4vw, 4rem);
   background: var(--surface);
 }
-.site-header .lockup img { height: 1.75rem; width: auto; }
+.site-header .lockup img, .site-header .lockup svg { height: 1.75rem; width: auto; }
 .site-header nav {
   display: none;
   gap: var(--sp-24);
@@ -551,7 +551,8 @@
 @media (min-width: 900px) {
   .footer__grid { grid-template-columns: 1.5fr 1fr 1fr 1fr; }
 }
-.footer__lockup { height: 1.5rem; width: auto; margin-bottom: var(--sp-16); }
+.footer__lockup { display: inline-block; margin-bottom: var(--sp-16); }
+.footer__lockup svg { height: 1.5rem; width: auto; display: block; }
 .footer__tagline { color: var(--fg-3); font-size: var(--fs-p5); }
 .footer__links {
   display: flex;
