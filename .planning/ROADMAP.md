@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Content Foundation & Shared Brand Layer** - Canonical verbatim content, shared Fritz brand assets, copy-diff gate, and repo/server skeleton exist before any concept work starts (completed 2026-07-23)
 - [x] **Phase 2: Concept A — Editorial ("Accenture, but better")** - Editorial card-grid homepage with single hero + primary CTA and click-through sub-pages (completed 2026-07-24)
-- [ ] **Phase 3: Concept B — Full-Screen Video** - Full-bleed ambient video hero with labeled hotspots, progressive reveal, and click-through sub-pages
+- [x] **Phase 3: Concept B — Full-Screen Video** - Full-bleed ambient video hero with labeled hotspots, progressive reveal, and click-through sub-pages (completed 2026-07-24)
 - [ ] **Phase 4: Concept C — Experimental WebGL/3D** - three.js spatial navigation metaphor with an accessible DOM mirror and device-tiered rendering
 - [ ] **Phase 5: Cross-Concept QA & Review Packaging** - Brand/copy verification across all three concepts and a side-by-side review gallery for Jon
 
@@ -104,6 +104,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 (Phases 2, 3, 4 depen
 |-------|----------------|--------|-----------|
 | 1. Content Foundation & Shared Brand Layer | 4/4 | Complete    | 2026-07-23 |
 | 2. Concept A — Editorial | 3/3 | Complete    | 2026-07-24 |
-| 3. Concept B — Full-Screen Video | 2/3 | In Progress|  |
+| 3. Concept B — Full-Screen Video | 3/3 | Complete   | 2026-07-24 |
 | 4. Concept C — Experimental WebGL/3D | 0/TBD | Not started | - |
 | 5. Cross-Concept QA & Review Packaging | 0/TBD | Not started | - |
