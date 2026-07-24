@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 3
+current_plan: 4
 status: in_progress
-stopped_at: Completed 04-03-PLAN.md
-last_updated: "2026-07-24T18:12:27.233Z"
+stopped_at: Completed 04-04-PLAN.md
+last_updated: "2026-07-24T18:48:19.417Z"
 last_activity: 2026-07-24
 progress:
   total_phases: 5
   completed_phases: 4
-  total_plans: 13
-  completed_plans: 13
+  total_plans: 14
+  completed_plans: 14
   percent: 100
 ---
 
@@ -22,30 +22,31 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-23)
 
 **Core value:** A visitor never faces a wall of text — content is revealed as needed, and clicking an area of interest takes them to a focused page built from that content.
-**Current focus:** Phase 4 (Concept C — Experimental WebGL/3D) COMPLETE — all 3 plans done (04-01 topic field/dolly/labels/fallback, 04-02 below-fold sections + 3 sub-pages, 04-03 device tiering + reduced-motion polish + phase-closing QA sweep). Next: plan Phase 5 (cross-concept QA + gallery packaging).
+**Current focus:** Phase 4 (Concept C — Experimental WebGL/3D) FULLY COMPLETE — 3 build plans (04-01 topic field/dolly/labels/fallback, 04-02 below-fold sections + 3 sub-pages, 04-03 device tiering + reduced-motion polish + phase-closing QA sweep) plus one gap-closure plan (04-04, closing the camera-framing gap 04-VERIFICATION.md found). Next: plan Phase 5 (cross-concept QA + gallery packaging).
 
 ## Current Position
 
-Phase: 4 of 5 (Concept C — Experimental WebGL/3D) — COMPLETE
-Plan: 3 of 3 complete in current phase (04-01, 04-02, 04-03 all done)
-Current Plan: 3
-Total Plans in Phase: 3
-Status: Phase 4 complete — ready for Phase 5 planning
+Phase: 4 of 5 (Concept C — Experimental WebGL/3D) — COMPLETE (incl. gap closure)
+Plan: 4 of 4 complete in current phase (04-01, 04-02, 04-03, 04-04 all done — 04-04 was a gap-closure plan added after verification, not part of the original phase count)
+Current Plan: 4
+Total Plans in Phase: 4
+Status: Phase 4 complete (including gap closure) — ready for Phase 5 planning
 Last activity: 2026-07-24
 
-Progress: [██████████] 100% (13 of 13 known plans across all phases — will re-baseline once Phase 5 is planned)
+Progress: [██████████] 100% (14 of 14 known plans across all phases — will re-baseline once Phase 5 is planned)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 13
+- Total plans completed: 14
 - Average duration: 26 min
-- Total execution time: 5.53 hours
+- Total execution time: 5.96 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
+| Phase 04 P04 (gap closure) | 26min | 3 tasks | 13 files |
 | Phase 04 P03 | 24min | 2 tasks | 2 files |
 | Phase 04 P02 | 20min | 2 tasks | 5 files |
 | Phase 04 P01 | 44min | 3 tasks | 3 files |
@@ -61,8 +62,8 @@ Progress: [██████████] 100% (13 of 13 known plans across all
 | Phase 01 P01 | 20min | 3 tasks | 3 files |
 
 **Recent Trend:**
-- Last 5 plans: 04-03 (24min), 04-02 (20min), 04-01 (44min), 03-03 (22min), 03-02 (40min)
-- Trend: 04-03 closed out Phase 4 in-line with the recent baseline — Task 1 (device tiering/focus-visible/reduced-motion) landed clean on the first pass since most of the locked static-scene spec was already correct from 04-01; Task 2's mandated capture review caught one genuine narrow-viewport bug (label/hero-copy collision) that greps/copy-diff cannot catch, fixed with a single low-risk CSS addition and re-verified within the same plan
+- Last 5 plans: 04-04 (26min), 04-03 (24min), 04-02 (20min), 04-01 (44min), 03-03 (22min)
+- Trend: 04-04 was a gap-closure plan (not part of the original phase scope) fixing the camera-framing desync 04-VERIFICATION.md found. Task 1's derivation landed clean on the first pass (`buildDollyRig()` reproduced the verifier's ground-truth bounding-sphere radii to 3 decimal places); Task 2's new permanent headless gate immediately caught two real invariant failures in the plan's own suggested starting recipe (mid-transit bounding-sphere intrusion + a missed look-angle floor), both resolved by retuning within the plan's explicit discretion bounds — the mandated capture review then confirmed the fix visually at all 6 waypoints plus 3 transit zones.
 
 *Updated after each plan completion*
 
@@ -107,6 +108,7 @@ Recent decisions affecting current work:
 - [04-03]: Standardized every :focus-visible outline in concept-c to 2px solid var(--fg) (was var(--flarepop) on the two CTA buttons) with a 2-3px offset — one consistent focus language across labels, topic index, buttons, and every sub-page/footer link
 - [04-03]: Fixed a real narrow-viewport bug found via mandated capture review — the top-of-page camera framing projects the Problems label directly over the hero headline at widths <= ~390px, both white-on-white and mutually illegible (reproduced at a realistic 390x844 viewport, not a capture-rig artifact) — fixed with a solid var(--surface) backing chip on .topic-label (reusing the existing btn-cta/btn-secondary/convert-tile flat-surface treatment) rather than touching camera/curve math
 - [04-03]: Device tier (`deviceTier()`: hardwareConcurrency primary, deviceMemory Chromium-only bonus, narrow-viewport fallback) computed once in boot() before any renderer/material construction and threaded through initScene() as a plain parameter, matching the existing `animated` parameter pattern — low tier drops antialias, forces DPR 1, uses a 3-step (not 4-step) gradient map, and disables cursor parallax entirely
+- [Phase 04-04]: Switched both CatmullRomCurve3 curves from catmullrom/tension-0.5 to centripetal (kept identically typed) and retuned the offset-direction mix to a forward-weighted 0.6:0.45:2.0 (x:y:z), since the plan's starting recipe overshot into InterceptOS's bounding sphere mid-transit and missed the look-angle floor near t=0.87
 
 ### Pending Todos
 
@@ -114,12 +116,12 @@ None yet.
 
 ### Blockers/Concerns
 
-- Phase 4 (Concept C) is now FULLY COMPLETE — all 5 requirements (CONC-01 through CONC-05) implemented and verified across 04-01/04-02/04-03. No open items remain for this phase.
+- Phase 4 (Concept C) is now FULLY COMPLETE INCLUDING GAP CLOSURE — all 5 requirements (CONC-01 through CONC-05) implemented and verified across 04-01/04-02/04-03, and the single gap 04-VERIFICATION.md found (camera-framing desync, CONC-01/CONC-03) is closed by 04-04 with a permanent headless regression gate (`qa/camera-framing-check.mjs`). No open items remain for this phase.
 - Phase 3 (Concept B) is fully complete — CONB-01 through CONB-05 all done and verified in 03-03. No open items remain for this phase.
-- Tooling: `gsd-tools state advance-plan`/`update-progress`/`record-metric`/`add-decision`/`record-session` continue to need hand-correction after each run. Recurred again on 04-03's update: `update-progress`'s JSON output correctly computed percent:100 (13/13 known plans) but did not persist it to the frontmatter (still showed 92 from the prior plan), and the frontmatter `status` field needed hand-correction from `completed` back to `in_progress` since Phase 5 remains entirely unplanned (milestone v1.0 is not actually done just because Phase 4's plans are exhausted). `record-metric` again appended its new table row directly below the `*Updated after each plan completion*` footer instead of inside the table. All hand-corrected in this update. Recurred identically on 04-02's, 03-03's, 03-02's, and 04-01's updates too — still worth a tooling fix.
+- Tooling: `gsd-tools state advance-plan`/`update-progress`/`record-metric`/`add-decision`/`record-session` continue to need hand-correction after each run. Recurred again on 04-04's update: `advance-plan` returned `advanced:false, reason:"last_plan"` and left `current_plan`/`Total Plans in Phase` at the stale value of 3 because it doesn't know 04-04 is a 4th, gap-closure plan added after the phase's original 3-plan count — hand-corrected to 4/4 here. `add-decision` also silently reset the frontmatter `status` field back to `planning` as a side effect of its own write (independent of `advance-plan`'s separate `status` mangling seen in prior plans) — hand-corrected to `in_progress` again. `record-metric` again appended its new table row below the `*Updated after each plan completion*` footer instead of inside the table — moved by hand. This has now recurred on every plan since at least 04-01 — still worth a tooling fix.
 
 ## Session Continuity
 
-Last session: 2026-07-24T18:12:27.233Z
-Stopped at: Completed 04-03-PLAN.md
+Last session: 2026-07-24T18:47:41.137Z
+Stopped at: Completed 04-04-PLAN.md
 Resume file: None
