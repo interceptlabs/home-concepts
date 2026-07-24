@@ -83,8 +83,7 @@
   justify-content: space-between;
   gap: var(--sp-24);
   padding: var(--sp-16) clamp(1.25rem, 4vw, 4rem);
-  background: var(--page);
-  border-bottom: var(--bw-s) solid rgba(255, 255, 255, 0.08);
+  background: var(--surface);
 }
 .site-header .lockup img { height: 1.75rem; width: auto; }
 .site-header nav {
@@ -257,9 +256,10 @@
   gap: var(--sp-8);
 }
 .problem-item {
-  border-top: var(--bw-s) solid rgba(255, 255, 255, 0.12);
+  background: var(--surface);
+  border-radius: var(--r-s);
+  padding-inline: var(--sp-24);
 }
-.problem-item:last-child { border-bottom: var(--bw-s) solid rgba(255, 255, 255, 0.12); }
 .problem-item__summary {
   list-style: none;
   cursor: pointer;
@@ -477,7 +477,6 @@
   flex-direction: column;
   gap: var(--sp-4);
   padding-top: var(--sp-16);
-  border-top: var(--bw-s) solid rgba(255, 255, 255, 0.1);
 }
 .work-card__metric .stat-num { font-size: var(--fs-data-m); }
 
@@ -542,7 +541,7 @@
    (no canonical URLs exist for trust/social — inventing hrefs is banned). */
 .site-footer {
   padding-block: clamp(2.5rem, 5vw, 5rem);
-  border-top: var(--bw-s) solid rgba(255, 255, 255, 0.1);
+  background: var(--surface);
 }
 .footer__grid {
   display: grid;
@@ -592,7 +591,6 @@
 .os-flows { padding-block: clamp(2rem, 5vw, 5rem); }
 .os-flow {
   padding-block: var(--sp-48);
-  border-top: var(--bw-s) solid rgba(255, 255, 255, 0.12);
 }
 .os-flow:first-child { border-top: none; padding-top: 0; }
 .os-flow__head { max-width: 44rem; margin-bottom: var(--sp-32); }
@@ -698,7 +696,6 @@
   font-size: var(--fs-p5);
   font-style: italic;
   padding-top: var(--sp-8);
-  border-top: var(--bw-s) solid rgba(255, 255, 255, 0.08);
 }
 
 /* Insights index page */
@@ -706,7 +703,6 @@
 .insights-index__list { display: flex; flex-direction: column; }
 .insights-row {
   padding-block: var(--sp-48);
-  border-top: var(--bw-s) solid rgba(255, 255, 255, 0.12);
   display: flex;
   flex-direction: column;
   gap: var(--sp-12);
@@ -769,7 +765,6 @@
 .case-story__block {
   max-width: 48rem;
   padding-block: var(--sp-32);
-  border-top: var(--bw-s) solid rgba(255, 255, 255, 0.12);
 }
 .case-story__block:first-child { border-top: none; padding-top: 0; }
 .case-story__label {
