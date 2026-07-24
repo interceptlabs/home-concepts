@@ -48,7 +48,12 @@ Plans:
   3. A trust-signal block presents specific proof points transcribed from the canonical content, executed with restraint rather than vague claims.
   4. Clicking a card navigates to its derived sub-page (via cross-document View Transition where supported, plain navigation otherwise) showing that card's full verbatim content.
   5. Kinetic type accents animate sparingly on scroll/hover with sine ease-in-out (no gratuitous motion), and all imagery is real-stock (Pexels-class) or ComfyUI-generated per brand rules (no neon/glow AI slop).
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — Editorial homepage: all 9 locked sections, fully data-copy annotated, dark canvas + oversized fluid type
+- [ ] 02-02-PLAN.md — 5 derived sub-pages (interceptos, insights, 3 work cases) + cross-document View Transitions + routing integrity
+- [ ] 02-03-PLAN.md — Motion layer (IO scroll reveals, hero stagger, reduced-motion guards) + mechanical QA pass (copy-diff all pages, brand greps, 390/768/1440 captures)
 
 ### Phase 3: Concept B — Full-Screen Video
 **Goal**: A visitor experiences a full-bleed video homepage with a clear progressive-reveal mechanism instead of a wall of text, and can click through to focused sub-pages.
@@ -93,7 +98,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 (Phases 2, 3, 4 depen
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Content Foundation & Shared Brand Layer | 4/4 | Complete    | 2026-07-23 |
-| 2. Concept A — Editorial | 0/TBD | Not started | - |
+| 2. Concept A — Editorial | 0/3 | Planned | - |
 | 3. Concept B — Full-Screen Video | 0/TBD | Not started | - |
 | 4. Concept C — Experimental WebGL/3D | 0/TBD | Not started | - |
 | 5. Cross-Concept QA & Review Packaging | 0/TBD | Not started | - |
