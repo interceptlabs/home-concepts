@@ -102,7 +102,14 @@ const OBJECT_DEFS = [
 // down-the-tunnel view flattens it), and a small positive y (slightly above
 // center, for a calm framing). `sideSign` is derived from the object's own
 // x position (opposite sign) so the camera weaves side to side across the
-// field exactly as the object placement itself already alternates.
+// field exactly as the object placement itself already alternates. The
+// x:z ratio (0.6:2.0 — forward-weighted, only mildly lateral) was tuned
+// against qa/camera-framing-check.mjs's continuous sweep: a more lateral
+// mix (closer to 1:1.5) let the mid-transit path swing close enough to
+// InterceptOS's own bounding sphere between the InterceptOS and Work
+// keyframes to fail the no-intrusion invariant, and independently produced
+// a look-angle miss around t=0.87 (Insights-to-Contact); the forward-
+// weighted mix clears both with margin. ─────────────────────────────────
 //
 // cameraPosCurve and lookTargetCurve are built with the SAME point count
 // (6) and the SAME CatmullRomCurve3 construction args, so `getPoint(t)`
@@ -123,22 +130,26 @@ export function buildDollyRig() {
     const radius = geometry.boundingSphere.radius;
     const lookAt = new THREE.Vector3(def.pos[0], def.pos[1], def.pos[2]);
     const sideSign = def.pos[0] > 0 ? -1 : 1;
-    const offsetDir = new THREE.Vector3(sideSign * 1.0, 0.45, 1.5).normalize();
+    const offsetDir = new THREE.Vector3(sideSign * 0.6, 0.45, 2.0).normalize();
     const standoff = def.standoff;
     const cameraPos = lookAt.clone().addScaledVector(offsetDir, standoff * radius);
     return { topic: def.topic, lookAt, cameraPos, radius, standoff };
   });
 
+  // 'centripetal' (not 'catmullrom') — the catmullrom/0.5 type overshoots
+  // between the InterceptOS and Work keyframes closely enough to graze
+  // InterceptOS's own bounding sphere mid-transit; centripetal parametrization
+  // eliminates that overshoot while both curves stay identically typed.
   const cameraPosCurve = new THREE.CatmullRomCurve3(
     keyframes.map((k) => k.cameraPos),
     false,
-    'catmullrom',
+    'centripetal',
     0.5
   );
   const lookTargetCurve = new THREE.CatmullRomCurve3(
     keyframes.map((k) => k.lookAt),
     false,
-    'catmullrom',
+    'centripetal',
     0.5
   );
 
