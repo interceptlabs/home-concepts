@@ -100,7 +100,12 @@ Plans:
   3. Nav items route to standalone pages carrying that content; About/Insights link to mirrored deployed pages.
   4. Module copy verifies verbatim against the canonical source (substring mode) and the modules read visually faithful to the deployed sections.
   5. Reduced-motion, no-JS, keyboard, and Esc/focus-return paths all work.
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 05-01-PLAN.md — Port foundation: deployed.css/deployed.js verbatim lift, case-image extraction, script-diff gate, 3 mirrored pages + podcast assets
+- [ ] 05-02-PLAN.md — Variant homepage: light video layer, verbatim hero copy, 8 button-cards -> module modals (landmine fixes), clients strip, no-JS/reduced-motion paths
+- [ ] 05-03-PLAN.md — Section pages (os/labs/work/contact) + phase QA: link integrity, copy gates, brand greps, reviewed captures, video budget
 
 ### Phase 6: Cross-Concept QA & Review Packaging
 **Goal**: All three concepts are verified together against brand and copy rules, and Jon can review all three side by side in one place.
@@ -114,13 +119,13 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 05-01-PLAN.md — Mechanical cross-concept QA (copy-diff 430/340/282, 8-grep suite ×3, token drift, link integrity gate, camera gate) + final Fritz review gallery with real capture thumbnails
-- [ ] 05-02-PLAN.md — Review packaging: REVIEW.md for Jon + REQUIREMENTS/STATE/ROADMAP closeout (QA-01/QA-04 sign-off stays with the orchestrator after the Fritz agent gate between the two plans)
+- [ ] 06-01-PLAN.md — Mechanical cross-concept QA (copy-diff 430/340/282, 8-grep suite ×3, token drift, link integrity gate, camera gate) + final Fritz review gallery with real capture thumbnails
+- [ ] 06-02-PLAN.md — Review packaging: REVIEW.md for Jon + REQUIREMENTS/STATE/ROADMAP closeout (QA-01/QA-04 sign-off stays with the orchestrator after the Fritz agent gate between the two plans)
 
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 (Phases 2, 3, 4 depend only on Phase 1 and may be built in parallel)
+Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 (Phases 2, 3, 4 depend only on Phase 1 and may be built in parallel; Phase 5 depends on Phase 1 + the staging bundle)
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -128,4 +133,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 (Phases 2, 3, 4 depen
 | 2. Concept A — Editorial | 3/3 | Complete    | 2026-07-24 |
 | 3. Concept B — Full-Screen Video | 3/3 | Complete    | 2026-07-24 |
 | 4. Concept C — Experimental WebGL/3D | 4/4 | Complete    | 2026-07-24 |
-| 5. Cross-Concept QA & Review Packaging | 0/2 | Not started | - |
+| 5. Concept D — Home Variant (light video + module cards) | 0/3 | Not started | - |
+| 6. Cross-Concept QA & Review Packaging | 0/2 | Not started | - |
