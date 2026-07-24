@@ -199,8 +199,12 @@ function initScene({ animated }) {
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
     if (!animated) {
-      updateLabels();
+      // render() first — it's what actually updates mesh/camera
+      // matrixWorld; projecting before the first-ever render call would
+      // read stale (identity) matrices and collapse every label onto the
+      // same point.
       renderer.render(scene, camera);
+      updateLabels();
     }
   }
   window.addEventListener('resize', resize);
@@ -208,11 +212,16 @@ function initScene({ animated }) {
   if (!animated) {
     // One-shot overview framing showing all 6 objects; re-projected +
     // re-rendered on resize only (handled in resize() above) — no rAF loop,
-    // no cursor parallax, no scroll-driven lerp.
-    camera.position.set(0.5, 4.5, 12);
-    camera.lookAt(0, 0.5, -20);
-    updateLabels();
+    // no cursor parallax, no scroll-driven lerp. Diagonal (not a pure
+    // down-the-tunnel or pure side view) so the field's 40-unit depth
+    // spread doesn't converge all 6 labels onto the same screen point
+    // (pure tunnel) while still keeping enough forward component to read
+    // the prisms' triangular profile (pure side view flattens it to a
+    // rectangle).
+    camera.position.set(26, 6, 6);
+    camera.lookAt(-2, 0.5, -20);
     renderer.render(scene, camera);
+    updateLabels();
     document.documentElement.dataset.sceneReady = '1';
     return;
   }
@@ -309,8 +318,12 @@ function initScene({ animated }) {
     updateCameraFromScroll(window.scrollY);
     applyIdleRotation();
     updateParallax();
-    updateLabels();
+    // render() first — updates mesh/camera matrixWorld that updateLabels()
+    // depends on; projecting first would read stale matrices on frame 1
+    // (every label collapsing onto the same point until a second frame
+    // happened to catch up).
     renderer.render(scene, camera);
+    updateLabels();
     if (document.documentElement.dataset.sceneReady !== '1') {
       document.documentElement.dataset.sceneReady = '1';
     }
