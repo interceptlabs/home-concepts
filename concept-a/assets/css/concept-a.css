@@ -1,0 +1,231 @@
+/* Concept A — Editorial ("Accenture, but better")
+   Consumes shared/tokens.css (palette/type/spacing), shared/fonts.css,
+   shared/motion.css (easing/duration). No raw hex below this line — every
+   color is a var(); translucent rgba(255,255,255,…) is reserved for card
+   keylines/hairlines only, per the plan's brand-grep gate. */
+
+@view-transition {
+  navigation: auto;
+}
+
+/* ── Reset / canvas ─────────────────────────────────────────────────────── */
+.concept-a, .concept-a *, .concept-a *::before, .concept-a *::after {
+  box-sizing: border-box;
+}
+.concept-a {
+  background: var(--page);
+  color: var(--fg);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+.concept-a img, .concept-a svg { max-width: 100%; display: block; }
+.concept-a a { color: inherit; text-decoration: none; }
+.concept-a ul { list-style: none; margin: 0; padding: 0; }
+.concept-a p { margin: 0; }
+
+.wrap {
+  max-width: 90rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 4rem);
+}
+
+.mono { font-family: var(--font-mono); }
+.kicker {
+  font-size: var(--fs-label-l1);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  margin-bottom: var(--sp-16);
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────────
+   Solid Flarepop fill w/ dark text is a background-color use, not text-color
+   — the Flarepop-only-colored-TEXT rule applies to text, not button fills. */
+.btn-primary, .btn-cta {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-l1);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--flarepop);
+  color: var(--page);
+  padding: var(--sp-16) var(--sp-24);
+  border-radius: var(--r-s);
+  transition: opacity var(--dur-short) var(--ease-inout-sine);
+}
+.btn-primary:hover, .btn-cta:hover { opacity: var(--op-80); }
+
+.btn-secondary {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-l1);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--fg);
+  border: var(--bw-s) solid rgba(255, 255, 255, 0.24);
+  padding: var(--sp-16) var(--sp-24);
+  border-radius: var(--r-s);
+  transition: border-color var(--dur-short) var(--ease-inout-sine);
+}
+.btn-secondary:hover { border-color: var(--flarepop); }
+
+/* ── Header ──────────────────────────────────────────────────────────────
+   Sticky, minimal, solid dark backing (no photographic backdrop to blur
+   against, so a translucent+blur fallback reads identically to solid). */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-24);
+  padding: var(--sp-16) clamp(1.25rem, 4vw, 4rem);
+  background: var(--page);
+  border-bottom: var(--bw-s) solid rgba(255, 255, 255, 0.08);
+}
+.site-header .lockup img { height: 1.75rem; width: auto; }
+.site-header nav {
+  display: none;
+  gap: var(--sp-24);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-l1);
+  letter-spacing: 0.03em;
+}
+.site-header nav a { opacity: var(--op-80); transition: opacity var(--dur-short) var(--ease-inout-sine); }
+.site-header nav a:hover { opacity: var(--op-100); color: var(--flarepop); }
+@media (min-width: 900px) {
+  .site-header nav { display: flex; }
+}
+
+/* ── Hero ────────────────────────────────────────────────────────────────
+   Giant display type left, short intro right-rail (Accenture's own hero
+   layout, reference/accenture/screenshot-*-0.jpg), stacked on mobile.
+   Verified against the real 11-word hero.h1_html string at 320px — no
+   horizontal overflow at the clamp() minimum. */
+.hero {
+  padding-block: clamp(2.5rem, 6vw, 6rem);
+}
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-48);
+  align-items: end;
+}
+@media (min-width: 900px) {
+  .hero__grid { grid-template-columns: 2fr 1fr; }
+}
+.hero__h1 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-heading);
+  font-size: clamp(2.5rem, 1.2rem + 5.5vw, 6.5rem);
+  line-height: 1.03;
+  text-wrap: balance;
+  margin: 0;
+}
+.hero__h1 em {
+  font-style: normal;
+  color: var(--flarepop);
+}
+.hero__h1 .dot { color: var(--flarepop); }
+.hero__rail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-24);
+  padding-bottom: var(--sp-8);
+}
+.hero__sub {
+  font-size: var(--fs-p3);
+  color: var(--fg-2);
+  line-height: var(--lh-body);
+}
+
+/* ── Card grid (insights episodes + labs) ──────────────────────────────── */
+.card-grid-section { padding-block: clamp(2rem, 5vw, 5rem); }
+.section-head { max-width: 44rem; margin-bottom: var(--sp-48); }
+.section-head__title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-heading);
+  font-size: clamp(1.75rem, 1.2rem + 2vw, 3rem);
+  line-height: 1.1;
+  text-wrap: balance;
+  margin-bottom: var(--sp-16);
+}
+.section-head__title a { transition: color var(--dur-short) var(--ease-inout-sine); }
+.section-head__title a:hover { color: var(--flarepop); }
+.section-head__lead { color: var(--fg-2); font-size: var(--fs-p3); }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-24);
+}
+@media (min-width: 768px) {
+  .card-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1200px) {
+  .card-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.card {
+  background: var(--surface);
+  border: var(--bw-s) solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--r-m);
+  padding: var(--sp-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-12);
+}
+.card__kicker {
+  font-size: var(--fs-label-l2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+.card__kicker span + span::before { content: " \00b7 "; }
+.card__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h5);
+  line-height: 1.25;
+}
+.card__title a { transition: color var(--dur-short) var(--ease-inout-sine); }
+.card__title a:hover { color: var(--flarepop); }
+.card__guest { font-size: var(--fs-p5); color: var(--fg-2); }
+.card__summary { font-size: var(--fs-p5); color: var(--fg-2); flex-grow: 1; }
+.card__links {
+  display: flex;
+  gap: var(--sp-16);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-l2);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding-top: var(--sp-8);
+}
+.card__links a { transition: color var(--dur-short) var(--ease-inout-sine); }
+.card__links a:hover { color: var(--flarepop); }
+
+.card--labs { background: var(--bg-surface-hi); }
+.card--labs .card__title .hl { font-weight: var(--fw-bold); color: var(--fg); }
+.card__stat { display: flex; flex-direction: column; gap: var(--sp-4); }
+.stat-num {
+  font-size: var(--fs-data-s);
+  font-weight: var(--fw-bold);
+  line-height: 1;
+}
+.stat-label { font-size: var(--fs-label-l2); color: var(--fg-2); }
+
+/* ── Stepped-field utility (Fritz "no gradients" rule: 3-9 hard-edged
+   equal steps via duplicated repeating-linear-gradient stop offsets —
+   never a smooth grade). Used sparingly: the InterceptOS band only. ── */
+.section--stepped {
+  background: repeating-linear-gradient(
+    180deg,
+    var(--surface-2) 0, var(--surface-2) 20%,
+    var(--surface-3) 20%, var(--surface-3) 40%,
+    var(--surface-2) 40%, var(--surface-2) 60%,
+    var(--surface-3) 60%, var(--surface-3) 80%,
+    var(--surface-2) 80%, var(--surface-2) 100%
+  );
+}

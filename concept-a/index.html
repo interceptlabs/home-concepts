@@ -3,48 +3,100 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Concept A — Editorial</title>
+<title>Concept A — Editorial · Intercept</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="/shared/tokens.css">
 <link rel="stylesheet" href="/shared/fonts.css">
 <link rel="stylesheet" href="/shared/motion.css">
-<style>
-  body {
-    background: var(--page);
-    color: var(--fg);
-    font-family: var(--font-display);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: var(--sp-32);
-  }
-  .placeholder { max-width: 40rem; }
-  .placeholder p {
-    font-family: var(--font-body);
-    color: var(--fg-2);
-    margin: var(--sp-16) 0 var(--sp-40);
-  }
-  .placeholder a {
-    font-family: var(--font-mono);
-    font-size: var(--fs-label-l1);
-    color: var(--fg);
-    text-decoration: none;
-    padding: var(--sp-8) var(--sp-16);
-    background: var(--surface);
-    border-radius: var(--r-s);
-    transition: opacity var(--dur-med) var(--ease-inout-sine);
-  }
-  .placeholder a:hover { opacity: var(--op-80); }
-</style>
+<link rel="stylesheet" href="/concept-a/assets/css/concept-a.css">
 </head>
-<body>
-  <div class="placeholder">
-    <h1>Concept A — Editorial</h1>
-    <p>Landing in Phase 2</p>
-    <a href="/">← Back to gallery</a>
-  </div>
+<body class="concept-a">
+  <header class="site-header">
+    <a class="lockup" href="/concept-a/"><img src="/shared/logo/lockup.svg" alt="Intercept"></a>
+    <nav aria-label="Primary">
+      <a href="/concept-a/#problems">Problems</a>
+      <a href="/concept-a/pages/interceptos.html">InterceptOS</a>
+      <a href="/concept-a/#work">Work</a>
+      <a href="/concept-a/#labs">Labs</a>
+      <a href="/concept-a/pages/insights.html">Insights</a>
+    </nav>
+    <a class="btn-cta" href="/concept-a/#convert" data-copy="convert.eyebrow">start the conversation</a>
+  </header>
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div class="hero__main">
+        <p class="kicker mono" data-copy="hero.kicker">Award-winning B2B marketing for global tech</p>
+        <h1 class="hero__h1" data-copy="hero.h1_html">We turn your most <em>ambitious</em> briefs into <em>proven</em> outcomes<span class="dot">.</span></h1>
+      </div>
+      <div class="hero__rail">
+        <p class="hero__sub" data-copy="hero.sub">Marketing teams are increasingly pressured to adopt AI, but most don’t know where to start. Intercept is the frontier B2B agency for global tech, helping clients use AI to make the keep-the-lights-on work more efficient and power the innovation that redefines the buyer experience.</p>
+        <a class="btn-primary" href="#problems" data-copy="hero.cta.label">Explore more</a>
+      </div>
+    </div>
+  </section>
+  <section class="card-grid-section">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="kicker mono" data-copy="insights.eyebrow">Hear From The Frontier</p>
+        <h2 class="section-head__title"><a href="/concept-a/pages/insights.html" data-copy="insights.h2">How other B2B marketers are putting AI to work.</a></h2>
+        <p class="section-head__lead" data-copy="insights.lead">ChatB2B is your front-row seat to AI in B2B marketing. Hear from the marketing leaders and practitioners adopting and scaling AI inside their teams.</p>
+      </header>
+      <div class="card-grid">
+      <article class="card card--episode">
+        <p class="card__kicker mono">
+          <span data-copy="insights.episodes.0.episode">Episode 19</span><span data-copy="insights.episodes.0.show">ChatB2B</span>
+        </p>
+        <h3 class="card__title"><a href="https://open.spotify.com/episode/0vnMR61WLUmS94YUeNRTby" data-copy="insights.episodes.0.title">Building the backend for AI agents</a></h3>
+        <p class="card__guest"><span data-copy="insights.episodes.0.guest.name">Patrick Vuong</span>, <span data-copy="insights.episodes.0.guest.role">Former Director of Product Management, Moderne</span></p>
+        <p class="card__summary" data-copy="insights.episodes.0.summary">Patrick on the backend infrastructure that makes AI agents reliable. Multi-agent orchestration in production, why marketing teams lack backend readiness, and designing systems for agents alongside humans.</p>
+        <div class="card__links">
+          <a href="https://open.spotify.com/episode/0vnMR61WLUmS94YUeNRTby" data-copy="insights.episodes.0.links.0.label">Spotify</a>
+          <a href="https://podcasts.apple.com/us/podcast/building-the-backend-for-ai-agents-with-patrick-vuong/id1840415344?i=1000770795263" data-copy="insights.episodes.0.links.1.label">Apple</a>
+          <a href="https://www.youtube.com/watch?v=t3xY3tqU9YI" data-copy="insights.episodes.0.links.2.label">YouTube</a>
+        </div>
+      </article>
+      <article class="card card--episode">
+        <p class="card__kicker mono">
+          <span data-copy="insights.episodes.1.episode">Episode 18</span><span data-copy="insights.episodes.1.show">ChatB2B</span>
+        </p>
+        <h3 class="card__title"><a href="https://open.spotify.com/episode/1vD0gtTpZppIt61dcVH56r" data-copy="insights.episodes.1.title">The rise of the senior IC in the AI era</a></h3>
+        <p class="card__guest"><span data-copy="insights.episodes.1.guest.name">Jaynie Miller</span>, <span data-copy="insights.episodes.1.guest.role">Worldwide Product Marketing Lead, HP</span></p>
+        <p class="card__summary" data-copy="insights.episodes.1.summary">Jaynie on transitioning from management to senior individual contributor at a major tech company. How AI is reshaping product marketing, sales enablement, and partner enablement, plus the organizational restructuring the AI era is forcing.</p>
+        <div class="card__links">
+          <a href="https://open.spotify.com/episode/1vD0gtTpZppIt61dcVH56r" data-copy="insights.episodes.1.links.0.label">Spotify</a>
+          <a href="https://podcasts.apple.com/us/podcast/the-rise-of-the-senior-ic-in-the-ai-era-with-jaynie-miller/id1840415344?i=1000768597543" data-copy="insights.episodes.1.links.1.label">Apple</a>
+          <a href="https://www.youtube.com/watch?v=uDJIwLfLeBA" data-copy="insights.episodes.1.links.2.label">YouTube</a>
+        </div>
+      </article>
+      <article class="card card--episode">
+        <p class="card__kicker mono">
+          <span data-copy="insights.episodes.2.episode">Episode 17</span><span data-copy="insights.episodes.2.show">ChatB2B</span>
+        </p>
+        <h3 class="card__title"><a href="https://open.spotify.com/episode/63Cj9IIK1SYCgCS3BBdAtv" data-copy="insights.episodes.2.title">Optimizing AI search: lessons from Sophos</a></h3>
+        <p class="card__guest"><span data-copy="insights.episodes.2.guest.name">Megan Cabrera</span>, <span data-copy="insights.episodes.2.guest.role">Former VP Marketing Operations, Sophos</span></p>
+        <p class="card__summary" data-copy="insights.episodes.2.summary">Megan on building an enterprise AI search strategy. Algorithm navigation, community visibility (Reddit), AI procurement challenges, organizational placement of AI roles, and the cybersecurity implications of recent events.</p>
+        <div class="card__links">
+          <a href="https://open.spotify.com/episode/63Cj9IIK1SYCgCS3BBdAtv" data-copy="insights.episodes.2.links.0.label">Spotify</a>
+          <a href="https://podcasts.apple.com/us/podcast/optimizing-ai-search-lessons-from-sophos-with-megan/id1840415344?i=1000762801591" data-copy="insights.episodes.2.links.1.label">Apple</a>
+          <a href="https://www.youtube.com/watch?v=jIv_AFVh-Rc" data-copy="insights.episodes.2.links.2.label">YouTube</a>
+        </div>
+      </article>
+      <article class="card card--labs" id="labs">
+        <p class="card__kicker mono" data-copy="labs.label">Intercept Labs</p>
+        <h3 class="card__title" data-copy="labs.h2_html">For the work that <span class="hl">has no playbook.</span></h3>
+        <p class="card__summary" data-copy="labs.body">Intercept Labs is how we co-invest with clients to test first-of-its-kind ideas, reduce the risk of trying something new, and turn the best experiments into repeatable capability inside InterceptOS.</p>
+        <p class="card__stat"><span class="stat-num mono" data-copy="labs.stat.num">Up to 50%</span><span class="stat-label" data-copy="labs.stat.label">Project co-investment</span></p>
+        <a class="btn-secondary" href="#convert" data-copy="labs.cta.label">Build with Labs</a>
+      </article>
+      </div>
+    </div>
+  </section>
+  <section class="problems" id="problems"><!-- Task 2 --></section>
+  <section class="interceptos-band" id="interceptos"><!-- Task 2 --></section>
+  <section class="work" id="work"><!-- Task 3 --></section>
+  <section class="clients"><!-- Task 3 --></section>
+  <section class="convert" id="convert"><!-- Task 3 --></section>
+  <footer class="site-footer"><!-- Task 3 --></footer>
 </body>
 </html>
