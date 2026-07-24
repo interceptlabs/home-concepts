@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Content Foundation & Shared Brand Layer** - Canonical verbatim content, shared Fritz brand assets, copy-diff gate, and repo/server skeleton exist before any concept work starts (completed 2026-07-23)
 - [x] **Phase 2: Concept A — Editorial ("Accenture, but better")** - Editorial card-grid homepage with single hero + primary CTA and click-through sub-pages (completed 2026-07-24)
 - [x] **Phase 3: Concept B — Full-Screen Video** - Full-bleed ambient video hero with labeled hotspots, progressive reveal, and click-through sub-pages (completed 2026-07-24)
-- [ ] **Phase 4: Concept C — Experimental WebGL/3D** - three.js spatial navigation metaphor with an accessible DOM mirror and device-tiered rendering
+- [x] **Phase 4: Concept C — Experimental WebGL/3D** - three.js spatial navigation metaphor with an accessible DOM mirror and device-tiered rendering (completed 2026-07-24)
 - [ ] **Phase 5: Cross-Concept QA & Review Packaging** - Brand/copy verification across all three concepts and a side-by-side review gallery for Jon
 
 ## Phase Details
@@ -87,7 +87,7 @@ Plans:
 Plans:
 - [x] 04-01-PLAN.md — "Topic field" 3D homepage core: WebGL2 probe, 6 toon-stepped procedural objects, scroll-driven CatmullRom dolly, DOM-projected labels, topic index, no-webgl/no-JS fallback layout (completed 2026-07-24)
 - [x] 04-02-PLAN.md — Below-fold verbatim sections (problems/labs/convert/footer) + 3 sub-pages (interceptos, consolidated work, new insights) + @view-transition and smooth-scroll routing (completed 2026-07-24)
-- [ ] 04-03-PLAN.md — Reduced-motion frozen scene, focus-visible treatment, device-tier degradation + phase-closing QA (copy-diff all, 8-grep suite, link integrity, 18 reviewed captures)
+- [x] 04-03-PLAN.md — Reduced-motion frozen scene, focus-visible treatment, device-tier degradation + phase-closing QA (copy-diff all, 8-grep suite, link integrity, 18 reviewed captures) (completed 2026-07-24)
 
 ### Phase 5: Cross-Concept QA & Review Packaging
 **Goal**: All three concepts are verified together against brand and copy rules, and Jon can review all three side by side in one place.
@@ -110,5 +110,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 (Phases 2, 3, 4 depen
 | 1. Content Foundation & Shared Brand Layer | 4/4 | Complete    | 2026-07-23 |
 | 2. Concept A — Editorial | 3/3 | Complete    | 2026-07-24 |
 | 3. Concept B — Full-Screen Video | 3/3 | Complete    | 2026-07-24 |
-| 4. Concept C — Experimental WebGL/3D | 2/3 | In Progress|  |
+| 4. Concept C — Experimental WebGL/3D | 3/3 | Complete   | 2026-07-24 |
 | 5. Cross-Concept QA & Review Packaging | 0/TBD | Not started | - |

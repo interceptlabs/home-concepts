@@ -2,17 +2,17 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 2
+current_plan: 3
 status: in_progress
-stopped_at: Completed 04-02-PLAN.md (Concept C below-fold sections + 3 sub-pages)
-last_updated: "2026-07-24T17:57:37.368Z"
+stopped_at: Completed 04-03-PLAN.md
+last_updated: "2026-07-24T18:12:27.233Z"
 last_activity: 2026-07-24
 progress:
   total_phases: 5
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 13
-  completed_plans: 12
-  percent: 92
+  completed_plans: 13
+  percent: 100
 ---
 
 # Project State
@@ -22,30 +22,31 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-23)
 
 **Core value:** A visitor never faces a wall of text — content is revealed as needed, and clicking an area of interest takes them to a focused page built from that content.
-**Current focus:** Phase 4 (Concept C — Experimental WebGL/3D) IN PROGRESS — 04-01 (topic field, scroll dolly, DOM labels, no-webgl fallback) and 04-02 (below-fold sections + 3 sub-pages) both done. Next: 04-03 (motion/a11y polish + device-tier QA sweep).
+**Current focus:** Phase 4 (Concept C — Experimental WebGL/3D) COMPLETE — all 3 plans done (04-01 topic field/dolly/labels/fallback, 04-02 below-fold sections + 3 sub-pages, 04-03 device tiering + reduced-motion polish + phase-closing QA sweep). Next: plan Phase 5 (cross-concept QA + gallery packaging).
 
 ## Current Position
 
-Phase: 4 of 5 (Concept C — Experimental WebGL/3D) — IN PROGRESS
-Plan: 2 of 3 complete in current phase (04-01, 04-02 done; 04-03 remains)
-Current Plan: 2
+Phase: 4 of 5 (Concept C — Experimental WebGL/3D) — COMPLETE
+Plan: 3 of 3 complete in current phase (04-01, 04-02, 04-03 all done)
+Current Plan: 3
 Total Plans in Phase: 3
-Status: 04-02 complete — ready for 04-03
+Status: Phase 4 complete — ready for Phase 5 planning
 Last activity: 2026-07-24
 
-Progress: [█████████░] 92% (12 of 13 known plans across all phases)
+Progress: [██████████] 100% (13 of 13 known plans across all phases — will re-baseline once Phase 5 is planned)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 12
+- Total plans completed: 13
 - Average duration: 26 min
-- Total execution time: 5.13 hours
+- Total execution time: 5.53 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
+| Phase 04 P03 | 24min | 2 tasks | 2 files |
 | Phase 04 P02 | 20min | 2 tasks | 5 files |
 | Phase 04 P01 | 44min | 3 tasks | 3 files |
 | Phase 03 P03 | 22min | 2 tasks | 17 files |
@@ -60,8 +61,8 @@ Progress: [█████████░] 92% (12 of 13 known plans across all 
 | Phase 01 P01 | 20min | 3 tasks | 3 files |
 
 **Recent Trend:**
-- Last 5 plans: 04-02 (20min), 04-01 (44min), 03-03 (22min), 03-02 (40min), 03-01 (38min)
-- Trend: 04-02 came in well under the recent baseline — the data-driven Python generator technique (proven since 02-01) scaled cleanly to 4 pages and 282 copy-diff chunks with zero failures and zero deviations on the first run, unlike 04-01's longer, bug-catching session
+- Last 5 plans: 04-03 (24min), 04-02 (20min), 04-01 (44min), 03-03 (22min), 03-02 (40min)
+- Trend: 04-03 closed out Phase 4 in-line with the recent baseline — Task 1 (device tiering/focus-visible/reduced-motion) landed clean on the first pass since most of the locked static-scene spec was already correct from 04-01; Task 2's mandated capture review caught one genuine narrow-viewport bug (label/hero-copy collision) that greps/copy-diff cannot catch, fixed with a single low-risk CSS addition and re-verified within the same plan
 
 *Updated after each plan completion*
 
@@ -103,6 +104,9 @@ Recent decisions affecting current work:
 - [04-02]: Footer placed as a `<footer>` sibling of `<main class="below-fold">` (not nested inside it) but given its own `position:relative; z-index:1; background:var(--page)` rule, so it still opaquely occludes the fixed WebGL canvas exactly like the below-fold sections do
 - [04-02]: Sub-page `.subpage` CSS scaffold (page-header/page-hero/os-flows/agent-roster/work-page/insights-page) independently authored rather than reused from concept-b, per the architecture rule that concepts never reach into each other's directories; sub-page stat/chip accents kept neutral (no new flarepop text) to stay conservative against concept-c's own single already-licensed accent (`.hl` in the labs h2)
 - [04-02]: `os.flows[i].stages[3].agents` (every flow's "Outcome" stage) is a real, present, empty array — rendered as a plain loop with zero `<li>` children, no key-existence guard needed (corrects 04-01-SUMMARY's own inherited assumption that the key was absent)
+- [04-03]: Standardized every :focus-visible outline in concept-c to 2px solid var(--fg) (was var(--flarepop) on the two CTA buttons) with a 2-3px offset — one consistent focus language across labels, topic index, buttons, and every sub-page/footer link
+- [04-03]: Fixed a real narrow-viewport bug found via mandated capture review — the top-of-page camera framing projects the Problems label directly over the hero headline at widths <= ~390px, both white-on-white and mutually illegible (reproduced at a realistic 390x844 viewport, not a capture-rig artifact) — fixed with a solid var(--surface) backing chip on .topic-label (reusing the existing btn-cta/btn-secondary/convert-tile flat-surface treatment) rather than touching camera/curve math
+- [04-03]: Device tier (`deviceTier()`: hardwareConcurrency primary, deviceMemory Chromium-only bonus, narrow-viewport fallback) computed once in boot() before any renderer/material construction and threaded through initScene() as a plain parameter, matching the existing `animated` parameter pattern — low tier drops antialias, forces DPR 1, uses a 3-step (not 4-step) gradient map, and disables cursor parallax entirely
 
 ### Pending Todos
 
@@ -110,13 +114,12 @@ None yet.
 
 ### Blockers/Concerns
 
-- Phase 4 (Concept C): the 3D interaction metaphor question is now RESOLVED (locked in 04-CONTEXT.md as "the topic field" — scroll-driven camera dolly + labeled procedural objects, not orbit/click-object or a Spline-authored scene) and 04-01 has shipped the foundation against it. No longer a blocker.
-- Phase 4 (Concept C): 04-02 has shipped `pages/interceptos.html`/`pages/work.html`/`pages/insights.html` — the 3 previously-expected 404s from 04-01's routing map are now resolved. No open items remain for CONC-01/CONC-02.
+- Phase 4 (Concept C) is now FULLY COMPLETE — all 5 requirements (CONC-01 through CONC-05) implemented and verified across 04-01/04-02/04-03. No open items remain for this phase.
 - Phase 3 (Concept B) is fully complete — CONB-01 through CONB-05 all done and verified in 03-03. No open items remain for this phase.
-- Tooling: `gsd-tools state advance-plan`/`update-progress`/`record-metric`/`add-decision`/`record-session` continue to need hand-correction after each run — recurred again on 04-01's update: `advance-plan` reported `{"advanced": false, "reason": "last_plan", "current_plan": 3, "total_plans": 3}` instead of recognizing Phase 4 Plan 1 of 3 (stale carryover from Phase 3's own last-plan state), `update-progress`'s own JSON output computed the correct percent (85) but didn't persist it to the frontmatter (still showed 100), and `record-metric` again appended its new table row directly below the `*Updated after each plan completion*` footer instead of inside the table. All hand-corrected in this update. On 04-02's update, `advance-plan`/`update-progress`/`record-metric` all ran correctly for the first time in several plans, but `record-session` overwrote the frontmatter `status` field back to `completed` (Phase 4 is still in_progress with 04-03 remaining) — hand-corrected. Recurred on 03-03's, 03-02's, and 04-01's updates too; still worth a tooling fix.
+- Tooling: `gsd-tools state advance-plan`/`update-progress`/`record-metric`/`add-decision`/`record-session` continue to need hand-correction after each run. Recurred again on 04-03's update: `update-progress`'s JSON output correctly computed percent:100 (13/13 known plans) but did not persist it to the frontmatter (still showed 92 from the prior plan), and the frontmatter `status` field needed hand-correction from `completed` back to `in_progress` since Phase 5 remains entirely unplanned (milestone v1.0 is not actually done just because Phase 4's plans are exhausted). `record-metric` again appended its new table row directly below the `*Updated after each plan completion*` footer instead of inside the table. All hand-corrected in this update. Recurred identically on 04-02's, 03-03's, 03-02's, and 04-01's updates too — still worth a tooling fix.
 
 ## Session Continuity
 
-Last session: 2026-07-24T17:57:37.364Z
-Stopped at: Completed 04-02-PLAN.md
+Last session: 2026-07-24T18:12:27.233Z
+Stopped at: Completed 04-03-PLAN.md
 Resume file: None
