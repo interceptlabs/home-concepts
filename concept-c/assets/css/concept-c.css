@@ -435,3 +435,245 @@ html.webgl:not(.static-scene) .topic-index {
   text-transform: uppercase;
   color: var(--fg-3);
 }
+
+/* ── .subpage layer (04-02 Task 2) — shared scaffold for the 3 sub-pages
+   (interceptos.html, work.html, insights.html). No scene.js, no canvas, no
+   three.js on any of these — the "3D as nav, DOM as content" split is the
+   point (CONC-01). Same token vocabulary as the homepage; the @view-transition
+   rule above covers these pages too since they share this one stylesheet. ── */
+.subpage { background: var(--page); color: var(--fg); }
+
+.page-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-24);
+  padding: var(--sp-16) clamp(1.25rem, 4vw, 3rem);
+  background: var(--surface);
+}
+.page-header__lockup .lockup-svg { height: 1.75rem; width: auto; display: block; }
+.page-header__back {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-l1);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--fg);
+  transition: color var(--dur-short) var(--ease-inout-sine);
+}
+.page-header__back:hover { color: var(--flarepop); }
+
+.page-hero { padding-block: clamp(2.5rem, 6vw, 6rem); }
+.page-hero .wrap { max-width: 64rem; margin-inline: auto; padding-inline: clamp(1.25rem, 5vw, 4rem); }
+.page-hero__title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-heading);
+  font-size: clamp(2.25rem, 1.1rem + 5vw, 5rem);
+  line-height: 1.05;
+  text-wrap: balance;
+  margin-block: var(--sp-16) var(--sp-24);
+}
+.page-hero__lead { font-size: var(--fs-p3); color: var(--fg-2); max-width: 44rem; }
+
+/* InterceptOS — 4 flows at full depth (grid of stages, no tabs/timers), then
+   the full 13-agent roster grouped by category. Stage 3 ("Outcome") in every
+   flow renders an empty .os-stage__agents <ul> — its agents array is present
+   but empty by design, not a missing key. */
+.os-flows { padding-block: clamp(2rem, 5vw, 5rem); }
+.os-flows .wrap { max-width: 72rem; margin-inline: auto; padding-inline: clamp(1.25rem, 5vw, 4rem); }
+.os-flow { padding-block: var(--sp-48); }
+.os-flow__head { max-width: 44rem; margin-bottom: var(--sp-32); }
+.os-flow__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1.1rem + 2vw, 2.5rem);
+  line-height: 1.15;
+  margin-bottom: var(--sp-12);
+}
+.os-flow__job { color: var(--fg-2); font-size: var(--fs-p3); margin-bottom: var(--sp-8); }
+.os-flow__layer {
+  color: var(--fg-3);
+  font-size: var(--fs-label-l1);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.os-stage-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-24);
+}
+@media (min-width: 900px) {
+  .os-stage-list { grid-template-columns: repeat(4, 1fr); }
+}
+.os-stage {
+  background: var(--surface);
+  border-radius: var(--r-m);
+  padding: var(--sp-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+.os-stage__tag {
+  font-size: var(--fs-label-l2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+.os-stage__name { font-family: var(--font-display); font-size: var(--fs-h5); line-height: 1.25; }
+.os-stage__agents { display: flex; flex-wrap: wrap; gap: var(--sp-8); }
+.os-stage__agents li {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-l2);
+  letter-spacing: 0.03em;
+  color: var(--fg-2);
+  background: var(--surface-2);
+  border-radius: var(--r-round);
+  padding: var(--sp-4) var(--sp-12);
+}
+.os-stage__desc { color: var(--fg-2); font-size: var(--fs-p4); flex-grow: 1; }
+
+.agent-roster { padding-block: clamp(3rem, 6vw, 6rem); }
+.agent-roster .wrap,
+.work-page .wrap,
+.insights-page .wrap { max-width: 72rem; margin-inline: auto; padding-inline: clamp(1.25rem, 5vw, 4rem); }
+.agent-roster__groups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-48);
+  margin-top: var(--sp-48);
+}
+.agent-group__label {
+  font-size: var(--fs-label-l1);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  margin-bottom: var(--sp-16);
+}
+.agent-card-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-24);
+  margin-top: var(--sp-24);
+}
+@media (min-width: 768px) {
+  .agent-card-list { grid-template-columns: repeat(2, 1fr); }
+}
+.agent-card {
+  background: var(--surface);
+  border-radius: var(--r-m);
+  padding: var(--sp-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+.agent-card__name { font-family: var(--font-display); font-size: var(--fs-h5); }
+.agent-card__type {
+  color: var(--fg-3);
+  font-size: var(--fs-label-l2);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.agent-card__role { color: var(--fg-2); font-size: var(--fs-p4); font-weight: var(--fw-bold); }
+.agent-card__desc { color: var(--fg-2); font-size: var(--fs-p5); }
+.agent-card__solves { display: flex; flex-wrap: wrap; gap: var(--sp-8); }
+.agent-card__solves li {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-l2);
+  color: var(--fg-2);
+  border-radius: var(--r-round);
+  padding: var(--sp-4) var(--sp-12);
+  background: var(--surface-2);
+}
+.agent-card__sample {
+  color: var(--fg-2);
+  font-size: var(--fs-p5);
+  font-style: italic;
+  padding-top: var(--sp-8);
+}
+
+/* Work — one consolidated page, all 3 cases stacked at full depth */
+.work-page { padding-block: clamp(2.5rem, 6vw, 6rem); }
+.case-block { padding-block: clamp(2rem, 5vw, 5rem); }
+.case-block__kicker {
+  font-size: var(--fs-label-l1);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  margin-bottom: var(--sp-16);
+  display: flex;
+  gap: var(--sp-12);
+}
+.case-block__title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-heading);
+  font-size: clamp(1.75rem, 1.1rem + 3vw, 3.25rem);
+  line-height: 1.1;
+  text-wrap: balance;
+  margin-bottom: var(--sp-16);
+}
+.case-block__summary { color: var(--fg-2); font-size: var(--fs-p3); max-width: 48rem; margin-bottom: var(--sp-24); }
+.case-block__metric { display: flex; flex-direction: column; gap: var(--sp-4); margin-bottom: var(--sp-32); }
+.case-block__metric .stat-num { font-size: var(--fs-data-m); }
+.case-story__block { max-width: 48rem; padding-block: var(--sp-24); }
+.case-story__label {
+  font-size: var(--fs-label-l1);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  margin-bottom: var(--sp-16);
+}
+.case-story__text { color: var(--fg); font-size: var(--fs-p3); }
+.case-results { display: flex; flex-direction: column; gap: var(--sp-12); }
+.case-results li {
+  padding-left: var(--sp-16);
+  position: relative;
+  color: var(--fg);
+  font-size: var(--fs-p3);
+}
+.case-results li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 5px;
+  height: 5px;
+  background: var(--fg-3);
+  border-radius: var(--r-round);
+}
+.case-story__agents { color: var(--fg-2); font-size: var(--fs-p3); }
+
+/* Insights — NEW layout-only depth upgrade, full_refs is [] by design (zero
+   new copy) — one full-width block per episode with real external links */
+.insights-page { padding-block: clamp(2.5rem, 6vw, 6rem); }
+.episode-block { padding-block: clamp(2rem, 5vw, 5rem); max-width: 48rem; }
+.episode-block__kicker {
+  display: flex;
+  gap: var(--sp-12);
+  font-size: var(--fs-label-l1);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  margin-bottom: var(--sp-16);
+}
+.episode-block__title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-heading);
+  font-size: clamp(1.5rem, 1.1rem + 2vw, 2.5rem);
+  line-height: 1.15;
+  margin-bottom: var(--sp-16);
+}
+.episode-block__title a { transition: color var(--dur-short) var(--ease-inout-sine); }
+.episode-block__title a:hover { color: var(--flarepop); }
+.episode-block__guest { color: var(--fg-2); font-size: var(--fs-p4); margin-bottom: var(--sp-16); }
+.episode-block__summary { color: var(--fg-2); font-size: var(--fs-p4); margin-bottom: var(--sp-24); }
+.episode-block__links {
+  display: flex;
+  gap: var(--sp-16);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-l1);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.episode-block__links a { color: var(--fg); transition: color var(--dur-short) var(--ease-inout-sine); }
+.episode-block__links a:hover { color: var(--flarepop); }
