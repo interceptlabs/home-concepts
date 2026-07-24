@@ -2,17 +2,17 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 1
+current_plan: 2
 status: in_progress
-stopped_at: Completed 04-01-PLAN.md (Concept C topic field + scroll dolly + DOM labels)
-last_updated: "2026-07-24T17:45:57.537Z"
+stopped_at: Completed 04-02-PLAN.md (Concept C below-fold sections + 3 sub-pages)
+last_updated: "2026-07-24T17:57:37.368Z"
 last_activity: 2026-07-24
 progress:
   total_phases: 5
   completed_phases: 3
   total_plans: 13
-  completed_plans: 11
-  percent: 85
+  completed_plans: 12
+  percent: 92
 ---
 
 # Project State
@@ -22,30 +22,31 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-23)
 
 **Core value:** A visitor never faces a wall of text — content is revealed as needed, and clicking an area of interest takes them to a focused page built from that content.
-**Current focus:** Phase 4 (Concept C — Experimental WebGL/3D) IN PROGRESS — plan 04-01 (topic field, scroll dolly, DOM labels, no-webgl fallback) done. Next: 04-02 (below-fold sections) and 04-03 (routed sub-pages + polish).
+**Current focus:** Phase 4 (Concept C — Experimental WebGL/3D) IN PROGRESS — 04-01 (topic field, scroll dolly, DOM labels, no-webgl fallback) and 04-02 (below-fold sections + 3 sub-pages) both done. Next: 04-03 (motion/a11y polish + device-tier QA sweep).
 
 ## Current Position
 
 Phase: 4 of 5 (Concept C — Experimental WebGL/3D) — IN PROGRESS
-Plan: 1 of 3 complete in current phase (04-01 done; 04-02, 04-03 remain)
-Current Plan: 1
+Plan: 2 of 3 complete in current phase (04-01, 04-02 done; 04-03 remains)
+Current Plan: 2
 Total Plans in Phase: 3
-Status: 04-01 complete — ready for 04-02
+Status: 04-02 complete — ready for 04-03
 Last activity: 2026-07-24
 
-Progress: [█████████░] 85% (11 of 13 known plans across all phases)
+Progress: [█████████░] 92% (12 of 13 known plans across all phases)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 11
+- Total plans completed: 12
 - Average duration: 26 min
-- Total execution time: 4.80 hours
+- Total execution time: 5.13 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
+| Phase 04 P02 | 20min | 2 tasks | 5 files |
 | Phase 04 P01 | 44min | 3 tasks | 3 files |
 | Phase 03 P03 | 22min | 2 tasks | 17 files |
 | Phase 03 P02 | 40min | 3 tasks | 7 files |
@@ -59,8 +60,8 @@ Progress: [█████████░] 85% (11 of 13 known plans across all 
 | Phase 01 P01 | 20min | 3 tasks | 3 files |
 
 **Recent Trend:**
-- Last 5 plans: 04-01 (44min), 03-03 (22min), 03-02 (40min), 03-01 (38min), 02-03 (22min)
-- Trend: 04-01 ran longer than the recent baseline (highest-risk concept per the roadmap's own ascending-risk sequencing) but its own mandated capture-review step (Task 3) caught two real scene.js correctness bugs (matrixWorld projection ordering, static-camera framing) before they reached Jon — same pattern as 03-03's QA-catches-bugs-cheaply trend, now proven on the WebGL concept too
+- Last 5 plans: 04-02 (20min), 04-01 (44min), 03-03 (22min), 03-02 (40min), 03-01 (38min)
+- Trend: 04-02 came in well under the recent baseline — the data-driven Python generator technique (proven since 02-01) scaled cleanly to 4 pages and 282 copy-diff chunks with zero failures and zero deviations on the first run, unlike 04-01's longer, bug-catching session
 
 *Updated after each plan completion*
 
@@ -99,6 +100,9 @@ Recent decisions affecting current work:
 - [Phase 03-concept-b-full-screen-video]: [03-03]: Discovered the native <video autoplay> HTML attribute plays independent of any JS-side prefers-reduced-motion gating (JS only skips its OWN play() calls) — fixed with an explicit video.pause() + manual toggle-state sync for reduced-motion visitors, run before the play/pause listeners are attached, since pausing an element that never started playing doesn't reliably fire a native 'pause' event
 - [Phase 04-01]: Static-scene (prefers-reduced-motion) renders a frozen real 3D overview rather than the flat .no-webgl backdrop, reserving .no-webgl purely for genuine WebGL2 capability failures
 - [Phase 04-01]: Fixed a matrixWorld-ordering bug (updateLabels projected before the first renderer.render(), collapsing all 6 labels onto one point) found via the static-scene capture, which exposed it because it never gets a second self-correcting frame
+- [04-02]: Footer placed as a `<footer>` sibling of `<main class="below-fold">` (not nested inside it) but given its own `position:relative; z-index:1; background:var(--page)` rule, so it still opaquely occludes the fixed WebGL canvas exactly like the below-fold sections do
+- [04-02]: Sub-page `.subpage` CSS scaffold (page-header/page-hero/os-flows/agent-roster/work-page/insights-page) independently authored rather than reused from concept-b, per the architecture rule that concepts never reach into each other's directories; sub-page stat/chip accents kept neutral (no new flarepop text) to stay conservative against concept-c's own single already-licensed accent (`.hl` in the labs h2)
+- [04-02]: `os.flows[i].stages[3].agents` (every flow's "Outcome" stage) is a real, present, empty array — rendered as a plain loop with zero `<li>` children, no key-existence guard needed (corrects 04-01-SUMMARY's own inherited assumption that the key was absent)
 
 ### Pending Todos
 
@@ -107,12 +111,12 @@ None yet.
 ### Blockers/Concerns
 
 - Phase 4 (Concept C): the 3D interaction metaphor question is now RESOLVED (locked in 04-CONTEXT.md as "the topic field" — scroll-driven camera dolly + labeled procedural objects, not orbit/click-object or a Spline-authored scene) and 04-01 has shipped the foundation against it. No longer a blocker.
-- Phase 4 (Concept C): 04-01's routing map points InterceptOS/Work/Insights labels at `pages/interceptos.html`/`pages/work.html`/`pages/insights.html`, which don't exist until 04-03 ships — expected 404s on those 3 links until then, not a regression.
+- Phase 4 (Concept C): 04-02 has shipped `pages/interceptos.html`/`pages/work.html`/`pages/insights.html` — the 3 previously-expected 404s from 04-01's routing map are now resolved. No open items remain for CONC-01/CONC-02.
 - Phase 3 (Concept B) is fully complete — CONB-01 through CONB-05 all done and verified in 03-03. No open items remain for this phase.
-- Tooling: `gsd-tools state advance-plan`/`update-progress`/`record-metric`/`add-decision`/`record-session` continue to need hand-correction after each run — recurred again on 04-01's update: `advance-plan` reported `{"advanced": false, "reason": "last_plan", "current_plan": 3, "total_plans": 3}` instead of recognizing Phase 4 Plan 1 of 3 (stale carryover from Phase 3's own last-plan state), `update-progress`'s own JSON output computed the correct percent (85) but didn't persist it to the frontmatter (still showed 100), and `record-metric` again appended its new table row directly below the `*Updated after each plan completion*` footer instead of inside the table. All hand-corrected in this update. Recurred on 03-03's and 03-02's updates too; still worth a tooling fix.
+- Tooling: `gsd-tools state advance-plan`/`update-progress`/`record-metric`/`add-decision`/`record-session` continue to need hand-correction after each run — recurred again on 04-01's update: `advance-plan` reported `{"advanced": false, "reason": "last_plan", "current_plan": 3, "total_plans": 3}` instead of recognizing Phase 4 Plan 1 of 3 (stale carryover from Phase 3's own last-plan state), `update-progress`'s own JSON output computed the correct percent (85) but didn't persist it to the frontmatter (still showed 100), and `record-metric` again appended its new table row directly below the `*Updated after each plan completion*` footer instead of inside the table. All hand-corrected in this update. On 04-02's update, `advance-plan`/`update-progress`/`record-metric` all ran correctly for the first time in several plans, but `record-session` overwrote the frontmatter `status` field back to `completed` (Phase 4 is still in_progress with 04-03 remaining) — hand-corrected. Recurred on 03-03's, 03-02's, and 04-01's updates too; still worth a tooling fix.
 
 ## Session Continuity
 
-Last session: 2026-07-24T17:45:57.535Z
-Stopped at: Completed 04-01-PLAN.md (Concept C topic field + scroll dolly + DOM labels)
+Last session: 2026-07-24T17:57:37.364Z
+Stopped at: Completed 04-02-PLAN.md
 Resume file: None

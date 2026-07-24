@@ -85,8 +85,8 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 04-01-PLAN.md — "Topic field" 3D homepage core: WebGL2 probe, 6 toon-stepped procedural objects, scroll-driven CatmullRom dolly, DOM-projected labels, topic index, no-webgl/no-JS fallback layout
-- [ ] 04-02-PLAN.md — Below-fold verbatim sections (problems/labs/convert/footer) + 3 sub-pages (interceptos, consolidated work, new insights) + @view-transition and smooth-scroll routing
+- [x] 04-01-PLAN.md — "Topic field" 3D homepage core: WebGL2 probe, 6 toon-stepped procedural objects, scroll-driven CatmullRom dolly, DOM-projected labels, topic index, no-webgl/no-JS fallback layout (completed 2026-07-24)
+- [x] 04-02-PLAN.md — Below-fold verbatim sections (problems/labs/convert/footer) + 3 sub-pages (interceptos, consolidated work, new insights) + @view-transition and smooth-scroll routing (completed 2026-07-24)
 - [ ] 04-03-PLAN.md — Reduced-motion frozen scene, focus-visible treatment, device-tier degradation + phase-closing QA (copy-diff all, 8-grep suite, link integrity, 18 reviewed captures)
 
 ### Phase 5: Cross-Concept QA & Review Packaging
@@ -110,5 +110,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 (Phases 2, 3, 4 depen
 | 1. Content Foundation & Shared Brand Layer | 4/4 | Complete    | 2026-07-23 |
 | 2. Concept A — Editorial | 3/3 | Complete    | 2026-07-24 |
 | 3. Concept B — Full-Screen Video | 3/3 | Complete    | 2026-07-24 |
-| 4. Concept C — Experimental WebGL/3D | 1/3 | In Progress | -          |
+| 4. Concept C — Experimental WebGL/3D | 2/3 | In Progress|  |
 | 5. Cross-Concept QA & Review Packaging | 0/TBD | Not started | - |
