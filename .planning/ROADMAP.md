@@ -17,7 +17,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 3: Concept B — Full-Screen Video** - Full-bleed ambient video hero with labeled hotspots, progressive reveal, and click-through sub-pages (completed 2026-07-24)
 - [x] **Phase 4: Concept C — Experimental WebGL/3D** - three.js spatial navigation metaphor with an accessible DOM mirror and device-tiered rendering (completed 2026-07-24)
 - [x] **Phase 5: Concept D — Home Variant (light video + module cards)** - Deployed sections revealed via enticing cards + modals over a light video field (completed 2026-07-24)
-- [ ] **Phase 6: Cross-Concept QA & Review Packaging** - Brand/copy verification across all three concepts and a side-by-side review gallery for Jon
+- [x] **Phase 6: Cross-Concept QA & Review Packaging** - Brand/copy verification across all three concepts and a side-by-side review gallery for Jon (completed 2026-07-24)
 
 ## Phase Details
 
@@ -120,7 +120,7 @@ Plans:
 
 Plans:
 - [x] 06-01-PLAN.md — Mechanical cross-concept QA (copy-diff A/B/C 430/340/282 + D substring 71 + script-diff 13, four brand grep suites, token drift, link integrity, camera gate, video budgets) + final four-card Fritz review gallery with real capture thumbnails
-- [ ] 06-02-PLAN.md — Review packaging: REVIEW.md for Jon + REQUIREMENTS closeout (QA-01 marked only on the orchestrator-run Fritz agent gate 06-FRITZ-QA.md committed between the two waves)
+- [x] 06-02-PLAN.md — Review packaging: REVIEW.md for Jon + REQUIREMENTS closeout (QA-01 marked only on the orchestrator-run Fritz agent gate 06-FRITZ-QA.md committed between the two waves) (completed 2026-07-24)
 
 ## Progress
 
@@ -134,4 +134,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 (Phases 2, 3, 4
 | 3. Concept B — Full-Screen Video | 3/3 | Complete    | 2026-07-24 |
 | 4. Concept C — Experimental WebGL/3D | 4/4 | Complete    | 2026-07-24 |
 | 5. Concept D — Home Variant (light video + module cards) | 3/3 | Complete    | 2026-07-24 |
-| 6. Cross-Concept QA & Review Packaging | 1/2 | In Progress|  |
+| 6. Cross-Concept QA & Review Packaging | 2/2 | Complete   | 2026-07-24 |
