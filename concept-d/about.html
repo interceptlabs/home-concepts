@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About | Intercept</title>
+<meta name="description" content="Intercept is a B2B marketing agency for global tech, founded in 2006. 130+ industry awards, an AI-native operating system (InterceptOS), and work for the world&rsquo;s largest technology brands.">
+<link rel="canonical" href="https://interceptgroup.com/about">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About | Intercept">
+<meta property="og:description" content="A B2B marketing agency for global tech, founded in 2006. Powered by curiosity.">
+<meta property="og:url" content="https://interceptgroup.com/about">
+<meta property="og:site_name" content="Intercept">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About | Intercept">
+<meta name="twitter:description" content="A B2B marketing agency for global tech, founded in 2006. Powered by curiosity.">
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "Organization", "name": "Intercept", "alternateName": "Intercept Group", "url": "https://interceptgroup.com", "foundingDate": "2006",
+  "founder": [ { "@type": "Person", "name": "Andrew Au", "sameAs": "https://www.linkedin.com/in/auandrew/" }, { "@type": "Person", "name": "Shaheen Yazdani", "sameAs": "https://www.linkedin.com/in/shaheenyazdani/" } ],
+  "address": { "@type": "PostalAddress", "streetAddress": "251 Consumers Road, 12th Floor", "addressLocality": "Toronto", "addressRegion": "ON", "postalCode": "M2J 4R3", "addressCountry": "CA" },
+  "areaServed": [ "North America", "Europe", "Asia" ], "award": "130+ industry awards since 2019", "sameAs": [ "https://www.linkedin.com/company/interceptagency/" ] }
+</script>
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "ItemList", "itemListElement": [
+  { "@type": "Person", "name": "Andrew Au", "jobTitle": "Co-CEO and Co-Founder", "worksFor": "Intercept", "sameAs": "https://www.linkedin.com/in/auandrew/" },
+  { "@type": "Person", "name": "David Toto", "jobTitle": "Managing Director", "worksFor": "Intercept", "sameAs": "https://www.linkedin.com/in/david-toto-798b7420/" },
+  { "@type": "Person", "name": "Francis Silva", "jobTitle": "Chief Technology Officer", "worksFor": "Intercept", "sameAs": "https://www.linkedin.com/in/francis-silva-pmp/" },
+  { "@type": "Person", "name": "Shaheen Yazdani", "jobTitle": "Co-CEO and Co-Founder", "worksFor": "Intercept", "sameAs": "https://www.linkedin.com/in/shaheenyazdani/" } ] }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600;1,700&family=Inter:wght@400;500;600;700&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* ════════════════════════════════════════════════════════════
+   FRITZ TOKENS · Figma kit kBo4gZ2BvhqHCtqTVkBbYq
+   System per the H1 2026 Trends Brief reference:
+   ONE chromatic text accent (Flarepop) · ink data · semantic bands
+   ════════════════════════════════════════════════════════════ */
+:root{
+  --flarepop-100:#ff00e5; --flarepop-200:#df00be; --flarepop-300:#a8008c; --flarepop-500:#39003a;
+  --halo-100:#ffffff; --halo-200:#f5f7ff; --halo-300:#e6e9f5; --halo-400:#d1d6e6; --halo-500:#b8bed1;
+  --carbon-100:#3a3a4a; --carbon-200:#2c2c3a; --carbon-300:#1f1f2a; --carbon-400:#14141c; --carbon-500:#0a0a0f;
+
+  --bg:var(--halo-100);
+  --surface:var(--halo-200);
+  --surface-hi:var(--halo-300);
+  --fg:var(--carbon-500);
+  --fg-2:var(--carbon-200);
+  --fg-3:var(--carbon-100);
+  --line:rgba(10,10,15,.14);
+  --accent:var(--flarepop-100);
+  --accent-ink:var(--flarepop-300);   /* accent TEXT — AA on white */
+
+  --font-display:'Instrument Sans',system-ui,sans-serif;
+  --font-body:'Inter',system-ui,sans-serif;
+  --font-mono:'Geist Mono',ui-monospace,monospace;
+
+  --sp-4:4px; --sp-8:8px; --sp-12:12px; --sp-16:16px; --sp-24:24px;
+  --sp-32:32px; --sp-40:40px; --sp-48:48px; --sp-80:80px; --sp-120:120px;
+  --r-xs:4px; --r-s:8px; --r-m:12px; --r-l:16px; --r-xl:24px; --r-round:9999px;
+
+  --maxw:1280px;
+  --readw:760px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:clip;max-width:100%;}
+html{scroll-behavior:smooth;}
+svg,img,video{max-width:100%;}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4,h5{font-family:var(--font-display);font-weight:700;line-height:1.3;letter-spacing:-.02em;}
+
+/* Line-break conventions (Fritz type-breaks canon) */
+h1,h2,h3,[data-balance]{text-wrap:pretty;text-wrap:balance;}
+p,li,blockquote,dd{text-wrap:pretty;}
+h1,h2,h3,p,li{overflow-wrap:break-word;word-break:normal;hyphens:manual;}
+.keep{white-space:nowrap;}
+p{max-width:66ch;}
+
+.shell{max-width:var(--maxw);margin:0 auto;padding:0 var(--sp-32);}
+@media(max-width:680px){.shell{padding:0 var(--sp-16);}}
+.skip{position:absolute;left:-999px;}
+.skip:focus{left:12px;top:12px;background:var(--accent);color:var(--carbon-500);padding:var(--sp-8) var(--sp-16);border-radius:var(--r-s);z-index:300;}
+
+/* ─── One text-style system ─── */
+.eyebrow{font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);display:block;}
+.eyebrow--quiet{color:var(--fg-3);}
+.section-h2{font-size:clamp(28px,3.2vw,40px);margin:var(--sp-12) 0 var(--sp-16);max-width:26ch;}
+.small{font-size:14px;line-height:1.5;color:var(--fg-2);}
+.micro{font-family:var(--font-body);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3);}
+
+/* ─── Topbar (static — single-bar rule) ─── */
+.topbar{position:sticky;top:0;z-index:100;background:var(--halo-100);border-bottom:1px solid var(--line);}
+.topbar .row{display:flex;align-items:center;justify-content:space-between;max-width:var(--maxw);margin:0 auto;padding:var(--sp-16) var(--sp-32);}
+@media(max-width:680px){.topbar .row{padding:var(--sp-16);}}
+.nav{display:flex;align-items:center;gap:var(--sp-24);font-size:14px;font-weight:500;color:var(--fg-2);}
+.nav a{padding:var(--sp-12) 0;}
+.nav a:hover{color:var(--accent-ink);}
+.nav .cta-nav{background:var(--accent);color:var(--carbon-500);font-weight:700;padding:var(--sp-12) var(--sp-16);border-radius:var(--r-s);transition:background .3s cubic-bezier(.37,0,.63,1);}
+.nav .cta-nav:hover{background:var(--flarepop-200);}
+@media(max-width:900px){.nav a:not(.cta-nav){display:none;}}
+/* Conventional line breaks in card headings/labels (review fix) */
+.featured-h2,.strip-name,.ep-feature-title,.article-card-title,.cover-thesis{text-wrap:balance;}
+.featured-desc,.cover-figure-note{text-wrap:pretty;}
+.logo{width:130px;aspect-ratio:324.005/76.2147;height:auto;display:block;color:var(--carbon-500);}
+.logo.sm{width:108px;}
+
+/* ─── Bands ─── */
+.band--dark{background:var(--carbon-500);color:var(--halo-100);}
+.band--dark .eyebrow{color:var(--accent);}
+.band--tint{background:var(--halo-200);}
+
+/* ─── Buttons ─── */
+.btn{display:inline-flex;align-items:center;gap:var(--sp-8);font-family:var(--font-body);font-weight:700;font-size:14px;padding:var(--sp-12) var(--sp-24);border-radius:var(--r-s);border:0;cursor:pointer;transition:background .3s cubic-bezier(.37,0,.63,1);text-decoration:none;}
+.btn-primary{background:var(--accent);color:var(--carbon-500);}
+.btn-primary:hover{background:var(--flarepop-200);}
+.btn svg{width:14px;height:14px;color:currentColor;}
+
+/* ─── Neutral chip (pillar/format identity lives in the words) ─── */
+.chip{font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:var(--sp-4) var(--sp-12);border-radius:var(--r-round);background:var(--surface-hi);color:var(--fg-2);white-space:nowrap;}
+.band--dark .chip{background:var(--carbon-300);color:var(--halo-300);}
+
+/* ─── Stat strip (Option E — the picked data-viz language) ─── */
+.strip{display:grid;border-top:1px solid var(--fg);border-bottom:1px solid var(--fg);}
+.strip-3{grid-template-columns:repeat(3,1fr);}
+.strip-cell{padding:var(--sp-16) var(--sp-16) var(--sp-16) 0;border-right:1px solid var(--line);}
+.strip-cell+.strip-cell{padding-left:var(--sp-16);}
+.strip-cell:last-child{border-right:0;}
+.strip-num{font-family:var(--font-mono);font-size:clamp(24px,2.6vw,40px);font-weight:700;letter-spacing:-.03em;line-height:1;color:var(--fg);margin-bottom:var(--sp-8);}
+.strip-name{font-size:13px;color:var(--fg-2);line-height:1.4;}
+.band--dark .strip{border-color:var(--halo-500);}
+.band--dark .strip-cell{border-right-color:var(--carbon-200);}
+.band--dark .strip-num{color:var(--halo-100);}
+.band--dark .strip-name{color:var(--halo-400);}
+@media(max-width:560px){.strip-3{grid-template-columns:1fr;}.strip{border-bottom:0;}.strip-cell{border-right:0;border-bottom:1px solid var(--carbon-200);padding-left:0;}}
+
+/* ═══ HUB HERO · white ═══ */
+.hub-hero{padding:var(--sp-80) 0 var(--sp-80);}
+@media(max-width:680px){.hub-hero{padding:var(--sp-48) 0;}}
+.hub-h1{font-size:clamp(40px,5.4vw,72px);line-height:1.05;max-width:18ch;letter-spacing:-.03em;margin:var(--sp-16) 0 var(--sp-24);}
+.hub-h1 em{font-style:normal;color:var(--accent-ink);}
+.hub-dek{font-size:18px;color:var(--fg-2);line-height:1.5;max-width:60ch;}
+
+/* ═══ FEATURED · dark band (echoes the brief's own dark hero) ═══ */
+.hub-featured{padding:var(--sp-80) 0;}
+.featured-inner{max-width:var(--maxw);margin:0 auto;padding:0 var(--sp-32);}
+@media(max-width:680px){.hub-featured{padding:var(--sp-48) 0;}.featured-inner{padding:0 var(--sp-16);}}
+.featured-label{margin-bottom:var(--sp-32);}
+.featured-tile{display:grid;grid-template-columns:1.15fr 1fr;gap:var(--sp-48);align-items:center;}
+@media(max-width:900px){.featured-tile{grid-template-columns:1fr;gap:var(--sp-32);}}
+.featured-content{display:flex;flex-direction:column;}
+.featured-chips{display:flex;gap:var(--sp-8);margin-bottom:var(--sp-24);flex-wrap:wrap;}
+.featured-eyebrow{font-family:var(--font-body);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--halo-500);margin-bottom:var(--sp-16);display:flex;align-items:center;gap:var(--sp-12);flex-wrap:wrap;}
+.featured-eyebrow b{color:var(--halo-100);font-weight:700;}
+.featured-eyebrow .dot-sep{width:4px;height:4px;border-radius:50%;background:var(--halo-500);}
+.featured-h2{font-family:var(--font-display);font-size:clamp(36px,4.6vw,64px);line-height:1.05;letter-spacing:-.03em;margin-bottom:var(--sp-24);color:var(--halo-100);max-width:16ch;}
+.featured-h2 em{font-style:normal;color:var(--accent);}
+.featured-desc{font-size:16px;color:var(--halo-300);line-height:1.5;margin-bottom:var(--sp-32);max-width:48ch;}
+.featured-stats{margin-bottom:var(--sp-32);max-width:520px;}
+.featured-meta{display:flex;align-items:center;gap:var(--sp-12);margin-bottom:var(--sp-32);font-size:14px;color:var(--halo-400);flex-wrap:wrap;}
+.featured-meta b{color:var(--halo-100);font-weight:600;}
+.featured-meta .sep{opacity:.5;}
+.featured-cta{align-self:flex-start;}
+
+/* Featured cover — dark panel, full keyline, story told typographically */
+.cover{width:100%;max-width:460px;margin:0 auto;padding:var(--sp-40);background:var(--carbon-400);border:1px solid var(--carbon-100);border-radius:var(--r-l);display:flex;flex-direction:column;gap:var(--sp-24);}
+.cover-top{display:flex;align-items:center;gap:var(--sp-12);font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--halo-500);}
+.cover-issue-sep{width:20px;height:1px;background:var(--halo-500);}
+.cover-thesis{font-family:var(--font-display);font-size:clamp(22px,2vw,28px);font-weight:700;line-height:1.3;letter-spacing:-.02em;color:var(--halo-100);}
+.cover-figure{display:flex;align-items:center;gap:var(--sp-24);padding:var(--sp-16) 0;border-top:1px solid var(--carbon-200);border-bottom:1px solid var(--carbon-200);}
+.cover-figure-num{font-family:var(--font-mono);font-size:clamp(56px,5vw,72px);font-weight:700;line-height:1;letter-spacing:-.04em;color:var(--accent);flex-shrink:0;}
+.cover-figure-body{display:flex;flex-direction:column;gap:var(--sp-4);}
+.cover-figure-lbl{font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--halo-100);}
+.cover-figure-note{font-size:13px;line-height:1.5;color:var(--halo-400);}
+.cover-marks{display:flex;align-items:flex-end;gap:var(--sp-8);height:48px;}
+.cover-mark{flex:1;height:44px;background:var(--carbon-100);}
+.cover-mark.is-outlier{background:var(--accent);height:26px;}
+.cover-footer{font-family:var(--font-mono);font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--halo-500);}
+
+/* ═══ PODCAST · white ═══ */
+.hub-podcast{padding:var(--sp-80) 0;}
+.podcast-header{max-width:var(--readw);margin:0 0 var(--sp-40);}
+.podcast-h2{font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1.3;letter-spacing:-.025em;color:var(--fg);margin:var(--sp-12) 0 var(--sp-16);max-width:26ch;}
+.podcast-desc{font-size:16px;line-height:1.5;color:var(--fg-2);max-width:60ch;}
+
+.podcast-trailer{position:relative;max-width:960px;margin:0 auto var(--sp-16);border-radius:var(--r-l);overflow:hidden;background:var(--carbon-500);aspect-ratio:16/9;border:1px solid var(--line);cursor:pointer;isolation:isolate;}
+.podcast-trailer video{width:100%;height:100%;object-fit:cover;display:block;}
+.podcast-trailer:not(.is-playing) video{display:none;}
+.podcast-trailer .trailer-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:url('assets/podcast/chatb2b-trailer-poster.jpg') center/cover no-repeat var(--carbon-500);border:none;padding:0;margin:0;cursor:pointer;}
+.podcast-trailer .trailer-play-glyph{position:relative;z-index:1;width:76px;height:76px;border-radius:var(--r-round);background:var(--accent);color:var(--carbon-500);display:flex;align-items:center;justify-content:center;transition:background .3s cubic-bezier(.37,0,.63,1);}
+.podcast-trailer .trailer-play-glyph svg{width:28px;height:28px;margin-left:3px;}
+.podcast-trailer:hover .trailer-play-glyph{background:var(--flarepop-200);}
+.podcast-trailer.is-playing .trailer-play{display:none;}
+.podcast-under-trailer{max-width:960px;margin:0 auto var(--sp-80);display:flex;align-items:center;justify-content:space-between;gap:var(--sp-16);flex-wrap:wrap;}
+.podcast-under-note{font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--fg-3);}
+.podcast-spotify{display:inline-flex;align-items:center;gap:var(--sp-8);padding:var(--sp-12) var(--sp-16);border:1.5px solid var(--line);border-radius:var(--r-round);color:var(--fg);font-family:var(--font-body);font-weight:600;font-size:13px;background:transparent;transition:border-color .3s cubic-bezier(.37,0,.63,1), color .3s cubic-bezier(.37,0,.63,1);}
+.podcast-spotify:hover{border-color:var(--accent-ink);color:var(--accent-ink);}
+.podcast-spotify svg{width:14px;height:14px;}
+
+.episodes-featured-header{margin:0 0 var(--sp-24);}
+.episodes-featured-kicker{font-family:var(--font-display);font-size:clamp(22px,2vw,28px);font-weight:700;line-height:1.3;letter-spacing:-.02em;color:var(--fg);margin-bottom:var(--sp-4);}
+.episodes-featured-note{font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--fg-3);}
+.episodes-featured-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-24);margin-bottom:var(--sp-48);}
+@media(max-width:900px){.episodes-featured-grid{grid-template-columns:1fr;}}
+.ep-feature{display:flex;flex-direction:column;gap:var(--sp-12);padding:var(--sp-24);background:var(--surface);border:1px solid var(--line);border-radius:var(--r-l);color:var(--fg);transition:border-color .3s cubic-bezier(.37,0,.63,1);}
+.ep-feature:hover{border-color:var(--accent-ink);}
+.ep-feature .chip{align-self:flex-start;}
+.ep-feature-title{font-family:var(--font-display);font-size:20px;font-weight:700;line-height:1.3;letter-spacing:-.015em;color:var(--fg);}
+.ep-feature-desc{font-size:14px;line-height:1.5;color:var(--fg-2);}
+.ep-feature-foot{margin-top:auto;padding-top:var(--sp-12);border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:var(--sp-12);}
+.ep-feature-meta{font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--fg-3);display:flex;align-items:center;gap:var(--sp-8);flex-wrap:wrap;}
+.ep-feature-meta b{color:var(--fg-2);font-weight:700;}
+.ep-feature-meta .sep{opacity:.5;}
+.ep-feature-affordance{width:32px;height:32px;border-radius:var(--r-round);background:var(--accent);color:var(--carbon-500);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ep-feature-affordance svg{width:12px;height:12px;margin-left:2px;}
+
+.episodes-drawer-cta{margin:0;}
+.drawer-trigger{width:100%;display:flex;align-items:center;gap:var(--sp-24);padding:var(--sp-24) var(--sp-32);background:var(--surface);border:1px solid var(--line);border-radius:var(--r-l);color:var(--fg);cursor:pointer;text-align:left;transition:border-color .3s cubic-bezier(.37,0,.63,1);}
+.drawer-trigger:hover{border-color:var(--accent-ink);}
+.drawer-trigger-num{font-family:var(--font-mono);font-size:clamp(40px,4vw,56px);font-weight:700;line-height:1;letter-spacing:-.03em;color:var(--fg);flex-shrink:0;}
+.drawer-trigger-body{display:flex;flex-direction:column;gap:var(--sp-4);flex:1;}
+.drawer-trigger-title{font-family:var(--font-display);font-size:clamp(20px,1.6vw,24px);font-weight:700;line-height:1.3;letter-spacing:-.02em;color:var(--fg);}
+.drawer-trigger-desc{font-size:14px;color:var(--fg-2);}
+.drawer-trigger-arrow{width:40px;height:40px;border-radius:var(--r-round);background:var(--accent);color:var(--carbon-500);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.drawer-trigger-arrow svg{width:16px;height:16px;}
+
+/* ═══ DIRECTORY · tint band ═══ */
+.hub-directory{padding:var(--sp-80) 0 var(--sp-120);scroll-margin-top:88px;}
+.directory-header{margin-bottom:var(--sp-32);}
+.directory-title{font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1.3;letter-spacing:-.025em;color:var(--fg);margin:var(--sp-12) 0 var(--sp-16);max-width:20ch;}
+.directory-title em{font-style:normal;color:var(--accent-ink);}
+.directory-lead{font-size:16px;line-height:1.5;color:var(--fg-2);max-width:60ch;}
+
+.filter-bar{display:flex;align-items:center;gap:var(--sp-16);margin-bottom:var(--sp-40);flex-wrap:wrap;}
+.filter-label{font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3);}
+.filter-chips{display:flex;gap:var(--sp-8);flex-wrap:wrap;flex:1;}
+.filter-chip{font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--fg-2);padding:var(--sp-12) var(--sp-16);border-radius:var(--r-round);background:transparent;border:1px solid var(--line);cursor:pointer;transition:background .3s cubic-bezier(.37,0,.63,1), color .3s cubic-bezier(.37,0,.63,1), border-color .3s cubic-bezier(.37,0,.63,1);}
+.filter-chip:hover{color:var(--fg);border-color:var(--fg-3);}
+.filter-chip.is-active{color:var(--halo-100);background:var(--carbon-500);border-color:var(--carbon-500);font-weight:700;}
+.filter-count{margin-left:auto;font-family:var(--font-body);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3);}
+
+/* Article cards — one card language (lead card spans the row) */
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-24);}
+@media(max-width:900px){.cards-grid{grid-template-columns:1fr;}}
+.article-card{display:flex;flex-direction:column;gap:var(--sp-12);padding:var(--sp-24);background:var(--halo-100);border:1px solid var(--line);border-radius:var(--r-l);color:var(--fg);transition:border-color .3s cubic-bezier(.37,0,.63,1);}
+.article-card:hover{border-color:var(--accent-ink);}
+.article-card.is-hidden{display:none;}
+.article-card-top{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-12);}
+.article-card-icon{width:36px;height:36px;border:1px solid var(--line);border-radius:var(--r-s);background:var(--surface);display:flex;align-items:center;justify-content:center;color:var(--fg-2);flex-shrink:0;transition:color .3s cubic-bezier(.37,0,.63,1), border-color .3s cubic-bezier(.37,0,.63,1);}
+.article-card-icon svg{width:18px;height:18px;}
+.article-card:hover .article-card-icon{color:var(--accent-ink);border-color:var(--accent-ink);}
+.article-card--lead .article-card-icon{width:44px;height:44px;}
+.article-card--lead .article-card-icon svg{width:20px;height:20px;}
+.article-card .chip{align-self:auto;}
+.article-card-title{font-family:var(--font-display);font-size:18px;font-weight:700;line-height:1.3;letter-spacing:-.015em;color:var(--fg);}
+.article-card-desc{font-size:14px;line-height:1.5;color:var(--fg-2);}
+.article-card-foot{margin-top:auto;padding-top:var(--sp-12);border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:var(--sp-12);}
+.article-card-meta{font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--fg-3);}
+.article-card-meta b{color:var(--fg-2);font-weight:700;}
+.article-card-meta .sep{opacity:.5;margin:0 var(--sp-4);}
+.article-card-arrow{width:18px;height:18px;color:var(--fg-3);flex-shrink:0;transition:color .3s cubic-bezier(.37,0,.63,1);}
+.article-card:hover .article-card-arrow{color:var(--accent-ink);}
+.article-card--lead{grid-column:1 / -1;padding:var(--sp-32);}
+.article-card--lead .article-card-title{font-size:clamp(24px,2.6vw,32px);max-width:24ch;}
+.article-card--lead .article-card-desc{font-size:16px;max-width:60ch;}
+@media(max-width:900px){.article-card--lead{grid-column:auto;}}
+
+.grid-empty{padding:var(--sp-48) var(--sp-24);text-align:center;grid-column:1/-1;color:var(--fg-3);font-size:15px;border:1px dashed var(--line);border-radius:var(--r-l);}
+.grid-empty b{color:var(--fg);font-weight:600;}
+
+/* ═══ EPISODE DRAWER · right slide-out, crisp keylines ═══ */
+.drawer-backdrop{position:fixed;inset:0;background:rgba(10,10,15,.5);z-index:998;opacity:0;transition:opacity .3s cubic-bezier(.37,0,.63,1);}
+.drawer-backdrop.is-open{opacity:1;}
+.drawer-backdrop[hidden]{display:none;}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(560px,92vw);z-index:999;background:var(--halo-100);border-left:1px solid var(--line);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .6s cubic-bezier(.37,0,.63,1);overflow:hidden;}
+.drawer.is-open{transform:translateX(0);}
+.drawer[hidden]{display:none;}
+.drawer-header{padding:var(--sp-24) var(--sp-32) var(--sp-16);border-bottom:1px solid var(--line);display:flex;align-items:flex-start;justify-content:space-between;gap:var(--sp-16);flex-shrink:0;background:var(--halo-100);}
+.drawer-title{font-family:var(--font-display);font-size:clamp(22px,2.2vw,28px);font-weight:700;line-height:1.3;letter-spacing:-.02em;color:var(--fg);margin:var(--sp-8) 0;}
+.drawer-count-label{font-size:13px;color:var(--fg-2);}
+.drawer-close{width:40px;height:40px;border-radius:var(--r-round);background:transparent;border:1px solid var(--line);color:var(--fg);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .3s cubic-bezier(.37,0,.63,1), color .3s cubic-bezier(.37,0,.63,1);flex-shrink:0;}
+.drawer-close:hover{border-color:var(--accent-ink);color:var(--accent-ink);}
+.drawer-filter{padding:var(--sp-16) var(--sp-32);border-bottom:1px solid var(--line);flex-shrink:0;display:flex;flex-wrap:wrap;gap:var(--sp-8);background:var(--halo-100);}
+.drawer-filter-chip{padding:var(--sp-12) var(--sp-16);border-radius:var(--r-round);border:1px solid var(--line);background:transparent;color:var(--fg-2);font-family:var(--font-body);font-size:13px;font-weight:500;cursor:pointer;transition:border-color .3s cubic-bezier(.37,0,.63,1), background .3s cubic-bezier(.37,0,.63,1), color .3s cubic-bezier(.37,0,.63,1);}
+.drawer-filter-chip:hover{border-color:var(--fg-3);color:var(--fg);}
+.drawer-filter-chip.is-active{background:var(--carbon-500);color:var(--halo-100);border-color:var(--carbon-500);font-weight:700;}
+.drawer-list{overflow-y:auto;flex:1;background:var(--halo-100);scrollbar-width:thin;scrollbar-color:var(--line) transparent;}
+.drawer-row{display:grid;grid-template-columns:auto 1fr auto;gap:var(--sp-16);align-items:center;padding:var(--sp-16) var(--sp-32);border-bottom:1px solid var(--line);color:var(--fg);transition:background .3s cubic-bezier(.37,0,.63,1);}
+.drawer-row:last-child{border-bottom:none;}
+.drawer-row:hover{background:var(--surface);}
+.drawer-row.is-hidden{display:none;}
+.drawer-row-chip{align-self:start;margin-top:2px;}
+.drawer-row-body{display:flex;flex-direction:column;gap:var(--sp-4);min-width:0;}
+.drawer-row-title{font-family:var(--font-display);font-size:16px;font-weight:600;line-height:1.3;letter-spacing:-.01em;color:var(--fg);}
+.drawer-row-meta{font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--fg-3);}
+.drawer-row-meta b{color:var(--fg-2);font-weight:700;}
+.drawer-row-meta .sep{opacity:.5;margin:0 var(--sp-4);}
+.drawer-row-icon{width:18px;height:18px;color:var(--fg-3);transition:color .3s cubic-bezier(.37,0,.63,1);}
+.drawer-row:hover .drawer-row-icon{color:var(--accent-ink);}
+body.drawer-open{overflow:hidden;}
+
+/* ═══ FOOTER · dark ═══ */
+footer{padding:var(--sp-80) 0 var(--sp-32);background:var(--carbon-500);color:var(--halo-400);}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:var(--sp-48);margin-bottom:var(--sp-48);}
+@media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.foot-grid{grid-template-columns:1fr;}}
+.foot-brand{display:flex;align-items:flex-start;}
+.foot-brand .logo{color:var(--halo-100);}
+.foot-col h4{font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--halo-500);margin-bottom:var(--sp-16);letter-spacing:.02em;}
+.foot-col a{display:block;font-size:14px;color:var(--halo-400);padding:var(--sp-8) 0;margin-bottom:var(--sp-4);transition:color .3s cubic-bezier(.37,0,.63,1);}
+.foot-col a:hover{color:var(--halo-100);}
+.foot-bot{padding-top:var(--sp-32);border-top:1px solid var(--carbon-200);}
+.curio{font-family:var(--font-body);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--halo-500);}
+
+@media(prefers-reduced-motion:reduce){
+  .drawer,.drawer-backdrop{transition:none;}
+  html{scroll-behavior:auto;}
+}
+
+/* drawer platform + per-episode links (real episode data, 2026-07-17) */
+.drawer-platforms{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
+.drawer-platforms a{font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--fg-2);border:1px solid var(--line);border-radius:9999px;padding:6px 14px;text-decoration:none;transition:color .2s,border-color .2s;}
+.drawer-platforms a:hover{color:var(--accent-ink);border-color:var(--accent-ink);}
+.drawer-row-links{display:flex;gap:12px;align-items:center;}
+.drawer-row-links a{font-family:var(--font-body);font-size:12.5px;font-weight:600;color:var(--fg-3);text-decoration:none;white-space:nowrap;transition:color .2s;}
+.drawer-row-links a:hover{color:var(--accent-ink);}
+
+/* topbar aligned to homepage geometry (logo x-position identical site-wide, Jon 2026-07-17) */
+.topbar .row{max-width:1200px;padding:15px 28px;}
+
+.pi{width:15px;height:15px;flex-shrink:0;vertical-align:-3px;margin-right:7px;display:inline-block;}
+.podcast-spotify{margin-right:10px;}
+.drawer-row-links a{display:inline-flex;align-items:center;}
+.drawer-row-links .pi{margin-right:5px;}
+.foot-col h4{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#b8bed1;}
+.foot-sub{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#b8bed1;margin-top:14px;display:block;}
+a.foot-sub:hover{color:var(--halo-100);}
+.drawer-page-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:var(--font-display);font-weight:700;font-size:14px;color:var(--accent-ink);text-decoration:none;transition:opacity .2s;}
+.drawer-page-link:hover{opacity:.72;}
+.ep-feature{display:flex;flex-direction:column;height:100%;}
+.ep-feature-meta{margin-top:var(--sp-16);}
+.ep-feature-links{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-top:auto;padding-top:var(--sp-16);}
+.ep-feature-links a{font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--fg-2);text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:color .2s;}
+.ep-feature-links a:hover{color:var(--accent-ink);}
+.ep-feature-links .pi{width:16px;height:16px;}
+
+/* ═══ About page — built on the site shell (Fritz canon) ═══ */
+.about-hero{padding:clamp(72px,10vw,128px) 0 clamp(44px,7vw,84px);}
+.hero-h1{font-family:var(--font-display);font-weight:700;font-size:clamp(46px,6.6vw,86px);line-height:1.01;letter-spacing:-.03em;margin:var(--sp-16) 0 var(--sp-24);max-width:15ch;text-wrap:balance;}
+.hero-dek{font-size:20px;line-height:1.6;color:var(--fg-2);max-width:60ch;text-wrap:pretty;}
+.hero-ctas{display:flex;gap:var(--sp-16);flex-wrap:wrap;margin-top:var(--sp-32);}
+.btn-ghost{border:1.5px solid var(--line);color:var(--fg);background:none;font-weight:600;}
+.btn-ghost:hover{border-color:var(--accent-ink);color:var(--accent-ink);}
+.about-sec{padding:clamp(56px,8vw,104px) 0;}
+.sec-h2{font-family:var(--font-display);font-weight:700;font-size:clamp(28px,3.6vw,44px);line-height:1.08;letter-spacing:-.02em;margin:var(--sp-12) 0 var(--sp-24);max-width:20ch;text-wrap:balance;}
+.sec-body{font-size:18px;line-height:1.65;color:var(--fg-2);max-width:64ch;text-wrap:pretty;}
+.sec-body + .sec-body{margin-top:var(--sp-16);}
+.band--dark .eyebrow{color:var(--flarepop-100);}
+.band--dark .sec-h2{color:var(--halo-100);}
+.band--dark .sec-body{color:var(--halo-400);}
+/* leadership */
+.lead-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-24);margin-top:var(--sp-40);}
+.lead-card{border:1px solid var(--line);border-radius:var(--r-l);padding:var(--sp-32);background:var(--halo-100);display:flex;flex-direction:column;}
+.lead-name{font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:-.01em;color:var(--fg);}
+.lead-title{font-family:var(--font-body);font-weight:600;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink);margin-top:var(--sp-4);}
+.lead-bio{font-size:15px;line-height:1.6;color:var(--fg-2);margin-top:var(--sp-16);}
+/* LinkedIn = boxed button + logo glyph, consistent with the insights-article share-out */
+.lead-link{margin-top:var(--sp-16);align-self:flex-start;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--line);border-radius:var(--r-s);font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg);text-decoration:none;transition:border-color .2s,color .2s;}
+.lead-link:hover{border-color:var(--accent-ink);color:var(--accent-ink);}
+.lead-link svg{width:14px;height:14px;flex-shrink:0;color:currentColor;}
+.lead-close{margin-top:var(--sp-32);font-size:18px;line-height:1.6;color:var(--fg-2);max-width:64ch;}
+/* values */
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-32);margin-top:var(--sp-40);}
+.value-h{font-family:var(--font-display);font-weight:700;font-size:19px;letter-spacing:-.01em;color:var(--fg);margin-bottom:var(--sp-8);}
+.value-p{font-size:15px;line-height:1.6;color:var(--fg-2);}
+/* how-we-work three parts (dark band) */
+.parts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-32);margin-top:var(--sp-32);}
+.part-h{font-family:var(--font-display);font-weight:700;font-size:19px;letter-spacing:-.01em;color:var(--halo-100);margin-bottom:var(--sp-8);}
+.part-p{font-size:15px;line-height:1.6;color:var(--halo-400);}
+.parts-close{margin-top:var(--sp-32);font-size:18px;line-height:1.6;color:var(--halo-300);max-width:64ch;}
+@media(max-width:860px){.parts-grid{grid-template-columns:1fr;gap:var(--sp-24);}}
+/* stat strip */
+.stat-strip{margin-top:var(--sp-40);}
+.strip-4{grid-template-columns:repeat(4,1fr);}
+.strip-cell:last-child{border-right:0;}
+.band--dark .strip{border-color:rgba(255,255,255,.22);}
+.band--dark .strip-cell{border-color:rgba(255,255,255,.15);}
+.band--dark .strip-num{color:var(--halo-100);}
+.band--dark .strip-name{color:var(--halo-400);}
+/* By-the-numbers — match the home page's stat treatment: big display numerals in Flarepop, mono uppercase labels */
+.stat-strip .strip-num{font-family:var(--font-display);font-size:clamp(40px,4.4vw,60px);}
+.band--dark .stat-strip .strip-num{color:var(--flarepop-100);}
+.stat-strip .strip-name{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;}
+/* faq */
+.faq{margin-top:var(--sp-40);max-width:860px;border-top:1px solid var(--line);}
+.faq-item{border-bottom:1px solid var(--line);}
+.faq-item summary{list-style:none;cursor:pointer;padding:var(--sp-24) 0;display:flex;justify-content:space-between;align-items:center;gap:var(--sp-24);font-family:var(--font-display);font-weight:600;font-size:19px;letter-spacing:-.01em;color:var(--fg);}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{content:"+";font-family:var(--font-body);font-weight:400;font-size:28px;line-height:1;color:var(--accent-ink);flex:none;}
+.faq-item[open] summary::after{content:"\2013";}
+.faq-a{padding:0 0 var(--sp-24);font-size:16px;line-height:1.65;color:var(--fg-2);max-width:70ch;}
+/* cta band */
+.cta-band{text-align:center;}
+.cta-band .sec-h2{max-width:none;margin-left:auto;margin-right:auto;}
+.cta-band .sec-body{margin-left:auto;margin-right:auto;}
+.cta-band .hero-ctas{justify-content:center;}
+@media(max-width:860px){.lead-grid{grid-template-columns:1fr;}.values-grid{grid-template-columns:1fr;}.strip-4{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:520px){.strip-4{grid-template-columns:1fr;}.strip-cell{border-right:0;border-bottom:1px solid var(--line);}}
+/* ═══ Ambient section grounds — minimal cool washes, never pure white (Jon 2026-07-22) ═══ */
+/* Light sections + hero were #fff; tint sections were a barely-there #f5f7ff. Give each a soft */
+/* atmospheric bloom in the halo-blue family so the page reads gently coloured, still spare.     */
+/* washes use the halo cool-neutral ladder (brand tokens) — light sections settle on halo-300, tint on halo-400 */
+body{background:var(--halo-300);}
+.topbar{background:var(--halo-200);}
+.about-hero,.about-sec{background:radial-gradient(130% 110% at 15% -10%,var(--halo-200) 0%,var(--halo-300) 100%);}
+.about-sec.band--tint{background:radial-gradient(130% 110% at 85% -10%,var(--halo-300) 0%,var(--halo-400) 100%);}
+.about-sec.band--dark{background:var(--carbon-500);}  /* protect dark bands — equal specificity to .about-sec, declared later */
+
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="icon-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
+
+  <symbol id="intercept-lockup" viewBox="0 0 324.005 76.2147">
+    <path d="M297.818 26.7875l4.836-5.6776h17.566v5.6776h-22.402z" fill="#8846C9" transform="translate(0,0.22)"/>
+    <path d="M272.002 8.52534h-6.859v4.31886h6.859v-4.31886z" fill="#8846C9" transform="translate(0,0.22)"/>
+    <path d="M324.005 29.0518h-8.104v6.2437h8.104v-6.2437z" fill="#1DABC1" transform="translate(0,0.22)"/>
+    <path d="M313.195 29.2138v34.6445h-53.918l29.447-34.6445h24.471z m0-2.4268h-22.408l14.339-16.87008h8.069v16.87008z m0-19.29684h-6.006l6.006-7.06542v7.06542z" fill="#FF00E5" transform="translate(0,0.22)"/>
+    <path d="M303.01 32.5619h-3.947v2.8307h3.947v-2.8307z" fill="#5154C4" transform="translate(0,0.22)"/>
+    <path d="M313.2 26.7875h-15.382l4.836-5.6776h10.546v5.6776z" fill="#FF44F9" transform="translate(0,0.22)"/>
+    <path d="M307.183 7.49016l3.979-4.67468v4.67468h-3.979z" fill="#FFA9F8" transform="translate(0,0.22)"/>
+    <path d="M299.063 32.5619h3.947v2.8307h-3.947v-2.8307z" fill="#FF52F9" transform="translate(0,0.22)"/>
+    <path d="M4.85695 54.8039v-43.5892h9.26825v43.5892h-9.26825z m13.47545 0v-30.8757h8.847v7.2649h0.1806v23.6108h-9.0276z m21.3652 0v-19.1308c0-1.6952-0.4413-2.9665-1.324-3.8141-0.8426-0.8475-2.0864-1.2713-3.7314-1.2713-1.4043 0-2.6681 0.3229-3.7916 0.9686-1.0833 0.6458-1.9459 1.5337-2.5879 2.6638-0.6018 1.1301-0.9027 2.462-0.9027 3.9957l-0.7824-7.4465c1.0031-2.2602 2.4675-4.0562 4.3934-5.3881 1.966-1.3723 4.3733-2.0584 7.222-2.0584 3.4104 0 6.0184 0.9687 7.8239 2.906 1.8055 1.8969 2.7083 4.4598 2.7083 7.6886v20.8865h-9.0276z m26.761 0.6659c-3.932 0-6.8609-0.9484-8.7868-2.8454-1.8857-1.9373-2.8286-4.8634-2.8286-8.7783v-26.8195l9.0275-3.3903v30.5125c0 1.3722 0.3812 2.4014 1.1435 3.0875 0.7624 0.6861 1.946 1.0292 3.5509 1.0292 0.6018 0 1.1635-0.0605 1.6851-0.1816 0.5216-0.1211 1.0432-0.2624 1.5648-0.4238v6.9016c-0.5216 0.2825-1.2639 0.5045-2.2268 0.666-0.9228 0.1614-1.966 0.2421-3.1296 0.2421z m-17.3328-24.64v-6.9016h22.6892v6.9016h-22.6892z m39.0784 24.5795c-3.4104 0-6.3795-0.6659-8.9072-1.9978-2.5277-1.3723-4.4937-3.2692-5.898-5.6909-1.3641-2.4216-2.0462-5.2064-2.0462-8.3545 0-3.1885 0.6821-5.9734 2.0462-8.3546 1.4043-2.4217 3.3503-4.2984 5.8378-5.6303 2.4876-1.3723 5.3764-2.0584 8.6665-2.0584 3.1697 0 5.918 0.6458 8.2451 1.9373 2.3271 1.2915 4.1326 3.0876 5.4166 5.3881 1.284 2.3006 1.926 5.0047 1.926 8.1124 0 0.6458-0.02 1.2512-0.06 1.8163-0.04 0.5246-0.101 1.0291-0.181 1.5135h-26.6011v-5.9935h19.319l-1.5648 1.0897c0-2.5023-0.6018-4.3387-1.8055-5.5092-1.1636-1.2108-2.7684-1.8162-4.8147-1.8162-2.3672 0-4.2128 0.8072-5.5369 2.4216-1.2839 1.6144-1.9259 4.036-1.9259 7.2649 0 3.1481 0.642 5.489 1.9259 7.0227 1.3241 1.5337 3.2901 2.3005 5.898 2.3005 1.4444 0 2.6882-0.2421 3.7314-0.7265 1.0432-0.4843 1.8256-1.2713 2.3472-2.361h8.4854c-1.003 2.9866-2.7279 5.3477-5.1753 7.0832-2.4074 1.6951-5.5169 2.5427-9.3285 2.5427z m17.7068-0.6054v-30.8757h8.847v7.2649h0.181v23.6108h-9.028z m9.028-16.1038l-0.783-7.3254c0.723-2.6234 1.906-4.6213 3.551-5.9935 1.645-1.3723 3.692-2.0584 6.139-2.0584 0.762 0 1.324 0.0807 1.685 0.2422v8.4756c-0.2-0.0807-0.481-0.121-0.842-0.121-0.361-0.0404-0.803-0.0606-1.324-0.0606-2.889 0-5.016 0.5247-6.38 1.5741-1.364 1.009-2.046 2.7647-2.046 5.267z m25.977 16.7092c-3.21 0-6.039-0.6861-8.486-2.0584-2.448-1.3722-4.374-3.2692-5.778-5.6908-1.364-2.4216-2.046-5.1863-2.046-8.294 0-3.1078 0.682-5.8725 2.046-8.2941 1.404-2.4216 3.33-4.3186 5.778-5.6908 2.447-1.3723 5.276-2.0584 8.486-2.0584 2.688 0 5.095 0.5045 7.222 1.5135 2.166 0.9687 3.932 2.3207 5.296 4.0562 1.404 1.7355 2.307 3.7737 2.708 6.1146h-8.727c-0.441-1.4933-1.243-2.6234-2.407-3.3902-1.123-0.7669-2.447-1.1503-3.972-1.1503-1.444 0-2.708 0.3632-3.792 1.0897-1.043 0.7265-1.845 1.7557-2.407 3.0876-0.562 1.3319-0.842 2.9059-0.842 4.7222 0 1.8162 0.28 3.3902 0.842 4.7221 0.562 1.3319 1.364 2.3611 2.407 3.0876 1.084 0.7265 2.348 1.0897 3.792 1.0897 1.525 0 2.849-0.3834 3.972-1.1503 1.164-0.7668 1.966-1.8969 2.407-3.3902h8.727c-0.401 2.3409-1.304 4.3791-2.708 6.1146-1.364 1.7355-3.13 3.1077-5.296 4.1167-2.127 0.9687-4.534 1.453-7.222 1.453z m31.752 0c-3.41 0-6.379-0.6659-8.907-1.9978-2.528-1.3723-4.494-3.2692-5.898-5.6909-1.364-2.4216-2.046-5.2064-2.046-8.3545 0-3.1885 0.682-5.9734 2.046-8.3546 1.404-2.4217 3.35-4.2984 5.838-5.6303 2.487-1.3723 5.376-2.0584 8.666-2.0584 3.17 0 5.918 0.6458 8.245 1.9373 2.327 1.2915 4.133 3.0876 5.417 5.3881 1.284 2.3006 1.926 5.0047 1.926 8.1124 0 0.6458-0.02 1.2512-0.06 1.8163-0.041 0.5246-0.101 1.0291-0.181 1.5135h-26.601v-5.9935h19.319l-1.565 1.0897c0-2.5023-0.602-4.3387-1.805-5.5092-1.164-1.2108-2.769-1.8162-4.815-1.8162-2.367 0-4.213 0.8072-5.537 2.4216-1.284 1.6144-1.926 4.036-1.926 7.2649 0 3.1481 0.642 5.489 1.926 7.0227 1.324 1.5337 3.29 2.3005 5.898 2.3005 1.444 0 2.688-0.2421 3.731-0.7265 1.044-0.4843 1.826-1.2713 2.348-2.361h8.485c-1.003 2.9866-2.728 5.3477-5.175 7.0832-2.408 1.6951-5.517 2.5427-9.329 2.5427z m36.424 0c-2.929 0-5.276-0.6861-7.041-2.0584-1.765-1.3722-2.809-3.249-3.13-5.6303l0.482-0.0605v19.5546h-9.028v-43.2865h8.847v6.8411l-0.541-0.1211c0.441-2.2602 1.645-4.036 3.611-5.3276 1.966-1.3318 4.393-1.9978 7.282-1.9978 2.768 0 5.156 0.666 7.162 1.9978 2.046 1.2916 3.611 3.128 4.694 5.5092 1.123 2.3813 1.685 5.1863 1.685 8.4152 0 3.2692-0.582 6.1146-1.745 8.5362-1.164 2.4216-2.789 4.2984-4.875 5.6303-2.086 1.3319-4.554 1.9978-7.403 1.9978z m-2.527-7.2649c2.126 0 3.851-0.7668 5.175-2.3005 1.324-1.5337 1.987-3.7132 1.987-6.5384 0-2.8252-0.683-4.9845-2.047-6.4778-1.324-1.4934-3.069-2.24-5.236-2.24-2.086 0-3.811 0.7668-5.175 2.3005-1.325 1.4933-1.987 3.6526-1.987 6.4779 0 2.8252 0.662 5.0046 1.987 6.5383 1.364 1.4934 3.129 2.24 5.296 2.24z m32.936 7.3254c-3.932 0-6.861-0.9484-8.787-2.8454-1.886-1.9373-2.829-4.8634-2.829-8.7783v-26.8195l9.028-3.3903v30.5125c0 1.3722 0.381 2.4014 1.143 3.0875 0.763 0.6861 1.946 1.0292 3.551 1.0292 0.602 0 1.164-0.0605 1.685-0.1816 0.522-0.1211 1.043-0.2624 1.565-0.4238v6.9016c-0.522 0.2825-1.264 0.5045-2.227 0.666-0.923 0.1614-1.966 0.2421-3.129 0.2421z m-17.333-24.64v-6.9016h22.689v6.9016h-22.689z" fill="currentColor" transform="translate(0,-1)"/>
+  </symbol>
+  <symbol id="icon-spotify" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.3 14.5a.7.7 0 0 1-.96.24c-2.63-1.6-5.94-1.97-9.85-1.08a.7.7 0 1 1-.31-1.37c4.27-.97 7.94-.55 10.88 1.25.33.2.44.63.24.96Zm1.23-2.85a.87.87 0 0 1-1.2.3c-3.01-1.85-7.6-2.38-11.16-1.3a.87.87 0 1 1-.5-1.67c4.07-1.23 9.11-.63 12.56 1.48.41.25.54.79.3 1.19Zm.1-2.97C14.1 8.53 8.55 8.33 5.35 9.3a1.04 1.04 0 1 1-.6-2c3.67-1.11 9.78-.9 13.73 1.45a1.04 1.04 0 0 1-1.06 1.8Z"/></symbol>
+<symbol id="icon-apple-podcasts" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.5 19.36c-.14-.6-.27-1.52-.11-2.17-1.9-1.13-3.14-3.2-3.14-5.44A6.75 6.75 0 1 1 18.75 13.75c0 2.24-1.24 4.31-3.14 5.44.16.65.03 1.57-.11 2.17A10 10 0 0 0 12 2Zm0 5.5a4.25 4.25 0 0 0-2.12 7.93c.1-.5.28-.98.55-1.34a2.75 2.75 0 1 1 3.14 0c.27.36.45.84.55 1.34A4.25 4.25 0 0 0 12 7.5Zm0 4a1.35 1.35 0 1 0 0-2.7 1.35 1.35 0 0 0 0 2.7Zm0 1.6c1.1 0 1.85.62 1.85 1.53 0 1.1-.4 3.5-.62 4.55-.15.72-.6 1.02-1.23 1.02s-1.08-.3-1.23-1.02c-.22-1.05-.62-3.45-.62-4.55 0-.91.75-1.53 1.85-1.53Z"/></symbol>
+<symbol id="icon-youtube" viewBox="0 0 24 24"><path fill="currentColor" d="M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.28 5 12 5 12 5s-6.28 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2 26.1 26.1 0 0 0 2 12c0 1.62.13 3.23.4 4.8a2.5 2.5 0 0 0 1.76 1.77C5.72 19 12 19 12 19s6.28 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77c.27-1.57.4-3.18.4-4.8 0-1.62-.13-3.23-.4-4.8ZM10 15.13V8.87L15.25 12 10 15.13Z"/></symbol>
+<symbol id="icon-arrow-right" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12"/>
+      <polyline points="12 5 19 12 12 19"/>
+    </g>
+  </symbol>
+  <symbol id="icon-external" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+      <polyline points="15 3 21 3 21 9"/>
+      <line x1="10" y1="14" x2="21" y2="3"/>
+    </g>
+  </symbol>
+  <symbol id="icon-play" viewBox="0 0 24 24">
+    <polygon fill="currentColor" points="6 4 20 12 6 20 6 4"/>
+  </symbol>
+  <symbol id="icon-clock" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/>
+      <polyline points="12 7 12 12 15.5 14"/>
+    </g>
+  </symbol>
+  <symbol id="icon-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></g></symbol>
+  <symbol id="icon-eye" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+  <symbol id="icon-trending-up" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></g></symbol>
+  <symbol id="icon-zap" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></g></symbol>
+</svg>
+
+<header class="topbar">
+  <div class="row">
+    <a href="index.html" aria-label="Intercept home">
+      <svg class="logo" role="img" aria-label="Intercept"><use href="#intercept-lockup"/></svg>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="pages/os.html">InterceptOS</a>
+      <a href="pages/labs.html">Intercept Labs</a>
+      <a href="pages/work.html">Work</a>
+      <a href="about.html" aria-current="page" style="color:var(--accent-ink);">About</a>
+      <a href="insights-hub.html">Insights</a>
+      <a href="pages/contact.html" class="cta-nav">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="about-hero" data-hero>
+    <div class="shell">
+      <span class="eyebrow">About Intercept</span>
+      <h1 class="hero-h1">Powered by curiosity</h1>
+      <p class="hero-dek">Intercept is a B2B marketing agency for global tech, founded in 2006. Curiosity drives everything we do. We push past how things have always been done to find what actually moves our clients toward the outcomes that matter. That work has earned the trust of the world&rsquo;s largest technology companies, from Microsoft and SAP to Intel and Cisco, to name a few. It also keeps us at the frontier of where B2B tech goes next.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-ghost" href="pages/work.html">See our work</a>
+        <a class="btn btn-primary" href="pages/contact.html">Start a conversation <svg aria-hidden="true"><use href="#icon-arrow-right"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section class="about-sec band--tint">
+    <div class="shell">
+      <span class="eyebrow">Our mission</span>
+      <h2 class="sec-h2">The outcomes that matter</h2>
+      <p class="sec-body">Our job is to do the B2B marketing work that gets global tech to the outcomes that matter. That means the campaigns, content, and go-to-market work that moves the numbers our clients are measured on.</p>
+      <p class="sec-body">And we do it at the frontier, ahead of where B2B tech goes next.</p>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section class="about-sec">
+    <div class="shell">
+      <span class="eyebrow">What we do</span>
+      <h2 class="sec-h2">Built for the complexity of global tech</h2>
+      <p class="sec-body">We do the B2B marketing that the world&rsquo;s largest technology companies depend on, from strategy and content to campaigns, go-to-market, and sales enablement.</p>
+      <p class="sec-body">Global tech is technical, high-stakes, and rarely simple. Embracing that complexity is what we were built for, and it is where our curiosity and AI-native model do their sharpest work.</p>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK (v3: absorbs Where we're headed as three parts) -->
+  <section class="about-sec band--dark">
+    <div class="shell">
+      <span class="eyebrow">How we work</span>
+      <h2 class="sec-h2">Human taste, AI scale</h2>
+      <p class="sec-body">Our delivery model is AI-native, built on three parts that work as one.</p>
+      <div class="parts-grid">
+        <div class="part"><h3 class="part-h">Our people</h3><p class="part-p">The taste and judgment that years of enterprise work create. A human stays in the loop at every step, because it is the part no system can replicate.</p></div>
+        <div class="part"><h3 class="part-h">InterceptOS</h3><p class="part-p">Our AI-native operating system runs the repeatable work and keeps the routine efficient. That frees the team for the innovation that redefines the buyer experience, like turning one hero e-book into 50,000 one-of-one experiences.</p></div>
+        <div class="part"><h3 class="part-h">Intercept Labs</h3><p class="part-p">How we stay ahead. Our co-investment model for first-of-its-kind work, where we co-fund up to 50% of a project&rsquo;s cost to prove what has not been built yet.</p></div>
+      </div>
+      <p class="parts-close">The frontier is where we learn, and what works there becomes how we run everything else.</p>
+    </div>
+  </section>
+
+  <!-- OUR STORY -->
+  <section class="about-sec band--tint">
+    <div class="shell">
+      <span class="eyebrow">Our story</span>
+      <h2 class="sec-h2">It started with a question</h2>
+      <p class="sec-body">Intercept began in 2006, when two students refused to accept that B2B marketing had to be done the way it always had been. That instinct, questioning the default, built one of the most awarded B2B agencies in global tech. It also made us one of the first to go AI-native from the inside out.</p>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP -->
+  <section class="about-sec">
+    <div class="shell">
+      <span class="eyebrow">Leadership</span>
+      <h2 class="sec-h2">The people behind Intercept</h2>
+      <div class="lead-grid card-grid">
+        <div class="lead-card">
+          <span class="lead-name">Andrew Au</span>
+          <span class="lead-title">Co-CEO and Co-Founder</span>
+          <p class="lead-bio">Andrew co-founded Intercept in 2006 and serves as Co-CEO, where he leads the strategy team. Over more than 20 years in B2B tech marketing, he has become a recognized voice on digital transformation and culture change, and an active investor in early-stage technology startups. He was named to Forbes Canada&rsquo;s 30 Under 30.</p>
+          <a class="lead-link" href="https://www.linkedin.com/in/auandrew/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#icon-linkedin"/></svg>LinkedIn</a>
+        </div>
+        <div class="lead-card">
+          <span class="lead-name">David Toto</span>
+          <span class="lead-title">Managing Director</span>
+          <p class="lead-bio">David is Intercept&rsquo;s Managing Director, leading operations and the management team. A marketer, client advisor, and operations leader, he has spent more than 25 years working across both client-side and agency-side roles. His experience spans the UK, France, and Canada.</p>
+          <a class="lead-link" href="https://www.linkedin.com/in/david-toto-798b7420/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#icon-linkedin"/></svg>LinkedIn</a>
+        </div>
+        <div class="lead-card">
+          <span class="lead-name">Francis Silva</span>
+          <span class="lead-title">Chief Technology Officer</span>
+          <p class="lead-bio">Francis is Intercept&rsquo;s Chief Technology Officer, where he leads the design and build of InterceptOS, the agency&rsquo;s AI-native operating system. With more than 20 years in customer analytics and enterprise technology, he has built and led teams of more than 250, and sits on the board of Queen&rsquo;s University&rsquo;s Master of AI.</p>
+          <a class="lead-link" href="https://www.linkedin.com/in/francis-silva-pmp/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#icon-linkedin"/></svg>LinkedIn</a>
+        </div>
+        <div class="lead-card">
+          <span class="lead-name">Shaheen Yazdani</span>
+          <span class="lead-title">Co-CEO and Co-Founder</span>
+          <p class="lead-bio">Shaheen Yazdani co-founded Intercept in 2006 and serves as Co-CEO, where she leads client services. A tech marketer for Fortune 100 brands, she champions the partnership between sales and marketing across every engagement. In 2022 she was named to WXN&rsquo;s Canada&rsquo;s Most Powerful Women: Top 100.</p>
+          <a class="lead-link" href="https://www.linkedin.com/in/shaheenyazdani/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#icon-linkedin"/></svg>LinkedIn</a>
+        </div>
+      </div>
+      <p class="lead-close">Together they lead teams across strategy, content, creative, production, and an <span style="white-space:nowrap">in-house</span> technology practice.</p>
+    </div>
+  </section>
+
+  <!-- BY THE NUMBERS -->
+  <section class="about-sec band--dark">
+    <div class="shell">
+      <span class="eyebrow">By the numbers</span>
+      <h2 class="sec-h2">20 years and counting</h2>
+      <p class="sec-body">Since 2006, the record speaks for itself. Our average client relationship runs nine years. We have won more than 130 industry awards since 2019 alone. And 95% of our work runs internationally, across North America, Europe, and Asia, in more than 20 languages.</p>
+      <div class="strip strip-4 stat-strip" aria-label="Intercept by the numbers">
+        <div class="strip-cell"><p class="strip-num">9</p><p class="strip-name">years, average client relationship</p></div>
+        <div class="strip-cell"><p class="strip-num">130+</p><p class="strip-name">industry awards since 2019</p></div>
+        <div class="strip-cell"><p class="strip-num">95%</p><p class="strip-name">of work runs internationally</p></div>
+        <div class="strip-cell"><p class="strip-num">20+</p><p class="strip-name">languages</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROOTS AND REACH -->
+  <section class="about-sec band--tint">
+    <div class="shell">
+      <span class="eyebrow">Where we are</span>
+      <h2 class="sec-h2">North American roots, global reach</h2>
+      <p class="sec-body">Intercept is headquartered in Toronto, with clients around the world. We support US and international marketing teams across North America, Europe, and Asia.</p>
+    </div>
+  </section>
+
+  <!-- WHAT SETS US APART -->
+  <section class="about-sec">
+    <div class="shell">
+      <span class="eyebrow">What sets us apart</span>
+      <h2 class="sec-h2">Time-tested expertise</h2>
+      <p class="sec-body">The best B2B work does not come from data alone. It comes from practitioners who know which signals matter and which proof points shift perception. That kind of pattern recognition takes years of strategy, content, and campaign work to build. It is the part of expertise AI cannot replicate, and it is what has earned us more than 130 industry awards.</p>
+      <div class="values-grid">
+        <div class="value-card">
+          <h3 class="value-h">Proprietary B2B intelligence</h3>
+          <p class="value-p">We run a continuous audience-intelligence loop. It combines quantitative panels, campaign data, and direct buyer interviews, so we know what the market is really saying when you are not in the room.</p>
+        </div>
+        <div class="value-card">
+          <h3 class="value-h">Structured innovation</h3>
+          <p class="value-p">Innovation here has a path. We find the right AI use cases, build a proof of concept, and take what works into production in weeks rather than quarters.</p>
+        </div>
+        <div class="value-card">
+          <h3 class="value-h">Enterprise-grade execution</h3>
+          <p class="value-p">Innovation has to meet enterprise standards. Our clients get the most advanced AI models and capabilities. We handle the data, legal, and privacy reviews, and build the QA layers that keep quality consistent across every market and language.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="about-sec band--tint">
+    <div class="shell">
+      <span class="eyebrow">Common questions</span>
+      <h2 class="sec-h2">FAQs</h2>
+      <div class="faq">
+        <details class="faq-item"><summary>What is Intercept?</summary><p class="faq-a">Intercept is an award-winning B2B marketing agency built for the global technology sector. Established in 2006, we help the world&rsquo;s largest tech brands turn ambitious briefs into proven outcomes. The majority of our work supports US and international marketing teams across North America, Europe, and Asia. We run an AI-native delivery model that makes the keep-the-lights-on work more efficient, freeing room for the frontier work that redefines the buyer experience.</p></details>
+        <details class="faq-item"><summary>What is InterceptOS?</summary><p class="faq-a">InterceptOS is our AI-native operating system for B2B marketing. It standardizes how campaigns are strategized, produced, activated, and measured across teams and partners, built on Intercept&rsquo;s award-winning frameworks and run as a managed service that de-risks adoption.</p></details>
+        <details class="faq-item"><summary>What is Intercept Labs?</summary><p class="faq-a">Intercept Labs is our co-investment model for first-of-its-kind work. When a brief has no precedent, we co-fund up to 50% of the cost and share the risk to prove it, then fold the breakthrough back into the operating system. Recent Labs work includes an AI avatar video pilot with SAP.</p></details>
+        <details class="faq-item"><summary>What makes Intercept different?</summary><p class="faq-a">We&rsquo;ve spent more than 20 years inside global tech, so we speak your buyers&rsquo; language with no learning curve. That depth has earned more than 130 awards since 2019. We pair it with proprietary buyer intelligence that tracks what the market is really saying when you&rsquo;re not in the room, and an in-house technology practice that builds our own AI rather than waiting on outside vendors. And because we work with the world&rsquo;s largest enterprises, privacy, legal, and procurement review is built into how we operate, so innovation never slows the work.</p></details>
+        <details class="faq-item"><summary>What kinds of challenges do you help solve?</summary><p class="faq-a">Most agencies don&rsquo;t really understand the subject matter, so we bring deep expertise in B2B global tech and speak the language of product, channel, and engineering teams. They also miss how the value chain fits together, from ISVs to OEMs to distributors to channel partners, where we know the role each one plays. And right now, many clients are being told to sprint toward AI agents without a clear sense of what that even means. We give them a path through InterceptOS and our innovation sprints, where we identify the right AI use cases, build a proof of concept, and take what works to production.</p></details>
+        <details class="faq-item"><summary>How do you handle security, privacy, and compliance?</summary><p class="faq-a">We work with the world&rsquo;s largest enterprises, so enterprise rigor is built into how we operate. Privacy, legal, and procurement reviews happen from day one, and we sit in those reviews with you. Because we run our AI as a managed service, you don&rsquo;t have to stand up a new approval workflow every time the technology evolves. We protect the security and compliance posture and carry the model risk, so the innovation work stays above board.</p></details>
+        <details class="faq-item"><summary>Who are your clients?</summary><p class="faq-a">We work with global technology brands including Microsoft, SAP, HP, Lenovo, Cisco, AMD, Qualcomm, Logitech, BMC, Nokia, and TELUS.</p></details>
+        <details class="faq-item"><summary>What industries do you work in?</summary><p class="faq-a">We support the entire end-to-end technology value chain, from silicon and ISVs to OEMs, hyperscalers, networking infrastructure, distributors, and the channel and partner programs that bring it all to market.</p></details>
+        <details class="faq-item"><summary>How do I get started?</summary><p class="faq-a">Book a call to talk through your brief or your challenge, and we&rsquo;ll figure out the path forward together.</p></details>
+        <details class="faq-item"><summary>Can you work alongside our other agencies?</summary><p class="faq-a">Yes. We work with the largest enterprises in the world, where collaboration is the norm, so we partner easily with other agencies and specialists. We believe more good heads on a problem make the work better.</p></details>
+        <details class="faq-item"><summary>How do you measure success?</summary><p class="faq-a">We sit down with you at the start to define the KPIs and metrics that matter, then measure against them throughout. That runs from pre-launch testing of how the work will land to in-market tracking of campaign performance, brand health, and the lift the work drives over time.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="about-sec band--dark cta-band">
+    <div class="shell">
+      <span class="eyebrow">Let&rsquo;s talk</span>
+      <h2 class="sec-h2">Bring us your hardest problem</h2>
+      <p class="sec-body">Tell us where you are and what you are trying to do, and we will figure out the path forward together.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="pages/contact.html">Start a conversation <svg aria-hidden="true"><use href="#icon-arrow-right"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="shell">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <svg class="logo sm" role="img" aria-label="Intercept"><use href="#intercept-lockup"/></svg>
+      </div>
+      <div class="foot-col">
+        <h4>Site</h4>
+        <a href="pages/os.html">InterceptOS</a>
+        <a href="pages/labs.html">Intercept Labs</a>
+        <a href="pages/work.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="insights-hub.html">Insights</a>
+        <a href="chatb2b.html">ChatB2B</a>
+        <a href="pages/contact.html">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h4>Trust</h4>
+        <a href="ai-policy.html">AI Policy</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html">Terms of Service</a>
+      </div>
+      <div class="foot-col">
+        <h4>Socials</h4>
+        <a href="https://www.linkedin.com/company/interceptagency/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.youtube.com/@InterceptGroup" target="_blank" rel="noopener">YouTube</a>
+        <span class="foot-sub">ChatB2B</span>
+        <a href="https://open.spotify.com/show/2RTmhzjHDlCRhqQb5XyRoO" target="_blank" rel="noopener">Spotify</a>
+        <a href="https://podcasts.apple.com/us/podcast/chatb2b/id1840415344" target="_blank" rel="noopener">Apple Podcasts</a>
+        <a href="https://www.youtube.com/channel/UCZoFGWEqh3sST6W3JSmccvA" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span class="curio">Powered by curiosity, built for the work</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChatB2B &middot; The Intercept podcast</title>
+<meta name="description" content="Andrew Au sits down with marketers, product leaders, and revenue operators. What they&rsquo;re building, what&rsquo;s landing, and what AI is quietly changing about the work. The ChatB2B podcast, from Intercept.">
+<link rel="canonical" href="https://interceptgroup.com/chatb2b">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="ChatB2B &middot; The Intercept podcast">
+<meta property="og:description" content="Enterprise B2B, from the people running it. Andrew Au in conversation with marketers, product leaders, and revenue operators.">
+<meta property="og:url" content="https://interceptgroup.com/chatb2b">
+<meta property="og:site_name" content="Intercept">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ChatB2B &middot; The Intercept podcast">
+<meta name="twitter:description" content="Enterprise B2B, from the people running it. Andrew Au in conversation with marketers, product leaders, and revenue operators.">
+
+<!-- JSON-LD: PodcastSeries -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "PodcastSeries",
+  "name": "ChatB2B",
+  "description": "Enterprise B2B, from the people running it. Andrew Au sits down with marketers, product leaders, and revenue operators.",
+  "url": "https://interceptgroup.com/chatb2b",
+  "webFeed": "https://api.riverside.fm/hosting/9bWDz43y.rss",
+  "publisher": { "@type": "Organization", "name": "Intercept Group", "url": "https://interceptgroup.com" }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600;1,700&family=Inter:wght@400;500;600;700&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* ════════════════════════════════════════════════════════════
+   FRITZ TOKENS · Figma kit kBo4gZ2BvhqHCtqTVkBbYq
+   System per the H1 2026 Trends Brief reference:
+   ONE chromatic text accent (Flarepop) · ink data · semantic bands
+   ════════════════════════════════════════════════════════════ */
+:root{
+  --flarepop-100:#ff00e5; --flarepop-200:#df00be; --flarepop-300:#a8008c; --flarepop-500:#39003a;
+  --halo-100:#ffffff; --halo-200:#f5f7ff; --halo-300:#e6e9f5; --halo-400:#d1d6e6; --halo-500:#b8bed1;
+  --carbon-100:#3a3a4a; --carbon-200:#2c2c3a; --carbon-300:#1f1f2a; --carbon-400:#14141c; --carbon-500:#0a0a0f;
+
+  --bg:var(--halo-100);
+  --surface:var(--halo-200);
+  --surface-hi:var(--halo-300);
+  --fg:var(--carbon-500);
+  --fg-2:var(--carbon-200);
+  --fg-3:var(--carbon-100);
+  --line:rgba(10,10,15,.14);
+  --accent:var(--flarepop-100);
+  --accent-ink:var(--flarepop-300);   /* accent TEXT — AA on white */
+
+  --font-display:'Instrument Sans',system-ui,sans-serif;
+  --font-body:'Inter',system-ui,sans-serif;
+  --font-mono:'Geist Mono',ui-monospace,monospace;
+
+  --sp-4:4px; --sp-8:8px; --sp-12:12px; --sp-16:16px; --sp-24:24px;
+  --sp-32:32px; --sp-40:40px; --sp-48:48px; --sp-80:80px; --sp-120:120px;
+  --r-xs:4px; --r-s:8px; --r-m:12px; --r-l:16px; --r-xl:24px; --r-round:9999px;
+
+  --maxw:1280px;
+  --readw:760px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:clip;max-width:100%;}
+html{scroll-behavior:smooth;}
+svg,img,video{max-width:100%;}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4,h5{font-family:var(--font-display);font-weight:700;line-height:1.3;letter-spacing:-.02em;}
+
+/* Line-break conventions (Fritz type-breaks canon) */
+h1,h2,h3,[data-balance]{text-wrap:pretty;text-wrap:balance;}
+p,li,blockquote,dd{text-wrap:pretty;}
+h1,h2,h3,p,li{overflow-wrap:break-word;word-break:normal;hyphens:manual;}
+.keep{white-space:nowrap;}
+p{max-width:66ch;}
+
+.shell{max-width:var(--maxw);margin:0 auto;padding:0 var(--sp-32);}
+@media(max-width:680px){.shell{padding:0 var(--sp-16);}}
+.skip{position:absolute;left:-999px;}
+.skip:focus{left:12px;top:12px;background:var(--accent);color:var(--carbon-500);padding:var(--sp-8) var(--sp-16);border-radius:var(--r-s);z-index:300;}
+
+/* ─── One text-style system ─── */
+.eyebrow{font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);display:block;}
+.eyebrow--quiet{color:var(--fg-3);}
+.section-h2{font-size:clamp(28px,3.2vw,40px);margin:var(--sp-12) 0 var(--sp-16);max-width:26ch;}
+.small{font-size:14px;line-height:1.5;color:var(--fg-2);}
+.micro{font-family:var(--font-body);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3);}
+
+/* ─── Topbar (static — single-bar rule) ─── */
+.topbar{position:sticky;top:0;z-index:100;background:var(--halo-100);border-bottom:1px solid var(--line);}
+.topbar .row{display:flex;align-items:center;justify-content:space-between;max-width:var(--maxw);margin:0 auto;padding:var(--sp-16) var(--sp-32);}
+@media(max-width:680px){.topbar .row{padding:var(--sp-16);}}
+.nav{display:flex;align-items:center;gap:var(--sp-24);font-size:14px;font-weight:500;color:var(--fg-2);}
+.nav a{padding:var(--sp-12) 0;}
+.nav a:hover{color:var(--accent-ink);}
+.nav .cta-nav{background:var(--accent);color:var(--carbon-500);font-weight:700;padding:var(--sp-12) var(--sp-16);border-radius:var(--r-s);transition:background .3s cubic-bezier(.37,0,.63,1);}
+.nav .cta-nav:hover{background:var(--flarepop-200);}
+@media(max-width:900px){.nav a:not(.cta-nav){display:none;}}
+/* Conventional line breaks in card headings/labels (review fix) */
+.featured-h2,.strip-name,.ep-feature-title,.article-card-title,.cover-thesis{text-wrap:balance;}
+.featured-desc,.cover-figure-note{text-wrap:pretty;}
+.logo{width:130px;aspect-ratio:324.005/76.2147;height:auto;display:block;color:var(--carbon-500);}
+.logo.sm{width:108px;}
+
+/* ─── Bands ─── */
+.band--dark{background:var(--carbon-500);color:var(--halo-100);}
+.band--dark .eyebrow{color:var(--accent);}
+.band--tint{background:var(--halo-200);}
+
+/* ─── Buttons ─── */
+.btn{display:inline-flex;align-items:center;gap:var(--sp-8);font-family:var(--font-body);font-weight:700;font-size:14px;padding:var(--sp-12) var(--sp-24);border-radius:var(--r-s);border:0;cursor:pointer;transition:background .3s cubic-bezier(.37,0,.63,1);text-decoration:none;}
+.btn-primary{background:var(--accent);color:var(--carbon-500);}
+.btn-primary:hover{background:var(--flarepop-200);}
+.btn svg{width:14px;height:14px;color:currentColor;}
+
+/* ─── Neutral chip (pillar/format identity lives in the words) ─── */
+.chip{font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:var(--sp-4) var(--sp-12);border-radius:var(--r-round);background:var(--surface-hi);color:var(--fg-2);white-space:nowrap;}
+.band--dark .chip{background:var(--carbon-300);color:var(--halo-300);}
+
+/* ─── Stat strip (Option E — the picked data-viz language) ─── */
+.strip{display:grid;border-top:1px solid var(--fg);border-bottom:1px solid var(--fg);}
+.strip-3{grid-template-columns:repeat(3,1fr);}
+.strip-cell{padding:var(--sp-16) var(--sp-16) var(--sp-16) 0;border-right:1px solid var(--line);}
+.strip-cell+.strip-cell{padding-left:var(--sp-16);}
+.strip-cell:last-child{border-right:0;}
+.strip-num{font-family:var(--font-mono);font-size:clamp(24px,2.6vw,40px);font-weight:700;letter-spacing:-.03em;line-height:1;color:var(--fg);margin-bottom:var(--sp-8);}
+.strip-name{font-size:13px;color:var(--fg-2);line-height:1.4;}
+.band--dark .strip{border-color:var(--halo-500);}
+.band--dark .strip-cell{border-right-color:var(--carbon-200);}
+.band--dark .strip-num{color:var(--halo-100);}
+.band--dark .strip-name{color:var(--halo-400);}
+@media(max-width:560px){.strip-3{grid-template-columns:1fr;}.strip{border-bottom:0;}.strip-cell{border-right:0;border-bottom:1px solid var(--carbon-200);padding-left:0;}}
+
+/* ═══ HUB HERO · white ═══ */
+.hub-hero{padding:var(--sp-80) 0 var(--sp-80);}
+@media(max-width:680px){.hub-hero{padding:var(--sp-48) 0;}}
+.hub-h1{font-size:clamp(40px,5.4vw,72px);line-height:1.05;max-width:18ch;letter-spacing:-.03em;margin:var(--sp-16) 0 var(--sp-24);}
+.hub-h1 em{font-style:normal;color:var(--accent-ink);}
+.hub-dek{font-size:18px;color:var(--fg-2);line-height:1.5;max-width:60ch;}
+
+/* ═══ FEATURED · dark band (echoes the brief's own dark hero) ═══ */
+.hub-featured{padding:var(--sp-80) 0;}
+.featured-inner{max-width:var(--maxw);margin:0 auto;padding:0 var(--sp-32);}
+@media(max-width:680px){.hub-featured{padding:var(--sp-48) 0;}.featured-inner{padding:0 var(--sp-16);}}
+.featured-label{margin-bottom:var(--sp-32);}
+.featured-tile{display:grid;grid-template-columns:1.15fr 1fr;gap:var(--sp-48);align-items:center;}
+@media(max-width:900px){.featured-tile{grid-template-columns:1fr;gap:var(--sp-32);}}
+.featured-content{display:flex;flex-direction:column;}
+.featured-chips{display:flex;gap:var(--sp-8);margin-bottom:var(--sp-24);flex-wrap:wrap;}
+.featured-eyebrow{font-family:var(--font-body);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--halo-500);margin-bottom:var(--sp-16);display:flex;align-items:center;gap:var(--sp-12);flex-wrap:wrap;}
+.featured-eyebrow b{color:var(--halo-100);font-weight:700;}
+.featured-eyebrow .dot-sep{width:4px;height:4px;border-radius:50%;background:var(--halo-500);}
+.featured-h2{font-family:var(--font-display);font-size:clamp(36px,4.6vw,64px);line-height:1.05;letter-spacing:-.03em;margin-bottom:var(--sp-24);color:var(--halo-100);max-width:16ch;}
+.featured-h2 em{font-style:normal;color:var(--accent);}
+.featured-desc{font-size:16px;color:var(--halo-300);line-height:1.5;margin-bottom:var(--sp-32);max-width:48ch;}
+.featured-stats{margin-bottom:var(--sp-32);max-width:520px;}
+.featured-meta{display:flex;align-items:center;gap:var(--sp-12);margin-bottom:var(--sp-32);font-size:14px;color:var(--halo-400);flex-wrap:wrap;}
+.featured-meta b{color:var(--halo-100);font-weight:600;}
+.featured-meta .sep{opacity:.5;}
+.featured-cta{align-self:flex-start;}
+
+/* Featured cover — dark panel, full keyline, story told typographically */
+.cover{width:100%;max-width:460px;margin:0 auto;padding:var(--sp-40);background:var(--carbon-400);border:1px solid var(--carbon-100);border-radius:var(--r-l);display:flex;flex-direction:column;gap:var(--sp-24);}
+.cover-top{display:flex;align-items:center;gap:var(--sp-12);font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--halo-500);}
+.cover-issue-sep{width:20px;height:1px;background:var(--halo-500);}
+.cover-thesis{font-family:var(--font-display);font-size:clamp(22px,2vw,28px);font-weight:700;line-height:1.3;letter-spacing:-.02em;color:var(--halo-100);}
+.cover-figure{display:flex;align-items:center;gap:var(--sp-24);padding:var(--sp-16) 0;border-top:1px solid var(--carbon-200);border-bottom:1px solid var(--carbon-200);}
+.cover-figure-num{font-family:var(--font-mono);font-size:clamp(56px,5vw,72px);font-weight:700;line-height:1;letter-spacing:-.04em;color:var(--accent);flex-shrink:0;}
+.cover-figure-body{display:flex;flex-direction:column;gap:var(--sp-4);}
+.cover-figure-lbl{font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--halo-100);}
+.cover-figure-note{font-size:13px;line-height:1.5;color:var(--halo-400);}
+.cover-marks{display:flex;align-items:flex-end;gap:var(--sp-8);height:48px;}
+.cover-mark{flex:1;height:44px;background:var(--carbon-100);}
+.cover-mark.is-outlier{background:var(--accent);height:26px;}
+.cover-footer{font-family:var(--font-mono);font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--halo-500);}
+
+/* ═══ PODCAST · white ═══ */
+.hub-podcast{padding:var(--sp-80) 0;}
+.podcast-header{max-width:var(--readw);margin:0 0 var(--sp-40);}
+.podcast-h2{font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1.3;letter-spacing:-.025em;color:var(--fg);margin:var(--sp-12) 0 var(--sp-16);max-width:26ch;}
+.podcast-desc{font-size:16px;line-height:1.5;color:var(--fg-2);max-width:60ch;}
+
+.podcast-trailer{position:relative;max-width:960px;margin:0 auto var(--sp-16);border-radius:var(--r-l);overflow:hidden;background:var(--carbon-500);aspect-ratio:16/9;border:1px solid var(--line);cursor:pointer;isolation:isolate;}
+.podcast-trailer video{width:100%;height:100%;object-fit:cover;display:block;}
+.podcast-trailer:not(.is-playing) video{display:none;}
+.podcast-trailer .trailer-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:url('assets/podcast/chatb2b-trailer-poster.jpg') center/cover no-repeat var(--carbon-500);border:none;padding:0;margin:0;cursor:pointer;}
+.podcast-trailer .trailer-play-glyph{position:relative;z-index:1;width:76px;height:76px;border-radius:var(--r-round);background:var(--accent);color:var(--carbon-500);display:flex;align-items:center;justify-content:center;transition:background .3s cubic-bezier(.37,0,.63,1);}
+.podcast-trailer .trailer-play-glyph svg{width:28px;height:28px;margin-left:3px;}
+.podcast-trailer:hover .trailer-play-glyph{background:var(--flarepop-200);}
+.podcast-trailer.is-playing .trailer-play{display:none;}
+.podcast-under-trailer{max-width:960px;margin:0 auto var(--sp-80);display:flex;align-items:center;justify-content:space-between;gap:var(--sp-16);flex-wrap:wrap;}
+.podcast-under-note{font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--fg-3);}
+.podcast-spotify{display:inline-flex;align-items:center;gap:var(--sp-8);padding:var(--sp-12) var(--sp-16);border:1.5px solid var(--line);border-radius:var(--r-round);color:var(--fg);font-family:var(--font-body);font-weight:600;font-size:13px;background:transparent;transition:border-color .3s cubic-bezier(.37,0,.63,1), color .3s cubic-bezier(.37,0,.63,1);}
+.podcast-spotify:hover{border-color:var(--accent-ink);color:var(--accent-ink);}
+.podcast-spotify svg{width:14px;height:14px;}
+
+.episodes-featured-header{margin:0 0 var(--sp-24);}
+.episodes-featured-kicker{font-family:var(--font-display);font-size:clamp(22px,2vw,28px);font-weight:700;line-height:1.3;letter-spacing:-.02em;color:var(--fg);margin-bottom:var(--sp-4);}
+.episodes-featured-note{font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--fg-3);}
+.episodes-featured-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-24);margin-bottom:var(--sp-48);}
+@media(max-width:900px){.episodes-featured-grid{grid-template-columns:1fr;}}
+.ep-feature{display:flex;flex-direction:column;gap:var(--sp-12);padding:var(--sp-24);background:var(--surface);border:1px solid var(--line);border-radius:var(--r-l);color:var(--fg);transition:border-color .3s cubic-bezier(.37,0,.63,1);}
+.ep-feature:hover{border-color:var(--accent-ink);}
+.ep-feature .chip{align-self:flex-start;}
+.ep-feature-title{font-family:var(--font-display);font-size:20px;font-weight:700;line-height:1.3;letter-spacing:-.015em;color:var(--fg);}
+.ep-feature-desc{font-size:14px;line-height:1.5;color:var(--fg-2);}
+.ep-feature-foot{margin-top:auto;padding-top:var(--sp-12);border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:var(--sp-12);}
+.ep-feature-meta{font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--fg-3);display:flex;align-items:center;gap:var(--sp-8);flex-wrap:wrap;}
+.ep-feature-meta b{color:var(--fg-2);font-weight:700;}
+.ep-feature-meta .sep{opacity:.5;}
+.ep-feature-affordance{width:32px;height:32px;border-radius:var(--r-round);background:var(--accent);color:var(--carbon-500);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ep-feature-affordance svg{width:12px;height:12px;margin-left:2px;}
+
+.episodes-drawer-cta{margin:0;}
+.drawer-trigger{width:100%;display:flex;align-items:center;gap:var(--sp-24);padding:var(--sp-24) var(--sp-32);background:var(--surface);border:1px solid var(--line);border-radius:var(--r-l);color:var(--fg);cursor:pointer;text-align:left;transition:border-color .3s cubic-bezier(.37,0,.63,1);}
+.drawer-trigger:hover{border-color:var(--accent-ink);}
+.drawer-trigger-num{font-family:var(--font-mono);font-size:clamp(40px,4vw,56px);font-weight:700;line-height:1;letter-spacing:-.03em;color:var(--fg);flex-shrink:0;}
+.drawer-trigger-body{display:flex;flex-direction:column;gap:var(--sp-4);flex:1;}
+.drawer-trigger-title{font-family:var(--font-display);font-size:clamp(20px,1.6vw,24px);font-weight:700;line-height:1.3;letter-spacing:-.02em;color:var(--fg);}
+.drawer-trigger-desc{font-size:14px;color:var(--fg-2);}
+.drawer-trigger-arrow{width:40px;height:40px;border-radius:var(--r-round);background:var(--accent);color:var(--carbon-500);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.drawer-trigger-arrow svg{width:16px;height:16px;}
+
+/* ═══ DIRECTORY · tint band ═══ */
+.hub-directory{padding:var(--sp-80) 0 var(--sp-120);scroll-margin-top:88px;}
+.directory-header{margin-bottom:var(--sp-32);}
+.directory-title{font-family:var(--font-display);font-size:clamp(28px,3.2vw,40px);line-height:1.3;letter-spacing:-.025em;color:var(--fg);margin:var(--sp-12) 0 var(--sp-16);max-width:20ch;}
+.directory-title em{font-style:normal;color:var(--accent-ink);}
+.directory-lead{font-size:16px;line-height:1.5;color:var(--fg-2);max-width:60ch;}
+
+.filter-bar{display:flex;align-items:center;gap:var(--sp-16);margin-bottom:var(--sp-40);flex-wrap:wrap;}
+.filter-label{font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3);}
+.filter-chips{display:flex;gap:var(--sp-8);flex-wrap:wrap;flex:1;}
+.filter-chip{font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--fg-2);padding:var(--sp-12) var(--sp-16);border-radius:var(--r-round);background:transparent;border:1px solid var(--line);cursor:pointer;transition:background .3s cubic-bezier(.37,0,.63,1), color .3s cubic-bezier(.37,0,.63,1), border-color .3s cubic-bezier(.37,0,.63,1);}
+.filter-chip:hover{color:var(--fg);border-color:var(--fg-3);}
+.filter-chip.is-active{color:var(--halo-100);background:var(--carbon-500);border-color:var(--carbon-500);font-weight:700;}
+.filter-count{margin-left:auto;font-family:var(--font-body);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3);}
+
+/* Article cards — one card language (lead card spans the row) */
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-24);}
+@media(max-width:900px){.cards-grid{grid-template-columns:1fr;}}
+.article-card{display:flex;flex-direction:column;gap:var(--sp-12);padding:var(--sp-24);background:var(--halo-100);border:1px solid var(--line);border-radius:var(--r-l);color:var(--fg);transition:border-color .3s cubic-bezier(.37,0,.63,1);}
+.article-card:hover{border-color:var(--accent-ink);}
+.article-card.is-hidden{display:none;}
+.article-card-top{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-12);}
+.article-card-icon{width:36px;height:36px;border:1px solid var(--line);border-radius:var(--r-s);background:var(--surface);display:flex;align-items:center;justify-content:center;color:var(--fg-2);flex-shrink:0;transition:color .3s cubic-bezier(.37,0,.63,1), border-color .3s cubic-bezier(.37,0,.63,1);}
+.article-card-icon svg{width:18px;height:18px;}
+.article-card:hover .article-card-icon{color:var(--accent-ink);border-color:var(--accent-ink);}
+.article-card--lead .article-card-icon{width:44px;height:44px;}
+.article-card--lead .article-card-icon svg{width:20px;height:20px;}
+.article-card .chip{align-self:auto;}
+.article-card-title{font-family:var(--font-display);font-size:18px;font-weight:700;line-height:1.3;letter-spacing:-.015em;color:var(--fg);}
+.article-card-desc{font-size:14px;line-height:1.5;color:var(--fg-2);}
+.article-card-foot{margin-top:auto;padding-top:var(--sp-12);border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:var(--sp-12);}
+.article-card-meta{font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--fg-3);}
+.article-card-meta b{color:var(--fg-2);font-weight:700;}
+.article-card-meta .sep{opacity:.5;margin:0 var(--sp-4);}
+.article-card-arrow{width:18px;height:18px;color:var(--fg-3);flex-shrink:0;transition:color .3s cubic-bezier(.37,0,.63,1);}
+.article-card:hover .article-card-arrow{color:var(--accent-ink);}
+.article-card--lead{grid-column:1 / -1;padding:var(--sp-32);}
+.article-card--lead .article-card-title{font-size:clamp(24px,2.6vw,32px);max-width:24ch;}
+.article-card--lead .article-card-desc{font-size:16px;max-width:60ch;}
+@media(max-width:900px){.article-card--lead{grid-column:auto;}}
+
+.grid-empty{padding:var(--sp-48) var(--sp-24);text-align:center;grid-column:1/-1;color:var(--fg-3);font-size:15px;border:1px dashed var(--line);border-radius:var(--r-l);}
+.grid-empty b{color:var(--fg);font-weight:600;}
+
+/* ═══ EPISODE DRAWER · right slide-out, crisp keylines ═══ */
+.drawer-backdrop{position:fixed;inset:0;background:rgba(10,10,15,.5);z-index:998;opacity:0;transition:opacity .3s cubic-bezier(.37,0,.63,1);}
+.drawer-backdrop.is-open{opacity:1;}
+.drawer-backdrop[hidden]{display:none;}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(560px,92vw);z-index:999;background:var(--halo-100);border-left:1px solid var(--line);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .6s cubic-bezier(.37,0,.63,1);overflow:hidden;}
+.drawer.is-open{transform:translateX(0);}
+.drawer[hidden]{display:none;}
+.drawer-header{padding:var(--sp-24) var(--sp-32) var(--sp-16);border-bottom:1px solid var(--line);display:flex;align-items:flex-start;justify-content:space-between;gap:var(--sp-16);flex-shrink:0;background:var(--halo-100);}
+.drawer-title{font-family:var(--font-display);font-size:clamp(22px,2.2vw,28px);font-weight:700;line-height:1.3;letter-spacing:-.02em;color:var(--fg);margin:var(--sp-8) 0;}
+.drawer-count-label{font-size:13px;color:var(--fg-2);}
+.drawer-close{width:40px;height:40px;border-radius:var(--r-round);background:transparent;border:1px solid var(--line);color:var(--fg);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .3s cubic-bezier(.37,0,.63,1), color .3s cubic-bezier(.37,0,.63,1);flex-shrink:0;}
+.drawer-close:hover{border-color:var(--accent-ink);color:var(--accent-ink);}
+.drawer-filter{padding:var(--sp-16) var(--sp-32);border-bottom:1px solid var(--line);flex-shrink:0;display:flex;flex-wrap:wrap;gap:var(--sp-8);background:var(--halo-100);}
+.drawer-filter-chip{padding:var(--sp-12) var(--sp-16);border-radius:var(--r-round);border:1px solid var(--line);background:transparent;color:var(--fg-2);font-family:var(--font-body);font-size:13px;font-weight:500;cursor:pointer;transition:border-color .3s cubic-bezier(.37,0,.63,1), background .3s cubic-bezier(.37,0,.63,1), color .3s cubic-bezier(.37,0,.63,1);}
+.drawer-filter-chip:hover{border-color:var(--fg-3);color:var(--fg);}
+.drawer-filter-chip.is-active{background:var(--carbon-500);color:var(--halo-100);border-color:var(--carbon-500);font-weight:700;}
+.drawer-list{overflow-y:auto;flex:1;background:var(--halo-100);scrollbar-width:thin;scrollbar-color:var(--line) transparent;}
+.drawer-row{display:grid;grid-template-columns:auto 1fr auto;gap:var(--sp-16);align-items:center;padding:var(--sp-16) var(--sp-32);border-bottom:1px solid var(--line);color:var(--fg);transition:background .3s cubic-bezier(.37,0,.63,1);}
+.drawer-row:last-child{border-bottom:none;}
+.drawer-row:hover{background:var(--surface);}
+.drawer-row.is-hidden{display:none;}
+.drawer-row-chip{align-self:start;margin-top:2px;}
+.drawer-row-body{display:flex;flex-direction:column;gap:var(--sp-4);min-width:0;}
+.drawer-row-title{font-family:var(--font-display);font-size:16px;font-weight:600;line-height:1.3;letter-spacing:-.01em;color:var(--fg);}
+.drawer-row-meta{font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--fg-3);}
+.drawer-row-meta b{color:var(--fg-2);font-weight:700;}
+.drawer-row-meta .sep{opacity:.5;margin:0 var(--sp-4);}
+.drawer-row-icon{width:18px;height:18px;color:var(--fg-3);transition:color .3s cubic-bezier(.37,0,.63,1);}
+.drawer-row:hover .drawer-row-icon{color:var(--accent-ink);}
+body.drawer-open{overflow:hidden;}
+
+/* ═══ FOOTER · dark ═══ */
+footer{padding:var(--sp-80) 0 var(--sp-32);background:var(--carbon-500);color:var(--halo-400);}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:var(--sp-48);margin-bottom:var(--sp-48);}
+@media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.foot-grid{grid-template-columns:1fr;}}
+.foot-brand{display:flex;align-items:flex-start;}
+.foot-brand .logo{color:var(--halo-100);}
+.foot-col h4{font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--halo-500);margin-bottom:var(--sp-16);letter-spacing:.02em;}
+.foot-col a{display:block;font-size:14px;color:var(--halo-400);padding:var(--sp-8) 0;margin-bottom:var(--sp-4);transition:color .3s cubic-bezier(.37,0,.63,1);}
+.foot-col a:hover{color:var(--halo-100);}
+.foot-bot{padding-top:var(--sp-32);border-top:1px solid var(--carbon-200);}
+.curio{font-family:var(--font-body);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--halo-500);}
+
+@media(prefers-reduced-motion:reduce){
+  .drawer,.drawer-backdrop{transition:none;}
+  html{scroll-behavior:auto;}
+}
+
+/* drawer platform + per-episode links (real episode data, 2026-07-17) */
+.drawer-platforms{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
+.drawer-platforms a{font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--fg-2);border:1px solid var(--line);border-radius:9999px;padding:6px 14px;text-decoration:none;transition:color .2s,border-color .2s;}
+.drawer-platforms a:hover{color:var(--accent-ink);border-color:var(--accent-ink);}
+.drawer-row-links{display:flex;gap:12px;align-items:center;}
+.drawer-row-links a{font-family:var(--font-body);font-size:12.5px;font-weight:600;color:var(--fg-3);text-decoration:none;white-space:nowrap;transition:color .2s;}
+.drawer-row-links a:hover{color:var(--accent-ink);}
+
+/* topbar aligned to homepage geometry (logo x-position identical site-wide, Jon 2026-07-17) */
+.topbar .row{max-width:1200px;padding:15px 28px;}
+
+.pi{width:15px;height:15px;flex-shrink:0;vertical-align:-3px;margin-right:7px;display:inline-block;}
+.podcast-spotify{margin-right:10px;}
+.drawer-row-links a{display:inline-flex;align-items:center;}
+.drawer-row-links .pi{margin-right:5px;}
+.foot-col h4{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#b8bed1;}
+.foot-sub{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#b8bed1;margin-top:14px;display:block;}
+a.foot-sub:hover{color:var(--halo-100);}
+.drawer-page-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:var(--font-display);font-weight:700;font-size:14px;color:var(--accent-ink);text-decoration:none;transition:opacity .2s;}
+.drawer-page-link:hover{opacity:.72;}
+.ep-feature{display:flex;flex-direction:column;height:100%;}
+.ep-feature-meta{margin-top:var(--sp-16);}
+.ep-feature-links{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-top:auto;padding-top:var(--sp-16);}
+.ep-feature-links a{font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--fg-2);text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:color .2s;}
+.ep-feature-links a:hover{color:var(--accent-ink);}
+.ep-feature-links .pi{width:16px;height:16px;}
+
+/* ═══ ChatB2B sub-brand page — DARK top band (hero + trailer) ═══ */
+:root{--coolsweep-100:#1A7AFF;--coolsweep-200:#1666d6;--accent:#1A7AFF;--accent-ink:#1251ad;}
+.cb-top{background:var(--carbon-500);}
+.cb-hero{padding:var(--sp-80) 0 var(--sp-40);text-align:center;}
+/* stacked badge: compact — wordmark tucks under the triangle, width tracks the mark */
+.cb-lockup{display:inline-flex;flex-direction:column;align-items:center;gap:12px;margin:0 auto var(--sp-32);max-width:100%;}
+.cb-lockup .cb-mark{width:108px;height:105px;display:block;}
+.cb-wm{font-family:var(--font-display);font-weight:700;font-size:clamp(23px,2.6vw,29px);letter-spacing:-.02em;line-height:1;color:#fff;}
+.cb-tagline{font-family:var(--font-display);font-weight:700;font-size:clamp(30px,4vw,46px);letter-spacing:-.02em;line-height:1.06;color:var(--halo-100);text-wrap:balance;max-width:20ch;margin:0 auto var(--sp-16);}
+.cb-tagline em{font-style:normal;color:var(--coolsweep-100);}
+.cb-dek{font-size:18px;line-height:1.6;color:var(--halo-500);max-width:58ch;margin:0 auto var(--sp-24);text-wrap:pretty;}
+.cb-listen{display:flex;gap:var(--sp-12);flex-wrap:wrap;justify-content:center;max-width:100%;}
+.cb-hero .podcast-spotify{color:var(--halo-100);border-color:rgba(255,255,255,.22);}
+.cb-hero .podcast-spotify:hover{color:var(--halo-100);border-color:var(--halo-100);}
+.cb-trailer-sec{padding:0 0 var(--sp-80);}
+.cb-trailer-cap{text-align:center;font-family:var(--font-mono);font-size:13px;color:var(--halo-500);margin-top:var(--sp-16);letter-spacing:.02em;}
+.cb-featured-sec{padding:var(--sp-80) 0 var(--sp-48);background:var(--halo-100);}
+.cb-archive-sec{padding:var(--sp-48) 0 var(--sp-120);background:var(--halo-100);}
+.cb-archive-head{margin-bottom:var(--sp-32);}
+.cb-archive{border:1px solid var(--line);border-radius:var(--r-l);overflow:hidden;background:var(--halo-100);}
+.cb-archive .drawer-row{padding:var(--sp-16) var(--sp-24);}
+.cb-archive .drawer-row:hover{background:var(--surface);}
+@media(max-width:640px){.cb-archive .drawer-row{grid-template-columns:1fr;gap:var(--sp-8);}.cb-archive .drawer-row-links{margin-top:var(--sp-4);}}
+/* breadcrumb strip under the topbar (matches the article pages' pattern) */
+.crumbstrip{border-bottom:1px solid var(--line);background:var(--halo-100);}
+.crumbstrip .row{display:flex;justify-content:space-between;align-items:center;gap:16px;max-width:var(--maxw);margin:0 auto;padding:10px 28px;}
+.crumbstrip a{font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3);text-decoration:none;transition:color .2s;}
+.crumbstrip a:hover{color:var(--accent-ink);}
+.crumbstrip .here{font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3);opacity:.6;}
+/* archive row descriptions (clamped preview) */
+.cb-archive .drawer-row{align-items:start;}
+.cb-archive .drawer-row-links{align-self:start;}
+.drawer-row-desc{font-family:var(--font-body);font-size:13.5px;line-height:1.5;color:var(--fg-2);margin-top:8px;display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+/* featured cards: three platform links (replaces single-Spotify card link) */
+.cb-featured-sec .ep-feature{display:flex;flex-direction:column;height:100%;}
+.ep-feature-meta{margin-top:var(--sp-16);}
+.ep-feature-links{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-top:auto;padding-top:var(--sp-16);}
+.ep-feature-links a{font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--fg-2);text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:color .2s;}
+.ep-feature-links a:hover{color:var(--accent-ink);}
+.ep-feature-links .pi{width:16px;height:16px;}
+/* Let's talk CTA (dark) */
+.cb-cta{padding:clamp(64px,9vw,110px) 0;text-align:center;background:var(--carbon-500);}
+.cb-cta .eyebrow{color:var(--coolsweep-100);}
+.cb-cta-h{font-family:var(--font-display);font-weight:700;font-size:clamp(30px,4vw,46px);letter-spacing:-.02em;line-height:1.06;color:var(--halo-100);margin:var(--sp-12) auto var(--sp-16);max-width:20ch;text-wrap:balance;}
+.cb-cta-p{font-size:18px;line-height:1.6;color:var(--halo-400);max-width:52ch;margin:0 auto var(--sp-24);}
+
+</style>
+</head>
+<body>
+<a class="skip" href="#cb-archive">Skip to episodes</a>
+
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+
+  <symbol id="intercept-lockup" viewBox="0 0 324.005 76.2147">
+    <path d="M297.818 26.7875l4.836-5.6776h17.566v5.6776h-22.402z" fill="#8846C9" transform="translate(0,0.22)"/>
+    <path d="M272.002 8.52534h-6.859v4.31886h6.859v-4.31886z" fill="#8846C9" transform="translate(0,0.22)"/>
+    <path d="M324.005 29.0518h-8.104v6.2437h8.104v-6.2437z" fill="#1DABC1" transform="translate(0,0.22)"/>
+    <path d="M313.195 29.2138v34.6445h-53.918l29.447-34.6445h24.471z m0-2.4268h-22.408l14.339-16.87008h8.069v16.87008z m0-19.29684h-6.006l6.006-7.06542v7.06542z" fill="#FF00E5" transform="translate(0,0.22)"/>
+    <path d="M303.01 32.5619h-3.947v2.8307h3.947v-2.8307z" fill="#5154C4" transform="translate(0,0.22)"/>
+    <path d="M313.2 26.7875h-15.382l4.836-5.6776h10.546v5.6776z" fill="#FF44F9" transform="translate(0,0.22)"/>
+    <path d="M307.183 7.49016l3.979-4.67468v4.67468h-3.979z" fill="#FFA9F8" transform="translate(0,0.22)"/>
+    <path d="M299.063 32.5619h3.947v2.8307h-3.947v-2.8307z" fill="#FF52F9" transform="translate(0,0.22)"/>
+    <path d="M4.85695 54.8039v-43.5892h9.26825v43.5892h-9.26825z m13.47545 0v-30.8757h8.847v7.2649h0.1806v23.6108h-9.0276z m21.3652 0v-19.1308c0-1.6952-0.4413-2.9665-1.324-3.8141-0.8426-0.8475-2.0864-1.2713-3.7314-1.2713-1.4043 0-2.6681 0.3229-3.7916 0.9686-1.0833 0.6458-1.9459 1.5337-2.5879 2.6638-0.6018 1.1301-0.9027 2.462-0.9027 3.9957l-0.7824-7.4465c1.0031-2.2602 2.4675-4.0562 4.3934-5.3881 1.966-1.3723 4.3733-2.0584 7.222-2.0584 3.4104 0 6.0184 0.9687 7.8239 2.906 1.8055 1.8969 2.7083 4.4598 2.7083 7.6886v20.8865h-9.0276z m26.761 0.6659c-3.932 0-6.8609-0.9484-8.7868-2.8454-1.8857-1.9373-2.8286-4.8634-2.8286-8.7783v-26.8195l9.0275-3.3903v30.5125c0 1.3722 0.3812 2.4014 1.1435 3.0875 0.7624 0.6861 1.946 1.0292 3.5509 1.0292 0.6018 0 1.1635-0.0605 1.6851-0.1816 0.5216-0.1211 1.0432-0.2624 1.5648-0.4238v6.9016c-0.5216 0.2825-1.2639 0.5045-2.2268 0.666-0.9228 0.1614-1.966 0.2421-3.1296 0.2421z m-17.3328-24.64v-6.9016h22.6892v6.9016h-22.6892z m39.0784 24.5795c-3.4104 0-6.3795-0.6659-8.9072-1.9978-2.5277-1.3723-4.4937-3.2692-5.898-5.6909-1.3641-2.4216-2.0462-5.2064-2.0462-8.3545 0-3.1885 0.6821-5.9734 2.0462-8.3546 1.4043-2.4217 3.3503-4.2984 5.8378-5.6303 2.4876-1.3723 5.3764-2.0584 8.6665-2.0584 3.1697 0 5.918 0.6458 8.2451 1.9373 2.3271 1.2915 4.1326 3.0876 5.4166 5.3881 1.284 2.3006 1.926 5.0047 1.926 8.1124 0 0.6458-0.02 1.2512-0.06 1.8163-0.04 0.5246-0.101 1.0291-0.181 1.5135h-26.6011v-5.9935h19.319l-1.5648 1.0897c0-2.5023-0.6018-4.3387-1.8055-5.5092-1.1636-1.2108-2.7684-1.8162-4.8147-1.8162-2.3672 0-4.2128 0.8072-5.5369 2.4216-1.2839 1.6144-1.9259 4.036-1.9259 7.2649 0 3.1481 0.642 5.489 1.9259 7.0227 1.3241 1.5337 3.2901 2.3005 5.898 2.3005 1.4444 0 2.6882-0.2421 3.7314-0.7265 1.0432-0.4843 1.8256-1.2713 2.3472-2.361h8.4854c-1.003 2.9866-2.7279 5.3477-5.1753 7.0832-2.4074 1.6951-5.5169 2.5427-9.3285 2.5427z m17.7068-0.6054v-30.8757h8.847v7.2649h0.181v23.6108h-9.028z m9.028-16.1038l-0.783-7.3254c0.723-2.6234 1.906-4.6213 3.551-5.9935 1.645-1.3723 3.692-2.0584 6.139-2.0584 0.762 0 1.324 0.0807 1.685 0.2422v8.4756c-0.2-0.0807-0.481-0.121-0.842-0.121-0.361-0.0404-0.803-0.0606-1.324-0.0606-2.889 0-5.016 0.5247-6.38 1.5741-1.364 1.009-2.046 2.7647-2.046 5.267z m25.977 16.7092c-3.21 0-6.039-0.6861-8.486-2.0584-2.448-1.3722-4.374-3.2692-5.778-5.6908-1.364-2.4216-2.046-5.1863-2.046-8.294 0-3.1078 0.682-5.8725 2.046-8.2941 1.404-2.4216 3.33-4.3186 5.778-5.6908 2.447-1.3723 5.276-2.0584 8.486-2.0584 2.688 0 5.095 0.5045 7.222 1.5135 2.166 0.9687 3.932 2.3207 5.296 4.0562 1.404 1.7355 2.307 3.7737 2.708 6.1146h-8.727c-0.441-1.4933-1.243-2.6234-2.407-3.3902-1.123-0.7669-2.447-1.1503-3.972-1.1503-1.444 0-2.708 0.3632-3.792 1.0897-1.043 0.7265-1.845 1.7557-2.407 3.0876-0.562 1.3319-0.842 2.9059-0.842 4.7222 0 1.8162 0.28 3.3902 0.842 4.7221 0.562 1.3319 1.364 2.3611 2.407 3.0876 1.084 0.7265 2.348 1.0897 3.792 1.0897 1.525 0 2.849-0.3834 3.972-1.1503 1.164-0.7668 1.966-1.8969 2.407-3.3902h8.727c-0.401 2.3409-1.304 4.3791-2.708 6.1146-1.364 1.7355-3.13 3.1077-5.296 4.1167-2.127 0.9687-4.534 1.453-7.222 1.453z m31.752 0c-3.41 0-6.379-0.6659-8.907-1.9978-2.528-1.3723-4.494-3.2692-5.898-5.6909-1.364-2.4216-2.046-5.2064-2.046-8.3545 0-3.1885 0.682-5.9734 2.046-8.3546 1.404-2.4217 3.35-4.2984 5.838-5.6303 2.487-1.3723 5.376-2.0584 8.666-2.0584 3.17 0 5.918 0.6458 8.245 1.9373 2.327 1.2915 4.133 3.0876 5.417 5.3881 1.284 2.3006 1.926 5.0047 1.926 8.1124 0 0.6458-0.02 1.2512-0.06 1.8163-0.041 0.5246-0.101 1.0291-0.181 1.5135h-26.601v-5.9935h19.319l-1.565 1.0897c0-2.5023-0.602-4.3387-1.805-5.5092-1.164-1.2108-2.769-1.8162-4.815-1.8162-2.367 0-4.213 0.8072-5.537 2.4216-1.284 1.6144-1.926 4.036-1.926 7.2649 0 3.1481 0.642 5.489 1.926 7.0227 1.324 1.5337 3.29 2.3005 5.898 2.3005 1.444 0 2.688-0.2421 3.731-0.7265 1.044-0.4843 1.826-1.2713 2.348-2.361h8.485c-1.003 2.9866-2.728 5.3477-5.175 7.0832-2.408 1.6951-5.517 2.5427-9.329 2.5427z m36.424 0c-2.929 0-5.276-0.6861-7.041-2.0584-1.765-1.3722-2.809-3.249-3.13-5.6303l0.482-0.0605v19.5546h-9.028v-43.2865h8.847v6.8411l-0.541-0.1211c0.441-2.2602 1.645-4.036 3.611-5.3276 1.966-1.3318 4.393-1.9978 7.282-1.9978 2.768 0 5.156 0.666 7.162 1.9978 2.046 1.2916 3.611 3.128 4.694 5.5092 1.123 2.3813 1.685 5.1863 1.685 8.4152 0 3.2692-0.582 6.1146-1.745 8.5362-1.164 2.4216-2.789 4.2984-4.875 5.6303-2.086 1.3319-4.554 1.9978-7.403 1.9978z m-2.527-7.2649c2.126 0 3.851-0.7668 5.175-2.3005 1.324-1.5337 1.987-3.7132 1.987-6.5384 0-2.8252-0.683-4.9845-2.047-6.4778-1.324-1.4934-3.069-2.24-5.236-2.24-2.086 0-3.811 0.7668-5.175 2.3005-1.325 1.4933-1.987 3.6526-1.987 6.4779 0 2.8252 0.662 5.0046 1.987 6.5383 1.364 1.4934 3.129 2.24 5.296 2.24z m32.936 7.3254c-3.932 0-6.861-0.9484-8.787-2.8454-1.886-1.9373-2.829-4.8634-2.829-8.7783v-26.8195l9.028-3.3903v30.5125c0 1.3722 0.381 2.4014 1.143 3.0875 0.763 0.6861 1.946 1.0292 3.551 1.0292 0.602 0 1.164-0.0605 1.685-0.1816 0.522-0.1211 1.043-0.2624 1.565-0.4238v6.9016c-0.522 0.2825-1.264 0.5045-2.227 0.666-0.923 0.1614-1.966 0.2421-3.129 0.2421z m-17.333-24.64v-6.9016h22.689v6.9016h-22.689z" fill="currentColor" transform="translate(0,-1)"/>
+  </symbol>
+  <symbol id="icon-spotify" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.3 14.5a.7.7 0 0 1-.96.24c-2.63-1.6-5.94-1.97-9.85-1.08a.7.7 0 1 1-.31-1.37c4.27-.97 7.94-.55 10.88 1.25.33.2.44.63.24.96Zm1.23-2.85a.87.87 0 0 1-1.2.3c-3.01-1.85-7.6-2.38-11.16-1.3a.87.87 0 1 1-.5-1.67c4.07-1.23 9.11-.63 12.56 1.48.41.25.54.79.3 1.19Zm.1-2.97C14.1 8.53 8.55 8.33 5.35 9.3a1.04 1.04 0 1 1-.6-2c3.67-1.11 9.78-.9 13.73 1.45a1.04 1.04 0 0 1-1.06 1.8Z"/></symbol>
+<symbol id="icon-apple-podcasts" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.5 19.36c-.14-.6-.27-1.52-.11-2.17-1.9-1.13-3.14-3.2-3.14-5.44A6.75 6.75 0 1 1 18.75 13.75c0 2.24-1.24 4.31-3.14 5.44.16.65.03 1.57-.11 2.17A10 10 0 0 0 12 2Zm0 5.5a4.25 4.25 0 0 0-2.12 7.93c.1-.5.28-.98.55-1.34a2.75 2.75 0 1 1 3.14 0c.27.36.45.84.55 1.34A4.25 4.25 0 0 0 12 7.5Zm0 4a1.35 1.35 0 1 0 0-2.7 1.35 1.35 0 0 0 0 2.7Zm0 1.6c1.1 0 1.85.62 1.85 1.53 0 1.1-.4 3.5-.62 4.55-.15.72-.6 1.02-1.23 1.02s-1.08-.3-1.23-1.02c-.22-1.05-.62-3.45-.62-4.55 0-.91.75-1.53 1.85-1.53Z"/></symbol>
+<symbol id="icon-youtube" viewBox="0 0 24 24"><path fill="currentColor" d="M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.28 5 12 5 12 5s-6.28 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2 26.1 26.1 0 0 0 2 12c0 1.62.13 3.23.4 4.8a2.5 2.5 0 0 0 1.76 1.77C5.72 19 12 19 12 19s6.28 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77c.27-1.57.4-3.18.4-4.8 0-1.62-.13-3.23-.4-4.8ZM10 15.13V8.87L15.25 12 10 15.13Z"/></symbol>
+<symbol id="icon-arrow-right" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12"/>
+      <polyline points="12 5 19 12 12 19"/>
+    </g>
+  </symbol>
+  <symbol id="icon-external" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+      <polyline points="15 3 21 3 21 9"/>
+      <line x1="10" y1="14" x2="21" y2="3"/>
+    </g>
+  </symbol>
+  <symbol id="icon-play" viewBox="0 0 24 24">
+    <polygon fill="currentColor" points="6 4 20 12 6 20 6 4"/>
+  </symbol>
+  <symbol id="icon-clock" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/>
+      <polyline points="12 7 12 12 15.5 14"/>
+    </g>
+  </symbol>
+  <symbol id="icon-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></g></symbol>
+  <symbol id="icon-eye" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+  <symbol id="icon-trending-up" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></g></symbol>
+  <symbol id="icon-zap" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></g></symbol>
+  <symbol id="chatb2b-mark" viewBox="0 0 65.8609 63.9998">
+    <path d="M39.673 26.7875l4.8365-5.6776h17.5664v5.6776h-22.4029z" fill="#5154C4"/>
+    <path d="M13.8572 8.52531h-6.85833v4.31879h6.85833v-4.31879z" fill="#5154C4"/>
+    <path d="M65.8608 29.0517h-8.1038v6.2437h8.1038v-6.2437z" fill="#1DABC1"/>
+    <path d="M55.0503 29.2138v34.6445h-53.91798l29.44728-34.6445h24.4707z m0-2.4268h-22.4082l14.3398-16.8701h8.0684v16.8701z m0-19.29686h-6.0059l6.0059-7.06543v7.06543z" fill="#1A7AFF"/>
+    <path d="M44.8652 32.5619h-3.9467v2.8307h3.9467v-2.8307z" fill="#5154C4"/>
+    <path d="M55.0558 26.7875h-15.3828l4.8365-5.6776h10.5463v5.6776z" fill="#1DABC1"/>
+    <path d="M49.0384 7.49014l3.9791-4.67469v4.67469h-3.9791z" fill="#7FB2FF"/>
+    <path d="M40.9185 32.5619h3.9467v2.8307h-3.9467v-2.8307z" fill="#1A7AFF"/>
+  </symbol>
+</svg>
+
+<header class="topbar">
+  <div class="row">
+    <a href="index.html" aria-label="Intercept home">
+      <svg class="logo" role="img" aria-label="Intercept"><use href="#intercept-lockup"/></svg>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="pages/os.html">InterceptOS</a>
+      <a href="pages/labs.html">Intercept Labs</a>
+      <a href="pages/work.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="insights-hub.html">Insights</a>
+      <a href="pages/contact.html" class="cta-nav">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="crumbstrip"><div class="row">
+  <a href="insights-hub.html#podcast">&larr; Insights</a>
+  <span class="here">ChatB2B &middot; Podcast</span>
+</div></div>
+
+<main>
+
+<div class="cb-top">
+  <section class="cb-hero">
+    <div class="shell">
+      <div class="cb-lockup">
+        <svg class="cb-mark" viewBox="0 0 65.8609 63.9998" role="img" aria-label="ChatB2B mark"><use href="#chatb2b-mark"/></svg>
+        <span class="cb-wm">ChatB2B</span>
+      </div>
+      <h1 class="cb-tagline">Enterprise B2B, from the people running&nbsp;it.</h1>
+      <p class="cb-dek">Andrew Au sits down with marketers, product leaders, and revenue operators. What they&rsquo;re building, what&rsquo;s landing, and what AI is quietly changing about the work.</p>
+      <div class="cb-listen">
+        <a class="podcast-spotify" href="https://open.spotify.com/show/2RTmhzjHDlCRhqQb5XyRoO" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg><span>Spotify</span></a><a class="podcast-spotify" href="https://podcasts.apple.com/us/podcast/chatb2b/id1840415344" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg><span>Apple Podcasts</span></a><a class="podcast-spotify" href="https://www.youtube.com/channel/UCZoFGWEqh3sST6W3JSmccvA" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg><span>YouTube</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cb-trailer-sec">
+    <div class="shell">
+<div class="podcast-trailer" id="podcastTrailer">
+        <video id="trailerVideo" preload="none" playsinline controls
+               poster="assets/podcast/chatb2b-trailer-poster.jpg"
+               src="assets/podcast/chatb2b-trailer.mp4">
+          Your browser doesn&rsquo;t support HTML5 video.
+        </video>
+        <button type="button" class="trailer-play" id="trailerPlayBtn" aria-label="Play ChatB2B trailer">
+          <span class="trailer-play-glyph" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><polygon fill="currentColor" points="8 5 20 12 8 19 8 5"/></svg>
+          </span>
+        </button>
+      </div>
+      <p class="cb-trailer-cap">ChatB2B trailer &middot; 90 seconds</p>
+    </div>
+  </section>
+</div>
+
+  <section class="cb-featured-sec">
+    <div class="shell">
+      <div class="episodes-featured-header">
+        <p class="episodes-featured-kicker">Start here.</p>
+        <p class="episodes-featured-note">The three newest conversations.</p>
+      </div>
+      <div class="episodes-featured-grid card-grid">
+
+        <article class="ep-feature">
+          <span class="chip">Jun 2026</span>
+          <h3 class="ep-feature-title">What it takes to be creative in the AI era at HP</h3>
+          <p class="ep-feature-desc">Where AI is delivering real lift in content and creative work, where it isn&rsquo;t, and what creative leaders are doing to redesign roles and rethink hiring.</p>
+          <div class="ep-feature-meta"><b>Liz Merrilees Emlay</b><span class="sep">&middot;</span><span>Head of Global Creative Services and Product Marketing, HP</span></div>
+          <div class="ep-feature-links">
+            <a href="https://open.spotify.com/episode/0RvY6DPjOqQXOAMJXAO0rW" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg>Spotify</a>
+            <a href="https://podcasts.apple.com/us/podcast/what-it-takes-to-be-creative-in-the-ai-era-at-hp/id1840415344?i=1000774885608" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg>Apple</a>
+            <a href="https://www.youtube.com/watch?v=cbRJ9uZhWCM" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg>YouTube</a>
+          </div>
+        </article>
+
+        <article class="ep-feature">
+          <span class="chip">Jun 2026</span>
+          <h3 class="ep-feature-title">Building the Backend for AI Agents</h3>
+          <p class="ep-feature-desc">Inside the backend infrastructure that makes AI agents work reliably, from a former Microsoft GitHub Copilot leader now building agent tooling at Moderne.</p>
+          <div class="ep-feature-meta"><b>Patrick Vuong</b><span class="sep">&middot;</span><span>Director of Product Management, Moderne</span></div>
+          <div class="ep-feature-links">
+            <a href="https://open.spotify.com/episode/0vnMR61WLUmS94YUeNRTby" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg>Spotify</a>
+            <a href="https://podcasts.apple.com/us/podcast/building-the-backend-for-ai-agents-with-patrick-vuong/id1840415344?i=1000770795263" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg>Apple</a>
+            <a href="https://www.youtube.com/watch?v=t3xY3tqU9YI" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg>YouTube</a>
+          </div>
+        </article>
+
+        <article class="ep-feature">
+          <span class="chip">May 2026</span>
+          <h3 class="ep-feature-title">The Rise of the Senior IC in the AI Era</h3>
+          <p class="ep-feature-desc">Stepping out of management and into the senior individual contributor track, and how AI is reshaping product marketing, sales enablement, and partner enablement day to day.</p>
+          <div class="ep-feature-meta"><b>Jaynie Miller</b><span class="sep">&middot;</span><span>Worldwide Product Marketing Lead, HP</span></div>
+          <div class="ep-feature-links">
+            <a href="https://open.spotify.com/episode/1vD0gtTpZppIt61dcVH56r" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg>Spotify</a>
+            <a href="https://podcasts.apple.com/us/podcast/the-rise-of-the-senior-ic-in-the-ai-era-with-jaynie-miller/id1840415344?i=1000768597543" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg>Apple</a>
+            <a href="https://www.youtube.com/watch?v=uDJIwLfLeBA" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg>YouTube</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="cb-archive-sec" id="cb-archive">
+    <div class="shell">
+      <div class="cb-archive-head">
+        <span class="eyebrow">ChatB2B &middot; The archive</span>
+        <h2 class="directory-title">Every conversation, <em>in one place</em>.</h2>
+        <p class="directory-lead">All 21 episodes &middot; newest first. Listen on Spotify, Apple Podcasts, or YouTube.</p>
+        <div class="drawer-platforms">
+          <a href="https://open.spotify.com/show/2RTmhzjHDlCRhqQb5XyRoO" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg>Spotify</a>
+          <a href="https://podcasts.apple.com/us/podcast/chatb2b/id1840415344" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg>Apple Podcasts</a>
+          <a href="https://www.youtube.com/channel/UCZoFGWEqh3sST6W3JSmccvA" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg>YouTube</a>
+        </div>
+      </div>
+      <div class="cb-archive">
+<div class="drawer-row">
+      <span class="drawer-row-chip chip">Jun 2026</span>
+      <span class="drawer-row-body">
+        <span class="drawer-row-title">What it takes to be creative in the AI era at HP</span>
+        <span class="drawer-row-meta"><b>Liz Merrilees Emlay</b><span class="sep">&middot;</span>
+        <span class="drawer-row-desc">In this episode, Liz Merrilees Emlay, Head of Global Creative Services and Product Marketing at HP, joins Andrew to wrestle with what it takes to be creative in an era when AI is brilliant at producing the average. We get into where AI is delivering real lift in content and creative work, where it isn’t, and what creative leaders are doing to redesign roles, rethink hiring, and prepare their teams for work that hasn’t been defined yet. The arc lands on the decisions creative leaders are making in the next one to two years that will set the trajectory for the next decade.</span>HP</span>
+      </span>
+      <span class="drawer-row-links">
+        <a href="https://open.spotify.com/episode/0RvY6DPjOqQXOAMJXAO0rW" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg>Spotify</a>
+        <a href="https://podcasts.apple.com/us/podcast/what-it-takes-to-be-creative-in-the-ai-era-at-hp/id1840415344?i=1000774885608" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg>Apple</a>
+        <a href="https://www.youtube.com/watch?v=cbRJ9uZhWCM" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg>YouTube</a>
+      </span>
+    </div>
+    <div class="drawer-row">
+      <span class="drawer-row-chip chip">Jun 2026</span>
+      <span class="drawer-row-body">
+        <span class="drawer-row-title">Building the Backend for AI Agents</span>
+        <span class="drawer-row-meta"><b>Patrick Vuong</b></span>
+        <span class="drawer-row-desc">In this episode, Patrick Vuong, first Director of Product Management at Moderne, takes us inside the backend infrastructure that makes AI agents work reliably. Patrick brings a rare cross-ecosystem seat as a former Microsoft GitHub Copilot leader, now building the agent tooling embedded inside AWS Q, GitHub Copilot, and Broadcom App Advisor. We get into what multi-agent orchestration looks like in production, why backend infrastructure is the layer most marketing teams haven’t built for, and what it means to design for agents alongside humans.</span>
+      </span>
+      <span class="drawer-row-links">
+        <a href="https://open.spotify.com/episode/0vnMR61WLUmS94YUeNRTby" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg>Spotify</a>
+        <a href="https://podcasts.apple.com/us/podcast/building-the-backend-for-ai-agents-with-patrick-vuong/id1840415344?i=1000770795263" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg>Apple</a>
+        <a href="https://www.youtube.com/watch?v=t3xY3tqU9YI" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg>YouTube</a>
+      </span>
+    </div>
+    <div class="drawer-row">
+      <span class="drawer-row-chip chip">May 2026</span>
+      <span class="drawer-row-body">
+        <span class="drawer-row-title">The Rise of the Senior IC in the AI Era</span>
+        <span class="drawer-row-meta"><b>Jaynie Miller</b></span>
+        <span class="drawer-row-desc">In this episode, Jaynie Miller, Worldwide Product Marketing Lead at HP, shares what it’s been like to step out of management and into the senior individual contributor track at one of the world’s largest technology companies. We explore how AI is reshaping product marketing, sales enablement, and partner enablement day to day, and what marketing teams need to look like as every company resets for the AI era.</span>
+      </span>
+      <span class="drawer-row-links">
+        <a href="https://open.spotify.com/episode/1vD0gtTpZppIt61dcVH56r" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg>Spotify</a>
+        <a href="https://podcasts.apple.com/us/podcast/the-rise-of-the-senior-ic-in-the-ai-era-with-jaynie-miller/id1840415344?i=1000768597543" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg>Apple</a>
+        <a href="https://www.youtube.com/watch?v=uDJIwLfLeBA" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg>YouTube</a>
+      </span>
+    </div>
+    <div class="drawer-row">
+      <span class="drawer-row-chip chip">Apr 2026</span>
+      <span class="drawer-row-body">
+        <span class="drawer-row-title">Optimizing AI Search: Lessons from Sophos</span>
+        <span class="drawer-row-meta"><b>Megan Cabrera</b></span>
+        <span class="drawer-row-desc">In this episode, Megan Cabrera, former VP of Marketing Operations at Sophos, opens up about what it took to build an enterprise AI search strategy when the playbook didn’t exist yet. From navigating constant algorithm shifts, to figuring out how brands show up in communities like Reddit, Megan shares the pivots, the failures, and the principles that held. The conversation also goes deeper into the enterprise infrastructure behind the strategy. How to get AI tools approved when procurement can take up to a year, where AI roles should sit in the organization, and what the recent Claude Mythos leak means for the cybersecurity industry.</span>
+      </span>
+      <span class="drawer-row-links">
+        <a href="https://open.spotify.com/episode/63Cj9IIK1SYCgCS3BBdAtv" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg>Spotify</a>
+        <a href="https://podcasts.apple.com/us/podcast/optimizing-ai-search-lessons-from-sophos-with-megan/id1840415344?i=1000762801591" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg>Apple</a>
+        <a href="https://www.youtube.com/watch?v=jIv_AFVh-Rc" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg>YouTube</a>
+      </span>
+    </div>
+    <div class="drawer-row">
+      <span class="drawer-row-chip chip">Apr 2026</span>
+      <span class="drawer-row-body">
+        <span class="drawer-row-title">The AI-Ready Marketer: New Rules for Content and Culture</span>
+        <span class="drawer-row-meta"><b>Tammy Tufty</b></span>
+        <span class="drawer-row-desc">This episode, we explore what it means to be an AI-ready marketer. Starting with the macro fears that have marketers anxious right now, and moving into what the best teams are doing about it. Drawing on Tammy’s experience at BMC and her work co-founding the Charlotte Marketing AI Exchange, we dig into how content strategy needs to be rebuilt for a world where AI is the first reader, why most organizations are still at the starting line on GEO, and what it takes to move from AI experimentation to transformation that sticks.</span>
+      </span>
+      <span class="drawer-row-links">
+        <a href="https://open.spotify.com/episode/4MAOxx9katOgon2s9gahHr" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg>Spotify</a>
+        <a href="https://podcasts.apple.com/us/podcast/the-ai-ready-marketer-new-rules-for-content-and/id1840415344?i=1000761296490" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg>Apple</a>
+        <a href="https://www.youtube.com/watch?v=trriGcftFmE" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg>YouTube</a>
+      </span>
+    </div>
+    <div class="drawer-row">
+      <span class="drawer-row-chip chip">Apr 2026</span>
+      <span class="drawer-row-body">
+        <span class="drawer-row-title">When AI Meets ABM: Rethinking Content and Buyers</span>
+        <span class="drawer-row-meta"><b>Murali Kandasamy</b></span>
+        <span class="drawer-row-desc">This episode, we’ll explore how AI is reshaping account-based marketing with Murali Kandasamy, VP of Growth &amp; Strategy at PathFactory. Drawing on original research from Intercept Watchtower, we'll unpack the real blockers holding ABM programs back, where AI chatbots and content intelligence are making a measurable difference, and what happens when the first reader of your content is an AI agent rather than a human.</span>
+      </span>
+      <span class="drawer-row-links">
+        <a href="https://open.spotify.com/episode/05yKr823eGPAvpRoMKjjSn" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg>Spotify</a>
+        <a href="https://podcasts.apple.com/us/podcast/when-ai-meets-abm-rethinking-content-and-buyers/id1840415344?i=1000760035748" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg>Apple</a>
+        <a href="https://www.youtube.com/watch?v=6xzrxOpPWYk" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg>YouTube</a>
+      </span>
+    </div>
+    <div class="drawer-row">
+      <span class="drawer-row-chip chip">Mar 2026</span>
+      <span class="drawer-row-body">
+        <span class="drawer-row-title">What AI PCs Really Change for Marketers</span>
+        <span class="drawer-row-meta"><b>Jeanette Kennedy</b></span>
+        <span class="drawer-row-desc">This episode explores what AI PCs really change for marketers and why the device should be part of your AI strategy. Jeannette Kennedy from Microsoft breaks down what AI PCs are in plain language and explains how local AI processing and small language models open up new ways of working that you cannot get from cloud tools alone. We talk through real examples, the on-device AI opportunity, and a few simple moves marketing leaders can make now so they are ready as AI PCs become the standard.</span>
+      </span>
+      <span class="drawer-row-links">
+        <a href="https://open.spotify.com/episode/2fdWo3cNfaP3h4DmTK1wjA" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg>Spotify</a>
+        <a href="https://podcasts.apple.com/us/podcast/what-ai-pcs-really-change-for-marketers-with-jeanette/id1840415344?i=1000758418033" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg>Apple</a>
+        <a href="https://www.youtube.com/watch?v=VhvueS3zzys" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg>YouTube</a>
+      </span>
+    </div>
+    <div class="drawer-row">
+      <span class="drawer-row-chip chip">Mar 2026</span>
+      <span class="drawer-row-body">
+        <span class="drawer-row-title">How AI Is Rewriting the Rules of Knowledge Work</span>
+        <span class="drawer-row-meta"><b>Mahadev Sastri</b></span>
+        <span class="drawer-row-desc">In this episode, we’ll explore how AI is moving from a personal productivity tool to an organizational transformation lever inside professional services with Mahadev Sastri, Director of Marketing at CGI. Drawing on original research from Intercept Watchtower, we’ll unpack the gap between where most teams are with AI today and where they need to be, the practical use cases creating real traction, and what happens when the shift from “single-player” to “multiplayer mode” works at scale.</span>
+      </span>
+      <span class="drawer-row-links">
+        <a href="https://open.spotify.com/episode/429SteelbLk8r32FL6IyWM" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg>Spotify</a>
+        <a href="https://podcasts.apple.com/us/podcast/how-ai-is-rewriting-the-rules-of-knowledge-work/id1840415344?i=1000757040243" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg>Apple</a>
+        <a href="https://www.youtube.com/watch?v=6u4nv4CeiNo" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg>YouTube</a>
+      </span>
+    </div>
+    <div class="drawer-row">
+      <span class="drawer-row-chip chip">Mar 2026</span>
+      <span class="drawer-row-body">
+        <span class="drawer-row-title">AI Adoption Inside Lenovo: Pilots, Procurement, and Progress</span>
+        <span class="drawer-row-meta"><b>Shoeb Shaikh</b></span>
+        <span class="drawer-row-desc">In this episode, we’ll explore how Lenovo’s Solutions &amp; Services Group is navigating AI adoption in global campaign marketing. Shoeb will share how his team is moving from “AI is great” to “show me,” running controlled pilots, building the case for scale, and confronting the real organizational blockers (from skills gaps to procurement contracts) that sit between experimentation and impact. We’ll also dig into how B2B buying is shifting as AI agents become the first gatekeepers, what “generative engine optimization” means for content strategy, and why building a culture of smart risk-taking matters more than ever.</span>
+      </span>
+      <span class="drawer-row-links">
+        <a href="https://open.spotify.com/episode/291uJi3671MxyPNC2Vb5f7" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg>Spotify</a>
+        <a href="https://podcasts.apple.com/us/podcast/ai-adoption-inside-lenovo-pilots-procurement-and/id1840415344?i=1000754463672" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg>Apple</a>
+        <a href="https://www.youtube.com/watch?v=Fz67PYFMjmk" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg>YouTube</a>
+      </span>
+    </div>
+    <div class="drawer-row">
+      <span class="drawer-row-chip chip">Feb 2026</span>
+      <span class="drawer-row-body">
+        <span class="drawer-row-title">How TELUS is Applying AI in Vertical GTM</span>
+        <span class="drawer-row-meta"><b>Tristan Retelsdorf</b></span>
+        <span class="drawer-row-desc">In this episode, we’ll explore how AI is reshaping modern go-to-market teams through the lens of Marketing and RevOps convergence. Tristan will share how he’s thinking about team design and new responsibilities as “managing AI agents” becomes a real role shift, and we’ll dig into practical AI use cases inside TELUS Agriculture &amp; Consumer Goods. What’s working today, what’s still experimental, and what he expects to scale in 2026.</span>
+      </span>
+      <span class="drawer-row-links">
+        <a href="https://open.spotify.com/episode/3vhg67LdINmkJJpegRUTVZ" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg>Spotify</a>
+        <a href="https://podcasts.apple.com/us/podcast/how-telus-is-applying-ai-in-vertical-gtm-with-tristan/id1840415344?i=1000751213080" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg>Apple</a>
+        <a href="https://www.youtube.com/watch?v=ERQ8i-GpgGs" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg>YouTube</a>
+      </span>
+    </div>
+    <div class="drawer-row">
+      <span class="drawer-row-chip chip">Feb 2026</span>
+      <span class="drawer-row-body">
+        <span class="drawer-row-title">“Sprint to Agents”: What Agentic Marketing Actually Means</span>
+        <span class="drawer-row-meta"><b>Francis Silva</b></span>
+        <span class="drawer-row-desc">This episode introduces Francis Silva, Intercept’s first Chief Technology Officer, and explores a practical response to what enterprise marketers are feeling right now. Teams are being told to sprint toward AI and agents while legal, IT, and procurement slow adoption, and while the AI tool landscape changes faster than governance cycles can keep up. Francis defines what agentic marketing actually means, maps where most teams sit on the Marketing AI Maturity Curve, and shares real world, anonymized projects that show how AI moves from experimentation into secure, reliable day to day workflows.</span>
+      </span>
+      <span class="drawer-row-links">
+        <a href="https://open.spotify.com/episode/5wdPY6J4CaGdEq5Oi9Vovc" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg>Spotify</a>
+        <a href="https://podcasts.apple.com/us/podcast/sprint-to-agents-what-agentic-marketing-actually-means/id1840415344?i=1000750170163" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg>Apple</a>
+        <a href="https://www.youtube.com/watch?v=6uZaVaL94ME" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg>YouTube</a>
+      </span>
+    </div>
+    <div class="drawer-row">
+      <span class="drawer-row-chip chip">Feb 2026</span>
+      <span class="drawer-row-body">
+        <span class="drawer-row-title">Redefining Creative Work for the AI Era</span>
+        <span class="drawer-row-meta"><b>Catherine Richards</b></span>
+        <span class="drawer-row-desc">This episode explores how AI is redefining creative work; from how content is made to how creative teams organize, collaborate, and make decisions. Catherine Richards, former enterprise marketer at Dell, Adobe, and VMware, shares what she’s learned leading AI adoption inside complex organizations and building one of the first Marketing AI Councils. We dig into how creativity itself is being redefined, how teams can protect originality in an age of efficiency, and what it means to lead creative work when systems are becoming intelligent.</span>
+      </span>
+      <span class="drawer-row-links">
+        <a href="https://open.spotify.com/episode/0QKU2bGnnHf7xEUAPIZvSF" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg>Spotify</a>
+        <a href="https://podcasts.apple.com/us/podcast/redefining-creative-work-for-the-ai-era-with/id1840415344?i=1000749079254" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg>Apple</a>
+        <a href="https://www.youtube.com/watch?v=OkibIrKCMZQ" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg>YouTube</a>
+      </span>
+    </div>
+    <div class="drawer-row">
+      <span class="drawer-row-chip chip">Feb 2026</span>
+      <span class="drawer-row-body">
+        <span class="drawer-row-title">Scaling Social Without Losing the Human</span>
+        <span class="drawer-row-meta"><b>Kelly Broili</b></span>
+        <span class="drawer-row-desc">This episode explores how SAP is redefining social media in the age of AI. Kelly Broili, VP of Global Social Media, leads one of the largest and most complex social operations in the tech industry. She shares how her team is finding the balance between scale and authenticity, keeping creativity and trust at the center while adopting AI across workflows. The conversation digs into what authenticity really means today, where AI adds value, and how social teams can stay human as they scale.</span>
+      </span>
+      <span class="drawer-row-links">
+        <a href="https://open.spotify.com/show/2RTmhzjHDlCRhqQb5XyRoO" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg>Spotify</a>
+        <a href="https://podcasts.apple.com/us/podcast/scaling-social-without-losing-the-human-with-kelly-broili/id1840415344?i=1000747860513" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg>Apple</a>
+        <a href="https://www.youtube.com/watch?v=aUUHVEfA5TA" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg>YouTube</a>
+      </span>
+    </div>
+    <div class="drawer-row">
+      <span class="drawer-row-chip chip">Jan 2026</span>
+      <span class="drawer-row-body">
+        <span class="drawer-row-title">The Playbook for Practical AI: Inside Procom’s AI Journey</span>
+        <span class="drawer-row-meta"><b>Dylan Fedy</b></span>
+        <span class="drawer-row-desc">This week we chat with Dylan Fedy, Director of Marketing &amp; Customer Insight at Procom. This episode will explore how Procom is using AI to drive real business results, from automating sales training simulations to deploying voice agents for customer conversations. Dylan shares what’s working, what’s not, and how to move from experimentation to measurable impact.</span>
+      </span>
+      <span class="drawer-row-links">
+        <a href="https://open.spotify.com/show/2RTmhzjHDlCRhqQb5XyRoO" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg>Spotify</a>
+        <a href="https://podcasts.apple.com/us/podcast/the-playbook-for-practical-ai-inside-procoms-ai/id1840415344?i=1000746867664" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg>Apple</a>
+        <a href="https://www.youtube.com/watch?v=k_EWIUWFDy0" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg>YouTube</a>
+      </span>
+    </div>
+    <div class="drawer-row">
+      <span class="drawer-row-chip chip">Jan 2026</span>
+      <span class="drawer-row-body">
+        <span class="drawer-row-title">Re-wiring the Marketing Org</span>
+        <span class="drawer-row-meta"><b>Audrey Davidson</b></span>
+        <span class="drawer-row-desc">Audrey Davidson, Head of Integrated Marketing Americas at Microsoft is discussing how AI is reshaping the structure, workflows, and skills of modern marketing organizations, illustrated by Microsoft’s concept of the “Frontier Firm” and what it means for marketing organizations striving to stay ahead. We also learn about the new role of humans in Marketing organizations, working side by side with AI teammates.</span>
+      </span>
+      <span class="drawer-row-links">
+        <a href="https://open.spotify.com/show/2RTmhzjHDlCRhqQb5XyRoO" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg>Spotify</a>
+        <a href="https://podcasts.apple.com/us/podcast/re-wiring-the-marketing-org-with-audrey-davidson/id1840415344?i=1000745892151" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg>Apple</a>
+        <a href="https://www.youtube.com/watch?v=3JyjNdQlu3I" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg>YouTube</a>
+      </span>
+    </div>
+    <div class="drawer-row">
+      <span class="drawer-row-chip chip">Jan 2026</span>
+      <span class="drawer-row-body">
+        <span class="drawer-row-title">What It Really Takes to Scale AI Pilots</span>
+        <span class="drawer-row-meta"><b>Jessica Hreha</b></span>
+        <span class="drawer-row-desc">Jessica Hreha, Director of Marketing AI Transformation at Veeam shares how marketing teams are adopting AI and what it takes to move from pilot projects to scaled adoption. Along with her work at Veeam, Jessica has previously built AI councils and transformation offices at VMware and Jasper, and shares lessons on what skills leaders need to guide their teams through AI adoption.</span>
+      </span>
+      <span class="drawer-row-links">
+        <a href="https://open.spotify.com/show/2RTmhzjHDlCRhqQb5XyRoO" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg>Spotify</a>
+        <a href="https://podcasts.apple.com/us/podcast/what-it-really-takes-to-scale-ai-pilots-with-jessica-hreha/id1840415344?i=1000744987223" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg>Apple</a>
+        <a href="https://www.youtube.com/watch?v=v17YjMlZjp8" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg>YouTube</a>
+      </span>
+    </div>
+    <div class="drawer-row">
+      <span class="drawer-row-chip chip">Dec 2025</span>
+      <span class="drawer-row-body">
+        <span class="drawer-row-title">How AI Can Support Partner Growth</span>
+        <span class="drawer-row-meta"><b>Shelley Green</b></span>
+        <span class="drawer-row-desc">Shelley Green, Director of Microsoft Cloud – Copilot and Security at TD SYNNEX helps us explore how AI can support partner growth, especially for those who are under-resourced or earlier in their marketing maturity. We dig into where partners struggle the most and which AI use cases could realistically make a difference, from content creation and campaign execution to sales training. Shelley shares her perspective, highlighting what’s working, where the opportunities lie, and how vendors and distributors can make AI more accessible and impactful for partners.</span>
+      </span>
+      <span class="drawer-row-links">
+        <a href="https://open.spotify.com/show/2RTmhzjHDlCRhqQb5XyRoO" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg>Spotify</a>
+        <a href="https://podcasts.apple.com/us/podcast/how-ai-can-support-partner-growth-with-shelley-green/id1840415344?i=1000741526585" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg>Apple</a>
+        <a href="https://www.youtube.com/watch?v=dnEIGIV7L7g" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg>YouTube</a>
+      </span>
+    </div>
+    <div class="drawer-row">
+      <span class="drawer-row-chip chip">Nov 2025</span>
+      <span class="drawer-row-body">
+        <span class="drawer-row-title">Future-Proof Your Marketing Career in the Age of AI</span>
+        <span class="drawer-row-meta"><b>Josh Chiavaroli</b></span>
+        <span class="drawer-row-desc">If you are wondering what AI means for your marketing career, this episode is for you. Josh Chiavaroli, Partner Sales Account at Intel and Marketing Professor at Seneca Polytechnic, unpacks how AI is redefining the skills marketers need, the tasks humans should still own, and how both seasoned professionals and emerging talent can adapt. From OEM to silicon to the classroom, Josh shares a vantage point that helps leaders understand the real AI skills shift and what they can do today to prepare their teams for the future.</span>
+      </span>
+      <span class="drawer-row-links">
+        <a href="https://open.spotify.com/show/2RTmhzjHDlCRhqQb5XyRoO" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg>Spotify</a>
+        <a href="https://podcasts.apple.com/us/podcast/future-proof-your-marketing-career-in-the-age-of-ai/id1840415344?i=1000737607341" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg>Apple</a>
+        <a href="https://www.youtube.com/watch?v=KNGQlY55hBw" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg>YouTube</a>
+      </span>
+    </div>
+    <div class="drawer-row">
+      <span class="drawer-row-chip chip">Nov 2025</span>
+      <span class="drawer-row-body">
+        <span class="drawer-row-title">The AI Opportunity for Channel Partner Marketing</span>
+        <span class="drawer-row-meta"><b>Jonna Bell</b></span>
+        <span class="drawer-row-desc">For marketers supporting channel partners, AI is opening up a new playbook. Jonna Bell, Global Director of Commercial Channel Marketing at Qualcomm, walks through how her team is using AI to simplify workflows, personalize content, and scale partner programs that actually get used. She shares what is changing in partner expectations, where campaigns still fall short, and how AI can bridge gaps, improve enablement, and drive stronger campaign results.</span>
+      </span>
+      <span class="drawer-row-links">
+        <a href="https://open.spotify.com/show/2RTmhzjHDlCRhqQb5XyRoO" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg>Spotify</a>
+        <a href="https://podcasts.apple.com/us/podcast/the-ai-opportunity-for-channel-partner-marketing/id1840415344?i=1000737606199" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg>Apple</a>
+        <a href="https://www.youtube.com/watch?v=x2IAPBKTCrI" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg>YouTube</a>
+      </span>
+    </div>
+    <div class="drawer-row">
+      <span class="drawer-row-chip chip">Nov 2025</span>
+      <span class="drawer-row-body">
+        <span class="drawer-row-title">Rethinking Sales Enablement in the AI Era</span>
+        <span class="drawer-row-meta"><b>Mike Thibodeau</b></span>
+        <span class="drawer-row-desc">What does AI actually change about sales enablement? Mike Thibodeau, Director of Enterprise New Business at Google Cloud, shares how AI is reshaping the future of enablement, helping go-to-market teams cut through content overload and guide buyers through complex decisions. Drawing on his experience at Microsoft and now Google Cloud, Mike breaks down what is working today, where AI is already making an impact, and where enablement strategies are headed next.</span>
+      </span>
+      <span class="drawer-row-links">
+        <a href="https://open.spotify.com/show/2RTmhzjHDlCRhqQb5XyRoO" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg>Spotify</a>
+        <a href="https://podcasts.apple.com/us/podcast/rethinking-sales-enablement-in-the-ai-era-with/id1840415344?i=1000737593994" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg>Apple</a>
+        <a href="https://www.youtube.com/watch?v=js5lGAc5vP4" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg>YouTube</a>
+      </span>
+    </div>
+    <div class="drawer-row">
+      <span class="drawer-row-chip chip">Nov 2025</span>
+      <span class="drawer-row-body">
+        <span class="drawer-row-title">Introducing ChatB2B</span>
+        <span class="drawer-row-meta"><b>Andrew Au</b><span class="sep">&middot;</span>
+        <span class="drawer-row-desc">ChatB2B is where enterprise marketers and Intercept’s leadership team compare notes on AI in B2B. You’ll hear real stories from the field along with the playbooks, experiments, and guardrails we use in our work with global tech brands. The goal is simple: help you make faster, smarter moves with AI inside your organization.</span>Host</span>
+      </span>
+      <span class="drawer-row-links">
+        <a href="https://open.spotify.com/show/2RTmhzjHDlCRhqQb5XyRoO" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-spotify"/></svg>Spotify</a>
+        <a href="https://podcasts.apple.com/us/podcast/introducing-chatb2b/id1840415344?i=1000736649341" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-apple-podcasts"/></svg>Apple</a>
+        <a href="https://www.youtube.com/watch?v=7Ti_zKe-nck" target="_blank" rel="noopener"><svg class="pi" aria-hidden="true"><use href="#icon-youtube"/></svg>YouTube</a>
+      </span>
+    </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cb-cta">
+    <div class="shell">
+      <span class="eyebrow">Let&rsquo;s talk</span>
+      <h2 class="cb-cta-h">Bring us your hardest problem</h2>
+      <p class="cb-cta-p">Tell us where you are and what you are trying to do, and we will figure out the path forward together.</p>
+      <a class="btn btn-primary" href="pages/contact.html">Start a conversation <svg aria-hidden="true"><use href="#icon-arrow-right"/></svg></a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="shell">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <svg class="logo sm" role="img" aria-label="Intercept"><use href="#intercept-lockup"/></svg>
+      </div>
+      <div class="foot-col">
+        <h4>Site</h4>
+        <a href="pages/os.html">InterceptOS</a>
+        <a href="pages/labs.html">Intercept Labs</a>
+        <a href="pages/work.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="insights-hub.html">Insights</a>
+        <a href="chatb2b.html">ChatB2B</a>
+        <a href="pages/contact.html">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h4>Trust</h4>
+        <a href="ai-policy.html">AI Policy</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html">Terms of Service</a>
+      </div>
+      <div class="foot-col">
+        <h4>Socials</h4>
+        <a href="https://www.linkedin.com/company/interceptagency/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.youtube.com/@InterceptGroup" target="_blank" rel="noopener">YouTube</a>
+        <span class="foot-sub">ChatB2B</span>
+        <a href="https://open.spotify.com/show/2RTmhzjHDlCRhqQb5XyRoO" target="_blank" rel="noopener">Spotify</a>
+        <a href="https://podcasts.apple.com/us/podcast/chatb2b/id1840415344" target="_blank" rel="noopener">Apple Podcasts</a>
+        <a href="https://www.youtube.com/channel/UCZoFGWEqh3sST6W3JSmccvA" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span class="curio">Powered by curiosity, built for the work</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Podcast trailer: click to play */
+(function(){
+  var trailer = document.getElementById('podcastTrailer');
+  if(!trailer) return;
+  var btn = document.getElementById('trailerPlayBtn');
+  var video = document.getElementById('trailerVideo');
+  if(!btn || !video) return;
+  btn.addEventListener('click', function(){
+    trailer.classList.add('is-playing');
+    var p = video.play();
+    if(p && typeof p.catch === 'function') p.catch(function(){});
+  });
+})();
+</script>
+</body>
+</html>
