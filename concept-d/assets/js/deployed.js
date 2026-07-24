@@ -58,6 +58,7 @@ const PROBLEMS_RR = {
 /* Pre-render all four panels once, then switch by toggling .is-active (crossfade, no DOM thrash). */
 function buildSolve(){
   const detail = document.getElementById('solveDetail');
+  if(!detail) return;
   detail.innerHTML = Object.keys(PROBLEMS_RR).map(key => {
     const p = PROBLEMS_RR[key];
     const sigNum = p.signalNum ? `<div class="solve-signal-num">${p.signalNum}</div>` : '';
@@ -132,6 +133,8 @@ const PROBLEM_FLOWS = {
 function renderFlow(p){
   const f = PROBLEM_FLOWS[p];
   if(!f) return;
+  const probFlowEl = document.getElementById('probFlow');
+  if(!probFlowEl) return;
   const stagesHtml = f.stages.map((s,i) => {
     const agents = `<div class="prob-flow-stage-agents">${s.agents.map(a => '<span class="agent-chip">'+a+'</span>').join('')}</div>`;
     const sep = i < f.stages.length - 1 ? '<div class="prob-flow-conn"></div>' : '';
@@ -142,7 +145,7 @@ function renderFlow(p){
       <p class="prob-flow-stage-desc">${s.desc}</p>
     </div>${sep}`;
   }).join('');
-  document.getElementById('probFlow').innerHTML = `
+  probFlowEl.innerHTML = `
     <div class="prob-flow-head">
       <p class="prob-flow-job"><b>The job:</b> ${f.job}</p>
       <span class="prob-flow-chip">Runs on <b>${f.layer}</b></span>
@@ -234,6 +237,7 @@ const CAT_LABELS = {strategy:'Strategy',content:'Content & Creative',sales:'Sale
 
 function renderAgents(cat){
   const grid = document.getElementById('agentsGrid');
+  if(!grid) return;
   const keys = Object.keys(AGENTS).filter(k => AGENTS[k].cats.includes(cat));
   grid.innerHTML = keys.map(k => {
     const a = AGENTS[k];
@@ -340,8 +344,9 @@ function closeAgentDetail(){
   agentDetailOverlay.classList.remove('is-open');
   if(was) _closeModal();
 }
-document.getElementById('agentDetailClose').addEventListener('click', closeAgentDetail);
-agentDetailBackdrop.addEventListener('click', closeAgentDetail);
+const agentDetailCloseBtn = document.getElementById('agentDetailClose');
+if(agentDetailCloseBtn) agentDetailCloseBtn.addEventListener('click', closeAgentDetail);
+if(agentDetailBackdrop) agentDetailBackdrop.addEventListener('click', closeAgentDetail);
 document.addEventListener('keydown', e => { if(e.key === 'Escape') closeAgentDetail(); });
 
 /* ============ CASE DRAWER ============ */
