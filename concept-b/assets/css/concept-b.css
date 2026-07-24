@@ -189,6 +189,177 @@
   outline-offset: 4px;
 }
 
+/* ── Chapter panels (CONB-03) — six statically-authored dialogs; JS in
+   panels.js only opens/closes/swaps them and never assigns copy. Panels
+   render instantly open/closed here — 03-03 owns @starting-style motion,
+   not this plan. Flat single-alpha backdrop only, never a gradient scrim;
+   no border-top/bottom dividers between sections — space + weight only. */
+.chapter-panel {
+  position: relative;
+  border: none;
+  border-radius: var(--r-l);
+  padding: var(--sp-32);
+  width: min(92vw, 40rem);
+  max-height: min(85svh, 48rem);
+  overflow-y: auto;
+  background: var(--surface);
+  color: var(--fg);
+}
+.chapter-panel::backdrop {
+  background-color: rgb(10 10 15 / 72%); /* flat single-alpha layer over the still-playing video */
+}
+.chapter-panel h2 {
+  font-size: var(--fs-h3);
+  margin-bottom: var(--sp-16);
+  padding-right: var(--sp-48); /* keeps title clear of the close button */
+}
+.chapter-panel__close {
+  position: absolute;
+  top: var(--sp-16);
+  right: var(--sp-16);
+  min-width: 44px;
+  min-height: 44px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-l1);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--fg);
+  background: var(--surface-2);
+  border: none;
+  border-radius: var(--r-round);
+  padding: var(--sp-8) var(--sp-16);
+  cursor: pointer;
+  transition: opacity var(--dur-short) var(--ease-inout-sine);
+}
+.chapter-panel__close:hover { opacity: var(--op-80); }
+.chapter-panel__close:focus-visible {
+  outline: var(--bw-l) solid var(--flarepop);
+  outline-offset: 4px;
+}
+.chapter-panel__lead {
+  color: var(--fg-2);
+  font-size: var(--fs-p3);
+  margin-bottom: var(--sp-24);
+}
+.chapter-panel__labs-h2 { font-size: var(--fs-p2); margin-bottom: var(--sp-16); }
+.chapter-panel__labs-h2 .hl { font-weight: var(--fw-bold); color: var(--fg); }
+.chapter-panel__sub-kicker { margin-top: var(--sp-8); }
+.chapter-panel__agents-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h5);
+  margin-bottom: var(--sp-12);
+}
+
+.chapter-panel__tab-list,
+.chapter-panel__case-list,
+.chapter-panel__episode-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-16);
+  margin-bottom: var(--sp-24);
+}
+.chapter-panel__tab {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sp-12);
+  background: var(--surface-2);
+  border-radius: var(--r-s);
+  padding: var(--sp-12) var(--sp-16);
+}
+.tab-eyebrow {
+  color: var(--fg-3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+.tab-name { color: var(--fg); font-size: var(--fs-p5); }
+
+.chapter-panel__case,
+.chapter-panel__episode {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+  background: var(--surface-2);
+  border-radius: var(--r-s);
+  padding: var(--sp-16);
+}
+.chapter-panel__case-kicker,
+.chapter-panel__episode-kicker {
+  display: flex;
+  gap: var(--sp-12);
+  color: var(--fg-3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: var(--fs-label-l1);
+}
+.chapter-panel__case-name,
+.chapter-panel__episode-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-p1);
+}
+.chapter-panel__case-summary,
+.chapter-panel__episode-guest,
+.chapter-panel__episode-summary { color: var(--fg-2); font-size: var(--fs-p5); }
+.chapter-panel__case-metric .stat-num { font-size: var(--fs-data-s); }
+
+.chapter-panel__episode-links {
+  display: flex;
+  gap: var(--sp-16);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-l2);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.chapter-panel__episode-links a {
+  color: var(--fg);
+  transition: color var(--dur-short) var(--ease-inout-sine);
+}
+.chapter-panel__episode-links a:hover { color: var(--flarepop); }
+
+.chapter-panel__stat {
+  display: flex;
+  gap: var(--sp-12);
+  align-items: baseline;
+  margin-bottom: var(--sp-24);
+}
+.stat-num { font-family: var(--font-mono); font-weight: var(--fw-bold); }
+.stat-label { color: var(--fg-2); font-size: var(--fs-p5); }
+
+.chapter-panel__contact-tile {
+  background: var(--flarepop);
+  color: var(--page);
+  border-radius: var(--r-m);
+  padding: var(--sp-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+.chapter-panel__contact-heading { font-family: var(--font-display); font-size: var(--fs-h5); }
+.chapter-panel__contact-sub { font-size: var(--fs-p5); }
+
+.panel-cta {
+  display: inline-block;
+  margin-top: var(--sp-8);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-l1);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--flarepop);
+  color: var(--page);
+  border: none;
+  padding: var(--sp-16) var(--sp-24);
+  border-radius: var(--r-s);
+  cursor: pointer;
+  transition: opacity var(--dur-short) var(--ease-inout-sine);
+}
+.panel-cta:hover { opacity: var(--op-80); }
+.panel-cta:focus-visible {
+  outline: var(--bw-l) solid var(--flarepop);
+  outline-offset: 4px;
+}
+
 /* ── Small screens — edge-anchored hotspot row, no percentage collisions ─
    Below 768px the constellation's --x/--y coordinates are dropped in
    favor of a wrapped flex row pinned above the bottom edge, so labels
