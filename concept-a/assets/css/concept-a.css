@@ -229,3 +229,198 @@
     var(--surface-2) 80%, var(--surface-2) 100%
   );
 }
+
+/* ── Statement moment: problems ─────────────────────────────────────────
+   Oversized centered h2 — the page's second type moment, sized nearly as
+   large as the hero. Four items are native <details>/<summary> — free
+   keyboard + AT support, no JS tab-panel needed. */
+.problems { padding-block: clamp(3rem, 7vw, 7rem); }
+.section-head--center {
+  max-width: 46rem;
+  margin-inline: auto;
+  text-align: center;
+  margin-bottom: var(--sp-80);
+}
+.statement {
+  font-family: var(--font-display);
+  font-weight: var(--fw-heading);
+  font-size: clamp(2.25rem, 1.2rem + 4.5vw, 5.5rem);
+  line-height: 1.05;
+  text-wrap: balance;
+  margin-bottom: var(--sp-16);
+}
+.problem-list {
+  max-width: 56rem;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+.problem-item {
+  border-top: var(--bw-s) solid rgba(255, 255, 255, 0.12);
+}
+.problem-item:last-child { border-bottom: var(--bw-s) solid rgba(255, 255, 255, 0.12); }
+.problem-item__summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sp-16);
+  padding-block: var(--sp-24);
+}
+.problem-item__summary::-webkit-details-marker { display: none; }
+.problem-item__summary::marker { content: ""; }
+.problem-item__eyebrow {
+  font-size: var(--fs-label-l1);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--flarepop);
+  flex-shrink: 0;
+}
+.problem-item__name {
+  font-family: var(--font-display);
+  font-size: var(--fs-h5);
+  line-height: 1.25;
+}
+.problem-item__panel {
+  padding-bottom: var(--sp-48);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-16);
+}
+.problem-item__num {
+  font-size: var(--fs-label-l2);
+  color: var(--fg-3);
+}
+.problem-item__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+}
+.problem-item__quote {
+  font-size: var(--fs-p2);
+  line-height: 1.4;
+  margin: 0;
+  padding: 0;
+  color: var(--fg);
+}
+.problem-item__attrib {
+  font-size: var(--fs-p5);
+  color: var(--fg-3);
+}
+.problem-item__tells {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+.problem-item__tells li {
+  padding-left: var(--sp-16);
+  position: relative;
+  color: var(--fg-2);
+  font-size: var(--fs-p4);
+}
+.problem-item__tells li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 5px;
+  height: 5px;
+  background: var(--fg-3);
+  border-radius: var(--r-round);
+}
+.problem-item__signal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sp-12);
+  background: var(--surface);
+  border-radius: var(--r-m);
+  padding: var(--sp-16) var(--sp-24);
+}
+.problem-item__bridge {
+  color: var(--fg-2);
+  font-size: var(--fs-p4);
+}
+
+/* ── InterceptOS band ────────────────────────────────────────────────────
+   Full-bleed stepped-field band — Intercept's own differentiated depth.
+   os.lead's own "See how it works." sentence is the band's ONE navigating
+   link; the 13 chips are plain visual elements (no hrefs). */
+.interceptos-band { padding-block: clamp(3rem, 6vw, 6rem); }
+.interceptos-band__os { max-width: 44rem; margin-bottom: var(--sp-80); }
+.interceptos-band__title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-heading);
+  font-size: clamp(1.75rem, 1.2rem + 2.5vw, 3.5rem);
+  line-height: 1.1;
+  text-wrap: balance;
+  margin-bottom: var(--sp-16);
+}
+.interceptos-band__lead { color: var(--fg-2); font-size: var(--fs-p3); }
+.interceptos-band__lead a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  transition: color var(--dur-short) var(--ease-inout-sine);
+}
+.interceptos-band__lead a:hover { color: var(--flarepop); }
+.flow-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-12);
+  margin-top: var(--sp-24);
+}
+.flow-list li {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-l2);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+  border: var(--bw-s) solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--r-round);
+  padding: var(--sp-8) var(--sp-16);
+}
+.interceptos-band__agents-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1.1rem + 1.5vw, 2.25rem);
+  line-height: 1.15;
+  margin-bottom: var(--sp-16);
+}
+.interceptos-band__agents-lead {
+  color: var(--fg-2);
+  font-size: var(--fs-p3);
+  max-width: 44rem;
+  margin-bottom: var(--sp-48);
+}
+.agent-groups {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-32);
+}
+@media (min-width: 900px) {
+  .agent-groups { grid-template-columns: repeat(4, 1fr); }
+}
+.agent-group__label {
+  font-size: var(--fs-label-l1);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  margin-bottom: var(--sp-16);
+}
+.agent-chips {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+.agent-chip {
+  background: rgba(255, 255, 255, 0.04);
+  border: var(--bw-s) solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--r-s);
+  padding: var(--sp-12) var(--sp-16);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+.agent-chip__name { font-weight: var(--fw-bold); font-size: var(--fs-p4); }
+.agent-chip__type { font-size: var(--fs-label-l2); color: var(--fg-3); }
