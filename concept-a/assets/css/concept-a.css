@@ -424,3 +424,148 @@
 }
 .agent-chip__name { font-weight: var(--fw-bold); font-size: var(--fs-p4); }
 .agent-chip__type { font-size: var(--fs-label-l2); color: var(--fg-3); }
+
+/* ── Work showcase ───────────────────────────────────────────────────────
+   Accenture's case carousel minus the carousel: all 3 cases stacked/grid,
+   always visible, zero timers. Each card is one wrapping anchor; client +
+   metric are visible up front, no interaction required. */
+.work { padding-block: clamp(3rem, 6vw, 6rem); }
+.work__title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-heading);
+  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 3.25rem);
+  line-height: 1.1;
+  text-wrap: balance;
+  margin-bottom: var(--sp-16);
+}
+.work__lead { color: var(--fg-2); font-size: var(--fs-p3); }
+.work-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-24);
+  margin-top: var(--sp-48);
+}
+@media (min-width: 900px) {
+  .work-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.work-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-12);
+  background: var(--surface);
+  border: var(--bw-s) solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--r-m);
+  padding: var(--sp-32);
+  transition: border-color var(--dur-short) var(--ease-inout-sine);
+}
+.work-card:hover { border-color: var(--flarepop); }
+.work-card__client {
+  font-size: var(--fs-label-l1);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+.work-card__tag { font-size: var(--fs-label-l2); color: var(--fg-3); }
+.work-card__name {
+  font-family: var(--font-display);
+  font-size: var(--fs-h5);
+  line-height: 1.25;
+}
+.work-card__summary { color: var(--fg-2); font-size: var(--fs-p4); flex-grow: 1; }
+.work-card__metric {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  padding-top: var(--sp-16);
+  border-top: var(--bw-s) solid rgba(255, 255, 255, 0.1);
+}
+.work-card__metric .stat-num { font-size: var(--fs-data-m); }
+
+/* ── Client trust strip ──────────────────────────────────────────────────
+   Text wordmarks only — no logo image assets exist in this repo. */
+.clients { padding-block: clamp(2.5rem, 5vw, 5rem); }
+.clients__label {
+  font-size: var(--fs-label-l1);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  margin-bottom: var(--sp-32);
+  text-align: center;
+}
+.clients__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-32) var(--sp-48);
+}
+.clients__list li {
+  font-family: var(--font-mono);
+  font-size: var(--fs-p4);
+  letter-spacing: 0.04em;
+  color: var(--fg-3);
+}
+
+/* ── Convert (terminal CTA) ──────────────────────────────────────────────
+   The page's terminal action — a static self-anchoring CTA tile, no form. */
+.convert {
+  padding-block: clamp(3rem, 7vw, 7rem);
+  text-align: center;
+}
+.convert .kicker { text-align: center; }
+.convert__lead {
+  color: var(--fg-2);
+  font-size: var(--fs-p3);
+  max-width: 36rem;
+  margin-inline: auto;
+  margin-bottom: var(--sp-48);
+}
+.convert__tile {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+  background: var(--flarepop);
+  color: var(--page);
+  border-radius: var(--r-l);
+  padding: var(--sp-32) clamp(2rem, 5vw, 4rem);
+  transition: opacity var(--dur-short) var(--ease-inout-sine);
+}
+.convert__tile:hover { opacity: var(--op-80); }
+.convert__tile-heading {
+  font-family: var(--font-display);
+  font-weight: var(--fw-heading);
+  font-size: var(--fs-h3);
+}
+.convert__tile-sub { font-size: var(--fs-p4); }
+
+/* ── Footer ───────────────────────────────────────────────────────────────
+   Restrained: lockup + tagline, site links, trust/social as plain text
+   (no canonical URLs exist for trust/social — inventing hrefs is banned). */
+.site-footer {
+  padding-block: clamp(2.5rem, 5vw, 5rem);
+  border-top: var(--bw-s) solid rgba(255, 255, 255, 0.1);
+}
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-32);
+}
+@media (min-width: 900px) {
+  .footer__grid { grid-template-columns: 1.5fr 1fr 1fr 1fr; }
+}
+.footer__lockup { height: 1.5rem; width: auto; margin-bottom: var(--sp-16); }
+.footer__tagline { color: var(--fg-3); font-size: var(--fs-p5); }
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-12);
+  font-size: var(--fs-p5);
+}
+.footer__links a { transition: color var(--dur-short) var(--ease-inout-sine); }
+.footer__links a:hover { color: var(--flarepop); }
+.footer__trust, .footer__social {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-12);
+  font-size: var(--fs-p5);
+  color: var(--fg-3);
+}
