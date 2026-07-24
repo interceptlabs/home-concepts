@@ -34,11 +34,11 @@ Requirements for the side-by-side review deliverable. Each maps to roadmap phase
 
 ### Concept C — experimental WebGL/3D
 
-- [ ] **CONC-01**: A three.js 3D scene serves as the spatial navigation metaphor, concentrated in the hero/nav zone — content below is standard performant DOM
-- [ ] **CONC-02**: Clickable 3D objects/hotspots with visible hover AND focus labels route to derived sub-pages
-- [ ] **CONC-03**: Scroll drives camera/scene movement while native scroll physics, back button, and deep links stay intact (no scroll-jacking)
-- [ ] **CONC-04**: A semantic DOM mirror is built alongside the 3D layer — keyboard navigable, screen-reader readable, and shown outright when WebGL is unavailable or reduced-motion is set
-- [ ] **CONC-05**: Device-tiered rendering (DPR clamp, capability detection, graceful degradation) keeps the scene usable on integrated GPUs and mobile
+- [x] **CONC-01**: A three.js 3D scene serves as the spatial navigation metaphor, concentrated in the hero/nav zone — content below is standard performant DOM
+- [x] **CONC-02**: Clickable 3D objects/hotspots with visible hover AND focus labels route to derived sub-pages
+- [x] **CONC-03**: Scroll drives camera/scene movement while native scroll physics, back button, and deep links stay intact (no scroll-jacking)
+- [x] **CONC-04**: A semantic DOM mirror is built alongside the 3D layer — keyboard navigable, screen-reader readable, and shown outright when WebGL is unavailable or reduced-motion is set
+- [x] **CONC-05**: Device-tiered rendering (DPR clamp, capability detection, graceful degradation) keeps the scene usable on integrated GPUs and mobile
 
 ### Cross-cutting QA
 
@@ -96,11 +96,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CONB-03 | Phase 3 | Complete |
 | CONB-04 | Phase 3 | Complete |
 | CONB-05 | Phase 3 | Complete |
-| CONC-01 | Phase 4 | Pending |
-| CONC-02 | Phase 4 | Pending |
-| CONC-03 | Phase 4 | Pending |
-| CONC-04 | Phase 4 | Pending |
-| CONC-05 | Phase 4 | Pending |
+| CONC-01 | Phase 4 | Complete |
+| CONC-02 | Phase 4 | Complete |
+| CONC-03 | Phase 4 | Complete |
+| CONC-04 | Phase 4 | Complete |
+| CONC-05 | Phase 4 | Complete |
 | QA-01 | Phase 5 | Pending |
 | QA-02 | Phase 5 | Pending |
 | QA-03 | Phase 5 | Pending |

@@ -2,17 +2,17 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 3
-status: planning
-stopped_at: Completed 03-03-PLAN.md (Concept B motion polish + phase-closing QA)
-last_updated: "2026-07-24T16:49:55.836Z"
+current_plan: 1
+status: in_progress
+stopped_at: Completed 04-01-PLAN.md (Concept C topic field + scroll dolly + DOM labels)
+last_updated: "2026-07-24T17:45:57.537Z"
 last_activity: 2026-07-24
 progress:
   total_phases: 5
   completed_phases: 3
-  total_plans: 10
-  completed_plans: 10
-  percent: 100
+  total_plans: 13
+  completed_plans: 11
+  percent: 85
 ---
 
 # Project State
@@ -22,30 +22,31 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-23)
 
 **Core value:** A visitor never faces a wall of text — content is revealed as needed, and clicking an area of interest takes them to a focused page built from that content.
-**Current focus:** Phase 3 (Concept B — Full-Screen Video) COMPLETE — all 3 plans (03-01, 03-02, 03-03) done. Next: Phase 4 (Concept C) needs `/gsd:discuss-phase 4` before planning (3D interaction metaphor not yet settled).
+**Current focus:** Phase 4 (Concept C — Experimental WebGL/3D) IN PROGRESS — plan 04-01 (topic field, scroll dolly, DOM labels, no-webgl fallback) done. Next: 04-02 (below-fold sections) and 04-03 (routed sub-pages + polish).
 
 ## Current Position
 
-Phase: 3 of 5 (Concept B — Full-Screen Video) — COMPLETE
-Plan: 3 of 3 complete in current phase (03-01, 03-02, 03-03 all done)
-Current Plan: 3
+Phase: 4 of 5 (Concept C — Experimental WebGL/3D) — IN PROGRESS
+Plan: 1 of 3 complete in current phase (04-01 done; 04-02, 04-03 remain)
+Current Plan: 1
 Total Plans in Phase: 3
-Status: Phase 3 complete — ready for Phase 4 discussion/planning
+Status: 04-01 complete — ready for 04-02
 Last activity: 2026-07-24
 
-Progress: [██████████] 100% (10 of 10 known plans across all phases)
+Progress: [█████████░] 85% (11 of 13 known plans across all phases)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 10
-- Average duration: 24 min
-- Total execution time: 4.07 hours
+- Total plans completed: 11
+- Average duration: 26 min
+- Total execution time: 4.80 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
+| Phase 04 P01 | 44min | 3 tasks | 3 files |
 | Phase 03 P03 | 22min | 2 tasks | 17 files |
 | Phase 03 P02 | 40min | 3 tasks | 7 files |
 | Phase 03 P01 | 38min | 2 tasks | 3 files |
@@ -58,8 +59,8 @@ Progress: [██████████] 100% (10 of 10 known plans across all
 | Phase 01 P01 | 20min | 3 tasks | 3 files |
 
 **Recent Trend:**
-- Last 5 plans: 03-03 (22min), 03-02 (40min), 03-01 (38min), 02-03 (22min), 02-02 (7min)
-- Trend: 03-03 returned to the ~22min baseline despite folding in three unplanned bug fixes (invisible logo, reduced-motion autoplay override, loop-wide contrast) — the plan's own mandated QA steps (capture review, functional reduced-motion check, loop-wide frame sampling) caught all three efficiently rather than requiring separate investigation passes
+- Last 5 plans: 04-01 (44min), 03-03 (22min), 03-02 (40min), 03-01 (38min), 02-03 (22min)
+- Trend: 04-01 ran longer than the recent baseline (highest-risk concept per the roadmap's own ascending-risk sequencing) but its own mandated capture-review step (Task 3) caught two real scene.js correctness bugs (matrixWorld projection ordering, static-camera framing) before they reached Jon — same pattern as 03-03's QA-catches-bugs-cheaply trend, now proven on the WebGL concept too
 
 *Updated after each plan completion*
 
@@ -96,6 +97,8 @@ Recent decisions affecting current work:
 - [Phase 03-concept-b-full-screen-video]: [03-03]: Panel/backdrop @starting-style transitions kept at var(--dur-med) (800ms), matching 03-RESEARCH.md's code recipe exactly, rather than bumping to --dur-long; the hero h1 fade-back-while-panel-open discretion item was left unimplemented since the panel's own flat backdrop already dims the hero copy adequately
 - [Phase 03-concept-b-full-screen-video]: [03-03]: Fixed a pre-existing invisible-logo bug (fill="currentColor" can't inherit page color through an <img src> reference to an external SVG) by inlining the SVG directly in concept-b's own 4 pages rather than editing the shared/logo/lockup.svg file — scoped fix, zero cross-concept impact on already-shipped concept-a
 - [Phase 03-concept-b-full-screen-video]: [03-03]: Discovered the native <video autoplay> HTML attribute plays independent of any JS-side prefers-reduced-motion gating (JS only skips its OWN play() calls) — fixed with an explicit video.pause() + manual toggle-state sync for reduced-motion visitors, run before the play/pause listeners are attached, since pausing an element that never started playing doesn't reliably fire a native 'pause' event
+- [Phase 04-01]: Static-scene (prefers-reduced-motion) renders a frozen real 3D overview rather than the flat .no-webgl backdrop, reserving .no-webgl purely for genuine WebGL2 capability failures
+- [Phase 04-01]: Fixed a matrixWorld-ordering bug (updateLabels projected before the first renderer.render(), collapsing all 6 labels onto one point) found via the static-scene capture, which exposed it because it never gets a second self-correcting frame
 
 ### Pending Todos
 
@@ -103,12 +106,13 @@ None yet.
 
 ### Blockers/Concerns
 
-- Phase 4 (Concept C): the specific 3D interaction metaphor (orbit/click-object scene vs. scroll-driven camera fly-through vs. Spline-authored scene) is not yet settled — research flags this for `/gsd:discuss-phase 4` before build.
-- Phase 3 (Concept B) is now fully complete — CONB-01 through CONB-05 all done and verified in 03-03. No open items remain for this phase.
-- Tooling: `gsd-tools state advance-plan`/`update-progress`/`record-metric`/`add-decision`/`record-session` continue to need hand-correction after each run — recurred again on 03-03's update: `advance-plan` overwrote the frontmatter `status` field with stale body text, `update-progress` computed the correct percent (100) in its own JSON output but didn't persist it to the frontmatter, `record-metric` again appended its new table row directly below the `*Updated after each plan completion*` footer instead of inside the table, and this run BOTH `add-decision` (each call) and `record-session` also overwrote frontmatter `status` (to the literal string "planning") — had to be hand-corrected back to `in_progress` three separate times in this one session. Recurred on 03-02's update too; still worth a tooling fix.
+- Phase 4 (Concept C): the 3D interaction metaphor question is now RESOLVED (locked in 04-CONTEXT.md as "the topic field" — scroll-driven camera dolly + labeled procedural objects, not orbit/click-object or a Spline-authored scene) and 04-01 has shipped the foundation against it. No longer a blocker.
+- Phase 4 (Concept C): 04-01's routing map points InterceptOS/Work/Insights labels at `pages/interceptos.html`/`pages/work.html`/`pages/insights.html`, which don't exist until 04-03 ships — expected 404s on those 3 links until then, not a regression.
+- Phase 3 (Concept B) is fully complete — CONB-01 through CONB-05 all done and verified in 03-03. No open items remain for this phase.
+- Tooling: `gsd-tools state advance-plan`/`update-progress`/`record-metric`/`add-decision`/`record-session` continue to need hand-correction after each run — recurred again on 04-01's update: `advance-plan` reported `{"advanced": false, "reason": "last_plan", "current_plan": 3, "total_plans": 3}` instead of recognizing Phase 4 Plan 1 of 3 (stale carryover from Phase 3's own last-plan state), `update-progress`'s own JSON output computed the correct percent (85) but didn't persist it to the frontmatter (still showed 100), and `record-metric` again appended its new table row directly below the `*Updated after each plan completion*` footer instead of inside the table. All hand-corrected in this update. Recurred on 03-03's and 03-02's updates too; still worth a tooling fix.
 
 ## Session Continuity
 
-Last session: 2026-07-24T16:44:53.065Z
-Stopped at: Completed 03-03-PLAN.md (Concept B motion polish + phase-closing QA)
+Last session: 2026-07-24T17:45:57.535Z
+Stopped at: Completed 04-01-PLAN.md (Concept C topic field + scroll dolly + DOM labels)
 Resume file: None
