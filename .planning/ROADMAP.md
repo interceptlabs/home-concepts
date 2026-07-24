@@ -82,7 +82,12 @@ Plans:
   3. Scrolling drives camera/scene movement while native scroll physics, the browser back button, and deep links all continue to work normally — no scroll-jacking.
   4. A semantic DOM mirror of the same navigation is keyboard-navigable and screen-reader readable, and is shown outright instead of the 3D scene when WebGL is unavailable or reduced-motion is set.
   5. On lower-tier hardware (integrated GPU / mobile), the scene runs at a clamped, degraded quality tier instead of stalling, crashing, or rendering blank.
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 04-01-PLAN.md — "Topic field" 3D homepage core: WebGL2 probe, 6 toon-stepped procedural objects, scroll-driven CatmullRom dolly, DOM-projected labels, topic index, no-webgl/no-JS fallback layout
+- [ ] 04-02-PLAN.md — Below-fold verbatim sections (problems/labs/convert/footer) + 3 sub-pages (interceptos, consolidated work, new insights) + @view-transition and smooth-scroll routing
+- [ ] 04-03-PLAN.md — Reduced-motion frozen scene, focus-visible treatment, device-tier degradation + phase-closing QA (copy-diff all, 8-grep suite, link integrity, 18 reviewed captures)
 
 ### Phase 5: Cross-Concept QA & Review Packaging
 **Goal**: All three concepts are verified together against brand and copy rules, and Jon can review all three side by side in one place.
@@ -105,5 +110,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 (Phases 2, 3, 4 depen
 | 1. Content Foundation & Shared Brand Layer | 4/4 | Complete    | 2026-07-23 |
 | 2. Concept A — Editorial | 3/3 | Complete    | 2026-07-24 |
 | 3. Concept B — Full-Screen Video | 3/3 | Complete    | 2026-07-24 |
-| 4. Concept C — Experimental WebGL/3D | 0/TBD | Not started | - |
+| 4. Concept C — Experimental WebGL/3D | 0/3 | Not started | - |
 | 5. Cross-Concept QA & Review Packaging | 0/TBD | Not started | - |
