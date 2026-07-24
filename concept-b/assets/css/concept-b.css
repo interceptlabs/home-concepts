@@ -221,10 +221,11 @@
 }
 
 /* ── Chapter panels (CONB-03) — six statically-authored dialogs; JS in
-   panels.js only opens/closes/swaps them and never assigns copy. Panels
-   render instantly open/closed here — 03-03 owns @starting-style motion,
-   not this plan. Flat single-alpha backdrop only, never a gradient scrim;
-   no border-top/bottom dividers between sections — space + weight only. */
+   panels.js only opens/closes/swaps them and never assigns copy. Open/close
+   motion is native @starting-style + allow-discrete (CONB-04/03-03) — no JS
+   animation orchestration. Flat single-alpha backdrop only, never a
+   gradient scrim; no border-top/bottom dividers between sections — space +
+   weight only. */
 .chapter-panel {
   position: relative;
   border: none;
@@ -235,9 +236,29 @@
   overflow-y: auto;
   background: var(--surface);
   color: var(--fg);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--dur-med) var(--ease-inout-sine),
+              transform var(--dur-med) var(--ease-inout-sine),
+              overlay var(--dur-med) allow-discrete,
+              display var(--dur-med) allow-discrete;
+}
+.chapter-panel[open] {
+  opacity: 1;
+  transform: none;
+}
+@starting-style {
+  .chapter-panel[open] { opacity: 0; transform: translateY(16px); }
 }
 .chapter-panel::backdrop {
-  background-color: rgb(10 10 15 / 72%); /* flat single-alpha layer over the still-playing video */
+  background-color: transparent;
+  transition: background-color var(--dur-med) allow-discrete;
+}
+.chapter-panel[open]::backdrop {
+  background-color: rgb(10 10 15 / 72%); /* flat single-alpha layer over the still-playing video, every frame */
+}
+@starting-style {
+  .chapter-panel[open]::backdrop { background-color: transparent; }
 }
 .chapter-panel h2 {
   font-size: var(--fs-h3);
@@ -413,6 +434,72 @@
   .hotspot {
     position: static;
     transform: none;
+  }
+}
+
+/* ── Homepage motion (CONB-04, 03-03) — one-time load stagger for the
+   hero copy + always-visible chrome, scoped under `.has-js` (added by the
+   synchronous bootstrap script in <head>) so JS-disabled visitors see the
+   finished state instantly. Runs once on load; nothing scroll-driven on
+   the homepage — Concept B's motion identity lives in the video, this
+   entrance, and the chapter-panel transitions above. */
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes chrome-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.hero__h1 .line { display: block; }
+.has-js .hero__kicker,
+.has-js .hero__h1 .line {
+  opacity: 0;
+  animation: hero-rise var(--dur-med) var(--ease-inout-sine) both;
+}
+.has-js .hero__kicker                  { animation-delay: 0ms; }
+.has-js .hero__h1 .line:nth-of-type(1) { animation-delay: 120ms; }
+.has-js .hero__h1 .line:nth-of-type(2) { animation-delay: 240ms; }
+
+/* Quieter fade (opacity only, no rise) for always-visible chrome — the
+   topbar, the hotspot labels, and the pause/play control — staggered
+   after the hero copy lands. */
+.has-js .topbar,
+.has-js .hotspot,
+.has-js .video-toggle {
+  opacity: 0;
+  animation: chrome-fade var(--dur-med) var(--ease-inout-sine) both;
+}
+.has-js .topbar                { animation-delay: 300ms; }
+.has-js .hotspot:nth-of-type(1) { animation-delay: 360ms; }
+.has-js .hotspot:nth-of-type(2) { animation-delay: 432ms; }
+.has-js .hotspot:nth-of-type(3) { animation-delay: 504ms; }
+.has-js .hotspot:nth-of-type(4) { animation-delay: 576ms; }
+.has-js .hotspot:nth-of-type(5) { animation-delay: 648ms; }
+.has-js .hotspot:nth-of-type(6) { animation-delay: 720ms; }
+.has-js .video-toggle           { animation-delay: 720ms; }
+
+/* Reduced motion: force every animated thing on the homepage to its final
+   visible state and remove all transitions/animations. Panels open/close
+   instantly (no transition to run, so @starting-style never engages). The
+   video needs no CSS here — video.js never calls play() under reduced
+   motion, so the element shows its poster frame natively; the always-
+   visible hotspot nav is the standard visible navigation. No audio track
+   exists in the files, so no-sound is structural, not CSS-enforced. */
+@media (prefers-reduced-motion: reduce) {
+  .hero__kicker,
+  .hero__h1 .line,
+  .topbar,
+  .hotspot,
+  .video-toggle {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+  .chapter-panel,
+  .chapter-panel::backdrop {
+    transition: none !important;
   }
 }
 
