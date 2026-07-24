@@ -119,8 +119,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 06-01-PLAN.md — Mechanical cross-concept QA (copy-diff 430/340/282, 8-grep suite ×3, token drift, link integrity gate, camera gate) + final Fritz review gallery with real capture thumbnails
-- [ ] 06-02-PLAN.md — Review packaging: REVIEW.md for Jon + REQUIREMENTS/STATE/ROADMAP closeout (QA-01/QA-04 sign-off stays with the orchestrator after the Fritz agent gate between the two plans)
+- [ ] 06-01-PLAN.md — Mechanical cross-concept QA (copy-diff A/B/C 430/340/282 + D substring 71 + script-diff 13, four brand grep suites, token drift, link integrity, camera gate, video budgets) + final four-card Fritz review gallery with real capture thumbnails
+- [ ] 06-02-PLAN.md — Review packaging: REVIEW.md for Jon + REQUIREMENTS closeout (QA-01 marked only on the orchestrator-run Fritz agent gate 06-FRITZ-QA.md committed between the two waves)
 
 ## Progress
 
