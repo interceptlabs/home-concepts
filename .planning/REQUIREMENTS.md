@@ -46,8 +46,8 @@ Requirements for the side-by-side review deliverable. Each maps to roadmap phase
 - [ ] **COND-02**: Full-screen light, positive motion-graphics video background (autoplay muted playsinline loop, poster, WebM+MP4, reduced-motion static fallback) with light-mode UI
 - [ ] **COND-03**: Small enticing topic cards (redundant with nav), one per home-page section module, laid over the video
 - [ ] **COND-04**: Clicking a card expands a modal window containing the COMPLETE existing section module — deployed design preserved (markup/styles/behavior ported from the staging bundle)
-- [ ] **COND-05**: Nav routes to standalone pages carrying that content (section pages from the same modules; About/Insights/ChatB2B mirrored from the deployed bundle)
-- [ ] **COND-06**: Module fidelity gate — module copy verbatim vs canonical source (copy-diff substring mode) and modules visually faithful to the deployed sections
+- [x] **COND-05**: Nav routes to standalone pages carrying that content (section pages from the same modules; About/Insights/ChatB2B mirrored from the deployed bundle)
+- [x] **COND-06**: Module fidelity gate — module copy verbatim vs canonical source (copy-diff substring mode) and modules visually faithful to the deployed sections
 - [ ] **COND-07**: Modals are accessible (focus trap, Esc, focus return), cards are real buttons, keyboard path complete, no scroll-jacking
 
 ### Cross-cutting QA
@@ -115,8 +115,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | COND-02 | Phase 5 | Pending |
 | COND-03 | Phase 5 | Pending |
 | COND-04 | Phase 5 | Pending |
-| COND-05 | Phase 5 | Pending |
-| COND-06 | Phase 5 | Pending |
+| COND-05 | Phase 5 | Complete |
+| COND-06 | Phase 5 | Complete |
 | COND-07 | Phase 5 | Pending |
 | QA-01 | Phase 6 | Pending |
 | QA-02 | Phase 6 | Pending |

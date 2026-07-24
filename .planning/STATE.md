@@ -2,17 +2,17 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 4
-status: planning
-stopped_at: Completed 04-04-PLAN.md
-last_updated: "2026-07-24T18:54:09.573Z"
+current_plan: 1
+status: in_progress
+stopped_at: Completed 05-01-PLAN.md
+last_updated: "2026-07-24T20:24:08.039Z"
 last_activity: 2026-07-24
 progress:
-  total_phases: 5
+  total_phases: 6
   completed_phases: 4
-  total_plans: 14
-  completed_plans: 14
-  percent: 100
+  total_plans: 19
+  completed_plans: 15
+  percent: 79
 ---
 
 # Project State
@@ -22,30 +22,31 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-23)
 
 **Core value:** A visitor never faces a wall of text — content is revealed as needed, and clicking an area of interest takes them to a focused page built from that content.
-**Current focus:** Phase 4 (Concept C — Experimental WebGL/3D) FULLY COMPLETE — 3 build plans (04-01 topic field/dolly/labels/fallback, 04-02 below-fold sections + 3 sub-pages, 04-03 device tiering + reduced-motion polish + phase-closing QA sweep) plus one gap-closure plan (04-04, closing the camera-framing gap 04-VERIFICATION.md found). Next: plan Phase 5 (cross-concept QA + gallery packaging).
+**Current focus:** Phase 5 (Concept D — Home Variant) IN PROGRESS — Plan 05-01 (deployed foundation port: shared deployed.css/deployed.js, case images, script-diff gate, 3 mirrored staging pages) complete. Next: 05-02 (card/modal shell), then 05-03 (standalone pages).
 
 ## Current Position
 
-Phase: 4 of 5 (Concept C — Experimental WebGL/3D) — COMPLETE (incl. gap closure)
-Plan: 4 of 4 complete in current phase (04-01, 04-02, 04-03, 04-04 all done — 04-04 was a gap-closure plan added after verification, not part of the original phase count)
-Current Plan: 4
-Total Plans in Phase: 4
-Status: Phase 4 complete (including gap closure) — ready for Phase 5 planning
+Phase: 5 of 6 (Concept D — Home Variant) — IN PROGRESS
+Plan: 1 of 3 complete in current phase (05-01 done; 05-02, 05-03 remain)
+Current Plan: 1
+Total Plans in Phase: 3
+Status: Plan 05-01 complete — ready to execute 05-02
 Last activity: 2026-07-24
 
-Progress: [██████████] 100% (14 of 14 known plans across all phases — will re-baseline once Phase 5 is planned)
+Progress: [████████░░] 79% (15 of 19 known plans across all phases)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 14
+- Total plans completed: 15
 - Average duration: 26 min
-- Total execution time: 5.96 hours
+- Total execution time: 6.43 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
+| Phase 05 P01 | 28min | 3 tasks | 11 files |
 | Phase 04 P04 (gap closure) | 26min | 3 tasks | 13 files |
 | Phase 04 P03 | 24min | 2 tasks | 2 files |
 | Phase 04 P02 | 20min | 2 tasks | 5 files |
@@ -62,8 +63,8 @@ Progress: [██████████] 100% (14 of 14 known plans across all
 | Phase 01 P01 | 20min | 3 tasks | 3 files |
 
 **Recent Trend:**
-- Last 5 plans: 04-04 (26min), 04-03 (24min), 04-02 (20min), 04-01 (44min), 03-03 (22min)
-- Trend: 04-04 was a gap-closure plan (not part of the original phase scope) fixing the camera-framing desync 04-VERIFICATION.md found. Task 1's derivation landed clean on the first pass (`buildDollyRig()` reproduced the verifier's ground-truth bounding-sphere radii to 3 decimal places); Task 2's new permanent headless gate immediately caught two real invariant failures in the plan's own suggested starting recipe (mid-transit bounding-sphere intrusion + a missed look-angle floor), both resolved by retuning within the plan's explicit discretion bounds — the mandated capture review then confirmed the fix visually at all 6 waypoints plus 3 transit zones.
+- Last 5 plans: 05-01 (28min), 04-04 (26min), 04-03 (24min), 04-02 (20min), 04-01 (44min)
+- Trend: 05-01 ported the entire deployed staging homepage's style/script content into shared `deployed.css`/`deployed.js` verbatim via a one-off extraction script, byte-verified via an independent reconstruction diff against the categorized staging blocks (zero incidental drift beyond the 2 permitted edits). Built and mutation-tested `qa/concept-d-script-diff.py` as the compensating gate for copy that lives only inside JS string literals (invisible to `qa/copy-diff.py`'s static-HTML extraction). Found and worked around one plan-authored verification false-positive (a blanket `ig_theme` grep colliding with the locked-verbatim theme-toggle's own persistence call) and one extraction miscount (a 9th, empty, unrelated `<style>` tag nested in inline SVG artwork) — both documented as Rule 1 deviations, neither required touching the sacrosanct ported code.
 
 *Updated after each plan completion*
 
@@ -109,6 +110,9 @@ Recent decisions affecting current work:
 - [04-03]: Fixed a real narrow-viewport bug found via mandated capture review — the top-of-page camera framing projects the Problems label directly over the hero headline at widths <= ~390px, both white-on-white and mutually illegible (reproduced at a realistic 390x844 viewport, not a capture-rig artifact) — fixed with a solid var(--surface) backing chip on .topic-label (reusing the existing btn-cta/btn-secondary/convert-tile flat-surface treatment) rather than touching camera/curve math
 - [04-03]: Device tier (`deviceTier()`: hardwareConcurrency primary, deviceMemory Chromium-only bonus, narrow-viewport fallback) computed once in boot() before any renderer/material construction and threaded through initScene() as a plain parameter, matching the existing `animated` parameter pattern — low tier drops antialias, forces DPR 1, uses a 3-step (not 4-step) gradient map, and disables cursor parallax entirely
 - [Phase 04-04]: Switched both CatmullRomCurve3 curves from catmullrom/tension-0.5 to centripetal (kept identically typed) and retuned the offset-direction mix to a forward-weighted 0.6:0.45:2.0 (x:y:z), since the plan's starting recipe overshot into InterceptOS's bounding sphere mid-transit and missed the look-angle floor near t=0.87
+- [05-01]: Verbatim-port-via-script (one-off, uncommitted Python extraction), not hand-transcription — an independent reconstruction pass re-derived expected `deployed.css`/`deployed.js` from the categorized staging blocks and byte-compared it against the written files (both matched exactly), proving zero incidental drift beyond the 2 permitted edits
+- [05-01]: The theme-toggle IIFE (locked-verbatim per 05-01's interfaces block) was ported as-is including its own `localStorage.setItem('ig_theme', next)` call, even though this makes Task 1's own literal verify command's blanket `ig_theme` grep report a false positive — the precise, meaningful check (absence of the head script's distinguishing `localStorage.getItem('ig_theme')`) was substituted and confirmed instead; no ported code was altered to chase the broad check
+- [05-01]: `qa/concept-d-script-diff.py` is the permanent, mutation-tested compensating gate for the 113 canonical chunks that live only inside deployed.js's data objects (invisible to `qa/copy-diff.py`'s static-HTML gate) — it will run in every subsequent 05-* plan's verification and again in Phase 6
 
 ### Pending Todos
 
@@ -118,10 +122,11 @@ None yet.
 
 - Phase 4 (Concept C) is now FULLY COMPLETE INCLUDING GAP CLOSURE — all 5 requirements (CONC-01 through CONC-05) implemented and verified across 04-01/04-02/04-03, and the single gap 04-VERIFICATION.md found (camera-framing desync, CONC-01/CONC-03) is closed by 04-04 with a permanent headless regression gate (`qa/camera-framing-check.mjs`). No open items remain for this phase.
 - Phase 3 (Concept B) is fully complete — CONB-01 through CONB-05 all done and verified in 03-03. No open items remain for this phase.
-- Tooling: `gsd-tools state advance-plan`/`update-progress`/`record-metric`/`add-decision`/`record-session` continue to need hand-correction after each run. Recurred again on 04-04's update: `advance-plan` returned `advanced:false, reason:"last_plan"` and left `current_plan`/`Total Plans in Phase` at the stale value of 3 because it doesn't know 04-04 is a 4th, gap-closure plan added after the phase's original 3-plan count — hand-corrected to 4/4 here. `add-decision` also silently reset the frontmatter `status` field back to `planning` as a side effect of its own write (independent of `advance-plan`'s separate `status` mangling seen in prior plans) — hand-corrected to `in_progress` again. `record-metric` again appended its new table row below the `*Updated after each plan completion*` footer instead of inside the table — moved by hand. This has now recurred on every plan since at least 04-01 — still worth a tooling fix.
+- Phase 5 (Concept D) Plan 01 complete — COND-05 (mirrored-page half) and COND-06 (verbatim-by-construction half) satisfied. No open items from 05-01; 05-02 (card/modal shell) and 05-03 (standalone pages) remain to complete COND-01..04/07.
+- Tooling: `gsd-tools state advance-plan`/`update-progress`/`record-metric`/`add-decision`/`record-session` continue to need hand-correction after each run. On this run: `advance-plan` returned `advanced:false, reason:"last_plan"` and left `current_plan`/`Total Plans in Phase` at Phase 4's stale value of 4 because it doesn't reset when a new phase's plan sequence starts (Phase 5 has 3 plans, not 4) — hand-corrected to `current_plan:1`/`Total Plans in Phase: 3` here. `record-metric` again appended its new table row below the `*Updated after each plan completion*` footer instead of inside the table — moved by hand. `update-progress`'s 79%/15-of-19 output was actually CORRECT this run (it counts *-PLAN.md/*-SUMMARY.md files across ALL phase directories on disk, including Phase 6's 2 already-drafted PLAN.md files with 0 summaries yet — not a bug, just worth noting for future runs so it isn't mistaken for one). This has recurred on every plan since at least 04-01 — still worth a tooling fix for the `advance-plan` phase-transition case specifically.
 
 ## Session Continuity
 
-Last session: 2026-07-24T18:47:41.137Z
-Stopped at: Completed 04-04-PLAN.md
-Resume file: None
+Last session: 2026-07-24T20:24:08.039Z
+Stopped at: Completed 05-01-PLAN.md
+Resume file: .planning/phases/05-concept-d-home-variant/05-02-PLAN.md
