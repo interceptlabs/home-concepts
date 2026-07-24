@@ -75,28 +75,75 @@ function makePrismGeometry(w, h, depth) {
 // ─── The 6-object field — one per topic, spread along -Z so the dolly
 // passes each in sequence. 3 prisms (InterceptOS/Labs/Contact) + 3 box
 // slabs/cubes (Problems/Work/Insights), per the plan's discretion mapping.
-// Tones cycle through the shared surface ramp for depth, never a raw hex. ──
+// Tones cycle through the shared surface ramp for depth, never a raw hex.
+// `standoff` is the per-topic camera distance multiplier (on that object's
+// own bounding-sphere radius) buildDollyRig() below derives the dolly from —
+// hard floor 2.5x, tuned per object within ~2.8-3.8 (04-VERIFICATION.md: the
+// only two waypoints that already read well, Problems and Contact, sit at
+// 3.8x and 2.9x respectively — kept as anchors here). ──────────────────────
 const OBJECT_DEFS = [
-  { topic: 'problems', kind: 'box', size: [1.1, 3.2, 1.1], pos: [-2.4, 0.2, 0], tone: '--surface-2' },
-  { topic: 'interceptos', kind: 'prism', size: [2.4, 3.0, 1.6], pos: [2.2, 0.6, -8], tone: '--surface-3', leanDeg: 6 },
-  { topic: 'work', kind: 'box', size: [2.1, 2.1, 2.1], pos: [-2.0, 0.2, -16], tone: '--surface-2' },
-  { topic: 'labs', kind: 'prism', size: [1.1, 1.4, 1.0], pos: [2.4, -0.1, -24], tone: '--surface-3', leanDeg: -9 },
-  { topic: 'insights', kind: 'box', size: [3.6, 1.1, 1.1], pos: [-2.2, 0.3, -32], tone: '--surface-2' },
-  { topic: 'contact', kind: 'prism', size: [1.8, 2.2, 1.4], pos: [1.8, 0.2, -40], tone: '--surface-3', leanDeg: 8 },
+  { topic: 'problems', kind: 'box', size: [1.1, 3.2, 1.1], pos: [-2.4, 0.2, 0], tone: '--surface-2', standoff: 3.8 },
+  { topic: 'interceptos', kind: 'prism', size: [2.4, 3.0, 1.6], pos: [2.2, 0.6, -8], tone: '--surface-3', leanDeg: 6, standoff: 3.2 },
+  { topic: 'work', kind: 'box', size: [2.1, 2.1, 2.1], pos: [-2.0, 0.2, -16], tone: '--surface-2', standoff: 3.4 },
+  { topic: 'labs', kind: 'prism', size: [1.1, 1.4, 1.0], pos: [2.4, -0.1, -24], tone: '--surface-3', leanDeg: -9, standoff: 3.6 },
+  { topic: 'insights', kind: 'box', size: [3.6, 1.1, 1.1], pos: [-2.2, 0.3, -32], tone: '--surface-2', standoff: 3.0 },
+  { topic: 'contact', kind: 'prism', size: [1.8, 2.2, 1.4], pos: [1.8, 0.2, -40], tone: '--surface-3', leanDeg: 8, standoff: 2.9 },
 ];
 
-// ─── Camera dolly path (Pattern 3) — start pad + one framing point per
-// topic + end pad. Sampled by scroll progress t, never by wheel/touch. ─────
-const CAMERA_PATH_POINTS = [
-  [0, 2.4, 6],
-  [-0.6, 1.5, 2],
-  [3.0, 1.9, -6],
-  [-2.8, 1.3, -14],
-  [3.2, 1.1, -22],
-  [-2.8, 1.5, -30],
-  [2.8, 1.7, -38],
-  [0.6, 2.1, -44],
-];
+// ─── Derived camera dolly rig (Pattern 3, gap-closure) — the camera path is
+// no longer hand-tuned; it is computed FROM the object field. For each
+// topic: construct its actual geometry, take its real bounding-sphere
+// radius, and place the camera at `standoff * radius` along a diagonal
+// offset from that object's position, looking straight at it. The offset
+// direction always has a positive z-component (camera sits in FRONT of the
+// object relative to the dolly's -Z travel direction — it only ever looks
+// forward, never back up the tunnel), a non-zero x-component (diagonal, so
+// the prisms' apex-up triangular profile stays readable — a pure
+// down-the-tunnel view flattens it), and a small positive y (slightly above
+// center, for a calm framing). `sideSign` is derived from the object's own
+// x position (opposite sign) so the camera weaves side to side across the
+// field exactly as the object placement itself already alternates.
+//
+// cameraPosCurve and lookTargetCurve are built with the SAME point count
+// (6) and the SAME CatmullRomCurve3 construction args, so `getPoint(t)`
+// (uniform per-segment parametrization — NOT the arc-length-reparametrized
+// sibling method the old code used) samples both curves at the identical
+// segment position for any t, and lands exactly on keyframe i at t = i/5.
+// This is the fix for the two-independently-shaped-curves desync the gap
+// report identified.
+//
+// Pure geometry math — no DOM, no getComputedStyle/readToken, no renderer —
+// so this is safe to import and call headlessly (qa/camera-framing-check.mjs
+// does exactly that against this same exported function).
+export function buildDollyRig() {
+  const keyframes = OBJECT_DEFS.map((def) => {
+    const [w, h, d] = def.size;
+    const geometry = def.kind === 'prism' ? makePrismGeometry(w, h, d) : new THREE.BoxGeometry(w, h, d);
+    geometry.computeBoundingSphere();
+    const radius = geometry.boundingSphere.radius;
+    const lookAt = new THREE.Vector3(def.pos[0], def.pos[1], def.pos[2]);
+    const sideSign = def.pos[0] > 0 ? -1 : 1;
+    const offsetDir = new THREE.Vector3(sideSign * 1.0, 0.45, 1.5).normalize();
+    const standoff = def.standoff;
+    const cameraPos = lookAt.clone().addScaledVector(offsetDir, standoff * radius);
+    return { topic: def.topic, lookAt, cameraPos, radius, standoff };
+  });
+
+  const cameraPosCurve = new THREE.CatmullRomCurve3(
+    keyframes.map((k) => k.cameraPos),
+    false,
+    'catmullrom',
+    0.5
+  );
+  const lookTargetCurve = new THREE.CatmullRomCurve3(
+    keyframes.map((k) => k.lookAt),
+    false,
+    'catmullrom',
+    0.5
+  );
+
+  return { keyframes, cameraPosCurve, lookTargetCurve };
+}
 
 function initScene({ animated, tier }) {
   const mount = document.querySelector('.scene-mount');
@@ -256,21 +303,10 @@ function initScene({ animated, tier }) {
 
   // ─── Animated path: scroll-driven dolly, projected labels every frame,
   // topic-index highlight, idle rotation, cursor parallax, gated rAF loop. ──
-  const cameraCurve = new THREE.CatmullRomCurve3(
-    CAMERA_PATH_POINTS.map(([x, y, z]) => new THREE.Vector3(x, y, z)),
-    false,
-    'catmullrom',
-    0.5
-  );
-  const lookCurve = new THREE.CatmullRomCurve3(
-    OBJECT_DEFS.map((def) => new THREE.Vector3(def.pos[0], def.pos[1], def.pos[2])),
-    false,
-    'catmullrom',
-    0.5
-  );
+  const { cameraPosCurve, lookTargetCurve } = buildDollyRig();
 
-  const smoothPos = new THREE.Vector3().copy(cameraCurve.getPointAt(0));
-  const smoothLook = new THREE.Vector3().copy(lookCurve.getPointAt(0));
+  const smoothPos = new THREE.Vector3().copy(cameraPosCurve.getPoint(0));
+  const smoothLook = new THREE.Vector3().copy(lookTargetCurve.getPoint(0));
   const targetPos = new THREE.Vector3();
   const targetLook = new THREE.Vector3();
 
@@ -290,9 +326,9 @@ function initScene({ animated, tier }) {
     const runway = runwayEl();
     const denom = runway ? Math.max(runway.offsetHeight - window.innerHeight, 1) : 1;
     const t = THREE.MathUtils.clamp(scrollY / denom, 0, 1);
-    cameraCurve.getPointAt(t, targetPos);
+    cameraPosCurve.getPoint(t, targetPos);
     smoothPos.lerp(targetPos, 0.08);
-    lookCurve.getPointAt(t, targetLook);
+    lookTargetCurve.getPoint(t, targetLook);
     smoothLook.lerp(targetLook, 0.08);
     camera.position.copy(smoothPos);
     camera.lookAt(smoothLook);
