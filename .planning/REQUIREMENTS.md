@@ -26,11 +26,11 @@ Requirements for the side-by-side review deliverable. Each maps to roadmap phase
 
 ### Concept B — full-screen video
 
-- [ ] **CONB-01**: Full-bleed muted ambient video hero (autoplay muted + playsinline + loop, poster frame, WebM+MP4 sources) using quality stock video or ComfyUI-generated footage
-- [ ] **CONB-02**: Clickable hotspot overlays tied to video regions — every hotspot has a visible label/affordance (no mystery meat)
+- [x] **CONB-01**: Full-bleed muted ambient video hero (autoplay muted + playsinline + loop, poster frame, WebM+MP4 sources) using quality stock video or ComfyUI-generated footage
+- [x] **CONB-02**: Clickable hotspot overlays tied to video regions — every hotspot has a visible label/affordance (no mystery meat)
 - [ ] **CONB-03**: Clicking a hotspot first reveals an inline chapter panel (progressive disclosure preview), then routes to the full derived sub-page
 - [ ] **CONB-04**: `prefers-reduced-motion` renders a static poster with standard visible navigation; no sound ever autoplays
-- [ ] **CONB-05**: Video is compressed to a sane budget with poster-frame LCP protection (no CLS from late video load)
+- [x] **CONB-05**: Video is compressed to a sane budget with poster-frame LCP protection (no CLS from late video load)
 
 ### Concept C — experimental WebGL/3D
 
@@ -91,11 +91,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CONA-04 | Phase 2 | Complete |
 | CONA-05 | Phase 2 | Complete |
 | CONA-06 | Phase 2 | Complete |
-| CONB-01 | Phase 3 | Pending |
-| CONB-02 | Phase 3 | Pending |
+| CONB-01 | Phase 3 | Complete |
+| CONB-02 | Phase 3 | Complete |
 | CONB-03 | Phase 3 | Pending |
 | CONB-04 | Phase 3 | Pending |
-| CONB-05 | Phase 3 | Pending |
+| CONB-05 | Phase 3 | Complete |
 | CONC-01 | Phase 4 | Pending |
 | CONC-02 | Phase 4 | Pending |
 | CONC-03 | Phase 4 | Pending |

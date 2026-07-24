@@ -2,17 +2,17 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 3
-status: completed
-stopped_at: Completed 02-03-PLAN.md (Concept A kinetic layer + phase-closing QA) — Phase 2 complete
-last_updated: "2026-07-24T04:32:35.821Z"
+current_plan: 1
+status: in_progress
+stopped_at: Completed 03-01-PLAN.md (Concept B homepage shell — video hero + hotspots)
+last_updated: "2026-07-24T15:58:54.922Z"
 last_activity: 2026-07-24
 progress:
   total_phases: 5
   completed_phases: 2
-  total_plans: 7
-  completed_plans: 7
-  percent: 100
+  total_plans: 10
+  completed_plans: 8
+  percent: 80
 ---
 
 # Project State
@@ -22,30 +22,31 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-23)
 
 **Core value:** A visitor never faces a wall of text — content is revealed as needed, and clicking an area of interest takes them to a focused page built from that content.
-**Current focus:** Phase 2 (Concept A — Editorial) COMPLETE (02-01, 02-02, 02-03 all done) — next is planning Phase 3 (Concept B)
+**Current focus:** Phase 3 (Concept B — Full-Screen Video) IN PROGRESS — 03-01 (homepage shell) done, next is 03-02 (chapter panels)
 
 ## Current Position
 
-Phase: 2 of 5 (Concept A — Editorial, "Accenture, but better") — COMPLETE
-Plan: 3 of 3 complete in current phase (02-01, 02-02, 02-03 all done)
-Current Plan: 3
+Phase: 3 of 5 (Concept B — Full-Screen Video) — IN PROGRESS
+Plan: 1 of 3 complete in current phase (03-01 done; 03-02, 03-03 remaining)
+Current Plan: 1
 Total Plans in Phase: 3
-Status: Phase 2 complete — ready for `/gsd:discuss-phase 3` + `/gsd:plan-phase 3` (Concept B)
+Status: Ready for 03-02 (chapter panels / panels.js)
 Last activity: 2026-07-24
 
-Progress: [██████████] 100% (7 of 7 known plans across all phases — phases 3-5 not yet planned)
+Progress: [████████░░] 80% (8 of 10 known plans across all phases)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 7
-- Average duration: 23 min
-- Total execution time: 2.73 hours
+- Total plans completed: 8
+- Average duration: 25 min
+- Total execution time: 3.36 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
+| Phase 03 P01 | 38min | 2 tasks | 3 files |
 | Phase 02 P03 | 22min | 2 tasks | 8 files |
 | Phase 02 P02 | 7min | 3 tasks | 6 files |
 | Phase 02 P01 | 25min | 3 tasks | 2 files |
@@ -55,8 +56,8 @@ Progress: [██████████] 100% (7 of 7 known plans across all p
 | Phase 01 P01 | 20min | 3 tasks | 3 files |
 
 **Recent Trend:**
-- Last 5 plans: 02-03 (22min), 02-02 (7min), 02-01 (25min), 01-04 (15min), 01-03 (35min)
-- Trend: steady — 02-03's duration (22min) sits near the running average despite an unplanned headless-Chrome capture-tooling detour, since the core motion implementation itself was fast
+- Last 5 plans: 03-01 (38min), 02-03 (22min), 02-02 (7min), 02-01 (25min), 01-04 (15min)
+- Trend: 03-01 ran longer than average — first plan of a new phase carries full context-gathering overhead (reading CONTEXT/RESEARCH/ASSETS.md, cross-checking concept-a idioms, iterating on the automated brand-grep suite), not a sign of rising per-task cost
 
 *Updated after each plan completion*
 
@@ -83,6 +84,9 @@ Recent decisions affecting current work:
 - [02-02]: InterceptOS flows rendered as a responsive 4-column stage grid per flow (no tabs/carousel) so all 16 stages stay visible with zero interaction or timers; the interfaces contract's unannotated structural labels (Challenge/Approach/Results/Agents) implemented as plain text with a single HTML comment per page marking them as content-model field names, not brand copy
 - [Phase 02-concept-a-editorial-accenture-but-better]: [02-03]: 20 data-reveal targets on the homepage and 4-10 per sub-page — sparing section-level scroll reveals only, hero excluded (uses its own one-time load stagger instead); single permitted hover accent added (card kicker weight/color shift to Flarepop), all pre-existing 02-01/02-02 hover states left untouched as out-of-scope prior work
 - [Phase 02-concept-a-editorial-accenture-but-better]: [02-03]: Puppeteer's bundled "Chrome for Testing" binary hung indefinitely on any Page.captureScreenshot in this sandbox, and mixing manual CDP Emulation.setDeviceMetricsOverride with Puppeteer's own screenshot call produced a corrupted partial-width render (cross-checked live via getBoundingClientRect/getComputedStyle to confirm the actual CSS grid was always correct) -- fix was executablePath pointing at the real installed Google Chrome plus Puppeteer's own page.setViewport(), with page.setJavaScriptEnabled(false) used for the final captures so all data-reveal content is visible for layout review while simultaneously verifying the no-JS guarantee
+- [03-01]: Hotspot constellation coordinates and topbar/hero-copy geometry were built as this plan's own discretionary composition (CONTEXT explicitly left layout geometry + responsive behavior to Claude's discretion); visual balance is deferred to 03-03's capture-based review, not gated in 03-01
+- [03-01]: Topbar CTA and all 6 hotspot buttons are real, correctly `data-panel`-tagged, keyboard-focusable elements that intentionally do nothing on click yet — 03-02's `panels.js` owns wiring every `[data-panel]` element to its dialog
+- [03-01]: `attemptPlay(userInitiated)` in `video.js` gates ambient autoplay behind `prefers-reduced-motion` but always allows an explicit user-initiated play(), with toggle state driven off the video element's own `play`/`pause` events (not manually tracked) so 03-03's visibilitychange/IntersectionObserver pausing bolts on without a rewrite
 
 ### Pending Todos
 
@@ -90,12 +94,12 @@ None yet.
 
 ### Blockers/Concerns
 
-- Phase 3 (Concept B): the exact progressive-reveal mechanism (scroll-scrubbed chaptered video vs. ambient loop + hotspot vs. click-to-reveal panel) is not yet settled — research flags this for `/gsd:discuss-phase 3` before build.
 - Phase 4 (Concept C): the specific 3D interaction metaphor (orbit/click-object scene vs. scroll-driven camera fly-through vs. Spline-authored scene) is not yet settled — research flags this for `/gsd:discuss-phase 4` before build.
-- Tooling: `gsd-tools state advance-plan`/`update-progress`/`record-metric`/`add-decision` continue to need hand-correction after each run (wrong `status` value, stale `percent`, metric rows appended outside the table, `add-decision` reverting frontmatter `status`/`stopped_at` back to stale values even after they'd just been hand-corrected) — recurred again on 02-03's update; worth a tooling fix before Phase 3.
+- Phase 3 byte-budget arithmetic (CONB-05's remaining half) and JS-disabled visual captures are deliberately deferred to 03-03 per 03-01's own success criteria — not a blocker, just not yet done.
+- Tooling: `gsd-tools state advance-plan`/`update-progress`/`record-metric`/`add-decision` continue to need hand-correction after each run (`advance-plan` still reasons off a stale global plan counter instead of per-phase plan position, `update-progress` wrote `percent: 100` instead of the correct 80%, `record-metric` appended its new table row directly below the `*Updated after each plan completion*` footer instead of inside the table) — recurred again on 03-01's update; still worth a tooling fix.
 
 ## Session Continuity
 
-Last session: 2026-07-24T04:25:50.255Z
-Stopped at: Completed 02-03-PLAN.md (Concept A kinetic layer + phase-closing QA) — Phase 2 complete
+Last session: 2026-07-24T15:58:54.922Z
+Stopped at: Completed 03-01-PLAN.md (Concept B homepage shell — video hero + hotspots)
 Resume file: None
