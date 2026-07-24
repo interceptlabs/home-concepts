@@ -98,7 +98,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 (Phases 2, 3, 4 depen
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Content Foundation & Shared Brand Layer | 4/4 | Complete    | 2026-07-23 |
-| 2. Concept A — Editorial | 1/3 | In Progress | - |
+| 2. Concept A — Editorial | 2/3 | In Progress|  |
 | 3. Concept B — Full-Screen Video | 0/TBD | Not started | - |
 | 4. Concept C — Experimental WebGL/3D | 0/TBD | Not started | - |
 | 5. Cross-Concept QA & Review Packaging | 0/TBD | Not started | - |

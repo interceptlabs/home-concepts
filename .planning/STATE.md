@@ -2,17 +2,17 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 1
+current_plan: 2
 status: executing
-stopped_at: Completed 02-01-PLAN.md
-last_updated: "2026-07-24T03:52:00.000Z"
+stopped_at: Completed 02-02-PLAN.md (Concept A derived sub-pages)
+last_updated: "2026-07-24T03:59:52.168Z"
 last_activity: 2026-07-24
 progress:
   total_phases: 5
   completed_phases: 1
   total_plans: 7
-  completed_plans: 5
-  percent: 71
+  completed_plans: 6
+  percent: 86
 ---
 
 # Project State
@@ -22,30 +22,31 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-23)
 
 **Core value:** A visitor never faces a wall of text — content is revealed as needed, and clicking an area of interest takes them to a focused page built from that content.
-**Current focus:** Phase 2 (Concept A — Editorial) in progress — homepage built (02-01), sub-pages next (02-02)
+**Current focus:** Phase 2 (Concept A — Editorial) in progress — homepage + sub-pages built (02-01, 02-02), motion/QA next (02-03)
 
 ## Current Position
 
 Phase: 2 of 5 (Concept A — Editorial, "Accenture, but better") — IN PROGRESS
-Plan: 1 of 3 complete in current phase (02-01 done; 02-02, 02-03 remain)
-Current Plan: 1
+Plan: 2 of 3 complete in current phase (02-01, 02-02 done; 02-03 remains)
+Current Plan: 2
 Total Plans in Phase: 3
-Status: Plan 02-01 complete — ready for plan 02-02 (derived sub-pages)
+Status: Plan 02-02 complete — ready for plan 02-03 (motion + QA)
 Last activity: 2026-07-24
 
-Progress: [███████░░░] 71% (5 of 7 known plans across all phases)
+Progress: [█████████░] 86% (6 of 7 known plans across all phases)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
-- Average duration: 23 min
-- Total execution time: 1.74 hours
+- Total plans completed: 6
+- Average duration: 20 min
+- Total execution time: 2.03 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
+| Phase 02 P02 | 7min | 3 tasks | 6 files |
 | Phase 02 P01 | 25min | 3 tasks | 2 files |
 | Phase 01 P03 | 35min | 3 tasks | 5 files |
 | Phase 01 P04 | 15min | 2 tasks | 11 files |
@@ -53,8 +54,8 @@ Progress: [███████░░░] 71% (5 of 7 known plans across all ph
 | Phase 01 P01 | 20min | 3 tasks | 3 files |
 
 **Recent Trend:**
-- Last 5 plans: 02-01 (25min), 01-03 (35min), 01-04 (15min), 01-02 (20min), 01-01 (20min)
-- Trend: stable
+- Last 5 plans: 02-02 (7min), 02-01 (25min), 01-04 (15min), 01-03 (35min), 01-02 (20min)
+- Trend: faster (data-driven JSON-to-HTML generation cut 02-02's execution time well below average)
 
 *Updated after each plan completion*
 
@@ -77,6 +78,8 @@ Recent decisions affecting current work:
 - [02-01]: InterceptOS band built as one full-bleed `<section id="interceptos">` wrapping both `os` framing and `agents` roster (not two sections) to match CONTEXT's "give it real estate" framing; stepped-field background used exactly once across the whole homepage (restraint)
 - [02-01]: CONA-05 (motion/kinetic type) deliberately left out of 02-01 — no data-reveal/JS/`.has-js` added — reserved entirely for plan 02-03 per its own files_modified scope
 - [02-01]: Headless Chrome's `--window-size` CLI flag was found to silently clamp below a ~500px viewport floor (confirmed via CDP Emulation.setDeviceMetricsOverride cross-check) — plan 02-03's responsive capture step should use CDP/Puppeteer/Playwright viewport emulation, not the bare CLI flag, for widths under ~500px
+- [02-02]: Sub-page copy generated via the same data-driven Python generator technique as 02-01, but looping directly over homepage.json's array structures (flows/stages/agents/results/episodes) so both rendered text and its data-copy dot-path are derived together — copy-diff passed 430/430 chunks across all 6 pages and the link-integrity script passed with zero fixes needed, both on the first run
+- [02-02]: InterceptOS flows rendered as a responsive 4-column stage grid per flow (no tabs/carousel) so all 16 stages stay visible with zero interaction or timers; the interfaces contract's unannotated structural labels (Challenge/Approach/Results/Agents) implemented as plain text with a single HTML comment per page marking them as content-model field names, not brand copy
 
 ### Pending Todos
 
@@ -86,10 +89,10 @@ None yet.
 
 - Phase 3 (Concept B): the exact progressive-reveal mechanism (scroll-scrubbed chaptered video vs. ambient loop + hotspot vs. click-to-reveal panel) is not yet settled — research flags this for `/gsd:discuss-phase 3` before build.
 - Phase 4 (Concept C): the specific 3D interaction metaphor (orbit/click-object scene vs. scroll-driven camera fly-through vs. Spline-authored scene) is not yet settled — research flags this for `/gsd:discuss-phase 4` before build.
-- Tooling: `gsd-tools state advance-plan`/`update-progress` mangled cross-phase plan counters after Phase 1→2 transition (stale current_plan/total_plans, percent mismatch) — hand-corrected in this update; worth a tooling fix before Phase 3.
+- Tooling: `gsd-tools state advance-plan`/`update-progress`/`record-metric` continue to need hand-correction after each run (wrong `status` value, stale `percent`, metric rows appended outside the table) — this recurred again on 02-02's update; worth a tooling fix before Phase 3.
 
 ## Session Continuity
 
-Last session: 2026-07-24T03:52:00.000Z
-Stopped at: Completed 02-01-PLAN.md (Concept A homepage build)
-Resume file: .planning/phases/02-concept-a-editorial-accenture-but-better/02-02-PLAN.md
+Last session: 2026-07-24T03:59:52.168Z
+Stopped at: Completed 02-02-PLAN.md (Concept A derived sub-pages)
+Resume file: .planning/phases/02-concept-a-editorial-accenture-but-better/02-03-PLAN.md

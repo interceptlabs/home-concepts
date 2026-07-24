@@ -20,7 +20,7 @@ Requirements for the side-by-side review deliverable. Each maps to roadmap phase
 - [x] **CONA-01**: Homepage opens with a single strong hero statement and ONE primary CTA — no rotating hero, no abstract tagline sludge
 - [x] **CONA-02**: Content lives in an editorial card grid with oversized type; each section has one visually primary CTA with distinct, content-specific labels (no generic "Expand" everywhere)
 - [x] **CONA-03**: Trust-signal block (client work / proof points from existing copy) executed with restraint — specific over vague
-- [ ] **CONA-04**: Clicking a card routes to its derived sub-page (cross-document View Transitions where supported, graceful without)
+- [x] **CONA-04**: Clicking a card routes to its derived sub-page (cross-document View Transitions where supported, graceful without)
 - [ ] **CONA-05**: Kinetic typography accents on scroll/hover — sparing, sine ease-in-out, no gratuitous motion
 - [x] **CONA-06**: Imagery is real-stock (Pexels-class) or ComfyUI-generated per brand rules — no neon/glow AI slop
 
@@ -88,7 +88,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CONA-01 | Phase 2 | Complete |
 | CONA-02 | Phase 2 | Complete |
 | CONA-03 | Phase 2 | Complete |
-| CONA-04 | Phase 2 | Pending |
+| CONA-04 | Phase 2 | Complete |
 | CONA-05 | Phase 2 | Pending |
 | CONA-06 | Phase 2 | Complete |
 | CONB-01 | Phase 3 | Pending |
