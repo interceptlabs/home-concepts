@@ -5,6 +5,37 @@
    the visual field); no rule-line dividers (no border-top/bottom, no
    horizontal-rule elements) — space/weight/alignment only. */
 
+@view-transition {
+  navigation: auto;
+}
+
+/* ── Reset / shared primitives — used by index.html and the 3 sub-pages ── */
+.concept-b, .concept-b *, .concept-b *::before, .concept-b *::after {
+  box-sizing: border-box;
+}
+.concept-b img, .concept-b svg { max-width: 100%; display: block; }
+.concept-b a { color: inherit; text-decoration: none; }
+.concept-b ul { list-style: none; margin: 0; padding: 0; }
+.concept-b p, .concept-b blockquote { margin: 0; }
+
+.wrap {
+  max-width: 90rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 4rem);
+}
+
+/* Base kicker look (sub-pages + chapter-panel kickers); placed before
+   .hero-stage__video so the hero's own .hero__kicker override (below,
+   later in source order) still wins on the homepage — no regression to
+   03-01's already-approved hero. */
+.kicker {
+  font-size: var(--fs-label-l1);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  margin-bottom: var(--sp-16);
+}
+
 .hero-stage {
   position: relative;
   height: 100vh;
@@ -382,5 +413,279 @@
   .hotspot {
     position: static;
     transform: none;
+  }
+}
+
+/* ── Sub-pages (Task 3) — dark, quiet, typographic, no video ────────────
+   problems.html / interceptos.html / work.html share this chrome. */
+.page-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-24);
+  padding: var(--sp-16) clamp(1.25rem, 4vw, 4rem);
+  background: var(--surface);
+}
+.page-header__lockup img { height: 1.75rem; width: auto; }
+.page-header__back {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-l1);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--fg);
+  transition: color var(--dur-short) var(--ease-inout-sine);
+}
+.page-header__back:hover { color: var(--flarepop); }
+
+.page-hero { padding-block: clamp(2.5rem, 6vw, 6rem); }
+.page-hero__title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-heading);
+  font-size: clamp(2.25rem, 1.1rem + 5vw, 5.5rem);
+  line-height: 1.05;
+  text-wrap: balance;
+  margin-block: var(--sp-16) var(--sp-24);
+}
+.page-hero__lead {
+  font-size: var(--fs-p3);
+  color: var(--fg-2);
+  max-width: 44rem;
+}
+
+/* Problems — all 4 items at full depth, no tabs/accordion */
+.problems-page { padding-block: clamp(2rem, 5vw, 5rem); }
+.problem-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-48);
+}
+.problem-item {
+  background: var(--surface);
+  border-radius: var(--r-m);
+  padding: var(--sp-32);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-16);
+}
+.problem-item__eyebrow {
+  font-size: var(--fs-label-l1);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--flarepop);
+}
+.problem-item__quote {
+  font-size: var(--fs-p2);
+  line-height: 1.4;
+  color: var(--fg);
+}
+.problem-item__attrib { font-size: var(--fs-p5); color: var(--fg-3); }
+.problem-item__tells { display: flex; flex-direction: column; gap: var(--sp-8); }
+.problem-item__tells li {
+  padding-left: var(--sp-16);
+  position: relative;
+  color: var(--fg-2);
+  font-size: var(--fs-p4);
+}
+.problem-item__tells li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 5px;
+  height: 5px;
+  background: var(--fg-3);
+  border-radius: var(--r-round);
+}
+.problem-item__signal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sp-12);
+  background: var(--surface-2);
+  border-radius: var(--r-s);
+  padding: var(--sp-16) var(--sp-24);
+}
+.problem-item__bridge { color: var(--fg-2); font-size: var(--fs-p4); }
+
+/* InterceptOS — 4 flows at full depth (grid of stages, no tabs/timers) +
+   the full 13-agent roster grouped by category */
+.os-flows { padding-block: clamp(2rem, 5vw, 5rem); }
+.os-flow { padding-block: var(--sp-48); }
+.os-flow__head { max-width: 44rem; margin-bottom: var(--sp-32); }
+.os-flow__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1.1rem + 2vw, 2.5rem);
+  line-height: 1.15;
+  margin-bottom: var(--sp-12);
+}
+.os-flow__job { color: var(--fg-2); font-size: var(--fs-p3); margin-bottom: var(--sp-8); }
+.os-flow__layer {
+  color: var(--fg-3);
+  font-size: var(--fs-label-l1);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.os-stage-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-24);
+}
+@media (min-width: 900px) {
+  .os-stage-list { grid-template-columns: repeat(4, 1fr); }
+}
+.os-stage {
+  background: var(--surface);
+  border-radius: var(--r-m);
+  padding: var(--sp-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+.os-stage__tag {
+  font-size: var(--fs-label-l2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--flarepop);
+}
+.os-stage__name { font-family: var(--font-display); font-size: var(--fs-h5); line-height: 1.25; }
+.os-stage__agents { display: flex; flex-wrap: wrap; gap: var(--sp-8); }
+.os-stage__agents li {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-l2);
+  letter-spacing: 0.03em;
+  color: var(--fg-2);
+  background: var(--surface-2);
+  border-radius: var(--r-round);
+  padding: var(--sp-4) var(--sp-12);
+}
+.os-stage__desc { color: var(--fg-2); font-size: var(--fs-p4); flex-grow: 1; }
+
+.agent-roster { padding-block: clamp(3rem, 6vw, 6rem); }
+.agent-roster__groups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-48);
+  margin-top: var(--sp-48);
+}
+.agent-group__label {
+  font-size: var(--fs-label-l1);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  margin-bottom: var(--sp-16);
+}
+.agent-card-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-24);
+  margin-top: var(--sp-24);
+}
+@media (min-width: 768px) {
+  .agent-card-list { grid-template-columns: repeat(2, 1fr); }
+}
+.agent-card {
+  background: var(--surface);
+  border-radius: var(--r-m);
+  padding: var(--sp-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+.agent-card__name { font-family: var(--font-display); font-size: var(--fs-h5); }
+.agent-card__type {
+  color: var(--fg-3);
+  font-size: var(--fs-label-l2);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.agent-card__role { color: var(--fg-2); font-size: var(--fs-p4); font-weight: var(--fw-bold); }
+.agent-card__desc { color: var(--fg-2); font-size: var(--fs-p5); }
+.agent-card__solves { display: flex; flex-wrap: wrap; gap: var(--sp-8); }
+.agent-card__solves li {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-l2);
+  color: var(--flarepop);
+  border-radius: var(--r-round);
+  padding: var(--sp-4) var(--sp-12);
+  background: var(--surface-2);
+}
+.agent-card__sample {
+  color: var(--fg-2);
+  font-size: var(--fs-p5);
+  font-style: italic;
+  padding-top: var(--sp-8);
+}
+
+/* Work — one consolidated page, all 3 cases stacked at full depth */
+.work-page { padding-block: clamp(2.5rem, 6vw, 6rem); }
+.case-block { padding-block: clamp(2rem, 5vw, 5rem); }
+.case-block__kicker {
+  font-size: var(--fs-label-l1);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  margin-bottom: var(--sp-16);
+}
+.case-block__title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-heading);
+  font-size: clamp(1.75rem, 1.1rem + 3vw, 3.25rem);
+  line-height: 1.1;
+  text-wrap: balance;
+  margin-bottom: var(--sp-16);
+}
+.case-block__summary { color: var(--fg-2); font-size: var(--fs-p3); max-width: 48rem; margin-bottom: var(--sp-24); }
+.case-block__metric { display: flex; flex-direction: column; gap: var(--sp-4); margin-bottom: var(--sp-32); }
+.case-block__metric .stat-num { font-size: var(--fs-data-m); }
+.case-story__block { max-width: 48rem; padding-block: var(--sp-24); }
+.case-story__label {
+  font-size: var(--fs-label-l1);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  margin-bottom: var(--sp-16);
+}
+.case-story__text { color: var(--fg); font-size: var(--fs-p3); }
+.case-results { display: flex; flex-direction: column; gap: var(--sp-12); }
+.case-results li {
+  padding-left: var(--sp-16);
+  position: relative;
+  color: var(--fg);
+  font-size: var(--fs-p3);
+}
+.case-results li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 5px;
+  height: 5px;
+  background: var(--flarepop);
+  border-radius: var(--r-round);
+}
+.case-story__agents { color: var(--fg-2); font-size: var(--fs-p3); }
+
+/* Sub-page scroll reveal (reveal.js) — sparing, section-level, reveal-once.
+   Scoped under .has-js (added by the synchronous bootstrap script in
+   <head>) so JS-disabled visitors always see full content immediately. */
+.has-js [data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--dur-med) var(--ease-inout-sine),
+    transform var(--dur-med) var(--ease-inout-sine);
+}
+.has-js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
