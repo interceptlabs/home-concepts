@@ -798,3 +798,66 @@
   border-radius: var(--r-round);
 }
 .case-story__agents { color: var(--fg-2); font-size: var(--fs-p3); }
+
+/* ── Kinetic layer (CONA-05) ─────────────────────────────────────────────
+   Sparing scroll reveals + a one-time hero load stagger + one hover
+   accent, all built on the shared motion tokens only. Everything below is
+   scoped under `.has-js` (added by a synchronous bootstrap script in
+   <head>, before first paint) so JS-disabled visitors always see full
+   content immediately — never a hidden-forever section. */
+
+/* Scroll reveal: small translate, long duration, no jarring landing. */
+.has-js [data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--dur-med) var(--ease-inout-sine),
+    transform var(--dur-med) var(--ease-inout-sine);
+}
+.has-js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hero load stagger — runs once on load, not scroll-triggered. Split
+   phrase spans (`.line`) rise+fade in sequence with the kicker/sub/CTA. */
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.has-js .hero__kicker,
+.has-js .hero__h1 .line,
+.has-js .hero__sub,
+.has-js .hero__cta {
+  opacity: 0;
+  animation: hero-rise var(--dur-med) var(--ease-inout-sine) both;
+}
+.has-js .hero__kicker      { animation-delay: 0ms; }
+.has-js .hero__h1 .line:nth-of-type(1) { animation-delay: 120ms; }
+.has-js .hero__h1 .line:nth-of-type(2) { animation-delay: 240ms; }
+.has-js .hero__sub         { animation-delay: 360ms; }
+.has-js .hero__cta         { animation-delay: 480ms; }
+.hero__h1 .line { display: block; }
+
+/* ONE permitted hover accent: the card kicker shifts weight and color to
+   Flarepop on card hover. Nothing else animates on card hover. */
+.card:hover .card__kicker {
+  color: var(--flarepop);
+  font-weight: var(--fw-bold);
+  transition: color var(--dur-short) var(--ease-inout-sine);
+}
+
+/* Reduced motion: force every animated thing to its final visible state
+   and remove all transitions/animations, everywhere (has-js or not). */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  .hero__kicker,
+  .hero__h1 .line,
+  .hero__sub,
+  .hero__cta {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}

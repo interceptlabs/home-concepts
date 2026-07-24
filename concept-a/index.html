@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add('has-js')</script>
 <title>Concept A — Editorial · Intercept</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,12 +27,12 @@
   <section class="hero">
     <div class="wrap hero__grid">
       <div class="hero__main">
-        <p class="kicker mono" data-copy="hero.kicker">Award-winning B2B marketing for global tech</p>
-        <h1 class="hero__h1" data-copy="hero.h1_html">We turn your most <em>ambitious</em> briefs into <em>proven</em> outcomes<span class="dot">.</span></h1>
+        <p class="kicker mono hero__kicker" data-copy="hero.kicker">Award-winning B2B marketing for global tech</p>
+        <h1 class="hero__h1" data-copy="hero.h1_html"><span class="line">We turn your most <em>ambitious</em></span> <span class="line">briefs into <em>proven</em> outcomes<span class="dot">.</span></span></h1>
       </div>
       <div class="hero__rail">
         <p class="hero__sub" data-copy="hero.sub">Marketing teams are increasingly pressured to adopt AI, but most don’t know where to start. Intercept is the frontier B2B agency for global tech, helping clients use AI to make the keep-the-lights-on work more efficient and power the innovation that redefines the buyer experience.</p>
-        <a class="btn-primary" href="#problems" data-copy="hero.cta.label">Explore more</a>
+        <a class="btn-primary hero__cta" href="#problems" data-copy="hero.cta.label">Explore more</a>
       </div>
     </div>
   </section>
@@ -43,7 +44,7 @@
         <p class="section-head__lead" data-copy="insights.lead">ChatB2B is your front-row seat to AI in B2B marketing. Hear from the marketing leaders and practitioners adopting and scaling AI inside their teams.</p>
       </header>
       <div class="card-grid">
-      <article class="card card--episode">
+      <article class="card card--episode" data-reveal>
         <p class="card__kicker mono">
           <span data-copy="insights.episodes.0.episode">Episode 19</span><span data-copy="insights.episodes.0.show">ChatB2B</span>
         </p>
@@ -56,7 +57,7 @@
           <a href="https://www.youtube.com/watch?v=t3xY3tqU9YI" data-copy="insights.episodes.0.links.2.label">YouTube</a>
         </div>
       </article>
-      <article class="card card--episode">
+      <article class="card card--episode" data-reveal>
         <p class="card__kicker mono">
           <span data-copy="insights.episodes.1.episode">Episode 18</span><span data-copy="insights.episodes.1.show">ChatB2B</span>
         </p>
@@ -69,7 +70,7 @@
           <a href="https://www.youtube.com/watch?v=uDJIwLfLeBA" data-copy="insights.episodes.1.links.2.label">YouTube</a>
         </div>
       </article>
-      <article class="card card--episode">
+      <article class="card card--episode" data-reveal>
         <p class="card__kicker mono">
           <span data-copy="insights.episodes.2.episode">Episode 17</span><span data-copy="insights.episodes.2.show">ChatB2B</span>
         </p>
@@ -82,7 +83,7 @@
           <a href="https://www.youtube.com/watch?v=jIv_AFVh-Rc" data-copy="insights.episodes.2.links.2.label">YouTube</a>
         </div>
       </article>
-      <article class="card card--labs" id="labs">
+      <article class="card card--labs" id="labs" data-reveal>
         <p class="card__kicker mono" data-copy="labs.label">Intercept Labs</p>
         <h3 class="card__title" data-copy="labs.h2_html">For the work that <span class="hl">has no playbook.</span></h3>
         <p class="card__summary" data-copy="labs.body">Intercept Labs is how we co-invest with clients to test first-of-its-kind ideas, reduce the risk of trying something new, and turn the best experiments into repeatable capability inside InterceptOS.</p>
@@ -94,13 +95,13 @@
   </section>
   <section class="problems" id="problems">
     <div class="wrap">
-      <header class="section-head section-head--center">
+      <header class="section-head section-head--center" data-reveal>
         <p class="kicker mono" data-copy="problems.eyebrow">what we solve</p>
         <h2 class="statement" data-copy="problems.h2">We love a chewy problem.</h2>
         <p class="section-head__lead" data-copy="problems.lead">Four that global tech keeps bringing us.</p>
       </header>
       <div class="problem-list">
-      <details class="problem-item">
+      <details class="problem-item" data-reveal>
         <summary class="problem-item__summary">
           <span class="problem-item__eyebrow mono" data-copy="problems.items.0.tabEyebrow">Intelligence</span>
           <span class="problem-item__name" data-copy="problems.items.0.tabName">Research is stale by the time you act.</span>
@@ -119,7 +120,7 @@
           <p class="problem-item__bridge" data-copy="problems.items.0.bridge">We triangulate live signals no single source can see on its own, keeping go-to-market current and putting on-demand account research in sellers’ hands.</p>
         </div>
       </details>
-      <details class="problem-item">
+      <details class="problem-item" data-reveal>
         <summary class="problem-item__summary">
           <span class="problem-item__eyebrow mono" data-copy="problems.items.1.tabEyebrow">Visibility</span>
           <span class="problem-item__name" data-copy="problems.items.1.tabName">AI now sits between you and the buyer.</span>
@@ -138,7 +139,7 @@
           <p class="problem-item__bridge" data-copy="problems.items.1.bridge">Through voice-of-customer research, we learn how buyers actually prompt the AI engines. We then simulate thousands of those prompts across industries, buying journeys, and personas to map where you show up and where you don’t. From there, we build the content and campaigns that make you the answer buyers get.</p>
         </div>
       </details>
-      <details class="problem-item">
+      <details class="problem-item" data-reveal>
         <summary class="problem-item__summary">
           <span class="problem-item__eyebrow mono" data-copy="problems.items.2.tabEyebrow">Velocity</span>
           <span class="problem-item__name" data-copy="problems.items.2.tabName">Content and campaigns can’t keep pace with the market.</span>
@@ -157,7 +158,7 @@
           <p class="problem-item__bridge" data-copy="problems.items.2.bridge">We triangulate live signals, then run human-led ideas, hero content, and positioning through an AI-native content and campaign engine. It versions that work for every persona, account, stage, and language, and gets it to your execution teams fast enough to meet the moment.</p>
         </div>
       </details>
-      <details class="problem-item">
+      <details class="problem-item" data-reveal>
         <summary class="problem-item__summary">
           <span class="problem-item__eyebrow mono" data-copy="problems.items.3.tabEyebrow">Activation</span>
           <span class="problem-item__name" data-copy="problems.items.3.tabName">Content and campaigns get produced, then never reach the right people.</span>
@@ -181,7 +182,7 @@
   </section>
   <section class="interceptos-band section--stepped" id="interceptos">
     <div class="wrap">
-      <div class="interceptos-band__os">
+      <div class="interceptos-band__os" data-reveal>
         <p class="kicker mono" data-copy="os.eyebrow">InterceptOS</p>
         <h2 class="interceptos-band__title" data-copy="os.h2">The AI-native layer behind better work.</h2>
         <p class="interceptos-band__lead" data-copy="os.lead">You get the latest AI models and tools, plus our proprietary capabilities, working on your campaigns. We bring the enterprise rigor, so all of it meets the privacy, legal, and governance standards you’re held to. <a href="/concept-a/pages/interceptos.html">See how it works.</a></p>
@@ -197,7 +198,7 @@
         <h3 class="interceptos-band__agents-title" data-copy="agents.h2">Meet the capabilities inside InterceptOS.</h3>
         <p class="interceptos-band__agents-lead" data-copy="agents.lead">InterceptOS includes a growing set of AI-powered capabilities that support strategy, content, sales, and channel work. Choose a category to see what each one helps your team do.</p>
         <div class="agent-groups">
-        <div class="agent-group">
+        <div class="agent-group" data-reveal>
           <h4 class="agent-group__label mono" data-copy="agents.categories.0">Strategy</h4>
           <ul class="agent-chips">
           <li class="agent-chip"><span class="agent-chip__name" data-copy="agents.items.0.name">Watchtower</span><span class="agent-chip__type" data-copy="agents.items.0.type">Audience signals</span></li>
@@ -206,7 +207,7 @@
           <li class="agent-chip"><span class="agent-chip__name" data-copy="agents.items.3.name">Geo</span><span class="agent-chip__type" data-copy="agents.items.3.type">GEO performance tracking</span></li>
           </ul>
         </div>
-        <div class="agent-group">
+        <div class="agent-group" data-reveal>
           <h4 class="agent-group__label mono" data-copy="agents.categories.1">Content &amp; Creative</h4>
           <ul class="agent-chips">
           <li class="agent-chip"><span class="agent-chip__name" data-copy="agents.items.4.name">Cam</span><span class="agent-chip__type" data-copy="agents.items.4.type">Synthetic video</span></li>
@@ -216,7 +217,7 @@
           <li class="agent-chip"><span class="agent-chip__name" data-copy="agents.items.8.name">Index</span><span class="agent-chip__type" data-copy="agents.items.8.type">Content audit</span></li>
           </ul>
         </div>
-        <div class="agent-group">
+        <div class="agent-group" data-reveal>
           <h4 class="agent-group__label mono" data-copy="agents.categories.2">Sales Enablement</h4>
           <ul class="agent-chips">
           <li class="agent-chip"><span class="agent-chip__name" data-copy="agents.items.9.name">Telly</span><span class="agent-chip__type" data-copy="agents.items.9.type">Call-down agents</span></li>
@@ -224,7 +225,7 @@
           <li class="agent-chip"><span class="agent-chip__name" data-copy="agents.items.11.name">Radar</span><span class="agent-chip__type" data-copy="agents.items.11.type">Account intelligence platform</span></li>
           </ul>
         </div>
-        <div class="agent-group">
+        <div class="agent-group" data-reveal>
           <h4 class="agent-group__label mono" data-copy="agents.categories.3">Channel Empowerment</h4>
           <ul class="agent-chips">
           <li class="agent-chip"><span class="agent-chip__name" data-copy="agents.items.12.name">Taylor</span><span class="agent-chip__type" data-copy="agents.items.12.type">Intelligent campaign assistant</span></li>
@@ -242,21 +243,21 @@
         <p class="work__lead" data-copy="work.lead">A snapshot of recent work for global tech brands. Open any case for the full brief, the work, and the results.</p>
       </header>
       <div class="work-grid">
-      <a class="work-card" href="/concept-a/pages/work-hp-abx.html">
+      <a class="work-card" href="/concept-a/pages/work-hp-abx.html" data-reveal>
         <p class="work-card__client mono" data-copy="work.cases.0.client">HP</p>
         <p class="work-card__tag" data-copy="work.cases.0.tag">Account-based marketing</p>
         <h3 class="work-card__name" data-copy="work.cases.0.name">AI-powered ABX for Workforce Solutions</h3>
         <p class="work-card__summary" data-copy="work.cases.0.summary">Cross-sell GTM across HP’s Workforce Solutions portfolio, with a buying-committee surround strategy and AI-powered customer journeys tailored per role and stage.</p>
         <p class="work-card__metric"><span class="stat-num mono" data-copy="work.cases.0.metric.num">398%</span><span class="stat-label" data-copy="work.cases.0.metric.label">Incremental deal-size lift</span></p>
       </a>
-      <a class="work-card" href="/concept-a/pages/work-intel-abm.html">
+      <a class="work-card" href="/concept-a/pages/work-intel-abm.html" data-reveal>
         <p class="work-card__client mono" data-copy="work.cases.1.client">Intel</p>
         <p class="work-card__tag" data-copy="work.cases.1.tag">Account-based marketing</p>
         <h3 class="work-card__name" data-copy="work.cases.1.name">Award-winning ABM for enterprise cloud migration</h3>
         <p class="work-card__summary" data-copy="work.cases.1.summary">Precision ABX targeting 250 enterprise accounts. We anchored the cloud-migration story in clear metaphors, paired with GenAI personalization and an intent-led nurture engine.</p>
         <p class="work-card__metric"><span class="stat-num mono" data-copy="work.cases.1.metric.num">$70M</span><span class="stat-label" data-copy="work.cases.1.metric.label">Pipeline value generated</span></p>
       </a>
-      <a class="work-card" href="/concept-a/pages/work-sap-video.html">
+      <a class="work-card" href="/concept-a/pages/work-sap-video.html" data-reveal>
         <p class="work-card__client mono" data-copy="work.cases.2.client">SAP</p>
         <p class="work-card__tag" data-copy="work.cases.2.tag">AI-powered video production</p>
         <h3 class="work-card__name" data-copy="work.cases.2.name">Award-winning AI avatars for multilingual videos at scale</h3>
@@ -266,7 +267,7 @@
       </div>
     </div>
   </section>
-  <section class="clients">
+  <section class="clients" data-reveal>
     <div class="wrap">
       <p class="clients__label mono" data-copy="clients.label">You’re in good company</p>
       <ul class="clients__list">
@@ -285,7 +286,7 @@
       </ul>
     </div>
   </section>
-  <section class="convert" id="convert">
+  <section class="convert" id="convert" data-reveal>
     <div class="wrap">
       <p class="kicker mono" data-copy="convert.eyebrow">start the conversation</p>
       <h2 class="statement" data-copy="convert.h2">Give us a chewy problem. Let’s solve it together.</h2>
@@ -296,7 +297,7 @@
       </a>
     </div>
   </section>
-  <footer class="site-footer">
+  <footer class="site-footer" data-reveal>
     <div class="wrap footer__grid">
       <div class="footer__brand">
         <img class="footer__lockup" src="/shared/logo/lockup.svg" alt="Intercept">
@@ -321,5 +322,6 @@
       </ul>
     </div>
   </footer>
+  <script src="/concept-a/assets/js/motion.js" defer></script>
 </body>
 </html>
