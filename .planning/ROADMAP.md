@@ -51,7 +51,7 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Editorial homepage: all 9 locked sections, fully data-copy annotated, dark canvas + oversized fluid type
+- [x] 02-01-PLAN.md — Editorial homepage: all 9 locked sections, fully data-copy annotated, dark canvas + oversized fluid type (completed 2026-07-23)
 - [ ] 02-02-PLAN.md — 5 derived sub-pages (interceptos, insights, 3 work cases) + cross-document View Transitions + routing integrity
 - [ ] 02-03-PLAN.md — Motion layer (IO scroll reveals, hero stagger, reduced-motion guards) + mechanical QA pass (copy-diff all pages, brand greps, 390/768/1440 captures)
 
@@ -98,7 +98,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 (Phases 2, 3, 4 depen
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Content Foundation & Shared Brand Layer | 4/4 | Complete    | 2026-07-23 |
-| 2. Concept A — Editorial | 0/3 | Planned | - |
+| 2. Concept A — Editorial | 1/3 | In Progress | - |
 | 3. Concept B — Full-Screen Video | 0/TBD | Not started | - |
 | 4. Concept C — Experimental WebGL/3D | 0/TBD | Not started | - |
 | 5. Cross-Concept QA & Review Packaging | 0/TBD | Not started | - |
