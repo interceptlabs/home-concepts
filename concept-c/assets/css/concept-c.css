@@ -181,6 +181,14 @@ html.webgl:not(.static-scene) .scroll-runway {
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--fg);
+  /* Solid backing chip (04-03 fix) — at narrow viewports the top-of-page
+     camera framing projects the nearest object's label directly over the
+     hero copy; a flat var(--surface) chip (same treatment already used on
+     btn-cta/btn-secondary/convert-tile) keeps every label legible against
+     hero text, below-fold sections, or the 3D void alike, regardless of
+     where it happens to project. */
+  background: var(--surface);
+  border-radius: var(--r-s);
 }
 html.webgl .topic-label {
   position: fixed;
