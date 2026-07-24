@@ -31,6 +31,21 @@
     toggle.textContent = playing ? "Pause" : "Play";
   }
 
+  // The <video> tag carries the `autoplay` attribute in markup (required so
+  // non-reduced-motion visitors get an immediate first frame with no JS
+  // round-trip). That attribute plays the element natively, independent of
+  // any of the JS gating below — attemptPlay()'s reduced-motion check only
+  // stops OUR code from calling play(), it can't stop the browser's own
+  // native autoplay from having already started it. So: explicitly pause
+  // immediately for reduced-motion visitors to override the attribute, and
+  // sync the toggle by hand — pausing an element that never actually
+  // started playing yet won't reliably fire a 'pause' event, so the toggle
+  // listeners below can't be trusted alone to catch this one.
+  if (prefersReducedMotion) {
+    video.pause();
+    setToggleState(false);
+  }
+
   function attemptPlay(userInitiated) {
     // Reduced-motion visitors never get an autoplay attempt — CSS/poster
     // shows the static frame. An explicit user click (userInitiated =

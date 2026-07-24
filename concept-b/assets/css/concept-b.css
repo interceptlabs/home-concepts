@@ -65,7 +65,8 @@
   gap: var(--sp-24);
   padding: var(--sp-16) clamp(1.25rem, 4vw, 3rem);
 }
-.topbar__brand img {
+.topbar__brand img,
+.topbar__brand .lockup-svg {
   height: 1.75rem;
   width: auto;
   display: block;
@@ -104,8 +105,12 @@
   gap: var(--sp-24);
   padding: var(--sp-24);
   border-radius: var(--r-m);
-  /* Flat single-alpha overlay — never a gradient/vignette (no-scrims rule) */
-  background-color: rgb(10 10 15 / 40%);
+  /* Flat single-alpha overlay — never a gradient/vignette (no-scrims rule).
+     Strengthened from 40% after a loop-wide contrast spot-check (03-03):
+     the liquid-chrome loop has bright specular highlights that pass
+     through this exact left-band region at some points in the 24s loop,
+     not just at frame 0 — 58% keeps hero-copy legible at every frame. */
+  background-color: rgb(10 10 15 / 58%);
 }
 .hero-copy {
   display: flex;
@@ -172,7 +177,10 @@
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--fg);
-  background-color: rgb(10 10 15 / 35%);
+  /* Strengthened from 35%/55% after the same loop-wide contrast check —
+     hotspot markers sit at varied points over the video, some of which
+     catch bright chrome highlights mid-loop. */
+  background-color: rgb(10 10 15 / 48%);
   border: none;
   border-radius: var(--r-round);
   padding: var(--sp-12) var(--sp-16);
@@ -180,7 +188,7 @@
   transition: background-color var(--dur-short) var(--ease-inout-sine),
               opacity var(--dur-short) var(--ease-inout-sine);
 }
-.hotspot:hover { background-color: rgb(10 10 15 / 55%); }
+.hotspot:hover { background-color: rgb(10 10 15 / 65%); }
 .hotspot:focus-visible {
   outline: var(--bw-l) solid var(--flarepop);
   outline-offset: 4px;
@@ -516,7 +524,8 @@
   padding: var(--sp-16) clamp(1.25rem, 4vw, 4rem);
   background: var(--surface);
 }
-.page-header__lockup img { height: 1.75rem; width: auto; }
+.page-header__lockup img,
+.page-header__lockup .lockup-svg { height: 1.75rem; width: auto; }
 .page-header__back {
   font-family: var(--font-mono);
   font-size: var(--fs-label-l1);
