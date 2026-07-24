@@ -1,0 +1,286 @@
+/* Concept C — Experimental WebGL/3D: the "topic field" homepage shell
+   (CONC-01..05). Consumes shared/tokens.css (palette/type/spacing),
+   shared/fonts.css, shared/motion.css (easing/duration). No raw hex below
+   this line — every color is a var(). No decorative rule lines/dividers —
+   space, weight, and alignment only. The stepped .field-backdrop recipe is
+   the ONLY gradient in this file (repeating-linear-gradient, hard steps).
+
+   Structural contract established here — 04-02 (below-fold sections) and
+   04-03 (sub-pages + motion polish) build against these exact class names
+   and the mode-gating classes set by the bootstrap script in index.html:
+     has-js / webgl / webgl static-scene / no-webgl / (no class = no JS). */
+
+@view-transition {
+  navigation: auto;
+}
+
+/* ── Reset / canvas ─────────────────────────────────────────────────────── */
+.concept-c, .concept-c *, .concept-c *::before, .concept-c *::after {
+  box-sizing: border-box;
+}
+.concept-c {
+  background: var(--page);
+  color: var(--fg);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+.concept-c a { color: inherit; text-decoration: none; }
+.concept-c ul { list-style: none; margin: 0; padding: 0; }
+.concept-c p, .concept-c h1 { margin: 0; }
+
+.mono { font-family: var(--font-mono); }
+.kicker {
+  font-size: var(--fs-label-l1);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+
+/* ── The 3D field + its static fallback — mutually exclusive layers ─────
+   .scene-mount holds scene.js's own <canvas> (webgl / webgl static-scene
+   modes only — no canvas is ever created under no-webgl). .field-backdrop
+   is the stepped-gradient placeholder, shown only when there is no 3D
+   scene at all (no-webgl, or JS never ran). Both fixed + full-bleed +
+   z-index 0 so DOM content always layers above. ── */
+.scene-mount {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+.scene-mount canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.field-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: none;
+}
+html:not(.has-js) .field-backdrop,
+html.no-webgl .field-backdrop {
+  display: block;
+  /* Fritz "no gradients" rule expressed as 5 hard-edged equal steps —
+     duplicated stop offsets, never a smooth grade (concept-a precedent,
+     concept-a/assets/css/concept-a.css .section--stepped). */
+  background: repeating-linear-gradient(
+    180deg,
+    var(--surface-2) 0, var(--surface-2) 20%,
+    var(--surface-3) 20%, var(--surface-3) 40%,
+    var(--surface-2) 40%, var(--surface-2) 60%,
+    var(--surface-3) 60%, var(--surface-3) 80%,
+    var(--surface-2) 80%, var(--surface-2) 100%
+  );
+}
+
+/* ── Topbar — fixed above everything, lockup left, CTA right ────────────── */
+.topbar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-24);
+  padding: var(--sp-16) clamp(1.25rem, 4vw, 3rem);
+}
+.topbar__brand { color: var(--fg); }
+.topbar__brand .lockup-svg {
+  height: 1.75rem;
+  width: auto;
+  display: block;
+}
+.btn-cta {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-l1);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--surface);
+  color: var(--fg);
+  padding: var(--sp-16) var(--sp-24);
+  border-radius: var(--r-s);
+  transition: opacity var(--dur-short) var(--ease-inout-sine);
+}
+.btn-cta:hover { opacity: var(--op-80); }
+.btn-cta:focus-visible {
+  outline: var(--bw-l) solid var(--flarepop);
+  outline-offset: 4px;
+}
+
+/* ── Scroll runway — 400vh dolly track under an animated 3D scene, a
+   single viewport otherwise (static-scene / no-webgl / no-JS all get the
+   same short, non-scrolling-3D layout). Position: relative so the
+   waypoint anchors below can place themselves by scroll-progress t. ── */
+.scroll-runway {
+  position: relative;
+  height: 100svh;
+}
+html.webgl:not(.static-scene) .scroll-runway {
+  height: 400vh;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  min-height: 100svh;
+  max-width: min(640px, 90%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--sp-16);
+  padding-inline: clamp(1.25rem, 5vw, 4rem);
+}
+.hero-copy h1 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-heading);
+  font-size: clamp(2.25rem, 1.1rem + 5vw, 5.5rem);
+  line-height: 1.05;
+  text-wrap: balance;
+}
+.hero-copy h1 em { font-style: normal; color: var(--flarepop); }
+.hero-copy h1 .dot { color: var(--flarepop); }
+
+/* Waypoints: zero-size anchors at each topic's camera-focus scroll offset
+   (t = i/5, 0 = Problems .. 1 = Contact). Only meaningful while the
+   runway is actually 400vh (animated webgl mode) — under the shorter
+   single-viewport layouts the topic-index that links here is hidden. */
+.waypoint {
+  position: absolute;
+  top: calc(var(--t) * 300vh);
+  left: 0;
+  width: 1px;
+  height: 1px;
+}
+
+/* ── Projected topic labels — always-visible real <a> elements, DOM-driven
+   in both directions: JS-projected onto their 3D object under webgl/
+   static-scene, laid out in a fixed CSS constellation (--x/--y) under
+   no-webgl or no-JS. Never display:none while hidden (focus-loss pitfall)
+   — is-hidden uses visibility only. ── */
+.label-field {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+.label-field .topic-label { pointer-events: auto; }
+
+.topic-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-8);
+  min-width: 44px;
+  min-height: 44px;
+  padding: var(--sp-12) var(--sp-16);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-l1);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--fg);
+}
+html.webgl .topic-label {
+  position: fixed;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+html.no-webgl .topic-label,
+html:not(.has-js) .topic-label {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-50%, -50%);
+}
+.topic-label.is-hidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+.topic-label__marker {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--r-round);
+  background: var(--flarepop); /* marker is a background fill, not colored text */
+  flex-shrink: 0;
+  transition: transform var(--dur-short) var(--ease-inout-sine);
+}
+.topic-label__text { line-height: 1; }
+.topic-label:hover .topic-label__marker,
+.topic-label:focus-visible .topic-label__marker {
+  transform: scale(1.6);
+}
+.topic-label:hover .topic-label__text,
+.topic-label:focus-visible .topic-label__text {
+  font-weight: var(--fw-bold);
+}
+.topic-label:focus-visible {
+  outline: var(--bw-l) solid var(--fg);
+  outline-offset: 2px;
+}
+
+/* ── Topic index — fixed mono nav, current topic highlighted. The one
+   nav element that independently guarantees full keyboard/screen-reader
+   access to all 6 topics regardless of camera position (04-03 owns
+   deeper a11y polish; this is the base contract). Hidden under
+   static-scene/no-webgl/no-JS — those layouts don't have a moving camera
+   to index into, and the constellation labels above already reach every
+   topic directly. ── */
+.topic-index {
+  position: fixed;
+  right: clamp(1rem, 3vw, 2rem);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  display: none;
+  flex-direction: column;
+  gap: var(--sp-16);
+}
+html.webgl:not(.static-scene) .topic-index {
+  display: flex;
+}
+.topic-index a {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-l2);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  transition: color var(--dur-short) var(--ease-inout-sine);
+}
+.topic-index a::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: var(--r-round);
+  background: transparent;
+  flex-shrink: 0;
+  transition: background var(--dur-short) var(--ease-inout-sine);
+}
+.topic-index a[aria-current="true"] {
+  color: var(--fg);
+  font-weight: var(--fw-bold);
+}
+.topic-index a[aria-current="true"]::before {
+  background: var(--flarepop);
+}
+.topic-index a:focus-visible {
+  outline: var(--bw-l) solid var(--fg);
+  outline-offset: 2px;
+}
+
+/* ── Below-fold — plain, opaque DOM. 04-02 fills these stubs in. Opaque
+   background is load-bearing: it hides the gated (stopped) canvas sitting
+   fixed underneath once the visitor scrolls past the 3D zone. ── */
+.below-fold {
+  position: relative;
+  z-index: 1;
+  background: var(--page);
+}
+.below-fold section {
+  min-height: 40vh;
+}
