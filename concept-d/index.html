@@ -314,66 +314,74 @@
 
 <dialog class="module-modal" id="dlg-problems" aria-label="What we solve">
 <button type="button" class="modal-close" data-modal-close aria-label="Close">&times;</button>
-<!-- WHAT WE SOLVE — restructured chapters: quote + recognition prose + light InterceptOS bridge -->
-<section id="problems" class="has-bg"><canvas class="fritz-bg" aria-hidden="true" data-mode="wave" data-loop="wave-scale" data-colors="FF00E5,1A7AFF" data-cell="30" data-speed="0.5" data-seed="1200" data-colmode="diagonal" style="opacity:.11"></canvas>
+<div class="modal-body">
+<!-- WHAT WE SOLVE — quiet reskin (07-02): one problem visible at a time, tells behind a
+     native details toggle. Rendered by quiet-modules.js from the untouched PROBLEMS_RR
+     data object — deployed.js's own buildSolve()/#solveDetail no longer exist on this page. -->
+<section id="problems" class="q-problems">
   <div class="wrap">
     <span class="idx">what we solve</span>
     <h2 class="section-h2">We love a chewy problem.</h2>
     <p class="section-lead">Four that global tech keeps bringing us.</p>
 
-    <div class="solve">
-      <div class="solve-nav" role="tablist" aria-label="Select a problem to read">
-        <button class="solve-tab is-active" role="tab" aria-selected="true" data-solve="intelligence">
-          <span class="solve-tab-eyebrow">Intelligence</span>
-          <span class="solve-tab-name">Research is stale by the time you act.</span>
-        </button>
-        <button class="solve-tab" role="tab" aria-selected="false" data-solve="visibility">
-          <span class="solve-tab-eyebrow">Visibility</span>
-          <span class="solve-tab-name">AI now sits between you and the buyer.</span>
-        </button>
-        <button class="solve-tab" role="tab" aria-selected="false" data-solve="velocity">
-          <span class="solve-tab-eyebrow">Velocity</span>
-          <span class="solve-tab-name">Content and campaigns can&rsquo;t keep pace with the market.</span>
-        </button>
-        <button class="solve-tab" role="tab" aria-selected="false" data-solve="activation">
-          <span class="solve-tab-eyebrow">Activation</span>
-          <span class="solve-tab-name">Content and campaigns get produced, then never reach the right people.</span>
-        </button>
-      </div>
-
-      <div class="solve-detail" id="solveDetail" aria-live="polite"></div>
+    <div class="q-tabs" role="tablist" aria-label="Select a problem to read" id="qProblemsTabs">
+      <button class="q-tab is-active" role="tab" aria-selected="true" data-q-problem="intelligence">
+        <span class="q-tab-eyebrow">Intelligence</span>
+        <span class="q-tab-name">Research is stale by the time you act.</span>
+      </button>
+      <button class="q-tab" role="tab" aria-selected="false" data-q-problem="visibility">
+        <span class="q-tab-eyebrow">Visibility</span>
+        <span class="q-tab-name">AI now sits between you and the buyer.</span>
+      </button>
+      <button class="q-tab" role="tab" aria-selected="false" data-q-problem="velocity">
+        <span class="q-tab-eyebrow">Velocity</span>
+        <span class="q-tab-name">Content and campaigns can&rsquo;t keep pace with the market.</span>
+      </button>
+      <button class="q-tab" role="tab" aria-selected="false" data-q-problem="activation">
+        <span class="q-tab-eyebrow">Activation</span>
+        <span class="q-tab-name">Content and campaigns get produced, then never reach the right people.</span>
+      </button>
     </div>
+
+    <div id="quietSolve" aria-live="polite"></div>
   </div>
 </section>
+</div>
 </dialog>
 
 <dialog class="module-modal" id="dlg-os" aria-label="InterceptOS">
 <button type="button" class="modal-close" data-modal-close aria-label="Close">&times;</button>
-<!-- INTERCEPTOS — JTBD problem selector with workflow flow -->
+<div class="modal-body">
+<!-- INTERCEPTOS — quiet reskin (07-02): flow picker + one-stage-at-a-time stepper.
+     Rendered by quiet-modules.js from the untouched PROBLEM_FLOWS data object —
+     deployed.js's own renderFlow()/#probFlow no longer exist on this page
+     (pages/os.html keeps its own #probFlow untouched). -->
 <section id="os" class="band-soft">
   <div class="wrap">
     <span class="idx">InterceptOS</span>
     <h2 class="section-h2">The AI-native layer behind better work.</h2>
     <p class="section-lead">You get the latest AI models and tools, plus our proprietary capabilities, working on your campaigns. We bring the enterprise rigor, so all of it meets the privacy, legal, and governance standards you&rsquo;re held to. See how it works.</p>
 
-    <div class="prob-selector">
-      <div class="prob-tabs" role="tablist" aria-label="Choose a problem">
-        <button class="prob-tab" role="tab" aria-selected="true" data-p="intelligence">The Intelligence Problem</button>
-        <button class="prob-tab" role="tab" aria-selected="false" data-p="visibility">The Visibility Problem</button>
-        <button class="prob-tab" role="tab" aria-selected="false" data-p="velocity">The Velocity Problem</button>
-        <button class="prob-tab" role="tab" aria-selected="false" data-p="activation">The Activation Problem</button>
-      </div>
-
-      <div class="prob-flow" id="probFlow"></div>
+    <div class="q-tabs" role="tablist" aria-label="Choose a problem" id="qOsTabs">
+      <button class="q-tab is-active" role="tab" aria-selected="true" data-q-flow="intelligence">The Intelligence Problem</button>
+      <button class="q-tab" role="tab" aria-selected="false" data-q-flow="visibility">The Visibility Problem</button>
+      <button class="q-tab" role="tab" aria-selected="false" data-q-flow="velocity">The Velocity Problem</button>
+      <button class="q-tab" role="tab" aria-selected="false" data-q-flow="activation">The Activation Problem</button>
     </div>
+
+    <div id="quietFlow" aria-live="polite"></div>
   </div>
 </section>
+</div>
 </dialog>
 
 <dialog class="module-modal" id="dlg-agents" aria-label="The agent roster">
 <button type="button" class="modal-close" data-modal-close aria-label="Close">&times;</button>
-<!-- AGENT ROSTER — 4-tab category filter with cross-applicability badges -->
-<section id="agents" class="has-bg"><canvas class="fritz-bg" aria-hidden="true" data-mode="diamond" data-loop="breathe" data-colors="FF00E5,00D862" data-cell="30" data-speed="0.45" data-seed="2300" data-colmode="checker" style="opacity:.11"></canvas>
+<div class="modal-body">
+<!-- AGENT ROSTER — 4-tab category filter with cross-applicability badges. Least
+     rework this phase (07-02): deployed markup/ids/renderers kept as-is, quieted
+     via dialog-scoped CSS overrides only. fritz-bg canvas removed for quiet. -->
+<section id="agents">
   <div class="wrap">
     <span class="idx">the agent roster</span>
     <h2 class="section-h2">Meet the capabilities inside InterceptOS.</h2>
@@ -422,15 +430,17 @@
 
 <dialog class="module-modal" id="dlg-labs" aria-label="Intercept Labs">
 <button type="button" class="modal-close" data-modal-close aria-label="Close">&times;</button>
-<!-- LABS BAND — numbered, reduced purple intensity, hierarchy tuned -->
-<section class="labs" id="labs">
+<div class="modal-body">
+<!-- LABS — quiet reskin (07-02): nothing to disclose (one heading, one paragraph,
+     one stat, one cta), so this is a generous-whitespace layout pass only. Every
+     text node moved byte-identical from the deployed markup. -->
+<section class="labs q-labs" id="labs">
   <div class="wrap">
     <div class="labs-lockup">Intercept <span class="accent">Labs</span></div>
 
     <div class="labs-intro">
       <h2>For the work that <span class="hl">has no playbook.</span></h2>
       <p>Intercept Labs is how we co-invest with clients to test first-of-its-kind ideas, reduce the risk of trying something new, and turn the best experiments into repeatable capability inside InterceptOS.</p>
-      <div class="hero-ctas"><button class="btn btn-primary" data-open="pitchLabs">Build with Labs</button></div>
     </div>
 
     <div class="labs-stats">
@@ -439,20 +449,26 @@
         <div class="labs-stat-lbl">Project co-investment</div>
       </div>
     </div>
+
+    <div class="hero-ctas"><button class="btn btn-primary" data-open="pitchLabs">Build with Labs</button></div>
   </div>
 </section>
+</div>
 </dialog>
 
 <dialog class="module-modal" id="dlg-insights" aria-label="Insights">
 <button type="button" class="modal-close" data-modal-close aria-label="Close">&times;</button>
-<!-- ChatB2B EPISODES — 3 latest from the podcast -->
-<section id="insights" class="has-bg"><canvas class="fritz-bg" aria-hidden="true" data-mode="scatter" data-loop="ripple-out" data-colors="1A7AFF,FF00E5" data-cell="28" data-speed="0.5" data-seed="4500" data-colmode="checker" style="opacity:.11"></canvas>
+<div class="modal-body">
+<!-- ChatB2B EPISODES — quiet reskin (07-02): image/number/title/guest visible by
+     default, summary + platform-link row collapsed behind a native details toggle
+     per tile. All text/hrefs moved byte-identical. fritz-bg canvas removed. -->
+<section id="insights">
   <div class="wrap">
     <span class="idx">Hear From The Frontier</span>
     <h2 class="section-h2">How other B2B marketers are putting AI to work.</h2>
     <p class="section-lead">ChatB2B is your front-row seat to AI in B2B marketing. Hear from the marketing leaders and practitioners adopting and scaling AI inside their teams.</p>
 
-    <div class="insights-grid card-grid">
+    <div class="insights-grid card-grid q-insights-grid">
 
       <article class="ep-tile">
         <a class="ep-tile-image" href="https://open.spotify.com/episode/0vnMR61WLUmS94YUeNRTby" target="_blank" rel="noopener" aria-label="Listen to Episode 19 on Spotify">
@@ -462,15 +478,18 @@
           <span class="ep-tile-num">Episode 19 &middot; ChatB2B</span>
           <h3>Building the backend for AI agents</h3>
           <p class="ep-tile-guest">With <b>Patrick Vuong</b><br>Former Director of Product Management, Moderne</p>
-          <p class="ep-tile-summary">Patrick on the backend infrastructure that makes AI agents reliable. Multi-agent orchestration in production, why marketing teams lack backend readiness, and designing systems for agents alongside humans.</p>
-          <div class="ep-tile-listen">
-            <span class="listen-lbl">Listen On</span>
-            <div class="listen-row">
-              <a href="https://open.spotify.com/episode/0vnMR61WLUmS94YUeNRTby" target="_blank" rel="noopener">Spotify</a>
-              <a href="https://podcasts.apple.com/us/podcast/building-the-backend-for-ai-agents-with-patrick-vuong/id1840415344?i=1000770795263" target="_blank" rel="noopener">Apple</a>
-              <a href="https://www.youtube.com/watch?v=t3xY3tqU9YI" target="_blank" rel="noopener">YouTube</a>
+          <details class="q-more">
+            <summary>More +</summary>
+            <p class="ep-tile-summary">Patrick on the backend infrastructure that makes AI agents reliable. Multi-agent orchestration in production, why marketing teams lack backend readiness, and designing systems for agents alongside humans.</p>
+            <div class="ep-tile-listen">
+              <span class="listen-lbl">Listen On</span>
+              <div class="listen-row">
+                <a href="https://open.spotify.com/episode/0vnMR61WLUmS94YUeNRTby" target="_blank" rel="noopener">Spotify</a>
+                <a href="https://podcasts.apple.com/us/podcast/building-the-backend-for-ai-agents-with-patrick-vuong/id1840415344?i=1000770795263" target="_blank" rel="noopener">Apple</a>
+                <a href="https://www.youtube.com/watch?v=t3xY3tqU9YI" target="_blank" rel="noopener">YouTube</a>
+              </div>
             </div>
-          </div>
+          </details>
         </div>
       </article>
 
@@ -482,15 +501,18 @@
           <span class="ep-tile-num">Episode 18 &middot; ChatB2B</span>
           <h3>The rise of the senior IC in the AI era</h3>
           <p class="ep-tile-guest">With <b>Jaynie Miller</b><br>Worldwide Product Marketing Lead, HP</p>
-          <p class="ep-tile-summary">Jaynie on transitioning from management to senior individual contributor at a major tech company. How AI is reshaping product marketing, sales enablement, and partner enablement, plus the organizational restructuring the AI era is forcing.</p>
-          <div class="ep-tile-listen">
-            <span class="listen-lbl">Listen On</span>
-            <div class="listen-row">
-              <a href="https://open.spotify.com/episode/1vD0gtTpZppIt61dcVH56r" target="_blank" rel="noopener">Spotify</a>
-              <a href="https://podcasts.apple.com/us/podcast/the-rise-of-the-senior-ic-in-the-ai-era-with-jaynie-miller/id1840415344?i=1000768597543" target="_blank" rel="noopener">Apple</a>
-              <a href="https://www.youtube.com/watch?v=uDJIwLfLeBA" target="_blank" rel="noopener">YouTube</a>
+          <details class="q-more">
+            <summary>More +</summary>
+            <p class="ep-tile-summary">Jaynie on transitioning from management to senior individual contributor at a major tech company. How AI is reshaping product marketing, sales enablement, and partner enablement, plus the organizational restructuring the AI era is forcing.</p>
+            <div class="ep-tile-listen">
+              <span class="listen-lbl">Listen On</span>
+              <div class="listen-row">
+                <a href="https://open.spotify.com/episode/1vD0gtTpZppIt61dcVH56r" target="_blank" rel="noopener">Spotify</a>
+                <a href="https://podcasts.apple.com/us/podcast/the-rise-of-the-senior-ic-in-the-ai-era-with-jaynie-miller/id1840415344?i=1000768597543" target="_blank" rel="noopener">Apple</a>
+                <a href="https://www.youtube.com/watch?v=uDJIwLfLeBA" target="_blank" rel="noopener">YouTube</a>
+              </div>
             </div>
-          </div>
+          </details>
         </div>
       </article>
 
@@ -502,15 +524,18 @@
           <span class="ep-tile-num">Episode 17 &middot; ChatB2B</span>
           <h3>Optimizing AI search: lessons from Sophos</h3>
           <p class="ep-tile-guest">With <b>Megan Cabrera</b><br>Former VP Marketing Operations, Sophos</p>
-          <p class="ep-tile-summary">Megan on building an enterprise AI search strategy. Algorithm navigation, community visibility (Reddit), AI procurement challenges, organizational placement of AI roles, and the cybersecurity implications of recent events.</p>
-          <div class="ep-tile-listen">
-            <span class="listen-lbl">Listen On</span>
-            <div class="listen-row">
-              <a href="https://open.spotify.com/episode/63Cj9IIK1SYCgCS3BBdAtv" target="_blank" rel="noopener">Spotify</a>
-              <a href="https://podcasts.apple.com/us/podcast/optimizing-ai-search-lessons-from-sophos-with-megan/id1840415344?i=1000762801591" target="_blank" rel="noopener">Apple</a>
-              <a href="https://www.youtube.com/watch?v=jIv_AFVh-Rc" target="_blank" rel="noopener">YouTube</a>
+          <details class="q-more">
+            <summary>More +</summary>
+            <p class="ep-tile-summary">Megan on building an enterprise AI search strategy. Algorithm navigation, community visibility (Reddit), AI procurement challenges, organizational placement of AI roles, and the cybersecurity implications of recent events.</p>
+            <div class="ep-tile-listen">
+              <span class="listen-lbl">Listen On</span>
+              <div class="listen-row">
+                <a href="https://open.spotify.com/episode/63Cj9IIK1SYCgCS3BBdAtv" target="_blank" rel="noopener">Spotify</a>
+                <a href="https://podcasts.apple.com/us/podcast/optimizing-ai-search-lessons-from-sophos-with-megan/id1840415344?i=1000762801591" target="_blank" rel="noopener">Apple</a>
+                <a href="https://www.youtube.com/watch?v=jIv_AFVh-Rc" target="_blank" rel="noopener">YouTube</a>
+              </div>
             </div>
-          </div>
+          </details>
         </div>
       </article>
 
@@ -518,11 +543,15 @@
       <p style="margin-top:28px"><a href="insights-hub.html#episodes" style="font-family:var(--font-body);font-weight:700;font-size:14px;color:var(--flarepop);text-decoration:none">Browse the full episode archive &rarr;</a></p>
   </div>
 </section>
+</div>
 </dialog>
 
 <dialog class="module-modal" id="dlg-case-hp-abx" aria-label="Case study: HP">
 <button type="button" class="modal-close" data-modal-close aria-label="Close">&times;</button>
-<!-- CASE: HP — static shell for 07-01; 07-02's quiet render fills .q-case-detail from CASES['hp-abx'] -->
+<div class="modal-body">
+<!-- CASE: HP — always-visible stat/name/client/summary shell from 07-01; 07-02's
+     quiet-modules.js fills .q-case-detail from CASES['hp-abx'] with a single-open
+     Challenge/Approach/Results disclosure. -->
 <section class="case-window">
   <div class="wrap">
     <div class="case-stat">
@@ -539,11 +568,15 @@
     <div class="q-case-detail" data-key="hp-abx"></div>
   </div>
 </section>
+</div>
 </dialog>
 
 <dialog class="module-modal" id="dlg-case-intel-abm" aria-label="Case study: Intel">
 <button type="button" class="modal-close" data-modal-close aria-label="Close">&times;</button>
-<!-- CASE: Intel — static shell for 07-01; 07-02's quiet render fills .q-case-detail from CASES['intel-abm'] -->
+<div class="modal-body">
+<!-- CASE: Intel — always-visible stat/name/client/summary shell from 07-01; 07-02's
+     quiet-modules.js fills .q-case-detail from CASES['intel-abm'] with a single-open
+     Challenge/Approach/Results disclosure. -->
 <section class="case-window">
   <div class="wrap">
     <div class="case-stat">
@@ -560,11 +593,15 @@
     <div class="q-case-detail" data-key="intel-abm"></div>
   </div>
 </section>
+</div>
 </dialog>
 
 <dialog class="module-modal" id="dlg-case-sap-video" aria-label="Case study: SAP">
 <button type="button" class="modal-close" data-modal-close aria-label="Close">&times;</button>
-<!-- CASE: SAP — static shell for 07-01; 07-02's quiet render fills .q-case-detail from CASES['sap-video'] -->
+<div class="modal-body">
+<!-- CASE: SAP — always-visible stat/name/client/summary shell from 07-01; 07-02's
+     quiet-modules.js fills .q-case-detail from CASES['sap-video'] with a single-open
+     Challenge/Approach/Results disclosure. -->
 <section class="case-window">
   <div class="wrap">
     <div class="case-stat">
@@ -581,6 +618,7 @@
     <div class="q-case-detail" data-key="sap-video"></div>
   </div>
 </section>
+</div>
 </dialog>
 
 <footer>

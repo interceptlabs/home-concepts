@@ -352,9 +352,14 @@ html:not(.has-js) .reel-toggle {
 }
 
 /* ---------- Modal shell ---------- */
+/* Full-viewport window (07-02, ITER-04, locked call: "modules go full
+   above-the-fold section") — width/height enlarged from the original
+   min(1100px,94vw)/90vh box; overflow:auto, border-radius, and the
+   INVARIANT comment below stay verbatim. */
 dialog.module-modal {
-  width: min(1100px, 94vw);
-  max-height: 90vh;
+  width: min(1500px, 96vw);
+  height: 92vh;
+  max-height: none;
   overflow: auto;
   border: 1px solid var(--line);
   border-radius: 16px;
@@ -368,8 +373,34 @@ dialog.module-modal {
      cards.js on open) INSIDE this dialog's box instead of letting it render
      as the full-viewport overlay it's designed to be. */
 }
+@media (max-width: 768px) {
+  dialog.module-modal {
+    width: 96vw;
+    height: 94vh;
+  }
+}
 dialog.module-modal::backdrop {
   background: rgba(10, 10, 15, 0.55);
+}
+/* Scaling card->window morph (07-02, ITER-04): sine ~600ms via the browser's
+   own view-transition-group pseudo-element — never a fade. Belt-and-
+   suspenders reduced-motion rule below covers any residual system-level
+   View Transition animation regardless of the JS-side reduced-motion
+   branch (cards.js already skips startViewTransition entirely when
+   reduced-motion is set; this is a second, CSS-only safety net). */
+::view-transition-group(modal-morph),
+::view-transition-old(modal-morph),
+::view-transition-new(modal-morph) {
+  animation-duration: 600ms;
+  animation-timing-function: cubic-bezier(0.37, 0, 0.63, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-image-pair(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }
 /* Additive neutralization of the ported page-flow section rule's generous
    vertical padding, hairline divider, and scroll-margin (deployed.css) for
