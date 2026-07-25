@@ -141,6 +141,18 @@ Plans:
 - [x] 07-02-PLAN.md — Scaling card-to-window transition (View Transitions + FLIP-on-inner-body fallback, sine 600ms) + quiet reskinned section/case windows from untouched data objects
 - [x] 07-03-PLAN.md — Phase QA: copy/brand/link/budget gates, Puppeteer behavior suite + reviewed captures, gallery thumbnail + REVIEW.md refresh (completed 2026-07-25)
 
+
+### Phase 8: Concept D — Iteration 3 (hero up/bigger, cards to pages, reel v2)
+**Goal**: Jon's third round: headline moves up toward the sticky nav and gets bigger; cards navigate to real pages (not modal windows) with a clear way back to the homepage; a more obvious card hover state; the work reel features the weavy.ai SAP brand film.
+**Depends on**: Phase 7
+**Requirements**: IT3-01, IT3-02, IT3-03, IT3-04
+**Success Criteria** (what must be TRUE):
+  1. The hero headline sits close under the sticky nav and is visibly larger, with hero + cards still above the fold at 1440×900.
+  2. Clicking any card (5 sections + 3 cases) navigates to a standalone quiet page with a clear, consistent way back to the homepage; no module modals remain on the homepage.
+  3. Card hover is unmistakably obvious while staying brand-calm.
+  4. The work-reel section plays the v2 reel featuring the weavy.ai film excerpts (asset already cut and committed).
+**Plans**: TBD
+
 ## Progress
 
 **Execution Order:**
