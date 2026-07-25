@@ -17,3 +17,10 @@ Selection rationale: Jon's direction — light + positive "emergent motion graph
   anvil sting, kinetic type, "Uniquely SAP" field, avatars case beat; audio stripped) with slow push-ins of the three
   deployed case visuals (`assets/img/case-*.png`). 0.6s crossfades. MP4 crf25 ~4.2MB, WebM crf38 ~3.3MB, poster 144KB. Muted.
   (v1 was a stills-only montage incl. HP Cashmere + WMB_044 — superseded.)
+
+## Section background loops (added 2026-07-25, iteration 5)
+
+Complementary light-family Pexels loops for the explore pages (all Pexels license, boomerang seamless, muted):
+- `section-rings.*` — Pexels #30916553 "Elegant white 3D circular lines" → problems, insights
+- `section-cubes.*` — Pexels #30345910 "Abstract 3D digital cubes" (1440w) → interceptos, agents
+- `section-geo.*` — Pexels #34645209 "Seamless white geometric pattern" → labs + 3 case pages
