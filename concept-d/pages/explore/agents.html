@@ -134,6 +134,14 @@
   </div>
 </header>
 
+<div class="section-video-layer" aria-hidden="true">
+  <video class="section-video" autoplay muted playsinline loop preload="metadata" poster="../../assets/video/section-cubes-poster.jpg">
+    <source src="../../assets/video/section-cubes.webm" type="video/webm">
+    <source src="../../assets/video/section-cubes.mp4" type="video/mp4">
+  </video>
+</div>
+<button type="button" class="video-toggle section-video-toggle" aria-pressed="true">Pause</button>
+
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="intercept-lockup" viewBox="0 -9 324.005 76.2147">
     <g transform="translate(0, -8.78)">
@@ -306,5 +314,6 @@
 
 <script src="../../assets/js/deployed.js"></script>
 <script src="../../assets/js/quiet-modules.js"></script>
+<script src="../../assets/js/section-video.js"></script>
 </body>
 </html>
