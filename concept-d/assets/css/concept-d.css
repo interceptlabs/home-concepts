@@ -1171,6 +1171,54 @@ html:not(.has-js) .section-video-toggle {
   display: none;
 }
 
+/* ---------- Light-mode contrast pass (10-01) ---------- */
+/* Measured against the EFFECTIVE backgrounds: the section posters range
+   from near-white (geo p1 luminance 0.753) to genuinely black regions
+   (cubes p1 = 0.000), and the 82% white panels compose to >=16:1 for dark
+   ink even over the cubes' black underlay. What failed was (a) control
+   BORDERS: var(--line-2) composites to ~#B5B5B7 on the panels = 1.9:1
+   (under the 3:1 non-text minimum) and var(--line) on .agent-tab = 1.4:1;
+   (b) the active agent-tab's white-on-flarepop label = 3.3:1; (c) bare
+   footer ink straight over footage (1.9:1 over the cubes' darkest pixels).
+   Darker border ink reuses the same --page-ink rgba family at .48 alpha
+   (composites to ~#8A8A8D = 3.3:1). Additive overrides only — deployed.css
+   is never edited. */
+.explore-page .q-tab,
+.explore-page .q-step,
+.explore-page .q-step-prev,
+.explore-page .q-step-next,
+.explore-page .agent-tab,
+.explore-page .agent-detail-close {
+  border-color: rgba(10, 10, 15, 0.48);
+}
+.explore-page .q-tab.is-active,
+.explore-page .q-step.is-active {
+  border-color: var(--fg); /* active state keeps the stronger full-ink border */
+}
+/* deployed's active tab paints var(--page) ink (= white in light mode) on
+   the flarepop fill: 3.3:1. Fixed dark ink on flarepop = 6.0:1 — the same
+   pairing deployed.css itself uses for .btn-primary and .cta-nav. */
+.explore-page .agent-tab[aria-selected="true"] {
+  color: #0a0a0f;
+}
+/* Footer line sits straight on the footage (no panel): same translucent
+   chip treatment as .explore-back, with panel-pinned dark ink. */
+.explore-body .foot-bot .curio {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.82);
+  color: #2c2c3a;
+}
+/* The homepage toggles hard-code a near-white chip but take var(--fg) ink,
+   which flips to WHITE in dark theme — an invisible white-on-white button.
+   Fixed ink on a fixed light chip is correct in both themes (found during
+   this pass; same category as the no-JS legibility fix above). */
+.hero-video-layer .video-toggle,
+.reel-toggle {
+  color: #0a0a0f;
+}
+
 /* The viewport lock itself — desktop only. min-height:0 at every flex
    level is load-bearing: it lets .explore-panel actually shrink so its own
    overflow-y:auto engages instead of pushing the page taller. */
