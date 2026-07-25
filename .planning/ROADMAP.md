@@ -158,6 +158,11 @@ Plans:
 - [x] 08-01-PLAN.md — Explore pages + card navigation: 8 quiet pages under concept-d/pages/explore/, cards become real anchors, dialogs/morph/cards.js retire, @view-transition cross-fade, full gate suite
 - [x] 08-02-PLAN.md — Hero up/bigger (fold proofs 1440×900 + 1280×800), obvious card hover, reel v2 playback + budget verify, Puppeteer behavior pass, gallery thumbnail + REVIEW.md refresh
 
+
+### Phase 9: Concept D — Iteration 4 (quick round) — COMPLETE 2026-07-25
+**Goal**: headline down 69px + bigger + break after "ambitious"; cards under copy; Inter eyebrows/labels; Flarepop hover tint; reel bottom bar with discreet landscape cards + CTA headline beside.
+**Requirements**: IT4 (Jon notes, executed as orchestrator quick round — see 09-SUMMARY.md)
+
 ## Progress
 
 **Execution Order:**

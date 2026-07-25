@@ -75,15 +75,15 @@ html:not(.has-js) .hero-video-layer .video-toggle {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 24px;
-  padding: 20px 0 28px;
+  gap: 36px;
+  padding: 69px 0 28px;
 }
 /* Top-anchor tune (IT3-01): hero copy hugs the top under the sticky topbar;
    the card grid is pinned to the lower band via margin-top:auto on the grid
    itself (not the hero copy) so the 5-card row still fills the remainder of
    the viewport instead of drifting up flush under the shrunken hero. */
 .hero-viewport .card-field {
-  margin-top: auto;
+  margin-top: 0; /* cards sit directly under the hero copy (iteration 4) */
 }
 
 /* Additive neutralization of the ported .hero rule's hairline divider
@@ -116,9 +116,13 @@ html:not(.has-js) .hero-video-layer .video-toggle {
   margin-bottom: 8px;
 }
 .hero-d .hero-h1 {
-  font-size: clamp(34px, 3.7vw, 54px);
-  max-width: 32ch;
-  line-height: 1.12;
+  font-size: clamp(42px, 4.8vw, 74px);
+  max-width: 34ch;
+  line-height: 1.08;
+}
+/* Controlled break after "ambitious" at desktop; natural wrap on small screens. */
+@media (max-width: 699.98px) {
+  .hero-br { display: none; }
 }
 .hero-d .hero-sub {
   margin-top: 12px;
@@ -290,9 +294,8 @@ html:not(.has-js) .hero-video-layer .video-toggle {
   background: var(--page);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 32px;
-  padding: 64px 0;
+  justify-content: flex-end; /* iteration 4: content lives at the bottom of the reel */
+  padding: 64px 0 40px;
 }
 .reel-video {
   position: absolute;
@@ -329,21 +332,68 @@ html:not(.has-js) .hero-video-layer .video-toggle {
 html:not(.has-js) .reel-toggle {
   display: none;
 }
-.work-reel-inner {
+/* Iteration 4: bottom bar — CTA headline beside three discreet landscape cards.
+   Flat translucent surfaces only (never a gradient scrim). */
+.reel-bottom {
   position: relative;
   z-index: 1;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(280px, 5fr) 7fr;
+  gap: 24px;
+  align-items: end;
 }
-/* Heading panel: flat translucent surface (same translucency family as the
-   cards — never a gradient scrim) so dark ink stays legible over the reel's
-   montage without dimming the footage itself. */
-.work-reel-heading {
-  max-width: 640px;
-  padding: 24px 28px;
+.reel-cta {
+  padding: 20px 24px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.78);
 }
-.work-reel-heading .section-lead {
+.reel-cta .reel-cta-h2 {
+  font-size: clamp(20px, 1.8vw, 28px);
+  margin-bottom: 8px;
+}
+.reel-cta .section-lead {
   color: var(--fg-2);
+  font-size: 14px;
+}
+.reel-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.card--landscape {
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  min-height: 0;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.7);
+}
+.card--landscape .card-eyebrow {
+  flex: 0 0 34%;
+  margin-bottom: 0;
+}
+.card--landscape .card-bottom {
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+.card--landscape .card-heading {
+  font-size: 15px;
+  margin: 0;
+  flex: 1;
+}
+.card--landscape .card-teaser {
+  display: none; /* discreet: eyebrow + title + CTA only; full copy lives on the case page */
+}
+.card--landscape .card-cta {
+  white-space: nowrap;
+}
+@media (max-width: 899.98px) {
+  .reel-bottom { grid-template-columns: 1fr; }
+  .card--landscape .card-eyebrow { flex-basis: 40%; }
 }
 
 /* ---------- Case-window dialog shells (ITER-06) ---------- */
@@ -891,4 +941,18 @@ html:not(.has-js) .card-heading {
   .explore-page .q-flow-bridge a {
     transition: none;
   }
+}
+
+
+/* ---------- Iteration 4: Inter for eyebrows/labels (was Geist Mono) ---------- */
+.hero-d .kick,
+.card-eyebrow,
+.card-cta,
+.explore-back,
+.idx,
+.clients-lbl,
+.reel-toggle,
+.hero-video-layer .video-toggle {
+  font-family: 'Inter', var(--font-body, system-ui, sans-serif);
+  font-weight: 600;
 }
