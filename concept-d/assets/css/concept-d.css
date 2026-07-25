@@ -405,17 +405,13 @@ html:not(.has-js) .reel-toggle {
 }
 
 /* ---------- No-JS toggles ---------- */
-/* concept-b precedent: an inline bootstrap script in <head> adds .has-js
-   to <html> the instant JS runs. Without JS, .card[data-modal] buttons
-   (which do nothing without cards.js) stay hidden and the plain <a>/<div>
-   fallbacks show instead. */
-html.has-js .card-fallback,
-html.has-js .card-static {
-  display: none;
-}
-html:not(.has-js) .card[data-modal] {
-  display: none;
-}
+/* 08-01: the 8 homepage cards are now plain <a class="card" href="..."></a>
+   anchors, not a dialog-opening button plus a duplicate no-JS <a>/<div>
+   fallback pair — no-JS visitors get identical navigation by construction,
+   so the old has-js display-toggle rules for that pairing are gone. The
+   legibility fix below (dark-theme-token override for this new light-only
+   chrome) still applies to every no-JS visitor, since the cards themselves
+   now always render. */
 
 /* No-JS legibility fix, found via honest index-nojs-1440 capture review:
    the inline head script that sets data-theme="light" never runs without
