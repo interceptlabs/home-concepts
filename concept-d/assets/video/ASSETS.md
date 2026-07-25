@@ -12,7 +12,8 @@ Selection rationale: Jon's direction — light + positive "emergent motion graph
 
 ## Work reel (added 2026-07-24, Phase 7)
 
-- `work-reel-1080.mp4` / `.webm` / `work-reel-poster.jpg` — 20.6s campaign-reel montage cut from EXISTING KNOWN WORK on disk:
-  the three deployed case visuals (`assets/img/case-{hp-abx,intel-abm,sap-video}.png`, extracted from the deployed homepage)
-  + HP Cashmere EliteBook static (HP Campaign/boeing, shipped) + WMB_044.png (Windows Means Business campaign).
-  ffmpeg zoompan slow push-ins (~7%/segment), 0.6s crossfades, 5 segments × 4.6s. MP4 crf25 ~4.0MB, WebM crf38 ~3.3MB, poster 144KB. Muted, loop via hard cut (montage beat).
+- `work-reel-1080.mp4` / `.webm` / `work-reel-poster.jpg` — **v2 (2026-07-25, Jon's direction):** 22s montage intercutting
+  FOUR MOTION EXCERPTS from the SAP brand-system film made in weavy.ai (`~/Downloads/1003_05F.mp4`, 80s master —
+  anvil sting, kinetic type, "Uniquely SAP" field, avatars case beat; audio stripped) with slow push-ins of the three
+  deployed case visuals (`assets/img/case-*.png`). 0.6s crossfades. MP4 crf25 ~4.2MB, WebM crf38 ~3.3MB, poster 144KB. Muted.
+  (v1 was a stills-only montage incl. HP Cashmere + WMB_044 — superseded.)
