@@ -71,7 +71,7 @@ Requirements for the side-by-side review deliverable. Each maps to roadmap phase
 ### Concept D — Iteration 3 (Jon direction 2026-07-25)
 
 - [ ] **IT3-01**: Hero headline sits closer to the sticky nav and is bigger; fold budget still holds at 1440×900 and 1280×800
-- [ ] **IT3-02**: Cards open standalone quiet pages (not modals) — 5 section pages + 3 case pages — each with a clear, consistent way back to the homepage; homepage module dialogs removed
+- [x] **IT3-02**: Cards open standalone quiet pages (not modals) — 5 section pages + 3 case pages — each with a clear, consistent way back to the homepage; homepage module dialogs removed
 - [ ] **IT3-03**: Card hover state is clearly obvious (not subtle) while staying within brand motion/color rules
 - [ ] **IT3-04**: Work-reel section plays the v2 reel featuring the weavy.ai SAP brand film excerpts
 
@@ -145,7 +145,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ITER-07 | Phase 7 | Complete |
 | ITER-08 | Phase 7 | Complete |
 | IT3-01 | Phase 8 | Pending |
-| IT3-02 | Phase 8 | Pending |
+| IT3-02 | Phase 8 | Complete |
 | IT3-03 | Phase 8 | Pending |
 | IT3-04 | Phase 8 | Pending |
 | QA-01 | Phase 6 | Complete |
