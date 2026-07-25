@@ -237,8 +237,7 @@ html:not(.has-js) .hero-video-layer .video-toggle {
 /* ---------- Below-hero flow occludes the fixed video layer ---------- */
 /* 04-02 lesson: a fixed background layer bleeds through any sibling
    section that doesn't set its own opaque background + relative stacking. */
-.clients,
-footer {
+.clients, .work-reel, #faqs, #convert, footer {
   position: relative;
   z-index: 1;
   background: var(--page);
