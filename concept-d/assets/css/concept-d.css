@@ -1015,9 +1015,10 @@ html:not(.has-js) .card-heading {
   outline: 2px solid var(--fg);
   outline-offset: 2px;
 }
-/* Labs' light panel (stat + CTA) centers vertically — balanced, not
-   stretched-sparse, when the page has less content than its zone. */
-.explore-panel--center {
+/* Labs' zones (least content of the 8 pages) center vertically — balanced,
+   not stretched-sparse, when the content is shorter than its zone. */
+.explore-panel--center,
+.explore-lede--center {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1241,9 +1242,11 @@ html:not(.has-js) .section-video-toggle {
     display: flex;
     min-height: 0;
   }
+  /* NOTE: no display here — this element is also .explore-split, whose
+     display:grid must survive (a display:flex here silently discards the
+     5fr/7fr template; found via honest capture review). */
   .explore-page section > .wrap {
     width: 100%;
-    display: flex;
     min-height: 0;
   }
   .explore-split {
