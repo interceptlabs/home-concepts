@@ -151,7 +151,11 @@ Plans:
   2. Clicking any card (5 sections + 3 cases) navigates to a standalone quiet page with a clear, consistent way back to the homepage; no module modals remain on the homepage.
   3. Card hover is unmistakably obvious while staying brand-calm.
   4. The work-reel section plays the v2 reel featuring the weavy.ai film excerpts (asset already cut and committed).
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 08-01-PLAN.md — Explore pages + card navigation: 8 quiet pages under concept-d/pages/explore/, cards become real anchors, dialogs/morph/cards.js retire, @view-transition cross-fade, full gate suite
+- [ ] 08-02-PLAN.md — Hero up/bigger (fold proofs 1440×900 + 1280×800), obvious card hover, reel v2 playback + budget verify, Puppeteer behavior pass, gallery thumbnail + REVIEW.md refresh
 
 ## Progress
 
