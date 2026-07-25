@@ -2,17 +2,17 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 2
-status: in_progress
-stopped_at: Completed 07-02-PLAN.md (scaling card-to-window transition + quiet module reskin)
-last_updated: "2026-07-25T05:06:28.261Z"
+current_plan: 3
+status: complete
+stopped_at: Completed 07-03-PLAN.md (closeout QA, behavior suite, gallery + REVIEW.md refresh) -- Phase 7 and all known phases now complete
+last_updated: "2026-07-25T05:27:17.079Z"
 last_activity: 2026-07-25
 progress:
   total_phases: 7
-  completed_phases: 6
+  completed_phases: 7
   total_plans: 22
-  completed_plans: 21
-  percent: 95
+  completed_plans: 22
+  percent: 100
 ---
 
 # Project State
@@ -22,30 +22,31 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-23)
 
 **Core value:** A visitor never faces a wall of text — content is revealed as needed, and clicking an area of interest takes them to a focused page built from that content.
-**Current focus:** Milestone v1.0 (Phases 1-6, all 32 v1 requirements) remains fully complete and shipped. Phase 7 (Concept D — Iteration 2) is now IN PROGRESS: plans 07-01 and 07-02 both done — compact above-the-fold hero + 5-card grid + work-reel section (07-01), then the View Transitions card-to-window scaling morph and a full quiet progressive-disclosure reskin of all 8 module windows (07-02). ITER-01 through ITER-08 all complete; only 07-03 (closeout: gallery refresh, REVIEW.md update, final cross-concept QA) remains for the phase.
+**Current focus:** Milestone v1.0 (Phases 1-6, all 32 v1 requirements) remains fully complete and shipped. Phase 7 (Concept D — Iteration 2) is now FULLY COMPLETE: 07-01 (compact above-the-fold hero + 5-card grid + work-reel section), 07-02 (View Transitions card-to-window scaling morph + full quiet progressive-disclosure reskin of all 8 module windows), and 07-03 (closeout QA — full mechanical gate suite + 20-assertion Puppeteer behavior suite, gallery thumbnail + REVIEW.md refresh) all done. ITER-01 through ITER-08 all complete and verified. This closes out every known phase in the roadmap (7/7).
 
 ## Current Position
 
-Phase: 7 of 7 (Concept D — Iteration 2) — IN PROGRESS
-Plan: 2 of 3 complete in current phase (07-01, 07-02 done; 07-03 remaining)
-Current Plan: 2
+Phase: 7 of 7 (Concept D — Iteration 2) — COMPLETE
+Plan: 3 of 3 complete in current phase (07-01, 07-02, 07-03 all done)
+Current Plan: 3
 Total Plans in Phase: 3
-Status: Phase 7 in progress — 07-02 done (scaling card-to-window transition + quiet module reskin, ITER-04/05/06); next is 07-03 (closeout: gallery refresh, REVIEW.md update, final QA)
+Status: Phase 7 complete — 07-03 closeout QA found zero code defects (only 2 false-positive bugs in its own verify-gate regexes, corrected); gallery thumbnail and REVIEW.md refreshed for iteration 2. All 7 known phases and 22 known plans now complete.
 Last activity: 2026-07-25
 
-Progress: [██████████] 95% (21 of 22 known plans across all phases)
+Progress: [██████████] 100% (22 of 22 known plans across all phases)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 21
+- Total plans completed: 22
 - Average duration: 28 min
-- Total execution time: 9.97 hours
+- Total execution time: 10.30 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
+| Phase 07 P03 | 20min | 3 tasks | 14 files |
 | Phase 07 P02 | 65min | 3 tasks | 4 files |
 | Phase 07 P01 | 51min | 3 tasks | 6 files |
 | Phase 06 P02 | 12min | 2 tasks | 2 files |
@@ -71,8 +72,8 @@ Progress: [██████████] 95% (21 of 22 known plans across all 
 *Updated after each plan completion*
 
 **Recent Trend:**
-- Last 5 plans: 07-02 (65min), 07-01 (51min), 06-02 (12min), 06-01 (24min), 05-03 (30min)
-- Trend: 07-02 built the View Transitions card-to-window scaling morph (sine 600ms, FLIP/instant fallbacks, Esc/cancel interception with drawer-first sequencing) across all 8 dialogs, then a full quiet progressive-disclosure reskin (Problems/InterceptOS/Agents/Labs/Insights/3 case windows) reading deployed.js's untouched data objects at render time. Five honest-capture-review fixes (none caught by the mechanical gates): drawer-first-Esc event ordering, a navy-band CSS contrast bug, an Agents cascade-specificity bug, two Labs hairlines, and one HTML-comment/verify-gate literal collision. Both copy gates green on every task; pages/*.html confirmed byte-untouched throughout.
+- Last 5 plans: 07-03 (20min), 07-02 (65min), 07-01 (51min), 06-02 (12min), 06-01 (24min)
+- Trend: 07-03 ran the phase-closing QA sweep against 07-02's committed state: 13 mechanical gate categories (copy-diff, script-diff, brand greps, a new sine-only view-transition-timing assertion, link integrity, video budgets) plus a 20-assertion Puppeteer behavior suite (fold x2, hover, both videos' IO gating, morph coverage + Esc/focus-return, the drawer invariant, reduced-motion, no-JS) — all green with zero code fixes needed. The only issues found were 2 false-positive bugs in this task's own literal grep verify commands (corrected with equivalent Python checks), not in shipped concept-d code. Gallery thumbnail and REVIEW.md's Concept D section refreshed to describe the iteration-2 structure. Phase 7 (and all 7 known phases) now fully complete.
 
 ## Accumulated Context
 
@@ -131,6 +132,7 @@ Recent decisions affecting current work:
 - [Phase 07-02]: New quiet q-tab/q-step/q-flow-chip components use border+color shifts only, never a var(--surface*) background fill -- InterceptOS's dialog sits on deployed.css's permanent dark navy band (#os{background:var(--band-blue)}, unconditional across themes) which redefines --fg to white while leaving --surface at light-theme white, so a background fill rendered invisible white-on-white text; found via honest capture review, not the mechanical gates
 - [Phase 07-02]: Agents' pale-pink card wash needed a :root[data-theme="light"]-prefixed override selector (not !important) to out-specificity deployed.css's own light-theme-scoped rule, which otherwise won the cascade outright despite a first override attempt already present in the stylesheet -- all ITER-04/05/06 requirements now complete, only 07-03 closeout remains for the phase
 - [Phase 07-02]: Drawer-first Esc semantics required a capture-phase keydown snapshot (not just the dialog's own 'cancel' handler), since deployed.js's document-level Escape listener and the dialog's native 'cancel' event both fire from the same physical keypress.
+- [Phase 07-03]: Found and fixed two false-positive bugs in this plan's own literal grep verify commands (border-top/bottom rule-line ban, gradient ban) rather than in shipped concept-d code -- the CSS itself was always compliant; substituted comment-aware/value-aware Python checks. Full 20-assertion Puppeteer behavior suite plus 13 mechanical gate categories all green with zero code fixes needed. Phase 7 (Concept D -- Iteration 2, ITER-01..08) now FULLY COMPLETE -- last remaining phase in the roadmap, 7/7 phases and 22/22 known plans done.
 
 ### Pending Todos
 
@@ -145,9 +147,10 @@ None yet.
 - Phase 6 (Cross-Concept QA & Review Packaging) is now FULLY COMPLETE — 06-01 (mechanical QA suite green across all four concepts + gallery rebuild) and 06-02 (Fritz brand gate consumed, REVIEW.md written, QA-01 through QA-04 closed) both done. The orchestrator-run Fritz brand agent gate (`06-FRITZ-QA.md`) found 3 MUST-FIX findings on its first pass (lockup baseline geometry, Concept A invisible wordmark via `<img src>`, Concept C chrome/headline collisions) — all fixed (commit `9a7633b`) and verified resolved in a documented re-review; final verdict `## Verdict: RESOLVED`. No open items remain for this phase. **MILESTONE v1.0 IS COMPLETE — all 32 v1 requirements done, all 6 phases done, all 19 plans done.** One human check remains outside any phase's scope: Concept C's device-tier degradation on real low-tier hardware (verified so far by code heuristic + capture only).
 - Tooling (06-02 run): `state advance-plan` correctly detected the last plan in the phase (`advanced:true`, `current_plan:2`) this time. `state update-progress` reported `percent:100` correctly but wrote `percent: 95` into STATE.md's own frontmatter (stale/wrong, same class of bug as 06-01's run) — hand-corrected to 100. `state record-metric` again appended its new table row after the `*Updated after each plan completion*` footer instead of inside the table — moved by hand. The "Current focus"/"Current Position"/Velocity prose (never auto-updated by any gsd-tools command) was hand-updated to describe milestone completion.
 - Phase 7 (Concept D — Iteration 2) is now IN PROGRESS — 07-01 and 07-02 both done; only 07-03 (closeout: gallery refresh, REVIEW.md update, final cross-concept QA) remains. ITER-01 through ITER-08 (all 8 phase requirements) are now complete. Tooling (07-02 run): `state advance-plan` correctly returned `advanced:true, current_plan:2, total_plans:3` this time (no hand-correction needed). `state update-progress` correctly reported `percent:95` (21/22) in its own JSON AND wrote it correctly into the frontmatter — first run in this project's history where this command needed no hand-correction. `state record-metric` again appended its new table row below the `*Updated after each plan completion*` footer instead of inside the table — moved by hand, same recurring bug as every prior run. `state record-session` set `status: executing` in the frontmatter YET AGAIN (same recurring bug 07-01's own note already flagged and claimed to have hand-corrected — it evidently didn't persist, or a later tool call reset it) — hand-corrected back to `in_progress` a second time; this looks like a standing tool bug worth fixing at the source rather than re-patching every plan. `requirements mark-complete` will be called with all 3 of this plan's frontmatter-listed requirement IDs (ITER-04/05/06) — this plan's success_criteria confirms all three are genuinely complete, unlike 07-01 which had to withhold ITER-06.
+- **Phase 7 (Concept D — Iteration 2) is now FULLY COMPLETE (07-03, 2026-07-25)** — all 3 plans done (07-01, 07-02, 07-03). 07-03's full mechanical gate suite (13 categories) plus a new 20-assertion Puppeteer behavior suite ran green against 07-02's already-committed state with zero code fixes required in concept-d itself; the only issues found were 2 false-positive bugs in this task's own literal grep verify commands (border-top/bottom rule-line ban, gradient ban — both backed off to match whitespace/comments rather than real declarations), corrected with equivalent Python checks and documented in `07-03-SUMMARY.md`. Gallery thumbnail (`assets/gallery/concept-d.png`) and REVIEW.md's Concept D section refreshed to describe the iteration-2 structure, touching nothing else in REVIEW.md. **This closes out every known phase in the roadmap — 7/7 phases, 22/22 known plans, all complete.** No blockers remain from this plan. Tooling (07-03 run): `state advance-plan` returned `advanced:true, current_plan:3, total_plans:3` correctly. `state update-progress` reported `percent:95` (21/22, stale) on its FIRST call — because it was run before this plan's own SUMMARY.md existed on disk — then correctly reported `percent:100` (22/22) once re-run after the SUMMARY was written; this is expected tool behavior (it counts SUMMARY.md files on disk), not a bug, but confirms the SUMMARY-then-update-progress ordering matters. `state record-metric` again appended its new table row after the `*Updated after each plan completion*` footer/Recent-Trend prose instead of inside the table — moved by hand, same recurring bug as every prior plan. `state add-decision` prefixed the decision text with its own `[Phase 07-03]:` tag ON TOP OF the same tag already present in the supplied summary-file text, producing a doubled `[Phase 07-03]: [Phase 07-03]:` prefix — hand-corrected to a single prefix. `state record-session` and `state update-progress`/frontmatter `percent`/`status` fields needed the same category of hand-correction as every prior plan in this project's history (percent stuck at a stale value, status needing a manual bump to `complete` since "complete" isn't a value the tool itself writes). These are standing tool bugs worth fixing at the source; every plan in this project has had to re-patch them by hand.
 
 ## Session Continuity
 
-Last session: 2026-07-25T05:06:28.258Z
-Stopped at: Completed 07-02-PLAN.md (scaling card-to-window transition + quiet module reskin)
+Last session: 2026-07-25T05:27:17.076Z
+Stopped at: Completed 07-03-PLAN.md (closeout QA, behavior suite, gallery + REVIEW.md refresh) -- Phase 7 and all known phases now complete
 Resume file: None

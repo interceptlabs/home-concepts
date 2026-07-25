@@ -18,7 +18,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 4: Concept C — Experimental WebGL/3D** - three.js spatial navigation metaphor with an accessible DOM mirror and device-tiered rendering (completed 2026-07-24)
 - [x] **Phase 5: Concept D — Home Variant (light video + module cards)** - Deployed sections revealed via enticing cards + modals over a light video field (completed 2026-07-24)
 - [x] **Phase 6: Cross-Concept QA & Review Packaging** - Brand/copy verification across all three concepts and a side-by-side review gallery for Jon (completed 2026-07-24)
-- [ ] **Phase 7: Concept D — Iteration 2 (above-the-fold + work reel + quiet modules)** - Compact hero + 5-card grid above the fold, full-screen work-reel section, scaling card-to-window transitions into quiet reskinned module windows
+- [x] **Phase 7: Concept D — Iteration 2 (above-the-fold + work reel + quiet modules)** - Compact hero + 5-card grid above the fold, full-screen work-reel section, scaling card-to-window transitions into quiet reskinned module windows (completed 2026-07-25)
 
 ## Phase Details
 
@@ -137,9 +137,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 07-01-PLAN.md — Restructure: compact hero, uniform 5-card grid w/ translucency + expand CTAs, work-reel section + case shells, FAQs/convert/footer plain below-fold
-- [ ] 07-02-PLAN.md — Scaling card-to-window transition (View Transitions + FLIP-on-inner-body fallback, sine 600ms) + quiet reskinned section/case windows from untouched data objects
-- [ ] 07-03-PLAN.md — Phase QA: copy/brand/link/budget gates, Puppeteer behavior suite + reviewed captures, gallery thumbnail + REVIEW.md refresh
+- [x] 07-01-PLAN.md — Restructure: compact hero, uniform 5-card grid w/ translucency + expand CTAs, work-reel section + case shells, FAQs/convert/footer plain below-fold
+- [x] 07-02-PLAN.md — Scaling card-to-window transition (View Transitions + FLIP-on-inner-body fallback, sine 600ms) + quiet reskinned section/case windows from untouched data objects
+- [x] 07-03-PLAN.md — Phase QA: copy/brand/link/budget gates, Puppeteer behavior suite + reviewed captures, gallery thumbnail + REVIEW.md refresh (completed 2026-07-25)
 
 ## Progress
 
@@ -154,4 +154,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 (Phases 2
 | 4. Concept C — Experimental WebGL/3D | 4/4 | Complete    | 2026-07-24 |
 | 5. Concept D — Home Variant (light video + module cards) | 3/3 | Complete    | 2026-07-24 |
 | 6. Cross-Concept QA & Review Packaging | 2/2 | Complete    | 2026-07-24 |
-| 7. Concept D — Iteration 2 | 2/3 | In Progress|  |
+| 7. Concept D — Iteration 2 | 3/3 | Complete   | 2026-07-25 |
