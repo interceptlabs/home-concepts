@@ -163,6 +163,10 @@ Plans:
 **Goal**: headline down 69px + bigger + break after "ambitious"; cards under copy; Inter eyebrows/labels; Flarepop hover tint; reel bottom bar with discreet landscape cards + CTA headline beside.
 **Requirements**: IT4 (Jon notes, executed as orchestrator quick round — see 09-SUMMARY.md)
 
+### Phase 10: Concept D — Iteration 5 (directly-briefed round) — COMPLETE 2026-07-25
+**Goal**: all 8 explore pages fit above the fold as balanced two-zone compositions (lede rail / content panel on translucent surfaces) with per-family background video (rings/cubes/geo) + pause chips; back-to-home aligned to the content container; work-reel headline module equals the stacked cards' height; light-mode contrast pass with measured before/after values.
+**Requirements**: IT5 (Jon notes, executed as directly-briefed round — see 10-SUMMARY.md)
+
 ## Progress
 
 **Execution Order:**
