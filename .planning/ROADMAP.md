@@ -122,6 +122,19 @@ Plans:
 - [x] 06-01-PLAN.md — Mechanical cross-concept QA (copy-diff A/B/C 430/340/282 + D substring 71 + script-diff 13, four brand grep suites, token drift, link integrity, camera gate, video budgets) + final four-card Fritz review gallery with real capture thumbnails
 - [x] 06-02-PLAN.md — Review packaging: REVIEW.md for Jon + REQUIREMENTS closeout (QA-01 marked only on the orchestrator-run Fritz agent gate 06-FRITZ-QA.md committed between the two waves) (completed 2026-07-24)
 
+
+### Phase 7: Concept D — Iteration 2 (above-the-fold + work reel + quiet modules)
+**Goal**: Jon's iteration direction on the variant: most information above the fold (compact hero + uniform semi-opaque section cards with expand CTAs), a full-screen work-reel section with three case cards, scaling card-to-module transitions into reskinned quieter module windows, FAQs/convert/footer as plain below-fold sections, logos kept in between.
+**Depends on**: Phase 5 (Concept D v1)
+**Requirements**: ITER-01, ITER-02, ITER-03, ITER-04, ITER-05, ITER-06, ITER-07, ITER-08
+**Success Criteria** (what must be TRUE):
+  1. At desktop, the first viewport shows the compact hero (reduced headline+blurb) plus the full section-card grid over the video.
+  2. Cards are uniform-height, top/bottom aligned with copy anchored bottom, semi-opaque, carry an explicit expand CTA, and have a hover state that echoes the background video.
+  3. Clicking a card scales it into a full-viewport modular window whose module content is reskinned quieter (verbatim copy, progressive disclosure, no wall of text).
+  4. A full-screen work section follows the hero: the campaign reel (existing encoded asset) plays behind three small case cards using the same card-to-module composition.
+  5. FAQs, Start a Conversation, and footer render as plain below-fold sections (not cards/modals); the client logo strip stays in between as before.
+**Plans**: TBD
+
 ## Progress
 
 **Execution Order:**
