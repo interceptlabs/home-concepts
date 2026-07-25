@@ -14,7 +14,7 @@ From the repo root: `./serve.sh`, then open `http://localhost:4340/`. That start
 
 **Concept C — Experimental WebGL/3D** uses a three.js scene as the navigation metaphor: scrolling drives the camera through six topic objects in a spatial field, each with a clickable, keyboard-focusable label. Below the fold it's standard DOM. A semantic DOM mirror of the same navigation exists alongside the 3D layer and is shown outright when WebGL is unavailable, and rendering is device-tiered so it degrades gracefully on weaker GPUs rather than stalling or going blank.
 
-**Concept D — Home Variant** is the odd one out on purpose: it's a speculative variant of the currently deployed homepage rather than a new structural idea, now in its second iteration. It keeps the deployed site's sticky nav and logo treatment and its full-screen light-mode motion-graphics video, but the homepage itself is restructured: a compact hero shares the first viewport with a full 5-card grid, a full-screen work reel follows with its own ambient video and three case cards, and every card scales into a quiet, full-viewport module window with progressive disclosure — one problem, one workflow stage, one Challenge/Approach/Results section at a time — instead of dumping the whole module at once. FAQs, the conversation starter, and the footer stay as plain below-fold sections. Nav items route to standalone pages built from the same modules, and About/Insights/ChatB2B are mirrored straight from the deployed bundle.
+**Concept D — Home Variant** is the odd one out on purpose: it's a speculative variant of the currently deployed homepage rather than a new structural idea, now in its third iteration. It keeps the deployed site's sticky nav and logo treatment and its full-screen light-mode motion-graphics video, but the homepage itself is restructured: a top-anchored hero sits close under the sticky nav with a full 5-card grid filling the remainder of the first viewport, hovering a card gives it an unmistakable lift with the CTA flipping to Flarepop, a full-screen work reel follows — now the weavy.ai SAP brand-film montage — with its own ambient video and three case cards, and every card navigates to its own standalone quiet page with a prominent "back to home" link, showing one problem, one workflow stage, or one Challenge/Approach/Results section at a time instead of dumping the whole module at once. FAQs, the conversation starter, and the footer stay as plain below-fold sections. Nav items route to standalone pages built from the same modules, and About/Insights/ChatB2B are mirrored straight from the deployed bundle.
 
 Look at Concept D first — it's the one Jon asked to be built and is the closest read on "does this direction work," with the other three as structural alternatives to weigh against it.
 
@@ -36,10 +36,9 @@ Look at Concept D first — it's the one Jon asked to be built and is the closes
 - The topic index works without WebGL
 
 **Concept D**
-- Hover a card and watch the fill thin
-- Click a card and watch it grow into a full-viewport window
-- Esc returns you to the card you opened
-- Scroll to the work reel
+- Click a card and follow it to its quiet page, then use the back link to return home
+- Hover a card and watch the fill thin, lift, and its CTA flip to Flarepop
+- Scroll to the work reel and let the weavy.ai montage play
 - Open a case card for its Challenge/Approach/Results
 - Try reduced-motion or no-JS — both have working fallbacks
 
@@ -51,7 +50,7 @@ Each concept has its own capture set and QA record:
 - Concept A: `.planning/phases/02-concept-a-editorial-accenture-but-better/captures/` (9 captures) and the QA table in `02-03-SUMMARY.md`
 - Concept B: `.planning/phases/03-concept-b-full-screen-video/captures/` (11 captures) and the QA table in `03-03-SUMMARY.md`
 - Concept C: `.planning/phases/04-concept-c-experimental-webgl-3d/captures/` (33 captures), `04-VERIFICATION.md`, and the `04-03`/`04-04` summaries
-- Concept D: `.planning/phases/07-concept-d-iteration-2/captures/` (23 captures covering the compact hero/card grid, work reel, card-to-window morph, all 8 quiet module windows, reduced-motion, and no-JS), with the QA tables in `07-01-SUMMARY.md`, `07-02-SUMMARY.md`, and `07-03-SUMMARY.md`. The original build's evidence — `.planning/phases/05-concept-d-home-variant/captures/` (10 captures) and `05-VERIFICATION.md` — still documents the deployed-bundle port this iteration builds on.
+- Concept D: `.planning/phases/08-concept-d-iteration-3/captures/` (12 captures covering the top-anchored/enlarged hero at both fold sizes, the obvious card hover state, and all 8 standalone explore pages plus the Labs drawer open), with the full behavior pass (fold, hover, nav round-trips, drawers, reel v2 playback, reduced-motion, no-JS) recorded in `08-02-SUMMARY.md` and the QA table in `08-01-SUMMARY.md`. Iteration 2's evidence — `.planning/phases/07-concept-d-iteration-2/captures/` (23 captures covering the compact hero/card grid, work reel, card-to-window morph, all 8 quiet module windows, reduced-motion, and no-JS) and `07-01-SUMMARY.md`/`07-02-SUMMARY.md`/`07-03-SUMMARY.md` — documents the module-dialog structure this iteration replaced with standalone pages. The original build's evidence — `.planning/phases/05-concept-d-home-variant/captures/` (10 captures) and `05-VERIFICATION.md` — still documents the deployed-bundle port this iteration builds on.
 
 Cross-concept evidence lives in `.planning/phases/06-cross-concept-qa-review-packaging/`: `06-01-SUMMARY.md` has the consolidated mechanical QA table (copy-diff, script-diff, link integrity, brand greps, video budgets, all four concepts in one pass), `captures/gallery-390.png` and `captures/gallery-1440.png` are the reviewed gallery captures, and `06-FRITZ-QA.md` is the Fritz brand agent's sign-off — the judgment layer on top of the mechanical checks, covering logo geometry, color-role discipline, and mark-placement rules across all five surfaces (the four concepts plus this gallery).
 
