@@ -12,8 +12,8 @@
    Hand-Roll"). Two things are NOT automatic and are handled explicitly
    below (05-RESEARCH.md Pitfalls 4 & 5):
 
-   1. Top-layer stacking: the deployed drawer scaffold (#scrim/#casePanel/
-      #convoDrawer/#pitchLabs) is position:fixed, siblings at the end of
+   1. Top-layer stacking: the deployed drawer scaffold (#scrim/#convoDrawer/
+      #pitchLabs) is position:fixed, siblings at the end of
       <body>. A dialog in the browser's top layer renders ABOVE the normal
       stacking context regardless of z-index, so a drawer opened from
       inside a module dialog would render invisibly underneath it. Fix:
@@ -31,7 +31,7 @@
 
   var lastInvoker = null;
 
-  var SCAFFOLD_IDS = ["scrim", "casePanel", "convoDrawer", "pitchLabs"];
+  var SCAFFOLD_IDS = ["scrim", "convoDrawer", "pitchLabs"];
   var scaffoldNodes = SCAFFOLD_IDS.map(function (id) {
     return document.getElementById(id);
   }).filter(Boolean);

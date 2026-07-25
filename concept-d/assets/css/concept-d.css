@@ -244,6 +244,114 @@ footer {
   background: var(--page);
 }
 
+/* ---------- Work-reel section (ITER-06) ---------- */
+.work-reel {
+  position: relative;
+  z-index: 1;
+  min-height: 100dvh;
+  overflow: hidden;
+  background: var(--page);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+  padding: 64px 0;
+}
+.reel-video {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.reel-toggle {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2;
+  padding: 10px 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.6s cubic-bezier(0.37, 0, 0.63, 1);
+}
+.reel-toggle:hover {
+  background: rgba(255, 255, 255, 1);
+}
+.reel-toggle:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+}
+html:not(.has-js) .reel-toggle {
+  display: none;
+}
+.work-reel-inner {
+  position: relative;
+  z-index: 1;
+}
+/* Heading panel: flat translucent surface (same translucency family as the
+   cards — never a gradient scrim) so dark ink stays legible over the reel's
+   montage without dimming the footage itself. */
+.work-reel-heading {
+  max-width: 640px;
+  padding: 24px 28px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.75);
+}
+.work-reel-heading .section-lead {
+  color: var(--fg-2);
+}
+
+/* ---------- Case-window dialog shells (ITER-06) ---------- */
+.case-window .case-stat {
+  margin-bottom: 16px;
+}
+.case-window .c-metric {
+  font-size: 40px;
+  line-height: 1;
+  margin: 0;
+  color: var(--fg);
+}
+.case-window .c-metric-lbl {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+  margin: 4px 0 0;
+}
+.case-window .case-top {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+.case-window .c-client {
+  font-weight: 600;
+  color: var(--fg);
+}
+.case-window .c-tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+.case-window .case-image {
+  display: block;
+  width: 100%;
+  max-width: 640px;
+  border-radius: 14px;
+  margin-top: 20px;
+}
+
 /* ---------- Modal shell ---------- */
 dialog.module-modal {
   width: min(1100px, 94vw);
@@ -257,7 +365,7 @@ dialog.module-modal {
   /* INVARIANT — never add transform/filter/backdrop-filter/perspective/
      contain to this rule. Any one of them creates a fixed-position
      containing block on this dialog, which would trap the reparented
-     drawer scaffold (#scrim/#casePanel/#convoDrawer/#pitchLabs, moved in by
+     drawer scaffold (#scrim/#convoDrawer/#pitchLabs, moved in by
      cards.js on open) INSIDE this dialog's box instead of letting it render
      as the full-viewport overlay it's designed to be. */
 }
