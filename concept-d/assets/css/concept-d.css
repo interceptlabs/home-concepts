@@ -447,7 +447,7 @@ html:not(.has-js) .reel-toggle {
    their own standalone page instead of a continuously scrolling homepage
    or a bounded dialog. deployed.css itself is never edited. */
 .explore-page section {
-  padding: 32px 0 8px;
+  padding: 18px 0 24px;
   border-bottom: 0;
 }
 /* Belt-and-suspenders reduced-motion rule for the cross-document
@@ -461,22 +461,35 @@ html:not(.has-js) .reel-toggle {
     animation: none !important;
   }
 }
-/* Prominent mono "back to home" affordance — the first focusable element
-   inside every explore page's <main>. Weight/color shift only on
-   hover/focus, never an underline or rule line. */
+/* Prominent "back to home" affordance — the first focusable element inside
+   every explore page's <main>. Iteration 5: lives inside a .wrap row
+   (.explore-back-row) so it aligns with the page content container instead
+   of hugging the viewport edge, and sits on the same translucent white
+   chip as .video-toggle so its dark ink stays AA over the new background
+   footage (before: bare ink straight over video). Hover feedback is
+   background/border only — the old flarepop hover ink measured 3.3:1 on
+   white (fails AA for 13px text) and is dropped in the light-mode contrast
+   pass. */
 .explore-back {
   display: inline-block;
-  margin: 28px 0 8px;
+  margin: 16px 0 0;
+  padding: 10px 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
   font-family: var(--font-mono);
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--fg);
   text-decoration: none;
-  transition: color 0.4s cubic-bezier(0.37, 0, 0.63, 1);
+  transition:
+    background-color 0.4s cubic-bezier(0.37, 0, 0.63, 1),
+    border-color 0.4s cubic-bezier(0.37, 0, 0.63, 1);
 }
 .explore-back:hover {
-  color: var(--flarepop);
+  background: rgba(255, 255, 255, 1);
+  border-color: var(--fg-3);
 }
 .explore-back:focus-visible {
   outline: 2px solid var(--fg);
@@ -952,7 +965,180 @@ html:not(.has-js) .card-heading {
 .idx,
 .clients-lbl,
 .reel-toggle,
-.hero-video-layer .video-toggle {
+.hero-video-layer .video-toggle,
+.section-video-toggle {
   font-family: 'Inter', var(--font-body, system-ui, sans-serif);
   font-weight: 600;
+}
+
+/* ---------- Iteration 5 (Phase 10): viewport-fit explore compositions ---------- */
+/* Each explore page becomes ONE balanced above-the-fold composition: a
+   two-zone split — .explore-lede (eyebrow + heading + lead + that page's
+   interaction controls) beside .explore-panel (the active content) — sized
+   to the viewport minus the sticky topbar. If a panel's content exceeds
+   its zone, THAT PANEL scrolls internally (never page-level scroll-jack);
+   below 900px the lock releases and the page flows/scrolls naturally. */
+
+/* Both zones sit on flat translucent light surfaces (the card-field idiom,
+   never a gradient scrim) so dark ink stays AA over the new background
+   footage. Ink tokens are re-pinned to deployed.css's own light-theme
+   values (token reuse, not invented colors) because these surfaces are
+   light-only chrome — the same rationale as the no-JS fix above — and
+   because deployed.css's #os rules otherwise flip --fg to white (navy-band
+   context) inside the InterceptOS page's content. */
+.explore-lede,
+.explore-panel {
+  --fg: #0a0a0f;
+  --fg-2: #2c2c3a;
+  --fg-3: #3a3a4a;
+  --line: rgba(10, 10, 15, 0.14);
+  --line-2: rgba(10, 10, 15, 0.26);
+  color: var(--fg);
+  background: rgba(255, 255, 255, 0.82);
+  border-radius: 14px;
+  box-shadow: 0 12px 32px rgba(10, 10, 15, 0.12);
+  padding: 28px 32px;
+  min-height: 0;
+}
+.explore-panel:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+}
+/* Labs' light panel (stat + CTA) centers vertically — balanced, not
+   stretched-sparse, when the page has less content than its zone. */
+.explore-panel--center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.explore-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  min-height: 0;
+  align-items: stretch;
+}
+.explore-back-row {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  width: 100%;
+}
+/* All explore-page content stacks above the fixed video layer at every
+   width (04-02 lesson: fixed background layers bleed through any sibling
+   that doesn't set its own stacking). */
+main.explore-page {
+  position: relative;
+  z-index: 1;
+}
+
+/* deployed.css's #os navy band would paint over the fixed video layer and
+   its light-theme override (specificity (1,2,0)) hard-codes white section
+   ink — both wrong for this composition, where InterceptOS content sits on
+   the same light panels as every other explore page. Matching-specificity
+   overrides; deployed.css itself is never edited. */
+.explore-page #os {
+  background: transparent;
+}
+:root[data-theme="light"] .explore-page #os {
+  background: transparent;
+}
+.explore-page #os .idx,
+:root[data-theme="light"] .explore-page #os .idx {
+  color: var(--flarepop); /* brand-consistent with the other 7 pages' eyebrows */
+}
+
+/* Compact lede type + module-spacing neutralizations for the viewport fit
+   (additive re-scale, same category as the .hero-d compact-hero overrides;
+   the ported modules' own typography is otherwise untouched). */
+.explore-lede .section-h2 {
+  font-size: clamp(26px, 2.5vw, 36px);
+}
+.explore-lede .q-tabs {
+  margin: 24px 0 0;
+}
+.explore-lede .agent-tabs {
+  margin-top: 24px;
+  margin-bottom: 0;
+}
+.explore-page .insights-grid {
+  margin-top: 0;
+}
+.explore-page .case-image {
+  margin-top: 0;
+}
+.explore-page .labs-stats {
+  margin: 0 0 8px;
+}
+.explore-lede .labs-intro p {
+  margin-top: 16px;
+}
+/* Insights archive link, restyled from its old inline flarepop treatment:
+   14px flarepop measured 3.3:1 on the light panel (fails AA) — resting
+   state is now dark ink; hover uses the darker sanctioned flarepop token. */
+.explore-archive-link {
+  margin-top: 24px;
+}
+.explore-archive-link a {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--fg);
+  text-decoration: none;
+  transition: color 0.4s cubic-bezier(0.37, 0, 0.63, 1);
+}
+.explore-archive-link a:hover {
+  color: var(--flarepop-200);
+}
+
+/* Compact transparent footer: stays inside the single viewport and lets
+   the footage read through; the ported .foot-bot hairline is neutralized
+   in this floating-over-video context (no rule lines in new chrome). */
+.explore-body footer {
+  position: relative;
+  z-index: 1;
+  background: none;
+  padding: 14px 0 18px;
+  flex: none;
+}
+.explore-body .foot-bot {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+/* The viewport lock itself — desktop only. min-height:0 at every flex
+   level is load-bearing: it lets .explore-panel actually shrink so its own
+   overflow-y:auto engages instead of pushing the page taller. */
+@media (min-width: 900px) {
+  .explore-body {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+  }
+  .explore-body main.explore-page {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .explore-page section {
+    flex: 1 1 auto;
+    display: flex;
+    min-height: 0;
+  }
+  .explore-page section > .wrap {
+    width: 100%;
+    display: flex;
+    min-height: 0;
+  }
+  .explore-split {
+    flex: 1;
+    grid-template-columns: minmax(320px, 5fr) 7fr;
+  }
+  .explore-panel {
+    overflow-y: auto;
+  }
 }

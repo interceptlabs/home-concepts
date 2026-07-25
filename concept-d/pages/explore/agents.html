@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="../../assets/css/deployed.css">
 <link rel="stylesheet" href="../../assets/css/concept-d.css">
 </head>
-<body>
+<body class="explore-body">
 <svg aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden"
   id="fritz-glitch-source" data-accent-palette="#8846C9 #1DABC1 #5154C4 #FF44F9 #FFA9F8 #FF52F9" data-channels="#FF00E5 #1A7AFF #00D862">
     <g class="fritz-layout" data-node="520:2115" data-tx="259.483" data-scale="1.28149" data-fill="#00D862">
@@ -192,9 +192,10 @@
 </svg>
 
 <main id="main" class="explore-page">
-<a class="explore-back" href="../../index.html">&larr; Back to home</a>
+<div class="wrap explore-back-row"><a class="explore-back" href="../../index.html">&larr; Back to home</a></div>
 <section id="agents">
-  <div class="wrap">
+  <div class="wrap explore-split">
+    <div class="explore-lede">
     <span class="idx">the agent roster</span>
     <h2 class="section-h2">Meet the capabilities inside InterceptOS.</h2>
     <p class="section-lead">InterceptOS includes a growing set of AI-powered capabilities that support strategy, content, sales, and channel work. Choose a category to see what each one helps your team do.</p>
@@ -205,7 +206,9 @@
       <button class="agent-tab" role="tab" aria-selected="false" data-cat="sales">Sales Enablement</button>
       <button class="agent-tab" role="tab" aria-selected="false" data-cat="channel">Channel Empowerment</button>
     </div>
+    </div>
 
+    <div class="explore-panel">
     <div class="agents-stage" id="agentsStage">
       <div class="agents-grid-v6 card-grid" id="agentsGrid"></div>
       <div class="agent-detail-backdrop" id="agentDetailBackdrop" aria-hidden="true"></div>
@@ -235,6 +238,7 @@
           <button type="button" class="agent-detail-cta" id="agentDetailContact">Talk to us about this agent &rarr;</button>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </section>
