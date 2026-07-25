@@ -19,6 +19,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 5: Concept D — Home Variant (light video + module cards)** - Deployed sections revealed via enticing cards + modals over a light video field (completed 2026-07-24)
 - [x] **Phase 6: Cross-Concept QA & Review Packaging** - Brand/copy verification across all three concepts and a side-by-side review gallery for Jon (completed 2026-07-24)
 - [x] **Phase 7: Concept D — Iteration 2 (above-the-fold + work reel + quiet modules)** - Compact hero + 5-card grid above the fold, full-screen work-reel section, scaling card-to-window transitions into quiet reskinned module windows (completed 2026-07-25)
+- [x] **Phase 8: Concept D — Iteration 3 (hero up/bigger, cards to pages, reel v2)** - Top-anchored/enlarged hero, cards navigate to standalone quiet pages (module dialogs retired), unmistakable card hover, work reel plays the v2 weavy.ai SAP brand-film montage (completed 2026-07-25)
 
 ## Phase Details
 
@@ -154,13 +155,13 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 08-01-PLAN.md — Explore pages + card navigation: 8 quiet pages under concept-d/pages/explore/, cards become real anchors, dialogs/morph/cards.js retire, @view-transition cross-fade, full gate suite
-- [ ] 08-02-PLAN.md — Hero up/bigger (fold proofs 1440×900 + 1280×800), obvious card hover, reel v2 playback + budget verify, Puppeteer behavior pass, gallery thumbnail + REVIEW.md refresh
+- [x] 08-01-PLAN.md — Explore pages + card navigation: 8 quiet pages under concept-d/pages/explore/, cards become real anchors, dialogs/morph/cards.js retire, @view-transition cross-fade, full gate suite
+- [x] 08-02-PLAN.md — Hero up/bigger (fold proofs 1440×900 + 1280×800), obvious card hover, reel v2 playback + budget verify, Puppeteer behavior pass, gallery thumbnail + REVIEW.md refresh
 
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 (Phases 2, 3, 4 depend only on Phase 1 and may be built in parallel; Phase 5 depends on Phase 1 + the staging bundle; Phase 7 depends on Phase 5)
+Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 (Phases 2, 3, 4 depend only on Phase 1 and may be built in parallel; Phase 5 depends on Phase 1 + the staging bundle; Phase 7 depends on Phase 5; Phase 8 depends on Phase 7)
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -171,3 +172,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 (Phases 2
 | 5. Concept D — Home Variant (light video + module cards) | 3/3 | Complete    | 2026-07-24 |
 | 6. Cross-Concept QA & Review Packaging | 2/2 | Complete    | 2026-07-24 |
 | 7. Concept D — Iteration 2 | 3/3 | Complete    | 2026-07-25 |
+| 8. Concept D — Iteration 3 | 2/2 | Complete    | 2026-07-25 |

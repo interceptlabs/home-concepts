@@ -2,17 +2,17 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 1
-status: in_progress
-stopped_at: Completed 08-01-PLAN.md (Concept D card-to-page navigation restructure)
-last_updated: "2026-07-25T13:26:01.090Z"
+current_plan: 2
+status: completed
+stopped_at: Completed 08-02-PLAN.md (Concept D hero/hover/reel closeout + capture-based visual QA) -- Phase 8 and the full known roadmap now complete
+last_updated: "2026-07-25T13:45:59.446Z"
 last_activity: 2026-07-25
 progress:
   total_phases: 8
-  completed_phases: 7
+  completed_phases: 8
   total_plans: 24
-  completed_plans: 23
-  percent: 96
+  completed_plans: 24
+  percent: 100
 ---
 
 # Project State
@@ -22,30 +22,31 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-23)
 
 **Core value:** A visitor never faces a wall of text — content is revealed as needed, and clicking an area of interest takes them to a focused page built from that content.
-**Current focus:** Milestone v1.0 (Phases 1-6, all 32 v1 requirements) remains fully complete and shipped. Phase 7 (Concept D — Iteration 2) is FULLY COMPLETE (07-01/07-02/07-03, ITER-01..08). Phase 8 (Concept D — Iteration 3) is now IN PROGRESS: 08-01 converted Concept D's homepage from 8 module `<dialog>` popups to 8 real page navigations — 8 new standalone quiet pages under `concept-d/pages/explore/`, every homepage card is now a plain `<a href>` anchor, cards.js deleted, and a cross-document View Transition covers every navigation. IT3-02 is complete. 08-02 (hero/hover/reel closeout polish + capture-based visual QA of the new navigation) remains.
+**Current focus:** Milestone v1.0 (Phases 1-6, all 32 v1 requirements) remains fully complete and shipped. Phase 7 (Concept D — Iteration 2) is FULLY COMPLETE (07-01/07-02/07-03, ITER-01..08). **Phase 8 (Concept D — Iteration 3) is now FULLY COMPLETE** (08-01/08-02, IT3-01..04): 08-01 converted Concept D's homepage from 8 module `<dialog>` popups to 8 real page navigations; 08-02 top-anchored the hero with an enlarged headline, rebuilt the card hover into an unmistakable state, verified the v2 work reel, and ran a 30-assertion behavior pass plus 12 judged captures, then refreshed the gallery thumbnail and REVIEW.md. **This closes every known phase in the roadmap — 8/8 phases, 24/24 plans.**
 
 ## Current Position
 
-Phase: 8 of 8 (Concept D — Iteration 3) — IN PROGRESS
-Plan: 1 of 2 complete in current phase (08-01 done, 08-02 remaining)
-Current Plan: 1
+Phase: 8 of 8 (Concept D — Iteration 3) — COMPLETE
+Plan: 2 of 2 complete in current phase (08-01, 08-02 both done)
+Current Plan: 2
 Total Plans in Phase: 2
-Status: 08-01 done — 8 explore pages built, homepage cards converted to real anchors, all 8 module dialogs + cards.js retired, all mechanical gates green (copy-diff, script-diff, link integrity, brand greps, structural checks). 08-02 (hero/hover/reel closeout + capture-based visual QA) is next.
+Status: Phase 8 fully complete — all 4 phase requirements (IT3-01 through IT3-04) satisfied, all mechanical gates green (copy-diff, script-diff, link integrity, brand greps, structural checks, 30-assertion Puppeteer behavior suite), gallery thumbnail and REVIEW.md refreshed for iteration 3. No further plans known in the roadmap.
 Last activity: 2026-07-25
 
-Progress: [██████████] 96% (23 of 24 known plans across all phases)
+Progress: [██████████] 100% (24 of 24 known plans across all phases)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 23
+- Total plans completed: 24
 - Average duration: 28 min
-- Total execution time: 10.88 hours
+- Total execution time: 11.13 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
+| Phase 08 P02 | 15min | 3 tasks | 16 files |
 | Phase 08 P01 | 35min | 3 tasks | 12 files |
 | Phase 07 P03 | 20min | 3 tasks | 14 files |
 | Phase 07 P02 | 65min | 3 tasks | 4 files |
@@ -73,8 +74,8 @@ Progress: [██████████] 96% (23 of 24 known plans across all 
 *Updated after each plan completion*
 
 **Recent Trend:**
-- Last 5 plans: 07-03 (20min), 07-02 (65min), 07-01 (51min), 06-02 (12min), 06-01 (24min)
-- Trend: 08-01 converted Concept D's homepage from 8 module dialogs to 8 real page navigations: 5 new quiet section explore pages + 3 new case explore pages, ~70 CSS selectors re-scoped from dialog.module-modal to .explore-page, cards.js deleted, cross-document @view-transition added. Only 1 deviation: a pre-existing card-teaser truncation (masked by the now-deleted dialogs' full text) was exposed by the copy-diff gate and fixed by restoring the full canonical lead text. All mechanical gates green (copy-diff 54 chunks/9 files, script-diff 13 checks, link integrity 32 pre-existing-only allowlist entries, brand greps, structural checks).
+- Last 5 plans: 08-02 (15min), 08-01 (35min), 07-03 (20min), 07-02 (65min), 07-01 (51min)
+- Trend: 08-02 closed out the roadmap's last phase: top-anchored the Concept D hero under the sticky topbar with an enlarged ~53px headline, rebuilt the card hover into an unmistakable 400ms lift+fill+Flarepop-CTA state, verified the v2 work reel plays in-budget, and ran a 30-assertion Puppeteer behavior pass plus 12 judged captures — all green. Two real CSS fixes surfaced by this plan's own mechanical fold assertions (topbar-height overflow, ported .hero padding); Phase 8 (Concept D — Iteration 3) and the entire known roadmap are now FULLY COMPLETE (8/8 phases, 24/24 plans).
 
 ## Accumulated Context
 
@@ -136,6 +137,9 @@ Recent decisions affecting current work:
 - [Phase 07-03]: Found and fixed two false-positive bugs in this plan's own literal grep verify commands (border-top/bottom rule-line ban, gradient ban) rather than in shipped concept-d code -- the CSS itself was always compliant; substituted comment-aware/value-aware Python checks. Full 20-assertion Puppeteer behavior suite plus 13 mechanical gate categories all green with zero code fixes needed. Phase 7 (Concept D -- Iteration 2, ITER-01..08) now FULLY COMPLETE -- last remaining phase in the roadmap, 7/7 phases and 22/22 known plans done.
 - [Phase 08-01]: Re-scoped ~70 dialog.module-modal-prefixed quiet-component selectors in concept-d.css to .explore-page (mechanical rename) and deleted the modal-shell/backdrop/close-button/morph-trio rules outright, since all 8 module dialogs are retired in favor of standalone pages under concept-d/pages/explore/ -- each carries a mono .explore-back link as the first focusable element in <main>, the full drawer scaffold, and a slim curio-only footer (no site-link columns, avoiding a new dead-link allowlist category)
 - [Phase 08-01]: Fixed a real copy-diff regression found via Task 2's own verify gate -- the InterceptOS/Agents/Insights homepage-card teasers had always been truncated first-sentences of the os.lead/agents.lead/insights.lead canonical strings, previously masked by the full text living inside the now-deleted dialogs -- restored the complete canonical lead text as the card teaser (never a paraphrase, matches the untruncated pattern already used by Problems/Labs/case-study cards) rather than inventing a truncation escape hatch
+- [Phase 08-02]: .hero-viewport's min-height:100dvh always overflowed the first viewport by exactly the sticky topbar's own rendered height (72.1875px measured identically at 1440 and 1280 widths, since the topbar sits in normal flow ahead of the hero-viewport sibling) -- fixed with min-height:calc(100dvh - 73px), confirmed by mechanical Puppeteer fold assertions at both required viewport sizes.
+- [Phase 08-02]: Neutralized deployed.css's ported .hero{padding:100px 0 0} via a .hero-d padding-top:0 override (deployed.css itself never edited, same established pattern as the existing .hero-d border-bottom:0 neutralization) rather than editing deployed.css -- required to let the headline hug the sticky topbar per IT3-01.
+- [Phase 08-02]: Left REVIEW.md's shared cross-concept "States worth checking" paragraph's stale "D's modals" phrase untouched, per Task 3's own explicit "touch nothing else in REVIEW.md" instruction limiting edits to exactly three named things (Concept D paragraph, what-to-try hints, captures pointer) -- logged as a deferred item in .planning/phases/08-concept-d-iteration-3/deferred-items.md instead of auto-fixing.
 
 ### Pending Todos
 
@@ -152,9 +156,10 @@ None yet.
 - Phase 7 (Concept D — Iteration 2) is now IN PROGRESS — 07-01 and 07-02 both done; only 07-03 (closeout: gallery refresh, REVIEW.md update, final cross-concept QA) remains. ITER-01 through ITER-08 (all 8 phase requirements) are now complete. Tooling (07-02 run): `state advance-plan` correctly returned `advanced:true, current_plan:2, total_plans:3` this time (no hand-correction needed). `state update-progress` correctly reported `percent:95` (21/22) in its own JSON AND wrote it correctly into the frontmatter — first run in this project's history where this command needed no hand-correction. `state record-metric` again appended its new table row below the `*Updated after each plan completion*` footer instead of inside the table — moved by hand, same recurring bug as every prior run. `state record-session` set `status: executing` in the frontmatter YET AGAIN (same recurring bug 07-01's own note already flagged and claimed to have hand-corrected — it evidently didn't persist, or a later tool call reset it) — hand-corrected back to `in_progress` a second time; this looks like a standing tool bug worth fixing at the source rather than re-patching every plan. `requirements mark-complete` will be called with all 3 of this plan's frontmatter-listed requirement IDs (ITER-04/05/06) — this plan's success_criteria confirms all three are genuinely complete, unlike 07-01 which had to withhold ITER-06.
 - **Phase 7 (Concept D — Iteration 2) is now FULLY COMPLETE (07-03, 2026-07-25)** — all 3 plans done (07-01, 07-02, 07-03). 07-03's full mechanical gate suite (13 categories) plus a new 20-assertion Puppeteer behavior suite ran green against 07-02's already-committed state with zero code fixes required in concept-d itself; the only issues found were 2 false-positive bugs in this task's own literal grep verify commands (border-top/bottom rule-line ban, gradient ban — both backed off to match whitespace/comments rather than real declarations), corrected with equivalent Python checks and documented in `07-03-SUMMARY.md`. Gallery thumbnail (`assets/gallery/concept-d.png`) and REVIEW.md's Concept D section refreshed to describe the iteration-2 structure, touching nothing else in REVIEW.md. **This closes out every known phase in the roadmap — 7/7 phases, 22/22 known plans, all complete.** No blockers remain from this plan. Tooling (07-03 run): `state advance-plan` returned `advanced:true, current_plan:3, total_plans:3` correctly. `state update-progress` reported `percent:95` (21/22, stale) on its FIRST call — because it was run before this plan's own SUMMARY.md existed on disk — then correctly reported `percent:100` (22/22) once re-run after the SUMMARY was written; this is expected tool behavior (it counts SUMMARY.md files on disk), not a bug, but confirms the SUMMARY-then-update-progress ordering matters. `state record-metric` again appended its new table row after the `*Updated after each plan completion*` footer/Recent-Trend prose instead of inside the table — moved by hand, same recurring bug as every prior plan. `state add-decision` prefixed the decision text with its own `[Phase 07-03]:` tag ON TOP OF the same tag already present in the supplied summary-file text, producing a doubled `[Phase 07-03]: [Phase 07-03]:` prefix — hand-corrected to a single prefix. `state record-session` and `state update-progress`/frontmatter `percent`/`status` fields needed the same category of hand-correction as every prior plan in this project's history (percent stuck at a stale value, status needing a manual bump to `complete` since "complete" isn't a value the tool itself writes). These are standing tool bugs worth fixing at the source; every plan in this project has had to re-patch them by hand.
 - Phase 8 (Concept D -- Iteration 3) is now IN PROGRESS -- 08-01 done (8 explore pages built, homepage cards converted to real anchors, all 8 module dialogs + cards.js retired, IT3-02 satisfied at the code level); 08-02 (hero/hover/reel closeout polish + capture-based visual QA) remains. Tooling (08-01 run): `state advance-plan` reported `advanced:false, reason:last_plan, current_plan:3, total_plans:3` -- stale, inherited Phase 7's own plan count since the tool has no explicit "current phase" field to detect Phase 8 started with only 2 plans -- hand-corrected to `current_plan:1`. `state update-progress` correctly computed `percent:96` (23/24) in its own JSON output this time and wrote it correctly into the frontmatter -- no hand-correction needed for this field. `state record-metric` again appended its new table row after the `*Updated after each plan completion*` footer/Recent-Trend prose instead of inside the actual markdown table -- moved by hand, same recurring bug as every prior plan. `state add-decision` again prefixed the decision text with its own `[Phase 08-01]:` tag ON TOP OF the same tag already present in the supplied summary-file text (doubled prefix) -- hand-corrected to a single prefix, same recurring bug 07-03 already flagged. `state add-decision` also unexpectedly flipped the frontmatter `status` field to `completed` (Phase 8 is NOT complete, 08-02 remains) -- hand-corrected back to `in_progress`. These are standing tool bugs worth fixing at the source; every plan in this project has had to re-patch them by hand.
+- **Phase 8 (Concept D -- Iteration 3) is now FULLY COMPLETE (08-02, 2026-07-25)** -- both plans done (08-01, 08-02). 08-02 top-anchored the hero under the sticky topbar with an enlarged ~53px headline, rebuilt the card hover/focus state to be unmistakable (400ms sine, 40% fill, lift+scale, Flarepop CTA flip), verified the already-shipped v2 work reel plays via IntersectionObserver within budget, and ran a 30-assertion Puppeteer behavior suite (fold x2, hover+focus parity, nav round-trips, drawers, reel, reduced-motion, no-JS) plus 12 honestly-judged captures -- all green. Two real CSS fixes were surfaced by this plan's own mechanical fold assertions (not just the capture review): `.hero-viewport`'s `min-height:100dvh` always overflowed the fold by exactly the sticky topbar's rendered height (fixed with `calc(100dvh - 73px)`), and deployed.css's ported `.hero{padding:100px 0 0}` pushed the headline ~100px below the target zone (neutralized via `.hero-d{padding-top:0}`, deployed.css itself never touched). Gallery thumbnail and REVIEW.md's Concept D section refreshed for iteration 3 (everything else in REVIEW.md byte-identical); one minor out-of-scope documentation staleness (REVIEW.md's shared "D's modals" phrase) deliberately left untouched and logged in `.planning/phases/08-concept-d-iteration-3/deferred-items.md`, per Task 3's own explicit "touch nothing else" scope instruction. **This closes out every known phase in the roadmap -- 8/8 phases, 24/24 known plans, all complete.** No blockers remain. Tooling (08-02 run): `state advance-plan` returned `advanced:true, current_plan:2, total_plans:2` correctly. `state update-progress` correctly reported and wrote `percent:100` (24/24) -- no hand-correction needed. `state record-metric` again appended its new table row after the footer/Recent-Trend prose instead of inside the table -- moved by hand, same recurring bug as every prior plan. `state add-decision` again prefixed decision text with its own `[Phase 08-02]:` tag ON TOP OF the same tag already present in the supplied summary-file text (doubled prefix, all 3 decisions added this run) -- hand-corrected to a single prefix each, same recurring bug every plan since 07-03 has flagged. `state record-session` worked cleanly this run (no hand-correction needed for Last session/Stopped At/Resume File). These are standing tool bugs worth fixing at the source; every plan in this project has had to re-patch the metric-table-placement and decision-prefix-doubling bugs by hand.
 
 ## Session Continuity
 
-Last session: 2026-07-25T13:26:01.087Z
-Stopped at: Completed 08-01-PLAN.md (Concept D card-to-page navigation restructure)
+Last session: 2026-07-25T13:45:59.443Z
+Stopped at: Completed 08-02-PLAN.md (Concept D hero/hover/reel closeout + capture-based visual QA) -- Phase 8 and the full known roadmap now complete
 Resume file: None
