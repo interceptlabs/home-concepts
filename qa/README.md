@@ -76,3 +76,27 @@ Every invocation prints a per-page report: the mode used, then one `PASS <dot.pa
 - `pass-substring.html` — an unannotated page proving the substring-fallback mode detects and verifies canonical chunks with no `data-copy` present.
 
 If `fail-annotated.html` ever starts passing, the gate itself is broken — that is its entire job.
+
+# qa/lockup-crisp-check.mjs — lockup rasterization gate
+
+Permanent gate born from the IT5 crunchy-wordmark fix: the concept-d header lockup's black wordmark paths once rasterized crunchy at DPR 1 because the wordmark group carried a runtime `translate(0,-10)` against a fractional viewBox scale, and the flex-centered logo sat at a near-half-pixel y offset that smeared every horizontal letterform edge. Root cause, fix, and before/after crops: `.planning/phases/10-concept-d-iteration-5/LOCKUP-FIX.md`. The deployed-header exemption does **not** apply to rendering quality.
+
+Requires a running local server on `:4340` (`./serve.sh`) and Puppeteer (resolved from the home-directory `node_modules`, same as other headless QA here).
+
+```bash
+# Default: crops land in qa/lockup-crops/ (untracked, human review only)
+node qa/lockup-crisp-check.mjs
+
+# Or send crops to a specific out-dir
+node qa/lockup-crisp-check.mjs .planning/phases/10-concept-d-iteration-5/captures/lockup
+```
+
+Checks `concept-d/index.html` and `concept-d/pages/explore/problems.html` at deviceScaleFactor 1 **and** 2 (override base URL with `LOCKUP_BASE`):
+
+- **(a)** no computed CSS `transform` (other than `none`) on the resting logo chain — anchor, `svg.logo`, wordmark group (hover/glitch animation transforms are fine; the *resting* state must be transform-free)
+- **(b)** rendered logo height is an integer CSS px value, and the logo sits at integer CSS y (fractional y is what smeared the type)
+- **(c)** the wordmark group carries no `transform` attribute in markup — DOM check on the tested pages plus a static scan of every `concept-d/**/*.html` — and the header mark slot stays at the approved `translate(0, 1.22)`
+- **(d)** captures tight DPR-1/DPR-2 header-lockup crops to the out-dir for human review (crops are evidence, not pixel-diffed)
+- **(e)** zero pageerrors
+
+Exits `0` only when every assertion passes; any failure exits `1` with a `FAIL` line naming the assertion. **The lockup must pass this gate before any concept-d work is shown to Jon.**

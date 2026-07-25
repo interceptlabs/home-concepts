@@ -63,11 +63,13 @@ html:not(.has-js) .hero-video-layer .video-toggle {
 /* min-height, NOT a fixed height — if the card field overflows a small
    viewport it scrolls natively (locked decision, no scroll-jacking). */
 /* min-height subtracts the topbar's own rendered height (deployed.css
-   .topbar .row padding:15px 28px -> 72.1875px measured at both 1440 and
-   1280 widths, fixed non-responsive padding) — .hero-viewport sits in
-   normal flow AFTER the sticky topbar, so without this subtraction
-   topbar-height + 100dvh always overflows the first viewport by exactly
-   the topbar's height, regardless of anything inside .hero-viewport. */
+   .topbar .row padding:15px 28px, fixed non-responsive; originally
+   72.1875px measured at both 1440 and 1280 widths, now exactly 73px since
+   the IT5 lockup fix pins .cta-nav to 42px — see the lockup block at the
+   end of this file) — .hero-viewport sits in normal flow AFTER the sticky
+   topbar, so without this subtraction topbar-height + 100dvh always
+   overflows the first viewport by exactly the topbar's height, regardless
+   of anything inside .hero-viewport. */
 .hero-viewport {
   position: relative;
   z-index: 1;
@@ -1256,4 +1258,31 @@ html:not(.has-js) .section-video-toggle {
   .explore-panel {
     overflow-y: auto;
   }
+}
+
+/* ---------- Lockup rasterization fix (IT5 / LOCKUP-FIX.md) ---------- */
+/* The wordmark's runtime translate(0,-10) was rebaked into the viewBox
+   y-origin across every lockup SVG (viewBox "0 0.9583 324.005 76.923",
+   wordmark group carries NO transform, mark slots at translate(0,1.22) —
+   mark<->wordmark relative offset 1.22 user units, identical to before).
+   viewBox height 76.923 was chosen so deployed.css's height:30px lands a
+   pixel-clean 0.39 scale: the wordmark cap band is 43.5892 user units, so
+   cap top and baseline both map to integer device pixels at DPR 1 and 2
+   (cap top svg+4px, baseline svg+21px). deployed.css is NEVER edited; its
+   aspect-ratio (324.005/76.2147) is overridden additively to match. */
+.logo { aspect-ratio: 324.005/76.923; }
+/* The topbar row's tallest child was .cta-nav at 41.1875px (9px padding +
+   fractional line box), which flex-centered the 30px logo at fractional
+   y=20.59375 — a near-half-pixel offset that smeared every horizontal
+   letterform edge across two pixel rows. Pinning .cta-nav to exactly 42px
+   centers the logo at integer y=21 (42 device px at DPR 2) and makes the
+   topbar exactly 73px tall, which .hero-viewport's
+   min-height: calc(100dvh - 73px) already assumes (it was rounding up
+   from the old measured 72.1875px; the subtraction is now exact). */
+.nav .cta-nav {
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  padding-top: 0;
+  padding-bottom: 0;
 }
