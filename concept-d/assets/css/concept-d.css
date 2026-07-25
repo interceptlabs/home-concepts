@@ -341,12 +341,23 @@ html:not(.has-js) .reel-toggle {
   display: grid;
   grid-template-columns: minmax(280px, 5fr) 7fr;
   gap: 24px;
-  align-items: end;
+  /* Iteration 5: the headline module matches the stacked cards' height
+     exactly — grid stretch instead of bottom-alignment. */
+  align-items: stretch;
 }
+/* The column fills the stretched height without reading as
+   stretched-empty: eyebrow anchors the top edge, headline+lead stay one
+   group anchored to the bottom (margin-top:auto idiom, same as
+   .card-bottom), and the space breathes in the middle. */
 .reel-cta {
   padding: 20px 24px;
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.78);
+  display: flex;
+  flex-direction: column;
+}
+.reel-cta .reel-cta-h2 {
+  margin-top: auto;
 }
 .reel-cta .reel-cta-h2 {
   font-size: clamp(20px, 1.8vw, 28px);
