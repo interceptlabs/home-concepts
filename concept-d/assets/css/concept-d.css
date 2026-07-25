@@ -4,7 +4,16 @@
    and is the sole token source (--page/--surface/--fg/--fg-2/--line/
    --maxw/--font-mono etc.) — nothing in this file restyles a ported
    module. This file only styles genuinely new containers: the hero video
-   layer, the card field, the modal shell, and the no-JS toggles. */
+   layer, the card field, the standalone explore pages, and the no-JS
+   toggles. */
+
+/* Cross-document View Transitions (08-01, concept-a/b/c precedent) — both
+   index.html and every pages/explore/*.html page load this stylesheet, so
+   the browser's own snapshot cross-fade covers every card->page
+   navigation (and the explore-back return trip) automatically. */
+@view-transition {
+  navigation: auto;
+}
 
 /* ---------- Hero video layer ---------- */
 .hero-video-layer {
@@ -351,49 +360,20 @@ html:not(.has-js) .reel-toggle {
   margin-top: 20px;
 }
 
-/* ---------- Modal shell ---------- */
-/* Full-viewport window (07-02, ITER-04, locked call: "modules go full
-   above-the-fold section") — width/height enlarged from the original
-   min(1100px,94vw)/90vh box; overflow:auto, border-radius, and the
-   INVARIANT comment below stay verbatim. */
-dialog.module-modal {
-  width: min(1500px, 96vw);
-  height: 92vh;
-  max-height: none;
-  overflow: auto;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 0 28px 28px;
-  background: var(--page);
-  color: var(--fg);
-  /* INVARIANT — never add transform/filter/backdrop-filter/perspective/
-     contain to this rule. Any one of them creates a fixed-position
-     containing block on this dialog, which would trap the reparented
-     drawer scaffold (#scrim/#convoDrawer/#pitchLabs, moved in by
-     cards.js on open) INSIDE this dialog's box instead of letting it render
-     as the full-viewport overlay it's designed to be. */
+/* ---------- Explore pages (08-01) ---------- */
+/* Standalone quiet pages replace the homepage's 8 module dialogs (the
+   card->window morph retires with them). Additive neutralization of the
+   ported page-flow section rule's generous vertical padding, hairline
+   divider, and scroll-margin (deployed.css) for modules now living on
+   their own standalone page instead of a continuously scrolling homepage
+   or a bounded dialog. deployed.css itself is never edited. */
+.explore-page section {
+  padding: 32px 0 8px;
+  border-bottom: 0;
 }
-@media (max-width: 768px) {
-  dialog.module-modal {
-    width: 96vw;
-    height: 94vh;
-  }
-}
-dialog.module-modal::backdrop {
-  background: rgba(10, 10, 15, 0.55);
-}
-/* Scaling card->window morph (07-02, ITER-04): sine ~600ms via the browser's
-   own view-transition-group pseudo-element — never a fade. Belt-and-
-   suspenders reduced-motion rule below covers any residual system-level
-   View Transition animation regardless of the JS-side reduced-motion
-   branch (cards.js already skips startViewTransition entirely when
-   reduced-motion is set; this is a second, CSS-only safety net). */
-::view-transition-group(modal-morph),
-::view-transition-old(modal-morph),
-::view-transition-new(modal-morph) {
-  animation-duration: 600ms;
-  animation-timing-function: cubic-bezier(0.37, 0, 0.63, 1);
-}
+/* Belt-and-suspenders reduced-motion rule for the cross-document
+   navigation cross-fade above — covers any residual system-level View
+   Transition animation regardless of browser/OS motion settings. */
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-group(*),
   ::view-transition-image-pair(*),
@@ -402,38 +382,24 @@ dialog.module-modal::backdrop {
     animation: none !important;
   }
 }
-/* Additive neutralization of the ported page-flow section rule's generous
-   vertical padding, hairline divider, and scroll-margin (deployed.css) for
-   modules now living inside a bounded dialog instead of a continuously
-   scrolling page. deployed.css itself is never edited. */
-dialog.module-modal section {
-  padding: 32px 0 8px;
-  border-bottom:0;
-}
-.modal-close {
-  /* position:sticky (not float+sticky — floats can quietly demote a
-     sticky element out of the "positioned" paint layer, which is what
-     caused the close button to render UNDER the ported module section in
-     testing) always establishes its own stacking context, and the
-     explicit z-index makes the paint order unambiguous regardless. */
-  position: sticky;
-  top: 12px;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: auto;
-  width: 36px;
-  height: 36px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--page);
+/* Prominent mono "back to home" affordance — the first focusable element
+   inside every explore page's <main>. Weight/color shift only on
+   hover/focus, never an underline or rule line. */
+.explore-back {
+  display: inline-block;
+  margin: 28px 0 8px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--fg);
-  font-size: 20px;
-  line-height: 1;
-  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.4s cubic-bezier(0.37, 0, 0.63, 1);
 }
-.modal-close:focus-visible {
+.explore-back:hover {
+  color: var(--flarepop);
+}
+.explore-back:focus-visible {
   outline: 2px solid var(--fg);
   outline-offset: 2px;
 }
@@ -485,13 +451,13 @@ html:not(.has-js) .card-heading {
   color: var(--nojs-ink-strong);
 }
 
-/* ---------- Quiet module chrome (07-02, ITER-05) ---------- */
+/* ---------- Quiet module chrome (07-02, ITER-05; re-scoped 08-01) ---------- */
 /* NEW chrome only, fully Fritz-bound: no border rule lines, no gradients,
    flat surfaces, single-column measure caps (~62ch), sine/calm transitions,
    colored text limited to var(--flarepop) where genuinely needed (stat
-   anchors stay var(--fg)). Every rule below is scoped under
-   dialog.module-modal so pages/*.html (which keep the deployed design)
-   are completely untouched. */
+   anchors stay var(--fg)). Every rule below is scoped under .explore-page
+   so pages/*.html (which keep the deployed design) are completely
+   untouched. */
 
 /* Shared quiet tab rail (Problems' problem picker, InterceptOS' flow
    picker) — active state via weight/ink + border-intensity shift, never an
@@ -505,13 +471,13 @@ html:not(.has-js) .card-heading {
    Border + color/weight alone reads correctly in both the flat light-theme
    dialogs (Problems) and the navy band (InterceptOS) without needing a
    second scoped token override. */
-dialog.module-modal .q-tabs {
+.explore-page .q-tabs {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   margin: 28px 0 32px;
 }
-dialog.module-modal .q-tab {
+.explore-page .q-tab {
   appearance: none;
   border: 1.5px solid var(--line-2);
   border-radius: 10px;
@@ -528,33 +494,33 @@ dialog.module-modal .q-tab {
     border-color 0.5s cubic-bezier(0.37, 0, 0.63, 1),
     color 0.5s cubic-bezier(0.37, 0, 0.63, 1);
 }
-dialog.module-modal .q-tab-eyebrow {
+.explore-page .q-tab-eyebrow {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-dialog.module-modal .q-tab-name {
+.explore-page .q-tab-name {
   font-size: 13px;
   line-height: 1.35;
   max-width: 24ch;
 }
-dialog.module-modal .q-tab.is-active {
+.explore-page .q-tab.is-active {
   border-color: var(--fg);
   color: var(--fg);
   font-weight: 600;
 }
-dialog.module-modal .q-tab:focus-visible {
+.explore-page .q-tab:focus-visible {
   outline: 2px solid var(--fg);
   outline-offset: 2px;
 }
 
 /* Problems (#quietSolve) — one problem at a time, headline quote as the
    main beat, tells collapsed behind a native details toggle. */
-dialog.module-modal .q-problem {
+.explore-page .q-problem {
   max-width: 62ch;
 }
-dialog.module-modal .q-quote {
+.explore-page .q-quote {
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 500;
@@ -563,7 +529,7 @@ dialog.module-modal .q-quote {
   color: var(--fg);
   margin: 0 0 18px;
 }
-dialog.module-modal .q-attrib {
+.explore-page .q-attrib {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.08em;
@@ -571,10 +537,10 @@ dialog.module-modal .q-attrib {
   color: var(--fg-3);
   margin: 0 0 28px;
 }
-dialog.module-modal .q-more {
+.explore-page .q-more {
   margin-bottom: 28px;
 }
-dialog.module-modal .q-more summary {
+.explore-page .q-more summary {
   cursor: pointer;
   font-family: var(--font-mono);
   font-size: 11px;
@@ -583,14 +549,14 @@ dialog.module-modal .q-more summary {
   color: var(--fg-2);
   list-style: none;
 }
-dialog.module-modal .q-more summary::-webkit-details-marker {
+.explore-page .q-more summary::-webkit-details-marker {
   display: none;
 }
-dialog.module-modal .q-more[open] summary {
+.explore-page .q-more[open] summary {
   color: var(--fg);
   margin-bottom: 14px;
 }
-dialog.module-modal .q-tells {
+.explore-page .q-tells {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -598,22 +564,22 @@ dialog.module-modal .q-tells {
   flex-direction: column;
   gap: 12px;
 }
-dialog.module-modal .q-tells li {
+.explore-page .q-tells li {
   font-size: 14.5px;
   line-height: 1.55;
   color: var(--fg-2);
 }
-dialog.module-modal .q-signal {
+.explore-page .q-signal {
   display: flex;
   align-items: center;
   gap: 16px;
   padding: 18px 0;
   margin-bottom: 28px;
 }
-dialog.module-modal .q-signal--q {
+.explore-page .q-signal--q {
   align-items: flex-start;
 }
-dialog.module-modal .q-signal-num {
+.explore-page .q-signal-num {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 28px;
@@ -621,12 +587,12 @@ dialog.module-modal .q-signal-num {
   color: var(--fg);
   flex: none;
 }
-dialog.module-modal .q-signal-lbl {
+.explore-page .q-signal-lbl {
   font-size: 13.5px;
   line-height: 1.5;
   color: var(--fg-2);
 }
-dialog.module-modal .q-bridge {
+.explore-page .q-bridge {
   font-family: var(--font-display);
   font-weight: 500;
   font-size: 16px;
@@ -636,24 +602,24 @@ dialog.module-modal .q-bridge {
 
 /* InterceptOS (#quietFlow) — job/layer header, ONE stage visible at a time
    via a stepper (the densest module, per 07-RESEARCH.md's own finding). */
-dialog.module-modal .q-flow-head {
+.explore-page .q-flow-head {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 16px;
   margin: 28px 0 24px;
 }
-dialog.module-modal .q-flow-job {
+.explore-page .q-flow-job {
   font-size: 15px;
   color: var(--fg-2);
   margin: 0;
   max-width: 62ch;
 }
-dialog.module-modal .q-flow-job b {
+.explore-page .q-flow-job b {
   color: var(--fg);
   font-weight: 600;
 }
-dialog.module-modal .q-flow-chip {
+.explore-page .q-flow-chip {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.06em;
@@ -664,19 +630,19 @@ dialog.module-modal .q-flow-chip {
   padding: 6px 14px;
   white-space: nowrap;
 }
-dialog.module-modal .q-flow-chip b {
+.explore-page .q-flow-chip b {
   color: var(--fg);
 }
-dialog.module-modal .q-stepper {
+.explore-page .q-stepper {
   max-width: 62ch;
 }
-dialog.module-modal .q-stepper-rail {
+.explore-page .q-stepper-rail {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 24px;
 }
-dialog.module-modal .q-step {
+.explore-page .q-step {
   appearance: none;
   border: 1.5px solid var(--line-2);
   border-radius: 999px;
@@ -692,19 +658,19 @@ dialog.module-modal .q-step {
     border-color 0.5s cubic-bezier(0.37, 0, 0.63, 1),
     color 0.5s cubic-bezier(0.37, 0, 0.63, 1);
 }
-dialog.module-modal .q-step.is-active {
+.explore-page .q-step.is-active {
   border-color: var(--fg);
   color: var(--fg);
   font-weight: 600;
 }
-dialog.module-modal .q-step.is-done {
+.explore-page .q-step.is-done {
   color: var(--fg-2);
 }
-dialog.module-modal .q-step:focus-visible {
+.explore-page .q-step:focus-visible {
   outline: 2px solid var(--fg);
   outline-offset: 2px;
 }
-dialog.module-modal .q-stepper-tag {
+.explore-page .q-stepper-tag {
   display: block;
   font-family: var(--font-mono);
   font-size: 11px;
@@ -713,7 +679,7 @@ dialog.module-modal .q-stepper-tag {
   color: var(--fg-3);
   margin-bottom: 8px;
 }
-dialog.module-modal .q-stepper-name {
+.explore-page .q-stepper-name {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: clamp(19px, 1.8vw, 24px);
@@ -721,25 +687,25 @@ dialog.module-modal .q-stepper-name {
   line-height: 1.3;
   margin-bottom: 12px;
 }
-dialog.module-modal .q-stepper-agents {
+.explore-page .q-stepper-agents {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   margin-bottom: 16px;
 }
-dialog.module-modal .q-stepper-desc {
+.explore-page .q-stepper-desc {
   font-size: 15px;
   line-height: 1.55;
   color: var(--fg-2);
   margin: 0;
 }
-dialog.module-modal .q-stepper-nav {
+.explore-page .q-stepper-nav {
   display: flex;
   gap: 12px;
   margin-top: 24px;
 }
-dialog.module-modal .q-step-prev,
-dialog.module-modal .q-step-next {
+.explore-page .q-step-prev,
+.explore-page .q-step-next {
   appearance: none;
   border: 1.5px solid var(--line-2);
   border-radius: 999px;
@@ -753,21 +719,21 @@ dialog.module-modal .q-step-next {
   cursor: pointer;
   transition: border-color 0.5s cubic-bezier(0.37, 0, 0.63, 1);
 }
-dialog.module-modal .q-step-prev:disabled,
-dialog.module-modal .q-step-next:disabled {
+.explore-page .q-step-prev:disabled,
+.explore-page .q-step-next:disabled {
   opacity: 0.35;
   cursor: default;
 }
-dialog.module-modal .q-step-prev:not(:disabled):hover,
-dialog.module-modal .q-step-next:not(:disabled):hover,
-dialog.module-modal .q-step-prev:focus-visible,
-dialog.module-modal .q-step-next:focus-visible {
+.explore-page .q-step-prev:not(:disabled):hover,
+.explore-page .q-step-next:not(:disabled):hover,
+.explore-page .q-step-prev:focus-visible,
+.explore-page .q-step-next:focus-visible {
   border-color: var(--fg);
 }
-dialog.module-modal .q-flow-bridge {
+.explore-page .q-flow-bridge {
   margin-top: 28px;
 }
-dialog.module-modal .q-flow-bridge a {
+.explore-page .q-flow-bridge a {
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.1em;
@@ -778,7 +744,7 @@ dialog.module-modal .q-flow-bridge a {
   gap: 8px;
   transition: color 0.4s cubic-bezier(0.37, 0, 0.63, 1);
 }
-dialog.module-modal .q-flow-bridge a:hover {
+.explore-page .q-flow-bridge a:hover {
   color: var(--flarepop);
 }
 
@@ -787,14 +753,14 @@ dialog.module-modal .q-flow-bridge a:hover {
    hairline (found via honest capture review: a floating pink block over a
    sea of empty white read as the opposite of "quiet"), let the stat sit as
    the sole visual anchor with generous whitespace, single-column measure. */
-dialog.module-modal .labs {
+.explore-page .labs {
   background: none;
   border-top: 0;
 }
-dialog.module-modal .labs-intro {
+.explore-page .labs-intro {
   max-width: 62ch;
 }
-dialog.module-modal .labs-stats {
+.explore-page .labs-stats {
   margin: 32px 0;
   border-top: 0;
 }
@@ -802,7 +768,7 @@ dialog.module-modal .labs-stats {
 /* Agents (#dlg-agents) — least rework: deployed markup/ids/renderers kept
    as-is, quieted via overrides only. Calmer neutral card surface (was a
    permanent flarepop wash), lighter border, more breathing room in the grid. */
-dialog.module-modal .agent-card-v6 {
+.explore-page .agent-card-v6 {
   background: var(--surface);
   border-color: var(--line);
 }
@@ -814,14 +780,14 @@ dialog.module-modal .agent-card-v6 {
    Matching the same :root[data-theme="light"] prefix here (rather than
    reaching for !important) lets this quiet override win on specificity
    alone. */
-:root[data-theme="light"] dialog.module-modal .agent-card-v6 {
+:root[data-theme="light"] .explore-page .agent-card-v6 {
   background: var(--surface);
   border-color: var(--line);
 }
-dialog.module-modal .agents-grid-v6 {
+.explore-page .agents-grid-v6 {
   gap: 20px;
 }
-dialog.module-modal .agent-detail-overlay {
+.explore-page .agent-detail-overlay {
   border-color: var(--line);
 }
 
@@ -829,7 +795,7 @@ dialog.module-modal .agent-detail-overlay {
    summary + platform links collapsed behind .q-more (styled above). Only
    the ported .ep-tile-listen's own border-top hairline needs neutralizing
    inside the quiet dialog context; everything else already reads calm. */
-dialog.module-modal .ep-tile-listen {
+.explore-page .ep-tile-listen {
   border-top: 0;
   padding-top: 4px;
 }
@@ -838,23 +804,23 @@ dialog.module-modal .ep-tile-listen {
    disclosure, reusing the .q-tabs/.q-tab component verbatim for visual
    consistency with Problems/InterceptOS. Stat anchor stays var(--fg), large,
    from the always-visible 07-01 shell above this hook. */
-dialog.module-modal .q-case-detail {
+.explore-page .q-case-detail {
   margin-top: 28px;
   max-width: 62ch;
 }
-dialog.module-modal .q-case-tabs {
+.explore-page .q-case-tabs {
   margin: 0 0 24px;
 }
-dialog.module-modal .q-case-body {
+.explore-page .q-case-body {
   margin-bottom: 20px;
 }
-dialog.module-modal .q-case-text {
+.explore-page .q-case-text {
   font-size: 15px;
   line-height: 1.6;
   color: var(--fg-2);
   margin: 0;
 }
-dialog.module-modal .q-case-results {
+.explore-page .q-case-results {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -862,14 +828,14 @@ dialog.module-modal .q-case-results {
   flex-direction: column;
   gap: 12px;
 }
-dialog.module-modal .q-case-results li {
+.explore-page .q-case-results li {
   font-size: 15px;
   line-height: 1.5;
   color: var(--fg-2);
   padding-left: 20px;
   position: relative;
 }
-dialog.module-modal .q-case-results li::before {
+.explore-page .q-case-results li::before {
   content: "";
   position: absolute;
   left: 2px;
@@ -879,12 +845,12 @@ dialog.module-modal .q-case-results li::before {
   border-radius: 50%;
   background: var(--fg-3);
 }
-dialog.module-modal .q-case-agents {
+.explore-page .q-case-agents {
   font-size: 13px;
   color: var(--fg-3);
   margin: 0;
 }
-dialog.module-modal .q-case-agents b {
+.explore-page .q-case-agents b {
   color: var(--fg-2);
   font-weight: 600;
 }
@@ -892,11 +858,11 @@ dialog.module-modal .q-case-agents b {
 @media (prefers-reduced-motion: reduce) {
   .card,
   .hero-video-layer .video-toggle,
-  dialog.module-modal .q-tab,
-  dialog.module-modal .q-step,
-  dialog.module-modal .q-step-prev,
-  dialog.module-modal .q-step-next,
-  dialog.module-modal .q-flow-bridge a {
+  .explore-page .q-tab,
+  .explore-page .q-step,
+  .explore-page .q-step-prev,
+  .explore-page .q-step-next,
+  .explore-page .q-flow-bridge a {
     transition: none;
   }
 }

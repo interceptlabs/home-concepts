@@ -1,21 +1,24 @@
-/* Concept D — quiet module reskin (07-02, ITER-05/ITER-06).
+/* Concept D — quiet module reskin (07-02, ITER-05/ITER-06; retargeted 08-01
+   for the standalone quiet explore pages replacing the homepage's module
+   dialogs).
 
-   Vanilla JS, no libraries, one IIFE. Loaded AFTER deployed.js and cards.js.
-   Renders new, quieter DOM for the homepage's dialog windows by reading
-   deployed.js's own untouched data objects (PROBLEMS_RR, PROBLEM_FLOWS,
-   CASES — all top-level `const` bindings in an earlier classic <script>,
-   which stay reachable as bare identifiers by any later classic <script> in
-   the same document/realm) AT RENDER TIME. This file never hard-codes a
-   copy string pulled out of those objects — every render function reads
-   the live global directly, which is what keeps qa/concept-d-script-diff.py
+   Vanilla JS, no libraries, one IIFE. Loaded AFTER deployed.js on each of
+   concept-d/pages/explore/{problems,interceptos,agents,labs,insights,
+   case-*}.html. Renders new, quieter DOM by reading deployed.js's own
+   untouched data objects (PROBLEMS_RR, PROBLEM_FLOWS, CASES — all
+   top-level `const` bindings in an earlier classic <script>, which stay
+   reachable as bare identifiers by any later classic <script> in the same
+   document/realm) AT RENDER TIME. This file never hard-codes a copy string
+   pulled out of those objects — every render function reads the live
+   global directly, which is what keeps qa/concept-d-script-diff.py
    (byte-identical on the SOURCE objects) a sufficient verbatim guarantee
    even though this file's renders are new (07-RESEARCH.md Pitfall 4).
 
    deployed.js is never edited. Its own buildSolve()/renderFlow() calls at
-   load time now target #solveDetail/#probFlow, both of which no longer
-   exist inside index.html's dialogs (05-03's null guards make those calls a
-   silent no-op here) — pages/os.html keeps its own #probFlow untouched, so
-   the standalone page is unaffected. */
+   load time target #solveDetail/#probFlow, neither of which exists on any
+   explore page (05-03's null guards make those calls a silent no-op here)
+   — pages/os.html keeps its own #probFlow untouched, so the standalone
+   nav-page is unaffected. */
 (function () {
   "use strict";
 
@@ -120,7 +123,7 @@
         "</div>" +
       "</div>" +
       '<div class="q-flow-bridge">' +
-        '<a href="#agents">Meet the agents that compose this work <span class="arrow">&darr;</span></a>' +
+        '<a href="agents.html">Meet the agents that compose this work <span class="arrow">&darr;</span></a>' +
       "</div>";
 
     var prevBtn = quietFlowEl.querySelector(".q-step-prev");
