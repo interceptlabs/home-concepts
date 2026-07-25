@@ -62,9 +62,9 @@ Requirements for the side-by-side review deliverable. Each maps to roadmap phase
 - [x] **ITER-01**: Desktop first viewport contains the compact hero (reduced headline + blurb) AND the full section-card grid — most information above the fold
 - [x] **ITER-02**: Section cards are uniform height, aligned top and bottom, copy anchored bottom uniformly, each with an explicit expand CTA
 - [x] **ITER-03**: Cards are semi-opaque over the video with a hover state that mimics/echoes the background video
-- [ ] **ITER-04**: Card expansion is a scaling transition into a full-viewport modular window
-- [ ] **ITER-05**: Module content inside the windows is reskinned quieter — verbatim copy, progressive disclosure, no walls of text
-- [ ] **ITER-06**: A full-screen work section follows the hero: campaign reel background (existing asset) + three small case cards with the same card-to-module transition and composition
+- [x] **ITER-04**: Card expansion is a scaling transition into a full-viewport modular window
+- [x] **ITER-05**: Module content inside the windows is reskinned quieter — verbatim copy, progressive disclosure, no walls of text
+- [x] **ITER-06**: A full-screen work section follows the hero: campaign reel background (existing asset) + three small case cards with the same card-to-module transition and composition
 - [x] **ITER-07**: FAQs, Start the Conversation, and footer are plain below-fold sections — not cards, not modals
 - [x] **ITER-08**: Client logo strip kept in between sections as currently placed
 
@@ -132,9 +132,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ITER-01 | Phase 7 | Complete |
 | ITER-02 | Phase 7 | Complete |
 | ITER-03 | Phase 7 | Complete |
-| ITER-04 | Phase 7 | Pending |
-| ITER-05 | Phase 7 | Pending |
-| ITER-06 | Phase 7 | Pending |
+| ITER-04 | Phase 7 | Complete |
+| ITER-05 | Phase 7 | Complete |
+| ITER-06 | Phase 7 | Complete |
 | ITER-07 | Phase 7 | Complete |
 | ITER-08 | Phase 7 | Complete |
 | QA-01 | Phase 6 | Complete |
