@@ -782,6 +782,113 @@ dialog.module-modal .q-flow-bridge a:hover {
   color: var(--flarepop);
 }
 
+/* Labs (#dlg-labs) — nothing to disclose, so the quiet pass is layout only:
+   neutralize the ported section's own flarepop-wash background + border-top
+   hairline (found via honest capture review: a floating pink block over a
+   sea of empty white read as the opposite of "quiet"), let the stat sit as
+   the sole visual anchor with generous whitespace, single-column measure. */
+dialog.module-modal .labs {
+  background: none;
+  border-top: 0;
+}
+dialog.module-modal .labs-intro {
+  max-width: 62ch;
+}
+dialog.module-modal .labs-stats {
+  margin: 32px 0;
+  border-top: 0;
+}
+
+/* Agents (#dlg-agents) — least rework: deployed markup/ids/renderers kept
+   as-is, quieted via overrides only. Calmer neutral card surface (was a
+   permanent flarepop wash), lighter border, more breathing room in the grid. */
+dialog.module-modal .agent-card-v6 {
+  background: var(--surface);
+  border-color: var(--line);
+}
+/* deployed.css's own light-theme override (`:root[data-theme="light"]
+   .agent-card-v6{background:linear-gradient(rgba(255,0,229,.055),...),
+   var(--surface);}`) carries higher cascade specificity (root+attr+class = 3
+   class-level selectors) than the plain dialog-scoped rule above (2 classes +
+   1 type) and would otherwise still win, keeping the flarepop gradient wash.
+   Matching the same :root[data-theme="light"] prefix here (rather than
+   reaching for !important) lets this quiet override win on specificity
+   alone. */
+:root[data-theme="light"] dialog.module-modal .agent-card-v6 {
+  background: var(--surface);
+  border-color: var(--line);
+}
+dialog.module-modal .agents-grid-v6 {
+  gap: 20px;
+}
+dialog.module-modal .agent-detail-overlay {
+  border-color: var(--line);
+}
+
+/* Insights (#dlg-insights) — image/number/title/guest visible by default;
+   summary + platform links collapsed behind .q-more (styled above). Only
+   the ported .ep-tile-listen's own border-top hairline needs neutralizing
+   inside the quiet dialog context; everything else already reads calm. */
+dialog.module-modal .ep-tile-listen {
+  border-top: 0;
+  padding-top: 4px;
+}
+
+/* Case windows (.q-case-detail) — Challenge/Approach/Results single-open
+   disclosure, reusing the .q-tabs/.q-tab component verbatim for visual
+   consistency with Problems/InterceptOS. Stat anchor stays var(--fg), large,
+   from the always-visible 07-01 shell above this hook. */
+dialog.module-modal .q-case-detail {
+  margin-top: 28px;
+  max-width: 62ch;
+}
+dialog.module-modal .q-case-tabs {
+  margin: 0 0 24px;
+}
+dialog.module-modal .q-case-body {
+  margin-bottom: 20px;
+}
+dialog.module-modal .q-case-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--fg-2);
+  margin: 0;
+}
+dialog.module-modal .q-case-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+dialog.module-modal .q-case-results li {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--fg-2);
+  padding-left: 20px;
+  position: relative;
+}
+dialog.module-modal .q-case-results li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 9px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--fg-3);
+}
+dialog.module-modal .q-case-agents {
+  font-size: 13px;
+  color: var(--fg-3);
+  margin: 0;
+}
+dialog.module-modal .q-case-agents b {
+  color: var(--fg-2);
+  font-weight: 600;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .card,
   .hero-video-layer .video-toggle,

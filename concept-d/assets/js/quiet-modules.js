@@ -157,4 +157,67 @@
     });
     activateOsTab("intelligence");
   }
+
+  /* ============ Case windows (.q-case-detail) — single-open C/A/R ============ */
+  /* The always-visible stat/name/client/summary layer lives in the static
+     07-01 shell above this hook — this only fills the progressive-disclosure
+     Challenge/Approach/Results section + the agents credit line, reading
+     CASES[key] (untouched, script-diff-gated data) at render time. */
+
+  var CASE_FIELDS = [
+    { key: "challenge", label: "Challenge" },
+    { key: "approach", label: "Approach" },
+    { key: "results", label: "Results" },
+  ];
+
+  function renderCaseField(root, key, field) {
+    var c = typeof CASES !== "undefined" ? CASES[key] : null;
+    if (!c) return;
+    var body = root.querySelector(".q-case-body");
+    if (!body) return;
+
+    if (field === "results") {
+      body.innerHTML = '<ul class="q-case-results">' +
+        c.results.map(function (r) { return "<li>" + r + "</li>"; }).join("") +
+        "</ul>";
+    } else {
+      body.innerHTML = '<p class="q-case-text">' + c[field] + "</p>";
+    }
+  }
+
+  function buildCaseDetail(root) {
+    var key = root.dataset.key;
+    var c = typeof CASES !== "undefined" ? CASES[key] : null;
+    if (!c) return;
+
+    var tabsHtml = CASE_FIELDS
+      .map(function (f, i) {
+        return (
+          '<button type="button" class="q-tab' + (i === 0 ? " is-active" : "") + '" role="tab" ' +
+          'aria-selected="' + (i === 0 ? "true" : "false") + '" data-q-case-field="' + f.key + '">' +
+          f.label + "</button>"
+        );
+      })
+      .join("");
+
+    root.innerHTML =
+      '<div class="q-tabs q-case-tabs" role="tablist" aria-label="Case detail section">' + tabsHtml + "</div>" +
+      '<div class="q-case-body"></div>' +
+      '<p class="q-case-agents"><b>Agents:</b> ' + c.agents + "</p>";
+
+    renderCaseField(root, key, CASE_FIELDS[0].key);
+
+    root.querySelectorAll(".q-case-tabs .q-tab").forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        root.querySelectorAll(".q-case-tabs .q-tab").forEach(function (t) {
+          var on = t === tab;
+          t.classList.toggle("is-active", on);
+          t.setAttribute("aria-selected", on ? "true" : "false");
+        });
+        renderCaseField(root, key, tab.dataset.qCaseField);
+      });
+    });
+  }
+
+  document.querySelectorAll(".q-case-detail[data-key]").forEach(buildCaseDetail);
 })();
