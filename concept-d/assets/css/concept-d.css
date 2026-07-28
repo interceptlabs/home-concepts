@@ -30,34 +30,9 @@
   height: 100%;
   object-fit: cover;
 }
-.hero-video-layer .video-toggle {
-  position: absolute;
-  right: 24px;
-  bottom: 24px;
-  z-index: 1;
-  padding: 10px 18px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.92);
-  color: var(--fg);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.6s cubic-bezier(0.37, 0, 0.63, 1);
-}
-.hero-video-layer .video-toggle:hover {
-  background: rgba(255, 255, 255, 1);
-}
-.hero-video-layer .video-toggle:focus-visible {
-  outline: 2px solid var(--fg);
-  outline-offset: 2px;
-}
-/* Without JS the toggle has no handler — hide it (also fixes its no-JS contrast). */
-html:not(.has-js) .hero-video-layer .video-toggle {
-  display: none;
-}
+/* IT6 round 6 (Jon): the hero's pause chip is gone — the ambient loop runs
+   uncontrolled (prefers-reduced-motion still never autoplays, and the tab-
+   hidden battery guard in hero-video.js remains). */
 
 /* ---------- Hero viewport: hero copy + card field over the video ---------- */
 /* min-height, NOT a fixed height — if the card field overflows a small
@@ -70,6 +45,16 @@ html:not(.has-js) .hero-video-layer .video-toggle {
    topbar, so without this subtraction topbar-height + 100dvh always
    overflows the first viewport by exactly the topbar's height, regardless
    of anything inside .hero-viewport. */
+/* Logo/anchor return-to-home lands at the true start position, not tucked
+   under the sticky topbar: the home logo is href="#main", and without a
+   scroll offset the browser aligns #main's top to y=0, so the fixed 73px
+   topbar then covers the first 73px of the hero. scroll-margin-top pulls the
+   target down by the topbar height so the hero sits exactly where it does on
+   a fresh load. scroll-padding-top does the same for every other in-page
+   anchor (the trilogy chapter hashes). */
+html { scroll-padding-top: 73px; }
+#main { scroll-margin-top: 73px; }
+
 .hero-viewport {
   position: relative;
   z-index: 1;
@@ -291,12 +276,20 @@ html:not(.has-js) .hero-video-layer .video-toggle {
 .work-reel {
   position: relative;
   z-index: 1;
-  min-height: 100dvh;
+  /* IT6 round 3/4 (Jon): the reel was cropping the film's bottom-anchored
+     titles. First fix capped the section at viewport height, but in a real
+     browser window (toolbar chrome shrinks dvh) the cap re-engaged and the
+     following FAQs section sat over the frame's bottom. The reel is a
+     cinematic full-frame moment: it now ALWAYS holds the video's exact
+     16:9 (56.25vw), even when that slightly exceeds one viewport — zero
+     crop at every desktop width, FAQs always start cleanly below. */
+  height: 56.25vw;
+  min-height: 480px;
   overflow: hidden;
   background: var(--page);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* iteration 4: content lives at the bottom of the reel */
+  justify-content: flex-end;
   padding: 64px 0 40px;
 }
 .reel-video {
@@ -307,11 +300,20 @@ html:not(.has-js) .hero-video-layer .video-toggle {
   height: 100%;
   object-fit: cover;
 }
-.reel-toggle {
+/* IT6 round 6: the reel now carries the session's music track (muxed into
+   the video files), so the pause chip gains a sibling sound chip — both
+   live in one bottom-right cluster. Autoplay stays muted (browser policy);
+   sound only ever starts from the user's own press. */
+.reel-controls {
   position: absolute;
   right: 24px;
   bottom: 24px;
   z-index: 2;
+  display: flex;
+  gap: 10px;
+}
+.reel-toggle,
+.reel-sound {
   padding: 10px 18px;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -324,89 +326,70 @@ html:not(.has-js) .hero-video-layer .video-toggle {
   cursor: pointer;
   transition: background-color 0.6s cubic-bezier(0.37, 0, 0.63, 1);
 }
-.reel-toggle:hover {
+.reel-toggle:hover,
+.reel-sound:hover {
   background: rgba(255, 255, 255, 1);
 }
-.reel-toggle:focus-visible {
+.reel-toggle:focus-visible,
+.reel-sound:focus-visible {
   outline: 2px solid var(--fg);
   outline-offset: 2px;
 }
-html:not(.has-js) .reel-toggle {
+html:not(.has-js) .reel-controls {
   display: none;
 }
-/* Iteration 4: bottom bar — CTA headline beside three discreet landscape cards.
-   Flat translucent surfaces only (never a gradient scrim). */
-.reel-bottom {
+/* Iteration 6 (Jon): the reel carries no work content anymore — the montage
+   speaks for itself. One button, top-left, routes to the work landing page
+   (pages/work.html), where the former overlay copy + case grid live.
+   (.work-reel keeps justify-content:flex-end for the work-hero variant;
+   margin-bottom:auto floats the button rail to the top.) */
+.reel-top {
   position: relative;
   z-index: 1;
   width: 100%;
-  display: grid;
-  grid-template-columns: minmax(280px, 5fr) 7fr;
-  gap: 24px;
-  /* Iteration 5: the headline module matches the stacked cards' height
-     exactly — grid stretch instead of bottom-alignment. */
-  align-items: stretch;
+  margin-bottom: auto;
 }
-/* The column fills the stretched height without reading as
-   stretched-empty: eyebrow anchors the top edge, headline+lead stay one
-   group anchored to the bottom (margin-top:auto idiom, same as
-   .card-bottom), and the space breathes in the middle. */
-.reel-cta {
-  padding: 20px 24px;
+.reel-explore {
+  display: inline-flex;
+  align-items: center;
+  background: var(--flarepop);
+  color: #0a0a0f;
+  font-weight: 700;
+  font-size: 15.5px;
+  padding: 14px 22px;
+  border-radius: 8px;
+  transition: background-color 0.16s;
+}
+.reel-explore:hover {
+  background: var(--flarepop-200);
+  color: #0a0a0f;
+}
+.reel-explore:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 3px;
+}
+
+/* Work landing hero (pages/work.html): the reel as ambient background with
+   the former reel-overlay copy on a flat translucent panel (never a
+   gradient scrim), case grid anchored in the section below. */
+.work-hero {
+  min-height: 78dvh;
+}
+.work-hero-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  padding: 24px 28px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.78);
-  display: flex;
-  flex-direction: column;
+  background: rgba(255, 255, 255, 0.82);
 }
-.reel-cta .reel-cta-h2 {
-  margin-top: auto;
+.work-hero-copy .work-hero-h {
+  font-size: clamp(26px, 3.2vw, 42px);
+  margin: 6px 0 10px;
 }
-.reel-cta .reel-cta-h2 {
-  font-size: clamp(20px, 1.8vw, 28px);
-  margin-bottom: 8px;
-}
-.reel-cta .section-lead {
+.work-hero-copy .section-lead {
   color: var(--fg-2);
-  font-size: 14px;
-}
-.reel-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.card--landscape {
-  flex-direction: row;
-  align-items: center;
-  gap: 16px;
-  min-height: 0;
-  padding: 14px 18px;
-  background: rgba(255, 255, 255, 0.7);
-}
-.card--landscape .card-eyebrow {
-  flex: 0 0 34%;
-  margin-bottom: 0;
-}
-.card--landscape .card-bottom {
-  margin-top: 0;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex: 1;
-}
-.card--landscape .card-heading {
   font-size: 15px;
-  margin: 0;
-  flex: 1;
-}
-.card--landscape .card-teaser {
-  display: none; /* discreet: eyebrow + title + CTA only; full copy lives on the case page */
-}
-.card--landscape .card-cta {
-  white-space: nowrap;
-}
-@media (max-width: 899.98px) {
-  .reel-bottom { grid-template-columns: 1fr; }
-  .card--landscape .card-eyebrow { flex-basis: 40%; }
 }
 
 /* ---------- Case-window dialog shells (ITER-06) ---------- */
@@ -474,35 +457,31 @@ html:not(.has-js) .reel-toggle {
     animation: none !important;
   }
 }
-/* Prominent "back to home" affordance — the first focusable element inside
-   every explore page's <main>. Iteration 5: lives inside a .wrap row
-   (.explore-back-row) so it aligns with the page content container instead
-   of hugging the viewport edge, and sits on the same translucent white
-   chip as .video-toggle so its dark ink stays AA over the new background
-   footage (before: bare ink straight over video). Hover feedback is
-   background/border only — the old flarepop hover ink measured 3.3:1 on
-   white (fails AA for 13px text) and is dropped in the light-mode contrast
-   pass. */
+/* "Back" affordance — the first focusable element inside every explore
+   page's <main>, aligned to the content container via .explore-back-row.
+   IT6 round 6 (Jon): quieter — just "← Back", a small borderless chip
+   (a soft translucent field keeps the dark ink AA over the footage)
+   instead of the old full-size bordered pill. */
 .explore-back {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  height: 34px;
   margin: 16px 0 0;
-  padding: 10px 18px;
-  border: 1px solid var(--line);
+  padding: 0 14px;
+  border: 0;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.6);
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--fg);
+  color: #2c2c3a;
   text-decoration: none;
-  transition:
-    background-color 0.4s cubic-bezier(0.37, 0, 0.63, 1),
-    border-color 0.4s cubic-bezier(0.37, 0, 0.63, 1);
+  transition: background-color 0.4s cubic-bezier(0.37, 0, 0.63, 1);
 }
 .explore-back:hover {
-  background: rgba(255, 255, 255, 1);
-  border-color: var(--fg-3);
+  background: rgba(255, 255, 255, 0.92);
+  color: #0a0a0f;
 }
 .explore-back:focus-visible {
   outline: 2px solid var(--fg);
@@ -696,7 +675,9 @@ html:not(.has-js) .card-heading {
 .explore-page .q-bridge {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 16px;
+  /* IT6 round 7 (Jon): quieter closing line — was 16px and read heavy at
+     the panel bottom. */
+  font-size: 14px;
   line-height: 1.5;
   color: var(--fg);
 }
@@ -822,7 +803,9 @@ html:not(.has-js) .card-heading {
 }
 .explore-page .q-step-prev:disabled,
 .explore-page .q-step-next:disabled {
-  opacity: 0.35;
+  /* IT6 round 7 (Jon): .35 read as broken on the blue pane — still clearly
+     disabled at .55, but legible. */
+  opacity: 0.55;
   cursor: default;
 }
 .explore-page .q-step-prev:not(:disabled):hover,
@@ -888,9 +871,8 @@ html:not(.has-js) .card-heading {
 .explore-page .agents-grid-v6 {
   gap: 20px;
 }
-.explore-page .agent-detail-overlay {
-  border-color: var(--line);
-}
+/* (the agent detail overlay itself is recomposed at body level — IT6
+   round 8 section at the end of this file) */
 
 /* Insights (#dlg-insights) — image/number/title/guest visible by default;
    summary + platform links collapsed behind .q-more (styled above). Only
@@ -974,14 +956,17 @@ html:not(.has-js) .card-heading {
 .hero-d .kick,
 .card-eyebrow,
 .card-cta,
-.explore-back,
 .idx,
 .clients-lbl,
 .reel-toggle,
-.hero-video-layer .video-toggle,
-.section-video-toggle {
+.reel-sound {
   font-family: 'Inter', var(--font-body, system-ui, sans-serif);
   font-weight: 600;
+}
+/* the quiet back chip stays Inter but a step lighter than the chrome labels */
+.explore-back {
+  font-family: 'Inter', var(--font-body, system-ui, sans-serif);
+  font-weight: 500;
 }
 
 /* ---------- Iteration 5 (Phase 10): viewport-fit explore compositions ---------- */
@@ -1141,38 +1126,9 @@ main.explore-page {
   height: 100%;
   object-fit: cover;
 }
-/* Pause control — same pattern as the homepage .video-toggle, but a
-   SIBLING of the aria-hidden layer (accessible + clickable above the
-   stacked content). Fixed dark ink on the fixed near-white chip: this is
-   light-only chrome over light footage, same rationale as the panels. */
-.section-video-toggle {
-  position: fixed;
-  right: 24px;
-  bottom: 24px;
-  z-index: 5;
-  padding: 10px 18px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.92);
-  color: #0a0a0f;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background-color 0.6s cubic-bezier(0.37, 0, 0.63, 1);
-}
-.section-video-toggle:hover {
-  background: rgba(255, 255, 255, 1);
-}
-.section-video-toggle:focus-visible {
-  outline: 2px solid #0a0a0f;
-  outline-offset: 2px;
-}
-/* Without JS the toggle has no handler — hide it (homepage rule's twin). */
-html:not(.has-js) .section-video-toggle {
-  display: none;
-}
+/* IT6 round 10 (Jon): the explore pages' pause chip is gone — Pause lives
+   ONLY on the work reel now. section-video.js keeps the reduced-motion and
+   tab-hidden guards. */
 
 /* ---------- Light-mode contrast pass (10-01) ---------- */
 /* Measured against the EFFECTIVE backgrounds: the section posters range
@@ -1217,8 +1173,8 @@ html:not(.has-js) .section-video-toggle {
    which flips to WHITE in dark theme — an invisible white-on-white button.
    Fixed ink on a fixed light chip is correct in both themes (found during
    this pass; same category as the no-JS legibility fix above). */
-.hero-video-layer .video-toggle,
-.reel-toggle {
+.reel-toggle,
+.reel-sound {
   color: #0a0a0f;
 }
 
@@ -1257,6 +1213,48 @@ html:not(.has-js) .section-video-toggle {
   }
   .explore-panel {
     overflow-y: auto;
+    /* IT6 round 6 (Jon): panel content starts level with the lede rail's
+       headline — the rail spends its first ~35px on the eyebrow (12px line
+       + 16px margin + half-leading), so the panel mirrors that spend
+       (measured: h2 top and quote top land within 1px at 1440×900). */
+    padding-top: 63px;
+  }
+}
+
+/* ---------- IT6 round 12c (Jon): 1x displays get the pre-rendered wordmark ---------- */
+/* On non-Retina screens the browser's live path rasterization of the small
+   wordmark is uneven — and it varies by GPU raster path, so a real machine
+   can render it crunchier than headless QA does (Jon's 07-26 screenshot).
+   True 1x screens now paint a supersampled raster of the SAME canon
+   geometry (16x render, Lanczos downscale, one file per size/ink) as the
+   svg's own background while the vector wordmark paths hide; the mark
+   stays vector so the glitch keeps animating. Retina keeps pure vector.
+   The #intercept-lockup selector reaches the symbol-rig pages (about /
+   insights-hub / chatb2b) — styles on symbol content apply to every
+   <use> instance. */
+@media (max-resolution: 1.05dppx) {
+  svg.logo:not(.sm) {
+    /* integer box (was 126.36px from the aspect ratio): guarantees the
+       background raster maps 1:1 to device pixels — a fractional box
+       re-phases the paint and resamples stems */
+    width: 127px;
+    aspect-ratio: auto;
+    background: url("../img/wordmark-30-ink.png") 0 0 / 127px 30px no-repeat;
+  }
+  svg.logo.sm {
+    width: 110px;
+    aspect-ratio: auto;
+    background: url("../img/wordmark-26-ink.png") 0 0 / 110px 26px no-repeat;
+  }
+  :root[data-theme="dark"] svg.logo:not(.sm) {
+    background-image: url("../img/wordmark-30-white.png");
+  }
+  :root[data-theme="dark"] svg.logo.sm {
+    background-image: url("../img/wordmark-26-white.png");
+  }
+  svg.logo g[fill="var(--logo-ink)"],
+  #intercept-lockup g[fill="var(--logo-ink)"] {
+    display: none;
   }
 }
 
@@ -1285,4 +1283,1874 @@ html:not(.has-js) .section-video-toggle {
   align-items: center;
   padding-top: 0;
   padding-bottom: 0;
+}
+/* Solid topbar (IT6). deployed.css sets --topbar-bg at 82% alpha with a
+   10px backdrop blur, so the hero video's moving wave field bled through
+   behind the lockup — the wordmark's antialiased edge pixels blended with
+   a moving background and read as crawling artifacts around the letters.
+   An opaque field keeps every edge pixel stable; with no alpha the blur
+   samples nothing, so it goes too. */
+:root { --topbar-bg: #0a0a0f; }
+:root[data-theme="light"] { --topbar-bg: #ffffff; }
+.topbar { backdrop-filter: none; }
+
+/* ---------- Iteration 6 (Jon): explore contrast + color pass ---------- */
+/* Direction: the quiet pages read too spare — white cards on near-white
+   footage, hairline chips, dead space at panel bottoms, six control sizes.
+   Moves: (1) the lede rail becomes a solid ink panel (the deployed site's
+   own dark-island idiom) with Flarepop doing real work; (2) the content
+   panel gains flat color washes (never gradients) and bigger stat ink;
+   (3) one uniform 44px control height across every interactive pattern;
+   (4) rails and panels fill their zones — controls and stats anchor to
+   zone bottoms instead of floating in whitespace. Additive only. */
+
+/* (1) Ink lede rail — token re-pin to deployed's own dark-theme values. */
+.explore-lede {
+  --fg: #ffffff;
+  --fg-2: #d1d6e6;
+  --fg-3: #b8bed1;
+  --line: rgba(255, 255, 255, 0.14);
+  --line-2: rgba(255, 255, 255, 0.30);
+  background: #0a0a0f;
+  color: var(--fg);
+  display: flex;
+  flex-direction: column;
+}
+.explore-lede .idx,
+:root[data-theme="light"] .explore-lede .idx,
+:root[data-theme="light"] .explore-page #os .explore-lede .idx {
+  color: var(--flarepop); /* 6.4:1 on ink — the dark-pink light token dies here */
+}
+/* IT6 round 6 (Jon): pickers sit CENTERED in the rail's leftover space
+   (was bottom-anchored — the four blocks hugged the rail bottom with a
+   dead gap above). Auto margins both sides split the free space evenly. */
+.explore-lede .q-tabs,
+.explore-lede .agent-tabs {
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-top: 24px;
+}
+/* insights' lone archive pill gets the same centered treatment */
+.explore-lede .explore-archive-link {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+/* lede pickers, re-cut for the ink rail */
+.explore-page .explore-lede .q-tab {
+  border-color: rgba(255, 255, 255, 0.30);
+  color: #d1d6e6;
+}
+.explore-page .explore-lede .q-tab:hover {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+.explore-page .explore-lede .q-tab.is-active {
+  background: var(--flarepop);
+  border-color: var(--flarepop);
+  color: #0a0a0f;
+  font-weight: 600;
+}
+.explore-page .explore-lede .q-tab.is-active .q-tab-eyebrow {
+  color: rgba(10, 10, 15, 0.72);
+}
+.explore-page .explore-lede .q-tab:focus-visible {
+  outline-color: #ffffff;
+}
+.explore-lede .agent-tab,
+:root[data-theme="light"] .explore-lede .agent-tab {
+  border-color: rgba(255, 255, 255, 0.30);
+  color: #d1d6e6;
+}
+.explore-lede .agent-tab:hover,
+:root[data-theme="light"] .explore-lede .agent-tab:hover {
+  border-color: #ffffff;
+  color: #ffffff;
+  background: none;
+}
+.explore-lede .agent-tab[aria-selected="true"],
+:root[data-theme="light"] .explore-lede .agent-tab[aria-selected="true"] {
+  background: var(--flarepop);
+  border-color: var(--flarepop);
+  color: #0a0a0f;
+}
+/* case ledes: headline group up top, the metric anchors HUGE at the rail
+   bottom in Flarepop — the page's color anchor. DOM order (stat first)
+   stays; flex order swaps it visually. */
+.explore-lede .case-stat {
+  order: 9;
+  margin-top: auto;
+  padding-top: 28px;
+}
+.explore-lede .case-stat .c-metric {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(56px, 5.5vw, 88px);
+  line-height: 0.95;
+  color: var(--flarepop);
+  margin: 0 0 6px;
+}
+.explore-lede .case-stat .c-metric-lbl {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+  margin: 0;
+}
+.explore-lede .case-top .c-client {
+  color: #ffffff;
+}
+/* labs lede lockup accent stays flarepop on ink (it already is) */
+
+/* (2) Content panel: flat color washes + real stat ink. */
+.explore-panel {
+  background: rgba(255, 255, 255, 0.9);
+}
+.explore-page .q-signal {
+  background: var(--flarepop-500, rgba(255, 0, 229, 0.09));
+  border-radius: 12px;
+  padding: 26px 28px;
+}
+/* IT6 round 6 (Jon): the stat is the panel's focus area — labs-stat scale,
+   so it fills the wash instead of sitting in it. */
+.explore-page .q-signal-num {
+  font-size: clamp(64px, 6vw, 96px);
+  line-height: 0.95;
+  color: var(--accent-ink, #a8008c); /* deployed's own light-mode flarepop ink token */
+}
+.explore-page .q-signal-lbl {
+  font-size: 14.5px;
+  max-width: 44ch;
+}
+/* system/tool chips go Coolsweep — filled, not hairline */
+.explore-page .q-flow-chip {
+  background: rgba(26, 122, 255, 0.10);
+  border-color: transparent;
+  color: #1257c4;
+}
+.explore-page .q-flow-chip b {
+  color: #0a2f66;
+}
+/* case C/A/R tabs: single-line segmented controls; active = solid ink */
+.explore-page .q-case-tabs .q-tab {
+  flex-direction: row;
+  align-items: center;
+}
+.explore-page .q-case-tabs .q-tab.is-active {
+  background: #0a0a0f;
+  border-color: #0a0a0f;
+  color: #ffffff;
+}
+/* labs stat = the panel's big color moment */
+.explore-page .labs-stat-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(64px, 6vw, 96px);
+  line-height: 0.95;
+  color: var(--accent-ink, #a8008c);
+}
+.explore-page .labs-stats {
+  background: var(--flarepop-500, rgba(255, 0, 229, 0.09));
+  border-radius: 14px;
+  padding: 28px 32px;
+}
+
+/* (3) Uniform control height: every single-line interactive control is
+   exactly 44px tall. Multi-line pickers (.q-tab lede lists) keep their
+   stacked anatomy; everything else aligns. */
+.explore-page .q-step,
+.explore-page .q-step-prev,
+.explore-page .q-step-next,
+.explore-page .q-more summary,
+.explore-page .agent-tab,
+.explore-page .q-case-tabs .q-tab,
+.explore-page .btn,
+.explore-archive-link a {
+  display: inline-flex;
+  align-items: center;
+  height: 44px;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+.explore-page .q-more summary {
+  border: 1.5px solid rgba(10, 10, 15, 0.48);
+  border-radius: 999px;
+  width: fit-content;
+}
+.explore-page .q-more[open] summary {
+  margin-bottom: 16px;
+}
+.explore-archive-link a {
+  border: 1.5px solid rgba(10, 10, 15, 0.48);
+  border-radius: 999px;
+}
+
+/* (4) Zones fill their space — no dead bottoms, no reflow jumps. */
+.explore-panel > [id],
+.explore-panel > .q-case-detail {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+@media (min-width: 900px) {
+  .explore-panel {
+    display: flex;
+    flex-direction: column;
+  }
+  /* the closing bridge/nav anchors to the panel bottom */
+  .explore-page .q-bridge,
+  .explore-page .q-flow-bridge,
+  .explore-page .q-stepper-nav {
+    margin-top: auto;
+  }
+  .explore-page .q-stepper,
+  .explore-page .q-problem {
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+  }
+}
+/* case image: a flexing visual band — absorbs whatever panel height the
+   text below doesn't need (taller at 1440, tighter at 1280) so the case
+   pages hold the fold at both sizes with zero dead space and zero
+   internal scroll. The detail block keeps its natural height. */
+.explore-page .case-image {
+  max-width: none;
+  width: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+@media (min-width: 900px) {
+  .explore-page .explore-panel .case-image {
+    flex: 1 1 auto;
+    min-height: 220px;
+    height: 0; /* flex-grow owns the height; natural size would overflow first */
+  }
+  .explore-panel > .q-case-detail {
+    flex: 0 0 auto;
+  }
+}
+
+/* Iteration 6 polish: agents grid fills its panel; small pink inks move to
+   the AA-safe dark-pink token; tool chips read as filled Coolsweep. */
+@media (min-width: 900px) {
+  .explore-panel .agents-grid-v6 {
+    flex: 1;
+    min-height: 0;
+    align-content: stretch;
+    grid-auto-rows: 1fr;
+  }
+}
+.explore-page .agent-card-v6 .ac-go {
+  color: var(--accent-ink, #a8008c); /* 11px flarepop on white was 3.3:1 — deployed's own light idx token */
+}
+.explore-page .agent-chip {
+  background: rgba(26, 122, 255, 0.10);
+  border-color: transparent;
+  color: #1257c4;
+}
+
+/* Iteration 6 polish: insights episode wall fills its panel with real
+   16:9 thumbs; the lede's archive-link pill re-inked for the dark rail. */
+@media (min-width: 900px) {
+  .explore-panel .q-insights-grid {
+    flex: 1;
+    min-height: 0;
+    grid-auto-rows: 1fr;
+    margin-top: 0;
+  }
+  .explore-page .q-insights-grid .ep-tile-image {
+    aspect-ratio: 16/9;
+  }
+}
+.explore-lede .explore-archive-link a {
+  border-color: rgba(255, 255, 255, 0.32);
+  color: #ffffff;
+}
+.explore-lede .explore-archive-link a:hover {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+/* ---------- IT6 round 4 (Jon): work flow + explore panel pop ---------- */
+
+/* "Explore our work +" now deep-links to the case grid; land it clear of
+   the sticky topbar. */
+#work {
+  scroll-margin-top: 73px;
+}
+/* Work page: headline lives BESIDE the three case cards (not over the
+   reel hero — that frame has been seen by the time you arrive). */
+.work-split {
+  display: grid;
+  grid-template-columns: minmax(300px, 4fr) 8fr;
+  gap: 40px;
+  align-items: start;
+}
+.work-split .work-head .work-hero-h {
+  font-size: clamp(26px, 2.6vw, 38px);
+  margin: 6px 0 12px;
+}
+.work-split .work-head .section-lead {
+  color: var(--fg-2);
+  font-size: 15px;
+}
+.work-split .cases-v6 {
+  margin-top: 0;
+}
+@media (max-width: 979.98px) {
+  .work-split { grid-template-columns: 1fr; }
+}
+
+/* Centered case-study modal — explore-page grammar in a dialog: ink rail
+   with Flarepop metric beside a white content panel. Flat surfaces, no
+   gradients, hard geometry. */
+.case-modal {
+  width: min(1120px, 94vw);
+  height: min(760px, 88vh);
+  padding: 0;
+  border: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 30px 80px rgba(10, 10, 15, 0.42);
+}
+.case-modal::backdrop {
+  background: rgba(10, 10, 15, 0.62);
+}
+.case-modal .cm-grid {
+  display: grid;
+  grid-template-columns: minmax(300px, 5fr) 7fr;
+  height: 100%;
+}
+.case-modal .cm-rail {
+  background: #0a0a0f;
+  color: #ffffff;
+  padding: 36px 36px 32px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.case-modal .cm-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.case-modal .cm-client {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+}
+.case-modal .cm-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #d1d6e6;
+}
+.case-modal .cm-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(24px, 2.4vw, 34px);
+  line-height: 1.15;
+  margin: 0;
+}
+.case-modal .cm-metric {
+  margin-top: auto;
+  padding-top: 24px;
+}
+.case-modal .cm-metric-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(56px, 5vw, 84px);
+  line-height: 0.95;
+  color: var(--flarepop);
+  margin: 0 0 6px;
+}
+.case-modal .cm-metric-lbl {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #d1d6e6;
+  margin: 0;
+}
+.case-modal .cm-body {
+  padding: 32px 36px;
+  overflow-y: auto;
+  min-height: 0;
+  color: #0a0a0f;
+}
+.case-modal .cm-img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  display: block;
+}
+.case-modal .cm-eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-ink, #a8008c);
+  margin-bottom: 8px;
+}
+.case-modal .cm-sec {
+  margin-bottom: 22px;
+}
+.case-modal .cm-sec p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #2c2c3a;
+  margin: 0;
+}
+.case-modal .cm-results-wrap {
+  background: var(--flarepop-500, rgba(255, 0, 229, 0.09));
+  border-radius: 12px;
+  padding: 20px 24px;
+}
+.case-modal .cm-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.case-modal .cm-results li {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: #0a0a0f;
+  font-weight: 500;
+}
+.case-modal .cm-agents {
+  font-size: 13.5px;
+  color: #2c2c3a;
+}
+.case-modal .cm-agents b {
+  color: #0a0a0f;
+}
+.case-modal .cm-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #0a0a0f;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.case-modal .cm-close:focus-visible {
+  outline: 2px solid #0a0a0f;
+  outline-offset: 2px;
+}
+@media (max-width: 899.98px) {
+  .case-modal .cm-grid { grid-template-columns: 1fr; overflow-y: auto; }
+  .case-modal .cm-rail { min-height: 0; }
+}
+
+/* ---------- IT6 round 5 (Jon): blue content pane, no hard shadows ---------- */
+/* The hard-offset shadows are gone (both panes keep the shared soft
+   elevation). The right pane now sits on the deployed site's own deep
+   band-blue (#08285c — the #os/#convert section color) with white ink:
+   the ink rail + blue pane read as a solid two-plane composition, and
+   white tiles/cards inside the pane pop naturally. */
+.explore-panel {
+  --fg: #ffffff;
+  --fg-2: #d1d6e6;
+  --fg-3: #b8bed1;
+  --line: rgba(255, 255, 255, 0.16);
+  --line-2: rgba(255, 255, 255, 0.32);
+  background: var(--band-blue, #08285c);
+  color: var(--fg);
+}
+/* interior re-inks for the blue field */
+.explore-page .explore-panel .q-signal {
+  background: rgba(255, 255, 255, 0.10);
+}
+.explore-page .explore-panel .q-signal-num {
+  color: var(--flarepop);
+}
+.explore-page .explore-panel .q-flow-chip,
+.explore-page .explore-panel .agent-chip {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: transparent;
+  color: #ffffff;
+}
+.explore-page .explore-panel .q-flow-chip b {
+  color: #ffffff;
+}
+.explore-page .explore-panel .q-tab,
+.explore-page .explore-panel .q-step,
+.explore-page .explore-panel .q-step-prev,
+.explore-page .explore-panel .q-step-next,
+.explore-page .explore-panel .q-more summary {
+  border-color: rgba(255, 255, 255, 0.38);
+  color: #d1d6e6;
+}
+.explore-page .explore-panel .q-tab.is-active,
+.explore-page .explore-panel .q-step.is-active,
+.explore-page .explore-panel .q-case-tabs .q-tab.is-active {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: var(--band-blue, #08285c);
+  font-weight: 600;
+}
+.explore-page .explore-panel .q-step-prev:not(:disabled):hover,
+.explore-page .explore-panel .q-step-next:not(:disabled):hover,
+.explore-page .explore-panel .q-more[open] summary {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+/* white tiles inside the blue pane re-pin their own dark ink — the pane's
+   white tokens would otherwise paint white-on-white headings */
+.explore-page .explore-panel .ep-tile,
+.explore-page .explore-panel .agent-card-v6 {
+  --fg: #0a0a0f;
+  --fg-2: #2c2c3a;
+  --fg-3: #3a3a4a;
+  --line: rgba(10, 10, 15, 0.14);
+  --line-2: rgba(10, 10, 15, 0.26);
+  color: var(--fg);
+}
+.explore-page .explore-panel .ep-tile .q-more summary {
+  border-color: rgba(10, 10, 15, 0.48);
+  color: #2c2c3a;
+}
+/* IT6 round 15k (Jon): Labs "Up to 50%" owns the whole right panel — no
+   nested card, type maximised and centred as one composition. Palette-safe:
+   the number inherits --flarepop (remapped per skin); the label + button
+   read off the panel's own navy tokens. */
+.explore-page .explore-panel--center {
+  align-items: center;
+  text-align: center;
+}
+.explore-page .explore-panel .labs-stats {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.explore-page .explore-panel .labs-stat {
+  padding: 0;
+}
+.explore-page .explore-panel .labs-stat-num {
+  color: var(--flarepop);
+  font-size: clamp(84px, 8vw, 116px);
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+  margin-bottom: 22px;
+}
+.explore-page .explore-panel .labs-stat-lbl {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: var(--fg-2);
+}
+.explore-page .explore-panel .hero-ctas {
+  justify-content: center;
+  margin-top: 44px;
+}
+
+/* One control height everywhere on the pane: the label chips read as
+   buttons next to the 44px pills, so they align to the same height. */
+.explore-page .q-flow-chip,
+.explore-page .agent-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px; /* flex collapses the literal space before <b> ("RUNS ON CAMPAIGN STUDIO") */
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  box-sizing: border-box;
+}
+
+/* Lede pickers: 2-up card grid with aligned typography (problems' four
+   problem cards, interceptos' four flow cards, agents' four categories). */
+.explore-page .explore-lede .q-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.explore-page .explore-lede .q-tab {
+  min-height: 116px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+}
+.explore-page .explore-lede .q-tab .q-tab-name {
+  max-width: none;
+}
+.explore-lede .agent-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+/* IT6 round 6 (Jon): single-line picker labels CENTER in their buttons —
+   the agent roster's four category buttons, and InterceptOS's four
+   single-line problem cards (a lone line floating top-left in a 116px card
+   read as misaligned). Problems' stacked eyebrow+name cards keep their
+   top-left anatomy. */
+.explore-lede .agent-tab,
+:root[data-theme="light"] .explore-lede .agent-tab {
+  justify-content: center;
+  text-align: center;
+}
+.explore-page .explore-lede #qOsTabs.q-tabs .q-tab {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* ---------- IT6 round 7 (Jon): blue-pane fixes ---------- */
+
+/* Agent chips on the InterceptOS pane were near-invisible: deployed.css's
+   own `#os .agent-chip{background:var(--surface-3);color:var(--fg-2)}`
+   (ID specificity) kept the chip's LIGHT surface while the navy band's
+   token flip turned --fg-2 light too — light-on-light. Matching-plus
+   specificity re-pin; deployed.css is never edited. */
+.explore-page #os .explore-panel .agent-chip {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+/* Bottom-anchored text was hugging the pane's bottom edge — real air under
+   the last line on every explore pane. */
+.explore-panel {
+  padding-bottom: 40px;
+}
+
+/* Picker buttons must hold a two-line label: the uniform 44px becomes a
+   MINIMUM and the label wraps inside real vertical padding (the roster's
+   "Channel Empowerment" and the stage rail's tags clipped at fixed 44px). */
+.explore-page .q-step,
+.explore-page .agent-tab,
+.explore-page .q-case-tabs .q-tab {
+  height: auto;
+  min-height: 44px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 1.3;
+  white-space: normal;
+}
+
+/* ---------- IT6 round 8 (Jon): agent detail modal recomposed ---------- */
+/* The roster's pop-up was still the deployed compact card (pink-bordered
+   single pane, hairline head rule, green hairline pills) — foreign on the
+   explore pages. Recomposed in the case-modal grammar: ink rail beside a
+   white content pane, viewport-centered over the same dark backdrop, hard
+   ink shadow, flat surfaces, no rule lines. The markup moved to body level
+   in agents.html (stacking-context note there); deployed.js's open/close/
+   focus-trap mechanics are untouched. Scoped .explore-body — the elements
+   no longer live inside main.explore-page. */
+.explore-body .agent-detail-backdrop {
+  position: fixed;
+  inset: 0;
+  border-radius: 0;
+  background: rgba(10, 10, 15, 0.62);
+  z-index: 140; /* above the topbar (100), below deployed's drawers (150+) */
+}
+/* visibility re-key: the deployed show-rule targeted
+   .agents-stage.is-detail > backdrop, which no longer matches */
+.explore-body .agent-detail-overlay.is-open + .agent-detail-backdrop {
+  opacity: 1;
+  pointer-events: auto;
+}
+.explore-body .agent-detail-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: min(880px, 92vw);
+  max-height: min(620px, 88vh);
+  transform: translate(-50%, -46%) scale(0.96);
+  background: #ffffff;
+  border: 0;
+  border-radius: 16px;
+  padding: 0;
+  overflow: hidden; /* the body pane scrolls, never the shell */
+  box-shadow: 0 30px 80px rgba(10, 10, 15, 0.42);
+  z-index: 141;
+}
+.explore-body .agent-detail-overlay.is-open {
+  transform: translate(-50%, -50%) scale(1);
+}
+.explore-body .ad-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 5fr) 7fr;
+  flex: 1;
+  min-height: 0;
+}
+.explore-body .ad-rail {
+  background: #0a0a0f;
+  color: #ffffff;
+  padding: 36px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.explore-body .ad-rail .agent-detail-glyph {
+  width: 56px;
+  height: 56px;
+  color: var(--flarepop);
+  margin-bottom: 24px;
+  flex: none;
+}
+.explore-body .ad-rail .agent-detail-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(26px, 2.6vw, 34px);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: #ffffff;
+  margin: 0 0 8px;
+}
+.explore-body .ad-rail .agent-detail-type {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #d1d6e6;
+}
+/* the role line anchors at the rail foot in Flarepop — the same beat as
+   the case modal's metric */
+.explore-body .ad-rail .agent-detail-role {
+  margin: auto 0 0;
+  padding-top: 28px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(17px, 1.7vw, 21px);
+  line-height: 1.4;
+  color: var(--flarepop);
+}
+.explore-body .ad-body {
+  padding: 36px 36px 32px;
+  overflow-y: auto;
+  min-height: 0;
+  color: #0a0a0f;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.explore-body .ad-eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-ink, #a8008c);
+  margin-bottom: 8px;
+}
+.explore-body .ad-sec p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #2c2c3a;
+  margin: 0;
+}
+.explore-body .ad-body .solves-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.explore-body .ad-body .solves-pills span {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-ink, #a8008c);
+  background: var(--flarepop-500, rgba(255, 0, 229, 0.09));
+  border: 0;
+  border-radius: 999px;
+  padding: 8px 14px;
+}
+.explore-body .agent-detail-cta {
+  margin-top: auto;
+  align-self: flex-start;
+  background: var(--flarepop);
+  color: #0a0a0f; /* the AA pairing on flarepop — 6.0:1, deployed's own btn-primary ink */
+  font-weight: 700;
+  font-size: 14.5px;
+  padding: 12px 22px;
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: background-color 0.16s;
+}
+.explore-body .agent-detail-cta:hover {
+  background: var(--flarepop-200);
+  color: #0a0a0f;
+}
+.explore-body .agent-detail-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: auto;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 18px;
+  border: 1.5px solid rgba(10, 10, 15, 0.48);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #0a0a0f;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  line-height: 1;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+.explore-body .agent-detail-close:hover {
+  border-color: #0a0a0f;
+  color: #0a0a0f;
+  background: #ffffff;
+}
+@media (max-width: 899.98px) {
+  .explore-body .agent-detail-overlay {
+    width: min(560px, 94vw);
+    overflow-y: auto;
+  }
+  .explore-body .ad-grid {
+    grid-template-columns: 1fr;
+  }
+  .explore-body .ad-rail .agent-detail-role {
+    margin-top: 20px;
+  }
+  .explore-body .ad-body {
+    overflow: visible;
+  }
+}
+
+/* ---------- IT6 round 9 (Jon): discreet chrome + focus + episode stack ---------- */
+
+/* "Powered by curiosity." pill is gone from the explore pages. Display
+   only — the markup stays so the copy gate keeps seeing the verbatim
+   tagline in the file. */
+.explore-body footer {
+  display: none;
+}
+
+/* Ambient chrome (Pause/Sound, Back, modal Close) drops to HALF its old
+   pill size: one micro-label style — 22px tall, 10px caps, tight padding,
+   square-ish corners (no pill), faint white backing only where it sits
+   over footage. */
+.reel-toggle,
+.reel-sound,
+.explore-back {
+  height: 22px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.55);
+  color: #2c2c3a;
+  font-family: 'Inter', var(--font-body, system-ui, sans-serif);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+.reel-toggle:hover,
+.reel-sound:hover,
+.explore-back:hover {
+  background: rgba(255, 255, 255, 0.85);
+  color: #0a0a0f;
+}
+/* fixed controls sit ON the content grid: right edge = .wrap's own gutter */
+.reel-controls {
+  right: max(28px, calc((100vw - var(--maxw, 1200px)) / 2 + 28px));
+  bottom: 20px;
+  gap: 8px;
+}
+/* modal closes become quiet text labels (the agent pane is flat white; the
+   case modal's keeps a faint backing because it can sit over imagery) */
+.explore-body .agent-detail-close,
+.case-modal .cm-close {
+  top: 16px;
+  right: 16px;
+  width: auto;
+  height: 22px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 4px;
+  font-family: 'Inter', var(--font-body, system-ui, sans-serif);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #2c2c3a;
+  background: none;
+}
+.case-modal .cm-close {
+  background: rgba(255, 255, 255, 0.85);
+}
+.explore-body .agent-detail-close:hover,
+.case-modal .cm-close:hover {
+  color: #0a0a0f;
+  background: rgba(10, 10, 15, 0.06);
+}
+.case-modal .cm-close:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+/* Modal focus: the page behind blurs, not just dims (Jon). */
+.explore-body .agent-detail-backdrop {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.case-modal::backdrop {
+  background: rgba(10, 10, 15, 0.62);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+/* ChatB2B: episodes stack VERTICALLY — thumb beside copy, one per row,
+   the three rows sharing the panel's height. Deployed's insights grid
+   aligns tile internals across COLUMNS via subgrid (`.ep-tile` and
+   `.ep-tile-body` are both grid-template-rows:subgrid) — meaningless in a
+   stacked list, and it collapses to overlapping rows once the container
+   stops being that grid. Every subgrid hook is re-specified here. */
+.explore-page .explore-panel .q-insights-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.explore-page .explore-panel .q-insights-grid .ep-tile {
+  display: grid;
+  grid-template-columns: minmax(200px, 260px) 1fr;
+  grid-template-rows: none;
+  grid-row: auto;
+  flex: 1 1 0;
+  min-height: 150px;
+}
+.explore-page .explore-panel .q-insights-grid .ep-tile-image {
+  grid-row: 1;
+  grid-column: 1;
+  aspect-ratio: auto;
+  height: 100%;
+  min-height: 0;
+  padding: 0;
+  display: block;
+}
+.explore-page .explore-panel .q-insights-grid .ep-tile-image img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  border-radius: 0;
+}
+.explore-page .explore-panel .q-insights-grid .ep-tile-body {
+  grid-row: 1;
+  grid-column: 2;
+  grid-template-rows: none;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 24px;
+}
+@media (max-width: 599.98px) {
+  .explore-page .explore-panel .q-insights-grid .ep-tile {
+    grid-template-columns: 1fr;
+  }
+  .explore-page .explore-panel .q-insights-grid .ep-tile-image {
+    grid-row: 1;
+    grid-column: 1;
+    aspect-ratio: 16/9;
+    height: auto;
+  }
+  .explore-page .explore-panel .q-insights-grid .ep-tile-body {
+    grid-row: 2;
+    grid-column: 1;
+  }
+}
+
+/* Stepper trail: Prev/Next already moves the active white chip, but the
+   VISITED stages were styled with the same ink as the untouched ones —
+   no visible state change. Visited (is-done) now reads filled. */
+.explore-page .explore-panel .q-step.is-done {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+/* ---------- IT6 round 11 (Jon): the trilogy — P-B / OS-A / R-C ---------- */
+/* Problems, InterceptOS, and the agent roster each become ONE white
+   surface (the live site's original single-panel confidence): header, the
+   four-problem tabs, and everything visible below — no ink rail vs. blue
+   panel split, no disclosure, no stepper, no category gating. The three
+   pages share the same four-problem tab anatomy (number + name), so the
+   trilogy reads as chapters of one story. Insights, labs, and the case
+   pages keep the two-zone split. */
+.explore-solo-wrap {
+  display: flex;
+  min-height: 0;
+  width: 100%;
+}
+.explore-solo {
+  --fg: #0a0a0f;
+  --fg-2: #2c2c3a;
+  --fg-3: #55555f;
+  --line: rgba(10, 10, 15, 0.14);
+  --line-2: rgba(10, 10, 15, 0.26);
+  flex: 1;
+  min-height: 0;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 14px;
+  box-shadow: 0 12px 32px rgba(10, 10, 15, 0.12);
+  padding: 36px 44px 46px;
+  color: var(--fg);
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 900px) {
+  .explore-solo {
+    overflow-y: auto;
+  }
+}
+/* eyebrow: AA dark-pink on the white surface — flarepop proper is 3.3:1
+   here. The #os variants outrank the existing #os .idx flarepop re-pin. */
+.explore-solo .idx,
+.explore-page #os .explore-solo .idx,
+:root[data-theme="light"] .explore-page #os .explore-solo .idx {
+  color: var(--accent-ink, #a8008c);
+}
+.explore-solo .section-h2 {
+  font-size: clamp(26px, 2.5vw, 36px);
+  color: var(--fg);
+}
+.explore-solo .section-lead {
+  color: var(--fg-2);
+  max-width: 70ch;
+}
+
+/* The shared problem tabs (round 14, Jon): no numerals — the problem name
+   in a quiet container that reads as pressable. Same vocabulary as the
+   roster's agent cards: soft ink wash at rest, deeper wash + gentle lift
+   on hover, solid ink when active. One component, both pages. */
+.pb-tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 26px 0 30px;
+}
+.pb-tab {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  background: rgba(10, 10, 15, 0.045);
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--fg-2);
+  transition:
+    background-color 0.4s cubic-bezier(0.37, 0, 0.63, 1),
+    color 0.4s cubic-bezier(0.37, 0, 0.63, 1),
+    transform 0.4s cubic-bezier(0.37, 0, 0.63, 1);
+}
+.pb-tab:hover {
+  background: rgba(10, 10, 15, 0.10);
+  color: var(--fg);
+  transform: translateY(-2px);
+}
+.pb-tab.is-active {
+  background: #0a0a0f;
+  color: #ffffff;
+  transform: none;
+}
+.pb-tab:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+}
+
+/* Round 14: the SAME chip treatment for every other module's tab-like
+   control — one interaction language sitewide. Dark surfaces (the case
+   pages' blue panel, the insights ink rail) use a white wash; white tiles
+   keep the ink wash. Rest = wash, hover = deeper wash + gentle lift,
+   active/selected = solid fill. */
+.explore-page .explore-panel .q-case-tabs .q-tab {
+  background: rgba(255, 255, 255, 0.10);
+  border: 0;
+  border-radius: 10px;
+  color: #d1d6e6;
+  font-weight: 600;
+  transition:
+    background-color 0.4s cubic-bezier(0.37, 0, 0.63, 1),
+    color 0.4s cubic-bezier(0.37, 0, 0.63, 1),
+    transform 0.4s cubic-bezier(0.37, 0, 0.63, 1);
+}
+.explore-page .explore-panel .q-case-tabs .q-tab:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+.explore-page .explore-panel .q-case-tabs .q-tab.is-active {
+  background: #ffffff;
+  border: 0;
+  color: var(--band-blue, #08285c);
+  transform: none;
+}
+/* insights tiles' MORE + disclosure (white tile → ink wash) */
+.explore-page .explore-panel .ep-tile .q-more summary {
+  background: rgba(10, 10, 15, 0.045);
+  border: 0;
+  border-radius: 10px;
+  color: #2c2c3a;
+  font-weight: 600;
+  transition:
+    background-color 0.4s cubic-bezier(0.37, 0, 0.63, 1),
+    color 0.4s cubic-bezier(0.37, 0, 0.63, 1),
+    transform 0.4s cubic-bezier(0.37, 0, 0.63, 1);
+}
+.explore-page .explore-panel .ep-tile .q-more summary:hover {
+  background: rgba(10, 10, 15, 0.10);
+  color: #0a0a0f;
+  transform: translateY(-2px);
+}
+.explore-page .explore-panel .ep-tile .q-more[open] summary {
+  background: #0a0a0f;
+  color: #ffffff;
+  transform: none;
+}
+/* insights ink-rail archive pill (dark rail → white wash) */
+.explore-lede .explore-archive-link a {
+  background: rgba(255, 255, 255, 0.12);
+  border: 0;
+  border-radius: 10px;
+  color: #ffffff;
+  transition:
+    background-color 0.4s cubic-bezier(0.37, 0, 0.63, 1),
+    transform 0.4s cubic-bezier(0.37, 0, 0.63, 1);
+}
+.explore-lede .explore-archive-link a:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border: 0;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+@keyframes soloFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* P-B panel: quote + tells left, blue stat + bridge right. */
+.pb-view {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: 44px;
+  align-content: start;
+  animation: soloFade 0.45s cubic-bezier(0.37, 0, 0.63, 1);
+}
+.pb-main .q-quote {
+  max-width: 30ch;
+}
+.pb-tells {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+/* round 14: no numbered markers (order isn't load-bearing) — quiet accent dot */
+.pb-tells li {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--fg-2);
+  position: relative;
+  padding-left: 20px;
+}
+.pb-tells li::before {
+  content: "·";
+  position: absolute;
+  left: 4px;
+  color: var(--accent-ink, #a8008c);
+  font-weight: 700;
+}
+.pb-sig {
+  background: var(--band-blue, #08285c);
+  color: #ffffff;
+  border-radius: 14px;
+  padding: 28px;
+}
+.pb-sig .n {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(48px, 4.6vw, 72px);
+  line-height: 0.95;
+  color: var(--flarepop);
+}
+.pb-sig .l {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #d1d6e6;
+  margin-top: 12px;
+}
+.pb-sig--q .l {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-top: 0;
+}
+.pb-bridge {
+  margin: 22px 0 0;
+  font-weight: 600;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--fg);
+}
+.pb-bridge b {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-ink, #a8008c);
+  margin-bottom: 8px;
+}
+
+/* OS-A: job line + the full four-stage line with connectors. */
+.osa-flow {
+  animation: soloFade 0.45s cubic-bezier(0.37, 0, 0.63, 1);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+.osa-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin: 0 0 18px;
+}
+.osa-job {
+  font-size: 15px;
+  color: var(--fg-2);
+  margin: 0;
+}
+.osa-job b {
+  color: var(--fg);
+}
+.explore-solo .q-flow-chip {
+  height: 32px;
+  padding: 0 14px;
+  font-size: 10.5px;
+}
+.osa-line {
+  display: grid;
+  grid-template-columns: 1fr 22px 1fr 22px 1fr 22px 1.12fr;
+  align-items: stretch;
+}
+.osa-conn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--fg-3);
+}
+.osa-stage {
+  background: rgba(10, 10, 15, 0.045);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.osa-stage .tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+.osa-stage .nm {
+  font-family: var(--font-display);
+  font-size: 15.5px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+.osa-stage .agents {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.explore-solo .osa-stage .agent-chip {
+  height: 24px;
+  padding: 0 10px;
+  font-size: 10px;
+  gap: 4px;
+}
+.osa-stage .ds {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--fg-2);
+}
+.osa-stage.out {
+  background: var(--band-blue, #08285c);
+  color: #ffffff;
+}
+.osa-stage.out .tag {
+  color: #b8bed1;
+}
+.osa-stage.out .nm {
+  color: var(--flarepop);
+}
+.osa-stage.out .ds {
+  color: #d1d6e6;
+}
+/* deployed's own `#os .agent-chip` (ID specificity) would repaint the line's
+   chips light-on-light inside the navy-band token flip — same trap as
+   round 7; re-pin at higher specificity. */
+.explore-page #os .explore-solo .agent-chip {
+  background: rgba(26, 122, 255, 0.10);
+  color: #1257c4;
+}
+.explore-solo .q-flow-bridge {
+  margin-top: auto;
+  padding-top: 28px;
+}
+
+/* R-C: four problem bands, each staffed with its agents. */
+.rc-bands {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 26px;
+  animation: soloFade 0.45s cubic-bezier(0.37, 0, 0.63, 1);
+}
+.rc-band {
+  display: grid;
+  grid-template-columns: minmax(240px, 300px) 1fr;
+  gap: 30px;
+  padding: 16px;
+  margin: 0 -16px;
+  border-radius: 12px;
+}
+/* deep-link arrival (interceptos bridge / shared URL): pulse the band */
+@keyframes rcTarget {
+  from { background-color: var(--flarepop-500, rgba(255, 0, 229, 0.09)); }
+  to { background-color: transparent; }
+}
+.rc-band.is-target {
+  animation: rcTarget 1.8s cubic-bezier(0.37, 0, 0.63, 1) both;
+}
+.rc-ph .t {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.rc-ph .j {
+  font-size: 12.5px;
+  font-style: italic;
+  color: var(--fg-3);
+  margin: 8px 0 0;
+  max-width: 36ch;
+}
+.rc-agents {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-content: flex-start;
+}
+.rc-agent {
+  appearance: none;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+  background: rgba(10, 10, 15, 0.045);
+  border-radius: 10px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 150px;
+  color: var(--fg);
+  transition: background-color 0.3s cubic-bezier(0.37, 0, 0.63, 1), color 0.3s cubic-bezier(0.37, 0, 0.63, 1);
+}
+.rc-agent .nm {
+  font-size: 14px;
+  font-weight: 700;
+}
+.rc-agent .ty {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  transition: color 0.3s cubic-bezier(0.37, 0, 0.63, 1);
+}
+.rc-agent:hover {
+  background: #0a0a0f;
+  color: #ffffff;
+}
+.rc-agent:hover .ty {
+  color: #d1d6e6;
+}
+.rc-agent:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+}
+
+/* Chapter bridges: every module hands the SELECTED problem to the next
+   page (problems -> interceptos -> agents), same quiet mono-link grammar
+   as the existing q-flow-bridge. */
+.pb-next {
+  margin: 28px 0 0;
+}
+.pb-next a,
+.rc-how {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s cubic-bezier(0.37, 0, 0.63, 1);
+}
+.pb-next a:hover,
+.rc-how:hover {
+  color: var(--accent-ink, #a8008c);
+}
+.rc-how {
+  margin-top: 12px;
+}
+.pb-next a:focus-visible,
+.rc-how:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+}
+
+@media (max-width: 899.98px) {
+  .pb-view {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .osa-line {
+    grid-template-columns: 1fr;
+  }
+  .osa-conn {
+    transform: rotate(90deg);
+    padding: 4px 0;
+  }
+  .rc-band {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+/* The roster shows all 21 problem-agent pairings — a genuine full-page
+   read, not a fold composition. .explore-flow releases the viewport lock
+   for THIS page only: the page scrolls naturally over the fixed footage
+   (exactly how the approved rethink demo read). */
+@media (min-width: 900px) {
+  .explore-body.explore-flow {
+    height: auto;
+  }
+  .explore-body.explore-flow .explore-solo {
+    overflow-y: visible;
+  }
+  .explore-body.explore-flow main.explore-page {
+    padding-bottom: 48px;
+  }
+}
+
+/* Short-viewport compact pass (1280×800-class screens): the assembly line
+   held ~90px proud of the fold — recover it from chrome spacing, never
+   from copy. */
+@media (min-width: 900px) and (max-height: 849.98px) {
+  .explore-solo {
+    padding: 26px 40px 34px;
+  }
+  .explore-solo .section-lead {
+    max-width: none;
+  }
+  .pb-tabs {
+    margin: 18px 0 22px;
+  }
+  .osa-head {
+    margin-bottom: 16px;
+  }
+  .osa-stage {
+    padding: 16px;
+    gap: 8px;
+  }
+  .explore-solo .q-flow-bridge {
+    padding-top: 16px;
+  }
+}
+
+/* ---------- ChatB2B episode cards (explore/insights) — Round 15e (Jon) ----------
+   The three episode cards now link out (cover + title) and surface the
+   podcast platform links directly as logo pills, replacing the "More +"
+   disclosure whose rollover read as confusing on a page whose whole job is
+   "go listen". Scoped to the explore-page white tiles inside the blue panel
+   (those re-pin dark ink, so the pills are an ink-wash on white). */
+.explore-page .explore-panel .q-insights-grid .ep-tile { flex: 0 0 auto; min-height: 0; }
+.explore-page .explore-panel .ep-tile-title {
+  color: inherit;
+  transition: color .3s cubic-bezier(.37, 0, .63, 1);
+}
+.explore-page .explore-panel .ep-tile-title:hover { color: var(--accent-ink, #a8008c); }
+.explore-page .explore-panel .ep-tile .ep-tile-summary {
+  font-size: 13px; line-height: 1.5; color: var(--fg-2); margin: 8px 0 0;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.explore-page .explore-panel .ep-listen {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 14px;
+}
+.explore-page .explore-panel .ep-listen-lbl {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--fg-3);
+}
+.explore-page .explore-panel .ep-plats { display: flex; flex-wrap: wrap; gap: 8px; }
+.explore-page .explore-panel .ep-plat {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 30px; padding: 0 13px; border-radius: 999px;
+  background: rgba(10, 10, 15, .06); color: #0a0a0f;
+  font-family: var(--font-body); font-size: 12px; font-weight: 600;
+  transition: background-color .3s cubic-bezier(.37, 0, .63, 1), color .3s ease, transform .3s cubic-bezier(.37, 0, .63, 1);
+}
+.explore-page .explore-panel .ep-plat svg { width: 15px; height: 15px; flex: none; }
+.explore-page .explore-panel .ep-plat:hover { background: #0a0a0f; color: #ffffff; transform: translateY(-2px); }
+.explore-page .explore-panel .ep-plat:focus-visible { outline: 2px solid #0a0a0f; outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  .explore-page .explore-panel .ep-plat, .explore-page .explore-panel .ep-tile-title { transition: none; }
+}
+
+/* ---------- ChatB2B cards: compact + above-the-fold, 16:9 thumbs (Round 15f, Jon) ----------
+   The rich body had made each card ~250px tall, and because the thumbnail
+   was height:100% it became a tall portrait crop that sliced the people off
+   the sides. Fix: fixed 16:9 thumbnail (full frame, people preserved), a
+   compact centred body (summary hidden — it's a teaser grid), so all three
+   cards sit nicely above the fold. Summary text stays in the DOM (display:none)
+   so the copy gate still sees it. */
+.explore-page .explore-panel .q-insights-grid { justify-content: center; gap: 16px; }
+.explore-page .explore-panel .q-insights-grid .ep-tile {
+  grid-template-columns: 236px 1fr;
+  align-items: center;
+  gap: 20px;
+  padding: 16px;
+  min-height: 0;
+}
+.explore-page .explore-panel .q-insights-grid .ep-tile-image {
+  aspect-ratio: 16 / 9;
+  height: auto;
+  align-self: center;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.explore-page .explore-panel .q-insights-grid .ep-tile-image img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 10px;
+}
+.explore-page .explore-panel .q-insights-grid .ep-tile-body {
+  padding: 0; justify-content: center; gap: 1px;
+}
+.explore-page .explore-panel .ep-tile .ep-tile-summary { display: none; }
+.explore-page .explore-panel .ep-tile .ep-tile-num { font-size: 11px; }
+.explore-page .explore-panel .ep-tile h3 { font-size: 16px; line-height: 1.22; margin: 3px 0; }
+.explore-page .explore-panel .ep-tile .ep-tile-guest { font-size: 12px; line-height: 1.4; margin: 2px 0 0; }
+.explore-page .explore-panel .ep-listen { margin-top: 12px; }
+
+/* ---------- ChatB2B cards: stop the top/bottom bleed (Round 15g, Jon) ----------
+   The insights panel is .explore-panel--center (justify-content:center). When
+   the three cards are a hair taller than the panel, centring clips them at
+   BOTH ends (and the clipped top is unreachable even though overflow-y:auto).
+   Fix: top-align this panel, drop its tall top padding, and trim the cards a
+   little so the set fits cleanly. Scoped to #insights so other pages keep
+   their centred panels. */
+#insights .explore-panel.explore-panel--center { justify-content: flex-start; }
+@media (min-width: 900px) {
+  #insights .explore-panel { padding-top: 28px; padding-bottom: 24px; }
+}
+#insights .q-insights-grid { gap: 14px; }
+#insights .q-insights-grid .ep-tile { grid-template-columns: 208px 1fr; gap: 18px; padding: 14px; }
+#insights .ep-tile .ep-tile-num { font-size: 11px; }
+#insights .ep-tile h3 { font-size: 15px; line-height: 1.2; margin: 2px 0; }
+#insights .ep-tile .ep-tile-guest { font-size: 12px; line-height: 1.35; }
+#insights .ep-listen { margin-top: 10px; }
+
+/* Round 15g cont.: drop the redundant "LISTEN ON" label (the Spotify/Apple/
+   YouTube pills are self-explanatory) and tighten, so the three cards fit
+   above the fold on shorter viewports too. */
+#insights .ep-listen-lbl { display: none; }
+#insights .ep-listen { margin-top: 8px; }
+
+/* ---------- No decorative horizontal rules (Round 15h, Jon; [[feedback_no_rule_lines]]) ----------
+   The ported stylesheet draws a faint 1px line between content sections — the
+   one under the homepage cards (the card row is a <section>), plus the logo
+   strip, work reel, FAQs, convert band, footer and labs. Remove them all on
+   every Concept D page/skin; separation comes from space + weight. Structural
+   borders (card outlines, chips, inputs, the sticky-nav base) are untouched. */
+section { border-bottom: 0; }
+.hero, .clients, .work-reel, .labs, .foot-bot, .proof-rail,
+.solve-attrib, .solve-bridge, .os-manifest, .labs-stat, .labs .lab-stat {
+  border-top: 0;
+  border-bottom: 0;
+}
+
+/* ---------- Case ("proof") page rail: compose stat WITH copy + balance breaks (Round 15j, Jon) ----------
+   The metric was margin-top:auto'd to the rail bottom, leaving a big void so
+   it read as misaligned from the copy above. Drop the bottom-anchor so
+   client / name / lead / metric sit as one cohesive centred block. Balance
+   the heading and lead so lines don't strand a hyphenated compound (e.g.
+   "12-video") at a line end. Copy characters are unchanged. */
+.explore-lede .case-stat { margin-top: 0; padding-top: 30px; }
+.explore-lede .section-h2,
+.explore-lede .section-lead { text-wrap: balance; }
+
+/* hyphenated compounds in the case rail don't break at their hyphen (the
+   verbatim copy is unchanged; only wrapping is added) */
+.cx-nb { white-space: nowrap; }
+
+/* ---------- Work-page case cards: align stat blocks + no divider (Round 15k, Jon) ----------
+   Remove the internal rule under the metric (no rule lines) and give the
+   metric label a uniform two-line height so the three cards line up across
+   the row regardless of how each label wraps. Hyphenated compounds in the
+   label/tag are kept whole via .cx-nb. */
+.case-v6 .c-visual { border-bottom: 0; }
+.case-v6 .c-metric-lbl { min-height: 2.4em; }
+
+/* ============================================================
+   FULL-PAGE WORK CASE STUDY (Jon 07-27)
+   The three work cases open as full scrollable pages (Back-to-Work +
+   Next-case nav) instead of the centered modal. Editorial layout that
+   reuses the approved modal grammar: a dark ink HERO band (client / tag /
+   title / lead / big accent metric) over a token-based body (image +
+   stacked Challenge / Approach / Results). Theme + palette aware — the
+   hero is ink in both themes, the body follows --page/--surface/--fg.
+   ============================================================ */
+.case-page {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 40px;
+}
+.case-backrow {
+  padding-top: 18px;
+  padding-bottom: 6px;
+}
+.case-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Inter', var(--font-body, system-ui, sans-serif);
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--fg-2);
+  padding: 8px 15px;
+  border-radius: 999px;
+  background: var(--tint);
+  transition: color 0.16s, background-color 0.16s;
+}
+.case-back:hover {
+  color: var(--fg);
+  background: var(--surface-2);
+}
+
+/* Hero band — dark ink in BOTH themes (the approved modal-rail grammar). */
+.case-hero {
+  background: #0a0a0f;
+  color: #ffffff;
+  border-radius: 18px;
+  padding: clamp(38px, 5vw, 68px) clamp(28px, 5vw, 64px);
+  margin-top: 8px;
+}
+.case-hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #b8bed1;
+  margin-bottom: 22px;
+}
+.case-hero-eyebrow .c-client {
+  color: #ffffff;
+  font-weight: 600;
+}
+.case-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(32px, 4.8vw, 58px);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  max-width: 20ch;
+  text-wrap: balance;
+}
+.case-lead {
+  margin-top: 20px;
+  font-size: clamp(16px, 1.4vw, 19px);
+  line-height: 1.55;
+  color: #d1d6e6;
+  max-width: 62ch;
+}
+.case-metric {
+  margin-top: clamp(26px, 4vw, 44px);
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.case-metric-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(54px, 8vw, 104px);
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  color: var(--flarepop); /* palette accent, vivid on the dark ink hero */
+}
+.case-metric-lbl {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #b8bed1;
+  max-width: 20ch;
+}
+
+/* Body */
+.case-article {
+  position: relative;
+  z-index: 1;
+}
+.case-hero-img {
+  display: block;
+  width: 100%;
+  border-radius: 16px;
+  margin-top: 22px;
+}
+.case-cad {
+  margin-top: clamp(34px, 5vw, 54px);
+}
+.case-cad .cad-sec {
+  padding: 0; /* neutralize deployed.css's global section vertical padding */
+  margin-bottom: clamp(26px, 4vw, 42px);
+  max-width: 68ch;
+}
+.case-cad .cad-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-ink, #a8008c);
+  margin-bottom: 12px;
+}
+.case-cad .cad-sec p {
+  font-size: clamp(16px, 1.3vw, 18px);
+  line-height: 1.62;
+  color: var(--fg-2);
+}
+.case-cad .cad-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.case-cad .cad-results li {
+  position: relative;
+  padding-left: 24px;
+  font-size: clamp(16px, 1.3vw, 18px);
+  line-height: 1.5;
+  color: var(--fg);
+  font-weight: 500;
+}
+.case-cad .cad-results li::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 0.6em;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--flarepop);
+}
+.case-cad .cad-agents {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--fg-3);
+}
+.case-cad .cad-agents b {
+  color: var(--fg-2);
+}
+
+/* Next case */
+.case-next {
+  margin: clamp(44px, 6vw, 76px) 0 20px;
+}
+.case-next a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: clamp(24px, 3vw, 34px) clamp(24px, 3vw, 38px);
+  border-radius: 16px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  transition: border-color 0.16s, transform 0.4s cubic-bezier(0.37, 0, 0.63, 1);
+}
+.case-next a:hover {
+  border-color: var(--fg-3);
+  transform: translateY(-3px);
+}
+.case-next-lbl {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-ink, #a8008c);
+  margin-bottom: 8px;
+}
+.case-next-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(18px, 2vw, 26px);
+  color: var(--fg);
+  line-height: 1.15;
+}
+.case-next-arrow {
+  font-size: 28px;
+  color: var(--fg-2);
+  flex: none;
 }

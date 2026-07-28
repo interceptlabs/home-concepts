@@ -1,0 +1,344 @@
+/* ============================================================
+   skins.css — Concept D: two INDEPENDENT axes, colour and layout.
+
+   Concept D can be tuned on two orthogonal dimensions, both chosen from the
+   top-right switcher and both persisted:
+
+     · data-palette = flarepop (default) | coolsweep | wiretree
+         The Fritz channel colour AND the matching hero / section-page video
+         (the video swap is done in skin.js). Colour is just a skin — it does
+         not change the composition.
+
+     · data-layout  = stack (default) | split | expand
+         The hero-section COMPOSITION only (pure CSS):
+           stack  — headline + copy on top, five cards in a row below (the
+                    approved Variant D)
+           split  — headline + copy left, a slim module index right
+           expand — centred copy, uniform small cards whose description
+                    reveals into a reserved area on hover (no page reflow)
+
+   The defaults (flarepop + stack) add ZERO rules, so the approved build
+   renders byte-identical. Any of the 3 palettes combines with any of the 3
+   layouts. Loaded after concept-d.css; wins ties on source order.
+   No rule lines, no gradients, no scrims (Fritz canon).
+   ============================================================ */
+
+/* concept-d.css routes its accent-ink literal through this token; the
+   default resolves to the same magenta ink. */
+:root { --accent-ink: #a8008c; }
+
+/* ============================================================
+   COLOUR AXIS
+   ============================================================ */
+
+/* -- Coolsweep (navy panels are native here) -- */
+:root[data-palette="coolsweep"] {
+  --flarepop: #1a7aff;
+  --flarepop-200: #0f63d6;
+  --flarepop-500: rgba(26,122,255,.10);
+  --accent-ink: #1257c4;
+  /* --band-blue stays #08285c */
+  /* mirror-page (about/chatb2b/insights-hub) accent aliases */
+  --flarepop-100: #1a7aff; --flarepop-300: #1257c4; --accent: #1a7aff;
+}
+
+/* -- Wiretree -- */
+/* Green LEADS the accents, but the navy feature bands (--band-blue) stay
+   navy and the tool chips stay Coolsweep blue — the pick is a lean, not a
+   full recolour, so the multi-channel Fritz palette is preserved. */
+:root[data-palette="wiretree"] {
+  --flarepop: #00d862;
+  --flarepop-200: #00b852;
+  --flarepop-500: rgba(0,216,98,.12);
+  --accent-ink: #0a7a3e;
+  --flarepop-100: #00d862; --flarepop-300: #0a7a3e; --accent: #00d862;
+}
+
+/* Non-default palettes: any accent that lands as TEXT on a light surface
+   uses the AA channel ink, not the vivid fill (Flarepop keeps its vivid
+   magenta text, exactly as the approved build). */
+:root[data-palette="coolsweep"] .idx,                          :root[data-palette="wiretree"] .idx,
+:root[data-palette="coolsweep"] .nav a:hover,                  :root[data-palette="wiretree"] .nav a:hover,
+:root[data-palette="coolsweep"] .theme-toggle:hover,           :root[data-palette="wiretree"] .theme-toggle:hover,
+:root[data-palette="coolsweep"] .skin-switch-btn:hover,        :root[data-palette="wiretree"] .skin-switch-btn:hover,
+:root[data-palette="coolsweep"] .skin-switch-btn[aria-expanded="true"], :root[data-palette="wiretree"] .skin-switch-btn[aria-expanded="true"],
+:root[data-palette="coolsweep"] .hero-d .hero-h1 em,           :root[data-palette="wiretree"] .hero-d .hero-h1 em,
+:root[data-palette="coolsweep"] .hero-d .hero-h1 .dot,         :root[data-palette="wiretree"] .hero-d .hero-h1 .dot,
+:root[data-palette="coolsweep"] .card:hover .card-cta,         :root[data-palette="wiretree"] .card:hover .card-cta,
+:root[data-palette="coolsweep"] .card:focus-visible .card-cta, :root[data-palette="wiretree"] .card:focus-visible .card-cta {
+  color: var(--accent-ink);
+}
+:root[data-palette="coolsweep"] .btn-secondary:hover,
+:root[data-palette="wiretree"] .btn-secondary:hover {
+  border-color: var(--accent-ink);
+  color: var(--accent-ink);
+}
+
+/* Coolsweep keeps a LIGHT home identity while the explore pages go dark:
+   the home hero paints the LIGHT shoal (blue triangles on white), paled
+   over the white page so the approved dark hero copy stays AA-legible. The
+   immersive DARK shoal-drift lives only on the explore pages' section layer,
+   where the opaque panels make it safe. (Hero video only; section-video on
+   the explore pages is untouched.) */
+:root[data-palette="coolsweep"] .hero-video-layer .hero-video {
+  opacity: 0.28;
+}
+
+/* ============================================================
+   LAYOUT AXIS
+   ============================================================ */
+
+/* -- SPLIT: headline + copy LEFT, slim five-module index RIGHT -- */
+:root[data-layout="split"] .reel-explore { border-radius: 6px; }
+@media (min-width: 900px) {
+  :root[data-layout="split"] .hero-viewport {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(300px, .78fr);
+    align-items: center;
+    gap: 36px;                       /* tighter gap between copy and index */
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 40px 28px;
+  }
+  :root[data-layout="split"] .hero-d { padding: 0; }
+  :root[data-layout="split"] .hero-d .wrap { max-width: none; margin: 0; padding: 0; }
+}
+/* bigger copy so the left column holds its own against the card index */
+:root[data-layout="split"] .hero-d .hero-h1 { font-size: clamp(40px, 4.4vw, 68px); max-width: 16ch; line-height: 1.05; }
+:root[data-layout="split"] .hero-d .hero-sub { font-size: clamp(15px, 1.2vw, 17px); max-width: 48ch; margin-top: 18px; }
+:root[data-layout="split"] .hero-d .kick { margin-bottom: 14px; }
+:root[data-layout="split"] .card-field,
+:root[data-layout="split"] .card-field--five {
+  max-width: none; margin: 0; padding: 0; width: 100%;
+  display: flex; flex-direction: column; gap: 10px;
+  grid-template-columns: none;
+}
+:root[data-layout="split"] .card {
+  min-height: 0; flex-direction: column;
+  padding: 13px 18px; border-radius: 10px;
+  background: rgba(255,255,255,.9);
+}
+:root[data-layout="split"] .card-bottom { margin-top: 0; }
+:root[data-layout="split"] .card-eyebrow { margin-bottom: 4px; }
+:root[data-layout="split"] .card-heading { font-size: 15px; line-height: 1.25; margin: 0 0 3px; }
+:root[data-layout="split"] .card-teaser { display: none; }
+:root[data-layout="split"] .card-cta { margin-top: 2px; }
+@media (hover: hover) and (pointer: fine) {
+  :root[data-layout="split"] .card:hover {
+    transform: translateX(5px);
+    background-color: rgba(255,255,255,.98);
+    box-shadow: 0 14px 34px rgba(10,10,15,.18);
+  }
+}
+:root[data-layout="split"] .card:focus-visible {
+  transform: translateX(5px);
+  background-color: rgba(255,255,255,.98);
+  box-shadow: 0 14px 34px rgba(10,10,15,.18);
+}
+
+/* -- EXPAND: centred copy, uniform cards, description reveals into a
+   reserved area on hover/focus. The cards are a FIXED height so they are all
+   identical (item: "the last card is bigger — make them uniform") and the
+   description sits in reserved space revealed by opacity only, so hovering
+   never grows the card and never nudges the page (item: "expansion bumps the
+   content"). display:contents on .card-bottom lets the CTA anchor to the
+   card foot while the title stays at the top. -- */
+:root[data-layout="expand"] .reel-explore { border-radius: 999px; }
+:root[data-layout="expand"] .hero-d .wrap { text-align: center; }
+:root[data-layout="expand"] .hero-d .hero-h1 { margin-left: auto; margin-right: auto; max-width: 20ch; }
+:root[data-layout="expand"] .hero-d .hero-sub { margin-left: auto; margin-right: auto; }
+/* generous gap above + padding below the card row so a card can expand
+   symmetrically from its centre and stay INSIDE the hero band (no overlap
+   with the copy above or the section below, no page reflow). */
+:root[data-layout="expand"] .hero-viewport { justify-content: center; gap: 72px; padding-bottom: 64px; }
+:root[data-layout="expand"] .card-field { max-width: 1080px; overflow: visible; }
+@media (min-width: 960px) {
+  /* FIXED row height — the track never grows, so an expanding card overlays
+     rather than pushing the layout. */
+  :root[data-layout="expand"] .card-field--five { grid-template-columns: repeat(5, 1fr); grid-template-rows: 156px; align-items: stretch; }
+}
+:root[data-layout="expand"] .card {
+  min-height: 0; height: 156px;          /* uniform resting height (fits the longest title + CTA) */
+  overflow: hidden;
+  padding: 18px; border-radius: 16px;
+  background: rgba(255,255,255,.85);
+  display: flex; flex-direction: column;
+  transition:
+    height .42s cubic-bezier(.37,0,.63,1),
+    margin .42s cubic-bezier(.37,0,.63,1),
+    background-color .42s ease,
+    box-shadow .42s ease;
+}
+:root[data-layout="expand"] .card-bottom { display: contents; }
+:root[data-layout="expand"] .card-eyebrow { margin-bottom: 8px; }
+:root[data-layout="expand"] .card-heading { font-size: 15.5px; line-height: 1.25; margin: 0; }
+/* description collapsed at rest; opens with the card */
+:root[data-layout="expand"] .card-teaser {
+  -webkit-line-clamp: 4;
+  max-height: 0; opacity: 0; margin: 0; overflow: hidden;
+  transition: max-height .42s cubic-bezier(.37,0,.63,1), opacity .3s ease .08s, margin .42s cubic-bezier(.37,0,.63,1);
+}
+:root[data-layout="expand"] .card-cta { margin-top: auto; }   /* stays at the card foot */
+/* the expansion: taller card pulled up AND down by equal negative margins so
+   it grows out from the centre, lifted above its neighbours */
+@media (hover: hover) and (pointer: fine) {
+  :root[data-layout="expand"] .card:hover {
+    height: 256px; margin: -50px 0;
+    overflow: visible; z-index: 10; position: relative;
+    background-color: rgba(255,255,255,.97);
+    box-shadow: 0 28px 64px rgba(10,10,15,.24);
+  }
+  :root[data-layout="expand"] .card:hover .card-teaser { max-height: 150px; opacity: 1; margin-top: 12px; }
+}
+:root[data-layout="expand"] .card:focus-within {
+  height: 248px; margin: -58px 0;
+  overflow: visible; z-index: 10; position: relative;
+  background-color: rgba(255,255,255,.97);
+  box-shadow: 0 28px 64px rgba(10,10,15,.24);
+}
+:root[data-layout="expand"] .card:focus-within .card-teaser { max-height: 150px; opacity: 1; margin-top: 12px; }
+
+/* ============================================================
+   Skin switcher chrome (injected into the topbar by skin.js)
+   ============================================================ */
+.skin-switch { position: relative; display: inline-flex; align-items: center; }
+.skin-switch-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 9999px;
+  border: 0; background: none; color: var(--fg-3); opacity: .6;
+  cursor: pointer; transition: color .16s, opacity .16s; flex: none;
+}
+.skin-switch-btn:hover,
+.skin-switch-btn[aria-expanded="true"] { color: var(--flarepop); opacity: 1; }
+.skin-switch-btn svg { width: 17px; height: 17px; display: block; }
+
+.skin-menu {
+  position: absolute; top: calc(100% + 12px); right: 0; z-index: 220;
+  width: 248px; padding: 7px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 12px; box-shadow: 0 18px 44px rgba(10,10,15,.24);
+  display: flex; flex-direction: column; gap: 2px;
+}
+:root[data-theme="light"] .skin-menu { background: #ffffff; }
+.skin-menu[hidden] { display: none; }
+.skin-menu-lbl {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--fg-3);
+  padding: 8px 12px 4px;
+}
+.skin-menu-lbl + .skin-menu-lbl,
+.skin-menu-sep { margin-top: 6px; }
+.skin-opt {
+  display: flex; align-items: center; gap: 12px; width: 100%;
+  text-align: left; border: 0; background: none; cursor: pointer;
+  padding: 9px 12px; border-radius: 8px; font: inherit; color: var(--fg);
+  transition: background-color .16s;
+}
+.skin-opt:hover { background: var(--tint); }
+.skin-opt:focus-visible { outline: 2px solid var(--fg); outline-offset: -2px; }
+.skin-dot {
+  width: 22px; height: 22px; border-radius: 7px; flex: none;
+  box-shadow: inset 0 0 0 1px rgba(10,10,15,.14);
+}
+.skin-glyph {
+  width: 22px; height: 22px; flex: none; color: var(--fg-2);
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.skin-glyph svg { width: 22px; height: 22px; display: block; }
+.skin-opt-txt { display: flex; flex-direction: column; line-height: 1.25; }
+.skin-opt-txt b { font-weight: 600; font-size: 14px; }
+.skin-opt-txt i {
+  font-style: normal; font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: .05em; text-transform: uppercase;
+  color: var(--fg-3);
+}
+
+/* ============================================================
+   DARK THEME — readability accommodation (palette-independent, Jon 07-27)
+   Concept D is light-designed. Token-based chrome (--surface/--fg) flips to
+   dark correctly, and the explore panels pin their own dark ink, so those
+   read in dark mode. The holdouts are the HOME hero + cards: hardcoded light
+   surfaces (75-90% white) built for legibility over the hero video, which
+   never got a dark counterpart -- so the flipped-white text landed on a
+   light surface and vanished. Give those a dark surface so the white ink
+   reads. Loaded last, so it also wins over the per-layout card fills above.
+   LIGHT MODE IS UNTOUCHED (every rule is scoped to [data-theme="dark"]).
+   ============================================================ */
+
+/* Hero video (all palettes/layouts): dim it over the dark page so the hero
+   reads as a dark band and the white headline / eyebrow / sub-copy are
+   legible; the magenta/blue/green accent words already pop on dark. */
+:root[data-theme="dark"] .hero-video-layer .hero-video {
+  opacity: 0.30;
+}
+/* Home cards: hardcoded light resting fill -> dark translucent surface, so
+   the card text (--fg / --fg-2 / --fg-3, all light in dark mode) reads. The
+   [data-layout] compound selectors out-specify the split/expand fills set
+   earlier in this file. */
+:root[data-theme="dark"] .card,
+:root[data-theme="dark"][data-layout="split"] .card,
+:root[data-theme="dark"][data-layout="expand"] .card {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+:root[data-theme="dark"] .card:hover,
+:root[data-theme="dark"] .card:focus-visible,
+:root[data-theme="dark"] .card:focus-within,
+:root[data-theme="dark"] .card:active {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Case + agent modals are fixed WHITE dialogs in both themes. Flarepop's
+   --flarepop-500 pale-pink wash flips to a deep ink (#39003a) in dark theme,
+   so the results band / solve pills inside those white dialogs went dark
+   text on a dark wash. Pin the light wash inside the dialogs. Only flarepop
+   needs this -- coolsweep/wiretree already resolve --flarepop-500 to a light
+   rgba on :root, which inherits into the dialog. */
+:root[data-theme="dark"][data-palette="flarepop"] .case-modal,
+:root[data-theme="dark"][data-palette="flarepop"] .agent-detail-overlay {
+  --flarepop-500: rgba(255, 0, 229, 0.09);
+}
+
+/* Blue/green HERO accent words: the colour-axis rule above paints the hero
+   accents in the AA channel INK (--accent-ink: #1257c4 / #0a7a3e), which is
+   tuned for LIGHT surfaces and reads too dark on the dimmed dark hero. In
+   dark mode use the VIVID channel colour (--flarepop, remapped per palette
+   -> #1a7aff / #00d862) so the accent words stay high-contrast. Flarepop
+   already uses its vivid magenta, so it needs no change. Higher specificity
+   than the colour-axis rule, so it wins. */
+:root[data-theme="dark"][data-palette="coolsweep"] .hero-d .hero-h1 em,
+:root[data-theme="dark"][data-palette="coolsweep"] .hero-d .hero-h1 .dot,
+:root[data-theme="dark"][data-palette="wiretree"] .hero-d .hero-h1 em,
+:root[data-theme="dark"][data-palette="wiretree"] .hero-d .hero-h1 .dot {
+  color: var(--flarepop);
+}
+
+/* Card "VIEW +" CTA on hover/focus: the colour-axis rule paints it
+   --accent-ink (dark blue/green), which is low-contrast on the darkened card
+   in dark mode. Same fix as the hero accents -- vivid channel colour. */
+:root[data-theme="dark"][data-palette="coolsweep"] .card:hover .card-cta,
+:root[data-theme="dark"][data-palette="coolsweep"] .card:focus-visible .card-cta,
+:root[data-theme="dark"][data-palette="coolsweep"] .card:focus-within .card-cta,
+:root[data-theme="dark"][data-palette="wiretree"] .card:hover .card-cta,
+:root[data-theme="dark"][data-palette="wiretree"] .card:focus-visible .card-cta,
+:root[data-theme="dark"][data-palette="wiretree"] .card:focus-within .card-cta {
+  color: var(--flarepop);
+}
+
+/* Full-page case study eyebrows use --accent-ink (AA on the LIGHT body). On
+   the dark body in dark mode that reads too dark, so use the vivid channel
+   colour -- all palettes (flarepop's #a8008c is also too dark on ink). */
+:root[data-theme="dark"] .case-cad .cad-eyebrow,
+:root[data-theme="dark"] .case-next-lbl {
+  color: var(--flarepop);
+}
+.skin-opt[aria-checked="true"] { background: var(--tint); }
+.skin-opt[aria-checked="true"] .skin-dot {
+  box-shadow: inset 0 0 0 1px rgba(10,10,15,.14), 0 0 0 2px var(--fg);
+}
+.skin-opt[aria-checked="true"] .skin-glyph { color: var(--fg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .skin-switch-btn, .skin-opt, .card-teaser,
+  :root[data-layout="expand"] .card { transition: none; }
+}

@@ -25,9 +25,21 @@
     margin-bottom: var(--sp-80);
   }
   header.site svg {
-    width: 180px;
-    height: auto;
+    /* integer height, not fixed width — 180px wide computed a fractional
+       42.328px height, softening every horizontal letterform edge
+       (round-12 lockup rule: canon geometry + integer box). */
+    height: 42px;
+    width: auto;
     color: var(--fg);
+  }
+  /* round 12c: true 1x displays paint the supersampled raster (same canon
+     geometry) instead of live path rasterization — see concept-d.css. */
+  @media (max-resolution: 1.05dppx) {
+    header.site svg {
+      width: 177px;
+      background: url("shared/logo/wordmark-42-white.png") 0 0 / 177px 42px no-repeat;
+    }
+    header.site svg g[fill="var(--logo-ink)"] { display: none; }
   }
   .intro h1 {
     font-size: var(--fs-h1);

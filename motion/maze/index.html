@@ -1,0 +1,173 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Fritz maze — first-person walk</title>
+<style>html,body{margin:0;background:#15101c;overflow:hidden}canvas{display:block}</style>
+<canvas id="c"></canvas>
+<script type="module">
+import * as THREE from '../../concept-c/assets/vendor/three.module.js';
+
+/* Photoreal first-person Fritz-triangle maze — cinematic-wide (fits the
+   full-bleed band without hard crop). Real grid maze walked as a DFS/Euler
+   tour (corridors, junction glances, dead-end turnarounds) returning to the
+   start cell+heading → seamless loop. Premium look: dramatic raking key with
+   soft high-res shadows + low ambient, normal-mapped concrete, wet reflective
+   floor, magenta accents, dusk sky, haze. Post grade/bloom applied at encode. */
+
+const W = 1280, H = 720, SS = 2;                 // 16:9 + normal FOV; the band center-crops onto the corridor vanishing point
+const canvas = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.setPixelRatio(SS); renderer.setSize(W, H, false);
+renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.12;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0x2a2140, 0.019);
+const camera = new THREE.PerspectiveCamera(50, W / H, 0.05, 160);
+
+let _s = 20260728 >>> 0;
+const rng = () => ((_s = (_s * 1664525 + 1013904223) >>> 0) / 4294967296);
+
+// ── Dusk sky (background + specular env) ────────────────────────────────────
+function skyEquirect(topHex, botHex) {
+  const w = 8, h = 96, data = new Uint8Array(w * h * 4);
+  const top = new THREE.Color(topHex), bot = new THREE.Color(botHex);
+  for (let y = 0; y < h; y++) { const c = top.clone().lerp(bot, y / (h - 1));
+    for (let x = 0; x < w; x++) { const i = (y * w + x) * 4; data[i]=c.r*255; data[i+1]=c.g*255; data[i+2]=c.b*255; data[i+3]=255; } }
+  const t = new THREE.DataTexture(data, w, h); t.mapping = THREE.EquirectangularReflectionMapping;
+  t.colorSpace = THREE.SRGBColorSpace; t.needsUpdate = true; return t;
+}
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromEquirectangular(skyEquirect('#4a3866', '#7a1a62')).texture;
+scene.background = skyEquirect('#3a2c52', '#68205a');
+
+// ── Procedural concrete: albedo + height→normal (crisp lighting response) ───
+function noiseCanvas(base, blotchAlpha) {
+  const S = 1024, c = document.createElement('canvas'); c.width = c.height = S; const x = c.getContext('2d');
+  x.fillStyle = base; x.fillRect(0, 0, S, S);
+  for (let i = 0; i < 4200; i++) { const g = (120 + rng() * 120) | 0; x.fillStyle = `rgba(${g},${g},${g},${blotchAlpha})`;
+    x.beginPath(); x.arc(rng() * S, rng() * S, rng() * 60 + 3, 0, 7); x.fill(); }
+  const im = x.getImageData(0, 0, S, S), d = im.data;
+  for (let i = 0; i < d.length; i += 4) { const n = (rng() - 0.5) * 40; d[i]+=n; d[i+1]+=n; d[i+2]+=n; }
+  x.putImageData(im, 0, 0); return c;
+}
+function toTex(canvas, rep) { const t = new THREE.CanvasTexture(canvas); t.wrapS = t.wrapT = THREE.RepeatWrapping;
+  t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; if (rep) t.repeat.set(rep, rep); return t; }
+function normalFromHeight(canvas, strength) {
+  const S = canvas.width, src = canvas.getContext('2d').getImageData(0, 0, S, S).data;
+  const out = new Uint8ClampedArray(S * S * 4);
+  const Hv = (x, y) => src[(((y + S) % S) * S + ((x + S) % S)) * 4] / 255;
+  for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) {
+    const dx = (Hv(x - 1, y) - Hv(x + 1, y)) * strength, dy = (Hv(x, y - 1) - Hv(x, y + 1)) * strength;
+    const l = Math.hypot(dx, dy, 1), i = (y * S + x) * 4;
+    out[i] = (dx / l * 0.5 + 0.5) * 255; out[i+1] = (dy / l * 0.5 + 0.5) * 255; out[i+2] = (1 / l * 0.5 + 0.5) * 255; out[i+3] = 255;
+  }
+  const c2 = document.createElement('canvas'); c2.width = c2.height = S;
+  c2.getContext('2d').putImageData(new ImageData(out, S, S), 0, 0);
+  const t = new THREE.CanvasTexture(c2); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.anisotropy = 8; t.repeat.set(1.6, 1.6); return t;
+}
+const wallCanvas = noiseCanvas('#8f8a94', 0.05);
+const wallTex = toTex(wallCanvas, 1.6);
+const wallNormal = normalFromHeight(wallCanvas, 2.2);
+const floorTex = toTex(noiseCanvas('#241f2c', 0.04), 5);
+
+// ── Maze ─────────────────────────────────────────────────────────────────────
+const GX = 5, GZ = 5, CS = 8.0, WH = 4.4, WT = 5.2;   // bounded tall halls (clear ≈2.8 wide) → dramatic one-point perspective
+const DIRS = { n:[0,1], s:[0,-1], e:[1,0], w:[-1,0] }, OPP = { n:'s', s:'n', e:'w', w:'e' };
+const cx0 = -(GX-1)/2*CS, cz0 = -(GZ-1)/2*CS;
+const cw = (x, z) => new THREE.Vector3(cx0 + x*CS, 0, cz0 + z*CS);
+
+// RING = border corridor of a 5×5 grid around a SOLID 3×3 interior block, so
+// the corridor is walled on BOTH sides (proper one-point-perspective hall) with
+// long 3-cell straights and four corners. Closed → seamless loop.
+const RING = [[0,0],[1,0],[2,0],[3,0],[4,0],[4,1],[4,2],[4,3],[4,4],[3,4],[2,4],[1,4],[0,4],[0,3],[0,2],[0,1]];
+const K = (x,z) => x + ',' + z;
+const open = new Set(), links = new Set();
+function link(x,z,d){ const [dx,dz]=DIRS[d]; links.add(K(x,z)+d); links.add(K(x+dx,z+dz)+OPP[d]); open.add(K(x,z)); open.add(K(x+dx,z+dz)); }
+for (let i=0;i<RING.length;i++){ const a=RING[i], b=RING[(i+1)%RING.length]; open.add(K(...a));
+  link(a[0], a[1], a[0]===b[0] ? (b[1]>a[1]?'n':'s') : (b[0]>a[0]?'e':'w')); }
+const linked = (x,z,d) => links.has(K(x,z)+d);
+
+const wallMat  = new THREE.MeshStandardMaterial({ map: wallTex, normalMap: wallNormal, normalScale: new THREE.Vector2(0.9, 0.9), metalness: 0.04, roughness: 0.9 });
+const accMat   = new THREE.MeshStandardMaterial({ color: '#e01aa8', metalness: 0.3, roughness: 0.35, emissive: new THREE.Color('#ff00e5'), emissiveIntensity: 0.55 });
+const floorMat = new THREE.MeshStandardMaterial({ map: floorTex, metalness: 0.62, roughness: 0.2 });
+
+function triPrism(w, h, d){ const s = new THREE.Shape();
+  s.moveTo(-w/2,-h/2); s.lineTo(w/2,-h/2); s.lineTo(-w/2,h/2); s.closePath();
+  const g = new THREE.ExtrudeGeometry(s, { depth:d, bevelEnabled:false }); g.translate(0,0,-d/2); return g; }
+const box = (w,h,d) => new THREE.BoxGeometry(w,h,d);
+
+function wall(cxw, czw, along){
+  const g = new THREE.Group(); const len = CS + WT;
+  const slab = new THREE.Mesh(along==='x' ? box(len,WH,WT) : box(WT,WH,len), wallMat);
+  slab.castShadow = slab.receiveShadow = true; g.add(slab);
+  const nMer = 3, span = CS*0.9, step = span/nMer;
+  for (let i=0;i<nMer;i++){ const off = -span/2 + step*(i+0.5);
+    const t = new THREE.Mesh(triPrism(step*0.9, 0.85, WT*0.55), i===1 ? accMat : wallMat);
+    t.castShadow = t.receiveShadow = true;
+    t.position.set(along==='x'?off:0, WH/2+0.42, along==='x'?0:off);
+    if (along==='z') t.rotation.y = Math.PI/2; g.add(t); }
+  for (const face of [1,-1]){
+    const r = new THREE.Mesh(triPrism(CS*0.26, WH*0.4, 0.16), accMat); r.castShadow = r.receiveShadow = true;
+    if (along==='x'){ r.position.set(0,-0.15, face*(WT/2+0.08)); if (face<0) r.rotation.y = Math.PI; }
+    else { r.position.set(face*(WT/2+0.08),-0.15,0); r.rotation.y = face>0 ? Math.PI/2 : -Math.PI/2; }
+    g.add(r); }
+  g.position.set(cxw, WH/2, czw); scene.add(g);
+}
+for (let x=0;x<=GX;x++) for (let z=0;z<GZ;z++)
+  if ((open.has(K(x-1,z))||open.has(K(x,z))) && !linked(x-1,z,'e')) wall(cx0+(x-0.5)*CS, cz0+z*CS, 'z');
+for (let z=0;z<=GZ;z++) for (let x=0;x<GX;x++)
+  if ((open.has(K(x,z-1))||open.has(K(x,z))) && !linked(x,z-1,'n')) wall(cx0+x*CS, cz0+(z-0.5)*CS, 'x');
+const floor = new THREE.Mesh(new THREE.PlaneGeometry(GX*CS+16, GZ*CS+16), floorMat);
+floor.rotation.x = -Math.PI/2; floor.position.y = -WH/2; floor.receiveShadow = true; scene.add(floor);
+
+// ── Premium lighting: low ambient, dramatic raking key (long soft shadows),
+//    cool fill, magenta accent points grazing the reliefs. ─────────────────
+scene.add(new THREE.HemisphereLight(0x9a86c4, 0x2a2234, 0.55));
+const key = new THREE.DirectionalLight(0xfff0f8, 3.4);
+key.position.set(11, 9, 5); key.castShadow = true;
+key.shadow.mapSize.set(4096, 4096); key.shadow.radius = 7;
+const sc = key.shadow.camera; sc.left=-18; sc.right=18; sc.top=18; sc.bottom=-18; sc.near=1; sc.far=52;
+key.shadow.bias = -0.00028; key.shadow.normalBias = 0.02; scene.add(key);
+const fill = new THREE.DirectionalLight(0x6a5ca0, 0.6); fill.position.set(-8, 5, -6); scene.add(fill);
+for (const key of open){ const [x,z]=key.split(',').map(Number); const p = cw(x,z);
+  const pl = new THREE.PointLight(0xff2fda, 3.4, 8, 2); pl.position.set(p.x, 0.4, p.z); scene.add(pl); }
+
+// ── DFS/Euler tour → keyframes ──────────────────────────────────────────────
+const seq = RING.map(c => [c[0], c[1]]);
+seq.push([RING[0][0], RING[0][1]]);   // close the loop
+
+const EYE = 0.0, MOVE = 1.05, DWELL = 1.25;
+const heading = (a,b) => Math.atan2(-(b.x-a.x), -(b.z-a.z));
+const KF = []; let t = 0; const initHead = heading(cw(...seq[0]), cw(...seq[1])); let prevYaw = initHead;
+function pushKF(time,pos,yaw){ while (yaw-prevYaw>Math.PI) yaw-=2*Math.PI; while (yaw-prevYaw<-Math.PI) yaw+=2*Math.PI; prevYaw=yaw; KF.push({t:time,x:pos.x,z:pos.z,yaw}); }
+for (let i=0;i<seq.length;i++){
+  const here = cw(...seq[i]); const next = i<seq.length-1 ? cw(...seq[i+1]) : cw(...seq[1]);
+  const yaw = i<seq.length-1 ? heading(here,next) : initHead; pushKF(t, here, yaw);
+  // At a stub junction, pause and turn to look down the branch (the choice),
+  // then back to the path ahead and continue.
+  // Pause at each corner (a decision beat): the turn eases as we arrive, then
+  // we hold briefly facing the new hall before continuing.
+  if (i > 0 && i < seq.length - 1) {
+    const inH = heading(cw(...seq[i-1]), here), outH = heading(here, cw(...seq[i+1]));
+    if (Math.abs(((inH - outH + Math.PI) % (2*Math.PI)) - Math.PI) > 0.1) { pushKF(t + DWELL, here, yaw); t += DWELL; }
+  }
+  if (i<seq.length-1) t+=MOVE;
+}
+KF[KF.length-1].yaw = KF[0].yaw + Math.round((KF[KF.length-1].yaw-KF[0].yaw)/(2*Math.PI))*2*Math.PI;
+const TOTAL = KF[KF.length-1].t;
+const smooth = e => e*e*(3-2*e);
+function seek(frac){
+  const time = frac*TOTAL; let k=0; while (k<KF.length-2 && KF[k+1].t<=time) k++;
+  const a=KF[k], b=KF[k+1]; const e = smooth(b.t>a.t ? (time-a.t)/(b.t-a.t) : 0);
+  const x=a.x+(b.x-a.x)*e, z=a.z+(b.z-a.z)*e, yaw=a.yaw+(b.yaw-a.yaw)*e;
+  const bob = Math.sin(frac*Math.PI*2*7)*0.035;
+  camera.position.set(x, EYE+bob, z); camera.rotation.set(0,yaw,0,'YXZ');
+  camera.rotation.x = Math.sin(frac*Math.PI*2*7)*0.006 - 0.008;   // near-level → one-point halls, vanishing point centered
+  renderer.render(scene, camera);
+}
+window.seek = seek; window.__total = TOTAL; window.__cam = camera; window.__dbg = () => {
+  const d = new THREE.Vector3(); camera.getWorldDirection(d);
+  return { pos: camera.position.toArray().map(v=>+v.toFixed(2)), fwd: d.toArray().map(v=>+v.toFixed(2)), yawDeg: +(camera.rotation.y*180/Math.PI).toFixed(1) };
+}; seek(0); window.__ready = true;
+</script>

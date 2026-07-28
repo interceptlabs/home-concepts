@@ -13,6 +13,7 @@
   var video = document.querySelector(".reel-video");
   var section = document.getElementById("work-reel");
   var toggle = document.querySelector(".reel-toggle");
+  var sound = document.querySelector(".reel-sound");
   if (!video || !section || !toggle) return;
 
   var prefersReducedMotion =
@@ -57,6 +58,30 @@
       video.pause();
     }
   });
+
+  // IT6 round 6: the reel video files carry a music track. Autoplay stays
+  // muted (markup `muted` attribute — the only state browsers allow to
+  // autoplay); this chip flips video.muted on the user's own gesture, which
+  // is exactly what autoplay policy accepts. Label shows the ACTION
+  // available (same convention as the Pause chip).
+  function setSoundState() {
+    if (!sound) return;
+    sound.setAttribute("aria-pressed", video.muted ? "false" : "true");
+    sound.textContent = video.muted ? "Sound on" : "Sound off";
+  }
+  if (sound) {
+    sound.addEventListener("click", function () {
+      video.muted = !video.muted;
+      // Turning sound on while the reel sits paused reads as a play
+      // intent — same user-gesture, so play() is policy-safe here.
+      if (!video.muted && video.paused) {
+        userPaused = false;
+        attemptPlay(true);
+      }
+    });
+    video.addEventListener("volumechange", setSoundState);
+    setSoundState();
+  }
 
   video.addEventListener("play", function () {
     setToggleState(true);

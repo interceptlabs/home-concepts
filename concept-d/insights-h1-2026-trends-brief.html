@@ -1,0 +1,3044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>When AI Becomes an Operating Model · H1 Trends Brief · Intercept</title>
+<meta name="description" content="The H1 Trends Brief from Intercept Group. AI has moved from something teams use to something teams increasingly run the function on. Powered by Watchtower.">
+<link rel="canonical" href="https://interceptgroup.com/insights/h1-2026-when-ai-becomes-an-operating-model">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="When AI Becomes an Operating Model · H1 Trends Brief">
+<meta property="og:description" content="AI has moved from something teams use to something teams increasingly run the function on. The H1 Trends Brief from Intercept, powered by Watchtower.">
+<meta property="og:url" content="https://interceptgroup.com/insights/h1-2026-when-ai-becomes-an-operating-model">
+<meta property="og:site_name" content="Intercept">
+<meta property="article:published_time" content="2026-06-25T00:00:00Z">
+<meta property="article:modified_time" content="2026-06-25T00:00:00Z">
+<meta property="article:author" content="Andrew Au">
+<meta property="article:author" content="Shaheen Yazdani">
+<meta property="article:author" content="Francis Silva">
+<meta property="article:author" content="David Toto">
+<meta property="article:section" content="Activation">
+<meta property="article:tag" content="Trends Brief">
+<meta property="article:tag" content="AI in B2B Marketing">
+<meta property="article:tag" content="Watchtower">
+<meta property="article:tag" content="Operating Model">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="When AI Becomes an Operating Model · H1 Trends Brief">
+<meta name="twitter:description" content="AI has moved from something teams use to something teams increasingly run the function on. The H1 Trends Brief from Intercept.">
+
+<!-- JSON-LD: Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "When AI Becomes an Operating Model",
+  "alternativeHeadline": "H1 Trends Brief",
+  "description": "The H1 Trends Brief from Intercept Group. AI has moved from something teams use to something teams increasingly run the function on. Powered by Watchtower.",
+  "author": [
+    { "@type": "Person", "name": "Andrew Au", "jobTitle": "Co-CEO, Intercept Group", "worksFor": { "@type": "Organization", "name": "Intercept Group" }, "sameAs": ["https://www.linkedin.com/in/auandrew/"] },
+    { "@type": "Person", "name": "Shaheen Yazdani", "jobTitle": "Co-CEO, Intercept Group", "worksFor": { "@type": "Organization", "name": "Intercept Group" } },
+    { "@type": "Person", "name": "Francis Silva", "jobTitle": "Chief Technology Officer, Intercept Group", "worksFor": { "@type": "Organization", "name": "Intercept Group" } },
+    { "@type": "Person", "name": "David Toto", "jobTitle": "Managing Director, Intercept Group", "worksFor": { "@type": "Organization", "name": "Intercept Group" } }
+  ],
+  "publisher": {
+    "@type": "Organization",
+    "name": "Intercept Group",
+    "url": "https://interceptgroup.com"
+  },
+  "datePublished": "2026-06-25",
+  "dateModified": "2026-06-25",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://interceptgroup.com/insights/h1-2026-when-ai-becomes-an-operating-model"
+  },
+  "articleSection": "Activation",
+  "keywords": ["Trends Brief", "AI in B2B Marketing", "Watchtower", "Operating Model", "B2B Marketing", "AI Adoption", "Agent Governance"]
+}
+</script>
+
+<!-- JSON-LD: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://interceptgroup.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Insights", "item": "https://interceptgroup.com/insights/" },
+    { "@type": "ListItem", "position": 3, "name": "Trends Briefs", "item": "https://interceptgroup.com/insights/?format=trends-brief" }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600;1,700&family=Inter:wght@400;500;600;700&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- GSAP + ScrollTrigger for premium scrollytelling -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+:root{
+  /* === Fritz tokens === */
+  --flarepop-100:#ff00e5; --flarepop-200:#df00be; --flarepop-300:#a8008c; --flarepop-400:#700063; --flarepop-500:#39003a;
+  --coolsweep-100:#1a7aff; --coolsweep-200:#1666d6;
+  --wiretree-100:#00d862; --wiretree-200:#00b553;
+  --bitvoid-100:#9359fe; --bitvoid-200:#7a3df0;
+  --siren-100:#f50041; --siren-200:#cc0036;
+  --volts-100:#f5c800; --volts-200:#d1aa00; --volts-300:#a88a00;
+  --coolsweep-300:#1251ad;
+  --halo-100:#ffffff; --halo-200:#f5f7ff; --halo-300:#e6e9f5; --halo-400:#d1d6e6; --halo-500:#b8bed1;
+  --carbon-100:#3a3a4a; --carbon-200:#2c2c3a; --carbon-300:#1f1f2a; --carbon-400:#14141c; --carbon-500:#0a0a0f;
+
+  /* === Semantic aliases (light mode · Carbon-on-Halo) === */
+  --bg-page:        var(--halo-100);   /* #ffffff page */
+  --bg-surface:     var(--halo-200);   /* #f5f7ff cards / panels */
+  --bg-surface-hi:  var(--halo-300);   /* #e6e9f5 sub-surfaces */
+  --bg-input:       var(--halo-100);   /* #ffffff input fills (bordered) */
+  --fg:             var(--carbon-500); /* #0a0a0f primary text */
+  --fg-2:           var(--carbon-200); /* #2c2c3a secondary */
+  --fg-3:           var(--carbon-100); /* #3a3a4a muted */
+  --line:           rgba(10,10,15,.12);
+  --line-2:         rgba(10,10,15,.20);
+  --accent:         var(--flarepop-100);  /* fills + large display only */
+  --accent-deep:    var(--flarepop-200);  /* hover on fills */
+  --accent-ink:     var(--flarepop-300);  /* #a8008c — accent TEXT (AA on white) */
+  --data:           var(--coolsweep-100);
+  --data-ink:       var(--coolsweep-300); /* #1251ad — AA on white */
+  --signal:         var(--wiretree-100);
+  --signal-ink: #006632;      /* wiretree-400 — AA on white (was wiretree-200, 2.7:1) */  /* #00b553 — AA on white */
+  --agent:          var(--bitvoid-100);
+  --agent-ink:      var(--bitvoid-200);   /* #7a3df0 — AA on white */
+  --alert:          var(--siren-100);
+  --alert-ink:      var(--siren-200);     /* #cc0036 — AA on white for text */
+  --volts:          var(--volts-100);
+  --volts-ink:      var(--volts-300);     /* #a88a00 — AA on white for text (warnings) */
+
+  /* === Pillar colors === */
+  --pillar-intelligence: var(--coolsweep-100);
+  --pillar-visibility:   var(--flarepop-100);
+  --pillar-velocity:     var(--wiretree-100);
+  --pillar-activation:   var(--bitvoid-100);
+
+  --font-display:'Instrument Sans',system-ui,sans-serif;
+  --font-body:'Inter',system-ui,sans-serif;
+  --font-mono:'Geist Mono',ui-monospace,monospace;
+
+  --sp-4:4px; --sp-8:8px; --sp-12:12px; --sp-16:16px; --sp-24:24px; --sp-32:32px; --sp-40:40px; --sp-48:48px; --sp-80:80px; --sp-120:120px;
+  --r-xs:4px; --r-s:8px; --r-m:12px; --r-l:16px; --r-xl:24px; --r-round:9999px;
+
+  --maxw:1280px;
+  --midw:880px;
+  --readw:760px;
+  --railw:260px;
+  --topbar-h:64px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:clip;max-width:100%;}
+html{scroll-behavior:smooth;}
+svg,img{max-width:100%;}
+body{background:var(--bg-page);color:var(--fg);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4,h5{font-family:var(--font-display);font-weight:700;line-height:1.13;letter-spacing:-.02em;}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+.mid{max-width:var(--midw);margin:0 auto;padding:0 28px;}
+.skip{position:absolute;left:-999px;}
+.skip:focus{left:12px;top:12px;background:var(--accent);color:var(--carbon-500);padding:8px 14px;border-radius:6px;z-index:300;}
+
+/* ─── Reading progress bar ─── */
+.read-progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:300;transition:width .1s ease-out;}
+
+/* ─── Topbar ─── */
+.topbar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.72);backdrop-filter:blur(24px) saturate(1.4);-webkit-backdrop-filter:blur(24px) saturate(1.4);border-bottom:1px solid rgba(10,10,15,.08);}
+.topbar .row{display:flex;align-items:center;justify-content:space-between;max-width:var(--maxw);margin:0 auto;padding:15px 28px;}
+.nav{display:flex;align-items:center;gap:26px;font-size:14.5px;color:var(--fg-2);}
+.nav a:hover{color:var(--accent-ink);}
+.nav .cta-nav{background:var(--accent);color:var(--carbon-500);font-weight:700;padding:9px 18px;border-radius:7px;transition:background .16s;}
+.nav .cta-nav:hover{background:var(--accent-deep);}
+@media(max-width:900px){.nav a:not(.cta-nav){display:none;}}
+.logo{width:130px;aspect-ratio:324.005/76.2147;height:auto;display:block;}
+.logo.sm{width:108px;}
+
+/* ─── Brief TOC · sticky dropdown · unified across desktop + mobile ─── */
+/* ─── Chapter strip · always-visible frosted-glass horizontal nav ─── */
+.chapter-strip{
+  position:sticky;
+  top:var(--topbar-h);
+  z-index:90;
+  background:rgba(255,255,255,.72);
+  backdrop-filter:blur(24px) saturate(1.4);
+  -webkit-backdrop-filter:blur(24px) saturate(1.4);
+  border-bottom:1px solid rgba(10,10,15,.08);
+  box-shadow:0 1px 0 0 rgba(10,10,15,.03) inset, 0 8px 24px -12px rgba(10,10,15,.12);
+}
+.chapter-strip-inner{max-width:var(--maxw);margin:0 auto;padding:0 28px;display:flex;align-items:center;gap:8px;}
+.chapter-strip-label{font-family:var(--font-body);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--fg-3);flex:0 0 auto;padding:14px 16px 14px 0;border-right:1px solid rgba(10,10,15,.08);margin-right:6px;}
+.chapter-strip-scroll{flex:1;display:flex;align-items:center;gap:4px;overflow-x:auto;scrollbar-width:none;scroll-behavior:smooth;padding:6px 0;mask-image:linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);-webkit-mask-image:linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);}
+.chapter-strip-scroll::-webkit-scrollbar{display:none;}
+.chapter-strip-scroll a{flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;font-family:var(--font-body);font-size:12px;font-weight:500;letter-spacing:.04em;color:var(--fg-2);white-space:nowrap;transition:background .15s, color .15s;}
+.chapter-strip-scroll a:hover{background:rgba(10,10,15,.06);color:var(--fg);}
+.chapter-strip-scroll a.is-current{background:rgba(255,0,229,.10);color:var(--accent-ink);box-shadow:0 0 0 1px rgba(255,0,229,.28) inset;}
+.chapter-strip-scroll a .num{font-size:10px;font-weight:700;letter-spacing:.08em;opacity:.7;}
+.chapter-strip-scroll a.is-current .num{opacity:1;}
+@media(max-width:680px){
+  .chapter-strip-inner{padding:0 16px;gap:6px;}
+  .chapter-strip-label{padding:12px 12px 12px 0;font-size:9px;}
+  .chapter-strip-scroll a{padding:7px 12px;font-size:11.5px;}
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HERO · full-viewport opening
+   ═══════════════════════════════════════════════════════════ */
+.brief-hero{
+  position:relative;
+  min-height:88vh;
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
+  gap:64px;
+  align-items:center;
+  padding:64px 0 80px;
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+}
+@media(max-width:980px){.brief-hero{grid-template-columns:1fr;min-height:auto;padding:48px 0 64px;gap:40px;}}
+.brief-hero .hero-content{padding:0 28px 0 max(28px, calc((100vw - var(--maxw)) / 2 + 28px));position:relative;z-index:2;}
+.brief-hero .hero-visual{padding-right:max(28px, calc((100vw - var(--maxw)) / 2 + 28px));position:relative;z-index:2;}
+@media(max-width:980px){.brief-hero .hero-content, .brief-hero .hero-visual{padding:0 28px;}}
+
+.brief-breadcrumb{font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:.08em;color:var(--fg-3);margin-bottom:24px;}
+.brief-breadcrumb a:hover{color:var(--accent-ink);}
+.brief-breadcrumb .sep{opacity:.5;margin:0 8px;}
+
+.brief-chips{display:flex;gap:8px;margin-bottom:26px;flex-wrap:wrap;}
+.chip{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:var(--r-round);}
+.chip.pillar-activation{background:var(--pillar-activation);color:var(--halo-100);}
+.chip.pillar-intelligence{background:var(--pillar-intelligence);color:var(--carbon-500);}
+.chip.pillar-visibility{background:var(--pillar-visibility);color:var(--carbon-500);}
+.chip.pillar-velocity{background:var(--pillar-velocity);color:var(--carbon-500);}
+.chip.format{background:var(--bg-surface-hi);color:var(--fg);}
+
+.brief-kicker{font-family:var(--font-body);font-weight:600;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.brief-kicker .powered{color:var(--fg-3);font-weight:400;letter-spacing:.12em;}
+.brief-kicker .powered b{color:var(--fg-2);font-weight:700;letter-spacing:.16em;}
+
+.brief-h1{font-size:clamp(40px,5.6vw,80px);line-height:1.02;max-width:18ch;letter-spacing:-.03em;margin-bottom:32px;text-wrap:balance;}
+.brief-h1 em{font-style:normal;color:var(--accent);}
+
+.brief-epigraph{
+  padding:0;
+  margin:32px 0 36px;
+  font-family:var(--font-display);
+  font-size:18px;
+  font-weight:500;
+  line-height:1.45;
+  color:var(--fg-2);
+  font-style:italic;
+  max-width:54ch;
+}
+.brief-epigraph cite{display:block;font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3);font-style:normal;margin-top:14px;}
+
+.brief-hero-ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-body);font-weight:700;font-size:14.5px;padding:14px 22px;border-radius:8px;border:0;cursor:pointer;transition:background .15s, border-color .15s, color .15s, transform .15s;text-decoration:none;}
+.btn-primary{background:var(--accent);color:var(--carbon-500);}
+.btn-primary:hover{background:var(--accent-deep);transform:translateY(-1px);}
+.btn-ghost{background:transparent;color:var(--fg);border:1.5px solid var(--line-2);}
+.btn-ghost:hover{border-color:var(--accent-ink);color:var(--accent-ink);}
+.btn svg{width:14px;height:14px;color:currentColor;}
+
+/* Hero numbers preview (replaces outlier card — no Watchtower context required) */
+.hero-numbers{
+  background:var(--bg-surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-xl);
+  padding:32px 32px 28px;
+  position:relative;
+  overflow:hidden;
+}
+.hero-numbers::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;height:3px;
+  background:var(--accent);
+}
+.hero-numbers-label{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:22px;display:flex;align-items:center;gap:10px;}
+.hero-numbers-label::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);}
+.hero-numbers-grid{display:flex;flex-direction:column;gap:22px;}
+.hn-stat{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;padding-top:18px;border-top:1px solid var(--line);}
+.hn-stat:first-child{padding-top:0;border-top:0;}
+.hn-num{font-family:var(--font-mono);font-size:clamp(28px,3vw,36px);font-weight:700;color:var(--fg);line-height:1;letter-spacing:-.03em;min-width:78px;}
+.hn-label{font-size:13.5px;line-height:1.55;color:var(--fg-2);}
+
+/* ═══════════════════════════════════════════════════════════
+   KEY TAKEAWAYS · above-the-fold value
+   ═══════════════════════════════════════════════════════════ */
+.brief-takeaways{margin:48px auto 0;max-width:var(--readw);padding:0 28px;}
+.brief-takeaways-inner{background:var(--bg-surface);border:1px solid var(--line);border-radius:var(--r-l);padding:36px 44px;}
+@media(max-width:760px){.brief-takeaways-inner{padding:28px 28px;}}
+.brief-takeaways-label{font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-ink);display:block;margin-bottom:24px;}
+.brief-takeaways ul{list-style:none;margin:0;padding:0;}
+.brief-takeaways li{font-size:16px;line-height:1.55;color:var(--fg);padding:14px 0 14px 26px;position:relative;border-bottom:1px solid var(--line);}
+.brief-takeaways li:first-child{padding-top:0;}
+.brief-takeaways li:first-child::before{top:10px;}
+.brief-takeaways li:last-child{padding-bottom:0;border-bottom:0;}
+.brief-takeaways li::before{content:"";position:absolute;left:0;top:24px;width:14px;height:2px;background:var(--accent);}
+
+/* ═══════════════════════════════════════════════════════════
+   BODY · sticky left rail + main content
+   ═══════════════════════════════════════════════════════════ */
+.brief-body{padding:64px 0 0;}
+.brief-grid{
+  max-width:var(--readw);
+  margin:0 auto;
+  padding:0 28px;
+}
+@media(max-width:680px){
+  .brief-grid{padding:0 20px;}
+}
+
+/* Body content */
+.brief-content{min-width:0;}
+
+.prose{max-width:var(--readw);}
+.prose p{font-size:17px;line-height:1.7;color:var(--fg);margin-bottom:1.4em;}
+.prose p strong, .prose p b{font-weight:600;color:var(--fg);}
+.prose p:last-child{margin-bottom:0;}
+.prose ul, .prose ol{margin:0 0 1.4em 1.2em;}
+.prose li{font-size:17px;line-height:1.7;margin-bottom:.6em;color:var(--fg);}
+.prose li::marker{color:var(--accent-ink);}
+.prose a{color:var(--accent-ink);border-bottom:1px solid transparent;transition:border-color .15s;}
+.prose a:hover{border-bottom-color:var(--accent-ink);}
+
+.section-block{margin-top:88px;scroll-margin-top:calc(var(--topbar-h) + 24px);}
+.section-block:first-child{margin-top:0;}
+.chapter-num{font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:.18em;color:var(--accent-ink);margin:0 0 10px;display:block;text-transform:uppercase;}
+.section-h2{font-size:clamp(28px,3.2vw,40px);line-height:1.13;margin-bottom:24px;letter-spacing:-.025em;}
+
+/* Stat callout (Coolsweep data accent) */
+.stat-callout{align-items:center;margin:36px 0;padding:28px 32px;background:var(--bg-surface);border:1px solid var(--line);border-radius:var(--r-l);display:flex;gap:32px;align-items:center;flex-wrap:wrap;max-width:var(--readw);}
+.stat-callout .stat-num{margin:0;font-family:var(--font-mono);font-size:clamp(44px,5.6vw,64px);font-weight:700;color:var(--data-ink);line-height:1;flex:0 0 auto;letter-spacing:-.04em;}
+.stat-callout .stat-meta{flex:1 1 240px;}
+.stat-callout .stat-lbl{font-size:15.5px;line-height:1.5;color:var(--fg);margin-bottom:8px;font-weight:500;}
+.stat-callout cite{display:block;font-family:var(--font-body);font-weight:600;font-style:normal;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3);}
+
+/* Inline pull-quote (verbatim, attributed) */
+.pull-quote{
+  margin:48px 0;
+  padding:32px 36px;
+  background:var(--bg-surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-xl);
+}
+@media(max-width:680px){.pull-quote{margin:36px 0;padding:28px 24px;}}
+.pull-quote p{font-family:var(--font-display);font-size:clamp(20px,2.4vw,28px);font-weight:500;line-height:1.35;letter-spacing:-.015em;color:var(--fg);margin:0 0 18px;font-style:italic;}
+.pull-quote cite{
+  display:block;
+  font-family:var(--font-body);font-weight:600;
+  font-style:normal;
+  font-size:12px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--fg-3);
+}
+.pull-quote cite b{color:var(--fg-2);font-weight:700;}
+
+/* ═══════════════════════════════════════════════════════════
+   RADAR · the show-stopper
+   ═══════════════════════════════════════════════════════════ */
+.radar-section{
+  margin:88px 0;
+  padding:48px 40px;
+  background:var(--bg-surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-xl);
+  scroll-margin-top:calc(var(--topbar-h) + 24px);
+}
+@media(max-width:760px){.radar-section{margin:64px 0;padding:36px 24px;}}
+.radar-eyebrow{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:14px;}
+.radar-title{font-size:clamp(26px,3vw,36px);line-height:1.15;letter-spacing:-.02em;margin-bottom:14px;}
+.radar-intro{font-size:16px;color:var(--fg-2);line-height:1.6;margin-bottom:36px;max-width:60ch;}
+.radar-intro b{color:var(--fg);font-weight:600;}
+
+.radar-layout{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center;}
+@media(max-width:900px){.radar-layout{grid-template-columns:1fr;gap:32px;}}
+
+.radar-chart{position:relative;aspect-ratio:1/1;max-width:520px;margin:0 auto;width:100%;}
+.radar-chart svg{width:100%;height:100%;}
+.radar-grid-line{stroke:var(--line);stroke-width:1;fill:none;}
+.radar-axis{stroke:var(--line-2);stroke-width:1;}
+.radar-axis-label{font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;fill:var(--fg-2);}
+.radar-axis-label.is-outlier{fill:var(--alert);}
+.radar-quarter{fill:none;stroke-width:1.5;opacity:1;stroke-dasharray:3 3;stroke:var(--fg-3);}
+.radar-quarter--q2{stroke-opacity:.30;} /* oldest — faintest */
+.radar-quarter--q3{stroke-opacity:.50;}
+.radar-quarter--q4{stroke-opacity:.75;} /* most recent history — most visible */
+.radar-current{fill:rgba(255,0,229,.15);stroke:var(--accent);stroke-width:2;}
+.radar-current-points circle{fill:var(--accent);stroke:var(--halo-100);stroke-width:2;}
+.radar-current-points circle.is-outlier{fill:var(--alert);}
+
+.radar-legend{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:24px;font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.06em;color:var(--fg-3);}
+.radar-legend-item{display:flex;align-items:center;gap:6px;}
+.radar-legend-swatch{width:18px;height:3px;background:var(--accent);border-radius:1px;}
+.radar-legend-swatch.q2{background:var(--fg-3);opacity:.3;}
+.radar-legend-swatch.q3{background:var(--fg-3);opacity:.5;}
+.radar-legend-swatch.q4{background:var(--fg-3);opacity:.75;}
+
+.radar-pillars{display:flex;flex-direction:column;gap:10px;}
+.radar-pillar-row{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:14px;
+  align-items:center;
+  padding:14px 16px;
+  background:var(--bg-surface-hi);
+  border-radius:var(--r-s);
+  border:1px solid var(--line);
+  transition:transform .15s, border-color .15s;
+}
+.radar-pillar-row.is-outlier{background:var(--bg-surface);}
+.radar-pillar-row:hover{transform:translateX(4px);}
+.radar-pillar-num{font-family:var(--font-mono);font-weight:700;font-size:11px;letter-spacing:.06em;color:var(--accent-ink);}
+.radar-pillar-row.is-outlier .radar-pillar-num{color:var(--alert-ink);}
+.radar-pillar-name{font-family:var(--font-display);font-weight:600;font-size:14.5px;color:var(--fg);letter-spacing:-.01em;}
+.radar-pillar-score{font-family:var(--font-mono);font-weight:700;font-size:18px;color:var(--accent-ink);letter-spacing:-.02em;}
+.radar-pillar-row.is-outlier .radar-pillar-score{color:var(--alert-ink);}
+.radar-pillar-delta{font-family:var(--font-mono);font-size:10px;color:var(--signal-ink);margin-left:4px;font-weight:500;}
+.radar-pillar-delta.is-negative{color:var(--alert-ink);}
+
+/* Pillar deep-dive sections */
+.pillar-section{margin-top:96px;scroll-margin-top:calc(var(--topbar-h) + 24px);}
+.pillar-header{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:end;padding-bottom:20px;margin-bottom:28px;border-bottom:1px solid var(--line);max-width:var(--readw);}
+.pillar-num-large{font-family:var(--font-mono);font-weight:700;font-size:56px;color:var(--accent-ink);line-height:1;letter-spacing:-.04em;}
+.pillar-section.is-outlier .pillar-num-large{color:var(--alert-ink);}
+.pillar-meta{display:flex;flex-direction:column;gap:6px;}
+.pillar-eyebrow{font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--fg-3);}
+.pillar-title{font-family:var(--font-display);font-size:clamp(22px,2.4vw,28px);font-weight:700;line-height:1.2;letter-spacing:-.02em;color:var(--fg);}
+.pillar-score-block{text-align:right;display:flex;flex-direction:column;gap:4px;align-items:flex-end;}
+.pillar-score-number{font-family:var(--font-mono);font-weight:700;font-size:42px;color:var(--accent-ink);line-height:1;letter-spacing:-.03em;}
+.pillar-section.is-outlier .pillar-score-number{color:var(--alert-ink);}
+.pillar-score-meta{font-family:var(--font-body);font-weight:600;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3);}
+.pillar-score-delta{font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--signal-ink);}
+.pillar-score-delta.is-negative{color:var(--alert-ink);}
+
+.pillar-callout-pair{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:32px 0;max-width:var(--readw);}
+@media(max-width:760px){.pillar-callout-pair{grid-template-columns:1fr;}}
+.pillar-callout-pair > div{background:var(--bg-surface);padding:22px;border-radius:var(--r-l);border:1px solid var(--line);}
+.pillar-callout-pair h4{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-3);margin-bottom:10px;}
+.pillar-callout-pair .what-we-see h4{color:var(--data-ink);}
+.pillar-callout-pair .what-it-means h4{color:var(--signal-ink);}
+.pillar-callout-pair p{font-size:14.5px;line-height:1.55;color:var(--fg-2);margin:0;}
+
+/* Signal Meter (within Pillar 4) */
+.signal-meter{
+  margin:36px 0;
+  padding:28px;
+  background:var(--bg-surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-l);
+  max-width:var(--readw);
+}
+.signal-meter-eyebrow{font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:6px;}
+.signal-meter-title{font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--fg);margin-bottom:20px;letter-spacing:-.01em;}
+.signal-bar{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);}
+.signal-bar:last-child{border-bottom:0;}
+.signal-bar-row{display:grid;grid-template-columns:1fr 60px;gap:18px;align-items:center;width:100%;}
+.signal-bar-label{font-size:14px;color:var(--fg);}
+.signal-bar-vis{display:flex;align-items:center;gap:10px;}
+.signal-bar-track{flex:1;height:6px;background:var(--bg-surface-hi);border-radius:3px;overflow:hidden;}
+.signal-bar-fill{height:100%;background:var(--data);border-radius:3px;transform-origin:left center;transform:scaleX(var(--w, .5));transition:transform .8s cubic-bezier(.2,.7,.3,1);}
+.signal-bar-val{font-family:var(--font-body);font-weight:700;font-size:14px;color:var(--data-ink);letter-spacing:-.01em;}
+
+/* Cost callout (Pillar 5 full-bleed pinned moment) */
+.cost-callout{
+  margin:48px 0;
+  padding:40px 36px;
+  background:var(--bg-surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-xl);
+}
+@media(max-width:680px){.cost-callout{margin:36px 0;padding:32px 24px;}}
+.cost-callout-eyebrow{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--volts-ink);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.cost-callout-eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--volts-100);}
+.cost-callout-title{font-family:var(--font-display);font-size:clamp(22px,2.6vw,30px);font-weight:700;line-height:1.2;color:var(--fg);margin-bottom:22px;letter-spacing:-.02em;}
+.cost-stats{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:20px;}
+@media(max-width:560px){.cost-stats{grid-template-columns:1fr;}}
+.cost-stat-num{font-family:var(--font-body);font-weight:700;font-size:clamp(36px,4vw,52px);color:var(--volts-ink);line-height:1;letter-spacing:-.04em;margin-bottom:6px;}
+.cost-stat-label{font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3);line-height:1.4;}
+.cost-callout-body{font-size:15px;line-height:1.6;color:var(--fg-2);max-width:60ch;}
+.cost-callout-body b{color:var(--fg);font-weight:600;}
+
+/* Deep Dives panel */
+.deep-dives{margin-top:96px;scroll-margin-top:calc(var(--topbar-h) + 24px);}
+.deep-dives .section-h2{margin-bottom:36px;}
+.deep-dives-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+@media(max-width:760px){.deep-dives-grid{grid-template-columns:1fr;}}
+.dd-card{
+  padding:24px 26px;
+  background:var(--bg-surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-l);
+}
+.dd-eyebrow{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-3);margin-bottom:8px;}
+.dd-card--agent .dd-eyebrow{color:var(--agent-ink);}
+.dd-card--alert .dd-eyebrow{color:var(--alert-ink);}
+.dd-card--data .dd-eyebrow{color:var(--data-ink);}
+.dd-card--signal .dd-eyebrow{color:var(--signal-ink);}
+.dd-card--accent .dd-eyebrow{color:var(--accent-ink);}
+.dd-title{font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--fg);margin-bottom:12px;letter-spacing:-.01em;}
+.dd-card p{font-size:14.5px;line-height:1.55;color:var(--fg-2);}
+.dd-card p strong, .dd-card p b{color:var(--fg);font-weight:600;}
+
+/* Leadership Questions */
+.leadership-questions{margin-top:96px;scroll-margin-top:calc(var(--topbar-h) + 24px);}
+.leadership-questions .section-h2{margin-bottom:14px;}
+.leadership-questions .section-intro{font-size:16px;color:var(--fg-2);line-height:1.6;margin-bottom:40px;max-width:60ch;}
+.lq-grid{display:flex;flex-direction:column;gap:18px;}
+.lq-item{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:24px;
+  padding:32px 36px;
+  background:var(--bg-surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-l);
+  transition:border-color .18s, transform .18s;
+  opacity:0;transform:translateY(20px);
+  transition:opacity .6s ease, transform .6s ease, border-color .18s;
+}
+.lq-item.is-visible{opacity:1;transform:translateY(0);}
+.lq-item:hover{border-color:var(--line-2);}
+@media(max-width:560px){.lq-item{grid-template-columns:1fr;padding:28px 24px;}}
+.lq-num{font-family:var(--font-body);font-weight:700;font-size:32px;color:var(--accent-ink);line-height:1;letter-spacing:-.03em;}
+.lq-body h3{font-family:var(--font-display);font-size:20px;font-weight:700;line-height:1.25;letter-spacing:-.015em;color:var(--fg);margin-bottom:12px;}
+.lq-body p{font-size:15px;line-height:1.6;color:var(--fg-2);}
+
+/* Tool tease — assessment CTA */
+.tool-tease{
+  margin-top:56px;
+  padding:40px 44px;
+  background:var(--bg-surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-xl);
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:32px;
+  align-items:center;
+}
+@media(max-width:760px){.tool-tease{grid-template-columns:1fr;padding:32px 28px;}}
+.tool-tease-eyebrow{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:10px;}
+.tool-tease-title{font-family:var(--font-display);font-size:clamp(22px,2.4vw,28px);font-weight:700;line-height:1.25;letter-spacing:-.02em;color:var(--fg);margin-bottom:12px;}
+.tool-tease p{font-size:15px;line-height:1.6;color:var(--fg-2);margin:0;max-width:48ch;}
+.tool-tease .btn-primary{background:var(--accent);color:var(--carbon-500);white-space:nowrap;}
+.tool-tease .btn-primary:hover{background:var(--flarepop-200);}
+
+/* Conclusion */
+.conclusion-section{margin-top:96px;scroll-margin-top:calc(var(--topbar-h) + 24px);}
+.conclusion-section .section-h2{margin-bottom:24px;}
+
+/* ═══════════════════════════════════════════════════════════
+   INTERACTIVE ASSESSMENT TOOL · scaffold (Phase B1)
+   ═══════════════════════════════════════════════════════════ */
+.assessment{
+  padding:96px 0 0;
+  border-top:1px solid var(--line);
+  margin-top:96px;
+}
+.assessment-inner{max-width:var(--midw);margin:0 auto;padding:0 28px;}
+.assessment-eyebrow{font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:14px;text-align:center;}
+.assessment-title{font-family:var(--font-display);font-size:clamp(28px,3.4vw,42px);font-weight:700;line-height:1.13;letter-spacing:-.025em;color:var(--fg);text-align:center;margin-bottom:18px;max-width:24ch;margin-left:auto;margin-right:auto;}
+.assessment-lead{font-size:17px;color:var(--fg-2);line-height:1.6;text-align:center;max-width:60ch;margin:0 auto 44px;}
+
+.assessment-card{
+  background:var(--bg-surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-xl);
+  padding:40px;
+  max-width:760px;
+  margin:0 auto;
+}
+@media(max-width:680px){.assessment-card{padding:28px 24px;}}
+.assessment-progress{display:flex;align-items:center;gap:12px;margin-bottom:32px;}
+.assessment-progress-label{font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-3);}
+.assessment-progress-track{flex:1;height:4px;background:var(--bg-surface-hi);border-radius:2px;overflow:hidden;}
+.assessment-progress-fill{height:100%;background:var(--data);border-radius:2px;transition:width .3s ease;}
+.assessment-progress-count{font-family:var(--font-mono);font-size:12px;font-weight:700;color:var(--data-ink);}
+
+.assessment-question{margin-bottom:32px;}
+.assessment-q-label{font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-3);margin-bottom:8px;}
+.assessment-q-text{font-family:var(--font-display);font-size:clamp(20px,2.2vw,26px);font-weight:600;line-height:1.3;letter-spacing:-.02em;color:var(--fg);margin-bottom:24px;}
+.assessment-options{display:flex;flex-direction:column;gap:10px;}
+.assessment-option{
+  display:flex;align-items:center;gap:14px;
+  padding:16px 20px;
+  background:var(--bg-surface-hi);
+  border:1.5px solid var(--line);
+  border-radius:var(--r-m);
+  cursor:pointer;
+  transition:border-color .15s, background .15s;
+}
+.assessment-option:hover{border-color:var(--accent-ink);background:rgba(255,0,229,.04);}
+.assessment-option input{margin:0;accent-color:var(--accent-ink);}
+.assessment-option span{font-size:15px;color:var(--fg);}
+
+.assessment-actions{display:flex;justify-content:space-between;align-items:center;margin-top:32px;padding-top:24px;border-top:1px solid var(--line);}
+.assessment-back{font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:.06em;color:var(--fg-3);background:none;border:0;cursor:pointer;padding:8px 14px;text-transform:uppercase;}
+.assessment-back:hover{color:var(--fg);}
+.assessment-next{background:var(--accent);color:var(--halo-100);font-family:var(--font-body);font-weight:700;font-size:14px;padding:12px 22px;border:0;border-radius:var(--r-s);cursor:pointer;display:inline-flex;align-items:center;gap:8px;}
+.assessment-next:hover{background:var(--flarepop-200);}
+
+.assessment-note{
+  text-align:center;margin-top:24px;
+  font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.06em;color:var(--fg-3);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   END-OF-PAGE CTAs (per article template pattern)
+   ═══════════════════════════════════════════════════════════ */
+.convert{padding:96px 0 48px;border-top:1px solid var(--line);margin-top:96px;}
+.convert .section-h2{font-size:clamp(28px,3.6vw,46px);max-width:24ch;margin:0 auto 8px;text-align:center;line-height:1.13;letter-spacing:-.02em;}
+.convert .section-lead{color:var(--fg-2);font-size:17px;max-width:60ch;margin:14px auto 0;text-align:center;}
+.convo-tile{display:block;width:100%;max-width:620px;margin:48px auto 0;background:var(--bg-surface);border:1px solid var(--line);border-radius:var(--r-xl);padding:44px 36px 36px;position:relative;cursor:pointer;text-align:left;transition:border-color .18s, transform .18s;font-family:var(--font-body);color:var(--fg);}
+.convo-tile:hover{border-color:var(--accent-ink);transform:translateY(-3px);}
+.convo-tile-eyebrow{display:block;font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:12px;}
+.convo-tile-heading{display:block;font-family:var(--font-display);font-size:clamp(24px,2.8vw,32px);font-weight:700;line-height:1.15;letter-spacing:-.02em;margin-bottom:14px;}
+.convo-tile-sub{display:block;font-size:15px;color:var(--fg-2);line-height:1.6;text-wrap:pretty;max-width:50ch;}
+.convo-tile-arrow{position:absolute;top:28px;right:28px;width:42px;height:42px;border-radius:var(--r-round);background:var(--accent);color:var(--carbon-500);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;transition:transform .2s;}
+.convo-tile:hover .convo-tile-arrow{transform:translateX(4px);}
+.wayfinding{display:flex;justify-content:center;margin-top:36px;}
+.wayfinding-pill{display:inline-flex;align-items:center;gap:14px;padding:14px 26px;background:transparent;border:1.5px solid var(--line-2);border-radius:var(--r-round);font-family:var(--font-body);font-size:14.5px;font-weight:500;color:var(--fg);transition:border-color .18s, color .18s, background .18s;text-align:left;cursor:pointer;}
+.wayfinding-pill:hover{border-color:var(--accent-ink);color:var(--accent-ink);background:rgba(255,0,229,.04);}
+.wayfinding-pill .wayfinding-meta{font-family:var(--font-body);font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--fg-3);padding-right:14px;border-right:1px solid var(--line-2);transition:color .18s, border-color .18s;}
+.wayfinding-pill:hover .wayfinding-meta{color:var(--accent-ink);border-right-color:rgba(255,0,229,.3);}
+.wayfinding-pill svg{width:14px;height:14px;flex-shrink:0;color:currentColor;transition:transform .18s;}
+.wayfinding-pill:hover svg{transform:translateX(4px);}
+@media(max-width:560px){.wayfinding-pill{padding:12px 18px;gap:10px;font-size:13.5px;flex-wrap:wrap;justify-content:center;text-align:center;}.wayfinding-pill .wayfinding-meta{border-right:0;padding-right:0;padding-bottom:4px;font-size:10px;width:100%;text-align:center;}}
+
+/* Related Insights */
+.related{padding:96px 0 0;}
+.related-label{font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:14px;}
+.related h2{font-size:clamp(24px,2.4vw,30px);margin-bottom:32px;letter-spacing:-.02em;}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+@media(max-width:900px){.related-grid{grid-template-columns:1fr;}}
+.related-card{background:var(--bg-surface);border:1px solid var(--line);border-radius:var(--r-l);padding:24px;transition:border-color .18s, transform .18s;display:flex;flex-direction:column;gap:14px;}
+.related-card:hover{border-color:var(--line-2);transform:translateY(-2px);}
+.related-card .chips{margin:0;display:flex;gap:6px;flex-wrap:wrap;}
+.related-card h3{font-size:18px;line-height:1.3;color:var(--fg);font-weight:700;letter-spacing:-.01em;}
+.related-card p{font-size:14px;line-height:1.55;color:var(--fg-2);}
+.related-card .meta{font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-3);margin-top:auto;}
+
+/* Sources accordion (with breathing room from footer) */
+.sources{padding:24px 0 64px;}
+.sources-inner{max-width:var(--midw);margin:0 auto;padding:0 28px;}
+.sources details{border:1px solid var(--line);border-radius:10px;background:var(--bg-surface);}
+.sources summary{cursor:pointer;padding:20px 24px;font-family:var(--font-body);font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--fg);list-style:none;display:flex;justify-content:space-between;align-items:center;}
+.sources summary::-webkit-details-marker{display:none;}
+.sources summary::after{content:"+";color:var(--accent-ink);font-size:20px;line-height:1;}
+.sources details[open] summary::after{content:"\2013";}
+.sources summary:hover{color:var(--accent-ink);}
+.sources-list{padding:0 24px 22px;}
+.sources-list ol{list-style:none;padding:0;margin:0;counter-reset:src;}
+.sources-list li{counter-increment:src;font-family:var(--font-body);font-weight:600;font-size:12.5px;line-height:1.65;color:var(--fg-2);padding:10px 0 10px 36px;border-bottom:1px solid var(--line);position:relative;}
+.sources-list li:last-child{border-bottom:0;}
+.sources-list li::before{content:"[" counter(src) "]";position:absolute;left:0;top:10px;color:var(--accent-ink);font-weight:700;}
+
+/* Footer */
+footer{padding:64px 0 32px;border-top:1px solid var(--line);background:var(--halo-200);}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+@media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.foot-grid{grid-template-columns:1fr;}}
+.foot-brand{display:flex;align-items:flex-start;}
+.foot-col h4{font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--fg-3);margin-bottom:18px;letter-spacing:.02em;}
+.foot-col a{display:block;font-size:14px;color:var(--fg-2);margin-bottom:10px;transition:color .15s;}
+.foot-col a:hover{color:var(--accent-ink);}
+.foot-bot{padding-top:32px;border-top:1px solid var(--line);}
+.curio{font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3);}
+
+/* Drawer */
+.drawer-scrim{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .2s;z-index:200;}
+.drawer-scrim.open{opacity:1;pointer-events:auto;}
+.drawer{position:fixed;top:0;right:0;width:min(520px,100%);height:100vh;background:var(--halo-100);border-left:1px solid var(--line);transform:translateX(100%);transition:transform .25s ease;z-index:201;overflow-y:auto;padding:64px 36px 36px;box-shadow:-24px 0 60px -20px rgba(10,10,15,.15);}
+.drawer.open{transform:translateX(0);}
+.drawer .x{position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:var(--r-round);background:var(--bg-surface);color:var(--fg);border:0;font-size:20px;cursor:pointer;}
+.drawer .x:hover{background:var(--bg-surface-hi);color:var(--accent-ink);}
+.drawer .d-type{font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:14px;}
+.drawer h3{font-size:28px;line-height:1.2;letter-spacing:-.02em;margin-bottom:8px;}
+.drawer .d-role{font-size:14px;color:var(--fg-2);margin-bottom:20px;line-height:1.5;}
+.convo-context{font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:.06em;color:var(--data-ink);padding:10px 14px;background:rgba(26,122,255,.08);border:1px solid rgba(26,122,255,.2);border-radius:var(--r-s);margin-bottom:24px;}
+.drawer-form{display:flex;flex-direction:column;gap:16px;}
+.drawer-form .row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:480px){.drawer-form .row-2{grid-template-columns:1fr;}}
+.field{display:flex;flex-direction:column;gap:6px;}
+.field label{font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3);}
+.field input, .field textarea{background:var(--bg-input);border:1px solid var(--line-2);border-radius:var(--r-s);padding:12px 14px;font-family:var(--font-body);font-size:14px;color:var(--fg);transition:border-color .15s;}
+.field input:focus, .field textarea:focus{outline:0;border-color:var(--data-ink);}
+.field textarea{min-height:96px;resize:vertical;line-height:1.5;}
+.submit{background:var(--accent);color:var(--carbon-500);font-family:var(--font-body);font-weight:700;font-size:14px;padding:14px;border:0;border-radius:var(--r-s);cursor:pointer;transition:background .15s;margin-top:8px;}
+.submit:hover{background:var(--accent-deep);}
+.form-success{padding:24px;background:var(--bg-surface);border-radius:var(--r-l);}
+.form-success .h{font-family:var(--font-display);font-size:20px;font-weight:700;margin-bottom:10px;}
+.form-success p{font-size:14px;color:var(--fg-2);line-height:1.5;}
+
+/* IntersectionObserver fade-in pattern (replaces GSAP for Phase B1) */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+.fade-in.is-visible{opacity:1;transform:translateY(0);}
+
+/* ═══════════════════════════════════════════════════════════
+   NEW · POST-PRESSURE-TEST FIXES
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Hero CTAs (Download PDF + scroll cue) ─── */
+.brief-hero-ctas{display:flex;align-items:center;gap:18px;margin-top:36px;flex-wrap:wrap;}
+.scroll-cue{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-2);transition:color .15s;}
+.scroll-cue:hover{color:var(--accent-ink);}
+.scroll-cue-icon{width:32px;height:32px;border-radius:var(--r-round);background:rgba(255,0,229,.08);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;animation:bob 2.4s ease-in-out infinite;}
+.scroll-cue-icon svg{width:14px;height:14px;}
+@keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(4px);}}
+
+/* Rail removed in favor of unified sticky-top TOC */
+
+/* ─── Watchtower scale legend + about callout ─── */
+.watchtower-legend{
+  margin-bottom:32px;
+  padding:20px 24px;
+  background:var(--bg-surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-l);
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:24px;
+  align-items:center;
+}
+@media(max-width:680px){.watchtower-legend{grid-template-columns:1fr;gap:14px;padding:18px 20px;}}
+.watchtower-legend-text{font-size:13.5px;line-height:1.5;color:var(--fg-2);max-width:50ch;}
+.watchtower-legend-text b{color:var(--fg);font-weight:600;}
+.watchtower-legend-scale{display:flex;align-items:center;gap:8px;font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.1em;color:var(--fg-3);text-transform:uppercase;}
+.watchtower-legend-scale-track{display:flex;align-items:center;gap:4px;}
+.watchtower-legend-scale-dot{width:8px;height:8px;border-radius:50%;background:var(--line-2);}
+.watchtower-legend-scale-dot.is-current{background:var(--accent);box-shadow:0 0 0 4px rgba(255,0,229,.15);}
+
+/* ─── Pillar 1 · Rebound trajectory mini-chart ─── */
+.rebound-chart{
+  margin:32px 0;
+  padding:24px 28px;
+  background:var(--bg-surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-l);
+  max-width:var(--readw);
+}
+.rebound-chart-eyebrow{font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-3);margin-bottom:16px;}
+.rebound-chart-svg{width:100%;height:120px;}
+.rebound-track{stroke:var(--line-2);stroke-width:1;}
+.rebound-line{stroke:var(--fg-3);stroke-opacity:.55;stroke-width:1.5;fill:none;stroke-dasharray:3 3;}
+.rebound-current-line{stroke:var(--accent);stroke-width:2.5;fill:none;}
+.rebound-dot{fill:var(--fg-3);opacity:.6;}
+.rebound-dot.is-current{fill:var(--accent);stroke:var(--halo-100);stroke-width:2;r:6;}
+.rebound-label{font-family:var(--font-body);font-weight:600;font-size:10px;letter-spacing:.06em;fill:var(--fg-3);text-anchor:middle;text-transform:uppercase;}
+.rebound-label.is-current{fill:var(--accent);font-weight:700;}
+.rebound-callout{font-family:var(--font-body);font-size:10px;letter-spacing:.06em;fill:var(--accent);text-anchor:middle;font-weight:700;}
+
+/* ─── Pillar 2 · Three Different Bets ─── */
+.three-bets{
+  margin:32px 0;
+  padding:24px 28px;
+  background:var(--bg-surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-l);
+}
+.three-bets-eyebrow{font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-3);margin-bottom:6px;}
+.three-bets-title{font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--fg);margin-bottom:20px;letter-spacing:-.01em;}
+.three-bets-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+@media(max-width:680px){.three-bets-grid{grid-template-columns:1fr;}}
+.bet-card{padding:18px;background:var(--bg-surface-hi);border-radius:var(--r-m);border:1px solid var(--line);}
+.bet-card .bet-label{font-family:var(--font-body);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3);margin-bottom:6px;}
+.bet-card.bet-1 .bet-label{color:var(--volts-100);}
+.bet-card.bet-2 .bet-label{color:var(--data-ink);}
+.bet-card.bet-3 .bet-label{color:var(--signal-ink);}
+.bet-card .bet-name{font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--fg);margin-bottom:8px;letter-spacing:-.01em;line-height:1.25;}
+.bet-card .bet-desc{font-size:13px;color:var(--fg-2);line-height:1.5;}
+
+/* ─── Pillar 3 · OUTLIER theme (full distinct treatment) ─── */
+.pillar-section.is-outlier{
+  margin:96px 0 0;
+  padding:0;
+}
+@media(max-width:680px){.pillar-section.is-outlier{padding:0;}}
+/* Inside the outlier panel, pull-quotes go transparent (no double-panel effect)
+   and reset margins so they don't bleed past the outlier panel border. */
+.pillar-section.is-outlier .pull-quote,
+.pillar-section.is-outlier .pull-quote--center{
+  background:var(--bg-surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-xl);
+  margin:40px 0 8px;
+  padding:32px 36px;
+}
+.pillar-section.is-outlier .pull-quote p,
+.pillar-section.is-outlier .pull-quote--center p{
+  max-width:var(--readw);
+}
+.pillar-section.is-outlier .trajectory-comparison{
+  background:var(--bg-surface);
+  border-color:var(--line);
+}
+.outlier-banner{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--alert-ink);margin-bottom:16px;display:inline-flex;align-items:center;gap:10px;padding:6px 14px;background:rgba(245,0,65,.1);border-radius:var(--r-round);}
+.outlier-banner::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--alert);}
+.pillar-section.is-outlier .pillar-num-large{font-size:80px;color:var(--alert-ink);}
+.pillar-section.is-outlier .pillar-score-number{font-size:72px;color:var(--alert-ink);}
+@media(max-width:560px){.pillar-section.is-outlier .pillar-num-large{font-size:56px;}.pillar-section.is-outlier .pillar-score-number{font-size:52px;}}
+
+/* All-pillar trajectory bar (P3 distinct viz) */
+.trajectory-comparison{
+  margin:32px 0;
+  padding:28px;
+  background:var(--bg-surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-l);
+  max-width:var(--readw);
+}
+.trajectory-eyebrow{font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-3);margin-bottom:6px;}
+.trajectory-title{font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--fg);margin-bottom:22px;letter-spacing:-.01em;}
+.trajectory-row{display:grid;grid-template-columns:140px 1fr auto;gap:14px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);}
+.trajectory-row:last-child{border-bottom:0;}
+.trajectory-row .t-pillar{font-family:var(--font-body);font-weight:600;font-size:12px;color:var(--fg-2);letter-spacing:.04em;}
+.trajectory-row.is-outlier .t-pillar{color:var(--alert-ink);font-weight:700;}
+.trajectory-row .t-bar{position:relative;height:8px;background:var(--bg-surface-hi);border-radius:4px;overflow:hidden;}
+.trajectory-row .t-bar-fill{position:absolute;left:0;top:0;height:100%;background:var(--signal);border-radius:4px;}
+.trajectory-row.is-outlier .t-bar-fill{background:var(--alert);}
+.trajectory-row .t-delta{font-family:var(--font-mono);font-size:12px;font-weight:700;color:var(--signal-ink);}
+.trajectory-row.is-outlier .t-delta{color:var(--alert-ink);}
+
+/* ─── Pillar 4 · Inside vs Outside comparison ─── */
+.inside-outside{
+  margin:32px 0;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  gap:18px;
+  max-width:var(--readw);
+  align-items:stretch;
+}
+@media(max-width:680px){.inside-outside{grid-template-columns:1fr;}}
+.io-side{padding:22px;background:var(--bg-surface);border-radius:var(--r-l);border:1px solid var(--line);}
+.io-side-eyebrow{font-family:var(--font-body);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-3);margin-bottom:8px;}
+.io-side.io-inside .io-side-eyebrow{color:var(--signal-ink);}
+.io-side.io-outside .io-side-eyebrow{color:var(--alert-ink);}
+.io-side-stat{font-family:var(--font-body);font-size:32px;font-weight:700;line-height:1;color:var(--fg);margin-bottom:6px;letter-spacing:-.02em;}
+.io-side.io-inside .io-side-stat{color:var(--signal-ink);}
+.io-side.io-outside .io-side-stat{color:var(--alert-ink);}
+.io-side-label{font-size:13.5px;line-height:1.5;color:var(--fg-2);}
+.io-divider{display:flex;align-items:center;justify-content:center;font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.16em;color:var(--fg-3);text-transform:uppercase;writing-mode:vertical-rl;transform:rotate(180deg);}
+@media(max-width:680px){.io-divider{writing-mode:initial;transform:none;padding:4px 0;}}
+
+/* ─── Pillar 5 · Adoption depth visualization ─── */
+.adoption-depth{
+  margin:32px 0;
+  padding:28px;
+  background:var(--bg-surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-l);
+  max-width:var(--readw);
+}
+.depth-eyebrow{font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-3);margin-bottom:6px;}
+.depth-title{font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--fg);margin-bottom:24px;letter-spacing:-.01em;}
+.depth-bar{margin-bottom:18px;}
+.depth-bar:last-child{margin-bottom:0;}
+.depth-bar-meta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;}
+.depth-bar-label{font-size:14px;color:var(--fg);}
+.depth-bar-value{font-family:var(--font-body);font-weight:700;font-size:24px;color:var(--accent-ink);letter-spacing:-.02em;}
+.depth-bar-track{height:8px;background:var(--bg-surface-hi);border-radius:4px;overflow:hidden;}
+.depth-bar-fill{height:100%;background:var(--data);border-radius:4px;transform:scaleX(var(--w, .5));transform-origin:left;transition:transform .8s cubic-bezier(.2,.7,.3,1);}
+/* Bars render fully by default; GSAP overrides initial scale on entrance */
+
+/* ─── Pillar 6 · Two-front experimentation diagram ─── */
+.two-front{
+  margin:32px 0;
+  padding:32px;
+  background:var(--bg-surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-l);
+}
+.two-front-eyebrow{font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-3);margin-bottom:6px;}
+.two-front-title{font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--fg);margin-bottom:24px;letter-spacing:-.01em;}
+.two-front-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+@media(max-width:680px){.two-front-grid{grid-template-columns:1fr;}}
+.front-card{padding:24px;background:var(--bg-surface-hi);border-radius:var(--r-m);border:1px solid var(--line);position:relative;}
+.front-num{font-family:var(--font-body);font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px;}
+.front-1 .front-num{color:var(--data-ink);}
+.front-2 .front-num{color:#7a3df0; /* bitvoid-200 — AA on surface-hi */}
+.front-name{font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--fg);margin-bottom:10px;line-height:1.25;letter-spacing:-.01em;}
+.front-card p{font-size:13.5px;line-height:1.55;color:var(--fg-2);margin-bottom:12px;}
+.front-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.front-tag{font-family:var(--font-body);font-weight:600;font-size:10px;letter-spacing:.06em;color:var(--fg-3);padding:4px 10px;border:1px solid var(--line);border-radius:var(--r-round);background:var(--bg-surface);}
+
+/* ─── Pull-quote variants (vary the rhythm; consistent max-width with prose) ─── */
+.pull-quote{max-width:var(--readw);}
+.pull-quote--center{
+  text-align:center;
+  padding:48px 36px;
+  border-left:0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  border-radius:0;
+  background:transparent;
+  margin:56px 0;
+  max-width:var(--readw);
+}
+.pull-quote--center p{max-width:48ch;margin-left:auto;margin-right:auto;font-style:normal;font-weight:500;}
+.pull-quote--center cite{margin-top:18px;}
+.pull-quote--mono{
+  background:var(--bg-surface);
+  border-left:0;
+  border:1px solid var(--line);
+  border-radius:var(--r-xl);
+  padding:32px 36px;
+  margin:40px 0;
+  max-width:var(--readw);
+}
+.pull-quote--mono p{font-family:var(--font-body);font-style:normal;font-weight:500;font-size:clamp(15px,1.6vw,18px);letter-spacing:-.005em;line-height:1.55;}
+
+/* ─── Standardize diagram titles across pillars ─── */
+.rebound-chart-eyebrow,
+.three-bets-eyebrow,
+.trajectory-eyebrow,
+.depth-eyebrow,
+.two-front-eyebrow,
+.signal-meter-eyebrow{
+  font-family:var(--font-body);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--accent-ink);
+  margin-bottom:8px;
+}
+.three-bets-title,
+.trajectory-title,
+.depth-title,
+.two-front-title,
+.signal-meter-title{
+  font-family:var(--font-display);
+  font-size:17px;
+  font-weight:700;
+  line-height:1.3;
+  color:var(--fg);
+  margin-bottom:24px;
+  letter-spacing:-.015em;
+}
+
+/* Tighten diagram internal padding for breathing room */
+.rebound-chart,
+.three-bets,
+.trajectory-comparison,
+.adoption-depth,
+.two-front,
+.signal-meter{
+  padding:28px 30px;
+}
+@media(max-width:680px){
+  .rebound-chart,
+  .three-bets,
+  .trajectory-comparison,
+  .adoption-depth,
+  .two-front,
+  .signal-meter{
+    padding:24px 22px;
+  }
+}
+
+/* Pillar content vertical rhythm */
+.pillar-section .prose > p,
+.pillar-section .prose > .pillar-callout-pair,
+.pillar-section .prose > .pull-quote,
+.pillar-section .prose > .rebound-chart,
+.pillar-section .prose > .three-bets,
+.pillar-section .prose > .trajectory-comparison,
+.pillar-section .prose > .inside-outside,
+.pillar-section .prose > .adoption-depth,
+.pillar-section .prose > .cost-callout,
+.pillar-section .prose > .two-front{
+  margin-bottom:32px;
+}
+.pillar-section .prose > *:last-child{margin-bottom:0;}
+
+/* Pillar header tightening */
+.pillar-header{padding-bottom:24px;margin-bottom:32px;}
+
+/* Spacing between header and first content */
+.pillar-section .prose > p:first-child,
+.pillar-section .prose > .pull-quote--mono:first-child{margin-top:0;}
+
+/* Direct children of pillar-section (for quote-first layouts) */
+.pillar-section > .pull-quote{margin-bottom:32px;}
+.pillar-section > .pull-quote--mono{margin-top:0;}
+
+/* ─── Bridge sentences between sections ─── */
+.section-bridge{
+  font-family:var(--font-body);font-weight:600;
+  font-size:12px;
+  letter-spacing:.06em;
+  color:var(--fg-3);
+  font-style:italic;
+  text-align:center;
+  margin:48px 0;
+  max-width:var(--readw);
+  padding:0 28px;
+}
+
+/* ─── Radar pillar list affordance ─── */
+.radar-pillar-row{position:relative;}
+.radar-pillar-row::after{
+  content:"";
+  position:absolute;
+  right:14px;
+  top:50%;
+  width:14px;height:14px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b8bed1' stroke-width='2' stroke-linecap='round'><polyline points='9 6 15 12 9 18'/></svg>");
+  background-size:contain;background-repeat:no-repeat;
+  transform:translateY(-50%);
+  opacity:.5;
+  transition:opacity .15s, transform .15s;
+}
+.radar-pillar-row:hover::after{opacity:1;transform:translateY(-50%) translateX(2px);}
+
+/* ─── Mobile radar alternative ─── */
+@media(max-width:680px){
+  .radar-chart{display:none;}
+  .radar-layout{grid-template-columns:1fr;}
+}
+
+/* ─── Pillar header mobile sizing ─── */
+@media(max-width:560px){
+  .pillar-header{grid-template-columns:1fr;gap:14px;}
+  .pillar-num-large{font-size:36px;}
+  .pillar-score-number{font-size:32px;}
+  .pillar-score-block{text-align:left;align-items:flex-start;}
+}
+
+/* Rail removed — width variable retained for potential future use but unused */
+
+/* ─── Section H2 sizing for tighter rhythm ─── */
+.section-h2{font-size:clamp(26px,3vw,36px);}
+
+/* ─── Tool tease standalone (after Conclusion) ─── */
+.tool-tease-standalone{
+  margin:64px auto;
+  max-width:var(--midw);
+  padding:0 28px;
+}
+.tool-tease-standalone-inner{
+  padding:48px 48px;
+  background:var(--bg-surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-xl);
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:32px;
+  align-items:center;
+}
+@media(max-width:760px){.tool-tease-standalone-inner{grid-template-columns:1fr;padding:36px 28px;}}
+.tool-tease-standalone .tool-tease-eyebrow{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:10px;}
+.tool-tease-standalone .tool-tease-title{font-family:var(--font-display);font-size:clamp(24px,2.8vw,32px);font-weight:700;line-height:1.2;letter-spacing:-.02em;color:var(--fg);margin-bottom:14px;}
+.tool-tease-standalone p{font-size:15.5px;line-height:1.6;color:var(--fg-2);margin:0;max-width:48ch;}
+.tool-tease-standalone .btn-primary{background:var(--accent);color:var(--carbon-500);white-space:nowrap;}
+.tool-tease-standalone .btn-primary:hover{background:var(--flarepop-200);}
+
+/* ─── Disabled "Next" affordance ─── */
+.assessment-next:disabled, .assessment-next.is-disabled{
+  background:var(--bg-surface-hi);
+  color:var(--fg-3);
+  cursor:not-allowed;
+  opacity:.6;
+}
+.assessment-next:disabled:hover, .assessment-next.is-disabled:hover{background:var(--bg-surface-hi);}
+.assessment-back:disabled{opacity:.3;cursor:not-allowed;}
+
+/* ─── Assessment Results view ─── */
+.assessment-results{
+  max-width:760px;
+  margin:0 auto;
+  background:var(--bg-surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-xl);
+  padding:40px;
+}
+@media(max-width:680px){.assessment-results{padding:28px 24px;}}
+.results-header{text-align:center;margin-bottom:36px;padding-bottom:32px;border-bottom:1px solid var(--line);}
+.results-eyebrow{font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:14px;}
+.results-title{font-family:var(--font-display);font-size:clamp(24px,2.8vw,32px);font-weight:700;line-height:1.2;letter-spacing:-.02em;color:var(--fg);margin-bottom:14px;}
+.results-lead{font-size:15px;line-height:1.6;color:var(--fg-2);max-width:50ch;margin:0 auto;}
+
+.results-score-block{
+  display:grid;
+  grid-template-columns:1fr 1.4fr;
+  gap:36px;
+  margin-bottom:40px;
+  padding-bottom:32px;
+  border-bottom:1px solid var(--line);
+}
+@media(max-width:680px){.results-score-block{grid-template-columns:1fr;gap:28px;}}
+.results-overall{text-align:center;padding:24px;background:var(--bg-surface);border:1px solid var(--line);border-radius:var(--r-l);}
+.results-overall-label{font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-3);margin-bottom:12px;}
+.results-overall-number{font-family:var(--font-body);font-size:64px;font-weight:700;color:var(--accent-ink);line-height:1;letter-spacing:-.04em;margin-bottom:8px;}
+.results-overall-meta{font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.06em;color:var(--fg-3);}
+
+.results-breakdown{display:flex;flex-direction:column;gap:14px;}
+.results-breakdown-label{font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-3);margin-bottom:4px;}
+.results-theme-row{
+  display:grid;
+  grid-template-columns:1fr 100px auto;
+  gap:14px;
+  align-items:center;
+  padding:10px 0;
+  border-bottom:1px solid var(--line);
+}
+.results-theme-row:last-child{border-bottom:0;}
+.results-theme-name{font-size:14px;color:var(--fg);}
+.results-theme-bar{position:relative;height:6px;background:var(--bg-surface-hi);border-radius:3px;overflow:hidden;}
+.results-theme-fill{position:absolute;left:0;top:0;height:100%;background:var(--data);border-radius:3px;width:0;transition:width .8s cubic-bezier(.2,.7,.3,1);}
+.results-theme-score{font-family:var(--font-body);font-weight:700;font-size:15px;color:var(--data-ink);letter-spacing:-.02em;min-width:40px;text-align:right;}
+
+.results-recommendations{margin-bottom:32px;}
+.results-recs-label{font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:18px;}
+.results-recs-list{list-style:none;margin:0;padding:0;counter-reset:rec;}
+.results-recs-list li{
+  counter-increment:rec;
+  padding:18px 20px 18px 56px;
+  background:var(--bg-surface-hi);
+  border-radius:var(--r-m);
+  margin-bottom:10px;
+  position:relative;
+  font-size:14.5px;
+  line-height:1.6;
+  color:var(--fg);
+}
+.results-recs-list li::before{
+  content:counter(rec, decimal-leading-zero);
+  position:absolute;
+  left:20px;top:18px;
+  font-family:var(--font-body);
+  font-weight:700;
+  font-size:13px;
+  color:var(--accent-ink);
+  letter-spacing:.06em;
+}
+.results-recs-list li b{color:var(--fg);font-weight:600;}
+
+.results-cta{display:flex;flex-direction:column;align-items:center;gap:18px;padding-top:24px;border-top:1px solid var(--line);}
+.results-cta .btn-primary{background:var(--accent);color:var(--carbon-500);font-size:14.5px;padding:16px 28px;}
+.results-cta .btn-primary:hover{background:var(--flarepop-200);}
+.results-restart{font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.06em;color:var(--fg-3);background:none;border:0;cursor:pointer;text-transform:uppercase;padding:4px;}
+.results-restart:hover{color:var(--accent-ink);text-decoration:underline;}
+
+/* ─── Radar interactive tooltip ─── */
+.radar-tooltip{
+  position:absolute;
+  pointer-events:none;
+  background:var(--halo-100);
+  border:1px solid var(--line-2);
+  border-radius:var(--r-s);
+  box-shadow:0 8px 24px -8px rgba(10,10,15,.18);
+  padding:10px 14px;
+  font-family:var(--font-body);font-weight:600;
+  font-size:12px;
+  line-height:1.4;
+  color:var(--fg);
+  opacity:0;
+  transition:opacity .15s;
+  z-index:50;
+  white-space:nowrap;
+  box-shadow:0 8px 24px rgba(0,0,0,.4);
+}
+.radar-tooltip.is-visible{opacity:1;}
+.radar-tooltip .t-pillar{color:var(--accent-ink);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:10px;margin-bottom:4px;display:block;}
+.radar-tooltip .t-score{font-size:18px;font-weight:700;letter-spacing:-.02em;}
+.radar-tooltip .t-trend{color:var(--fg-3);font-size:10px;margin-top:2px;display:block;}
+.radar-tooltip.is-outlier .t-score{color:var(--alert-ink);}
+.radar-tooltip.is-outlier .t-pillar{color:var(--alert-ink);}
+
+.radar-chart svg{cursor:default;}
+.radar-current-points circle{cursor:pointer;transition:r .15s, fill .15s;}
+.radar-current-points circle:hover{r:9;}
+.radar-current-points circle.is-active{r:10;stroke-width:3;}
+
+/* ═══════════════════════════════════════════════════════════
+   GSAP SCROLLYTELLING · initial states
+   Elements start hidden / offset; GSAP animates them in on scroll
+   ═══════════════════════════════════════════════════════════ */
+
+/* Only apply GSAP initial states when GSAP is loaded successfully.
+   .gsap-ready is added to body when GSAP initializes — fallback if it fails to load. */
+body.gsap-ready .gs-fade{opacity:0;}
+body.gsap-ready .gs-up{opacity:0;transform:translateY(40px);}
+body.gsap-ready .gs-scale{opacity:0;transform:scale(.92);}
+body.gsap-ready .gs-radar polygon.radar-quarter,
+body.gsap-ready .gs-radar polygon.radar-current{opacity:0;}
+body.gsap-ready .gs-radar .radar-current-points circle{opacity:0;}
+body.gsap-ready .gs-bar{transform:scaleX(0);}
+body.gsap-ready .gs-num{opacity:0;}
+
+
+/* tokens missing from this build, values from brand-kit tokens.css */
+:root{--coolsweep-400:#0d3d85;--coolsweep-500:#08285c;}
+/* ── section color-banding restored from the v1 brief (Jon, 2026-07-17) ──
+   full-viewport paint layer via ::before — zero layout impact on the column */
+.band{position:relative;isolation:isolate;padding-top:72px;padding-bottom:80px;}
+.band::before{content:"";position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:100vw;z-index:-1;}
+.band--tint{background:var(--halo-200);} .band--tint::before{background:var(--halo-200);}
+.band--data{background:var(--coolsweep-500);} .band--data::before{background:var(--coolsweep-500);}
+.band--dark{background:var(--carbon-500);} .band--dark::before{background:var(--carbon-500);}
+.band--plum{background:var(--flarepop-500);} .band--plum::before{background:var(--flarepop-500);}
+.band--data,.band--dark,.band--plum{
+  --fg:var(--halo-100);--fg-2:var(--halo-400);--fg-3:var(--halo-500);
+  --line:rgba(255,255,255,.18);--line-2:rgba(255,255,255,.32);
+  --accent-ink:var(--flarepop-100);--data-ink:var(--halo-100);
+  --signal-ink:var(--wiretree-100);--alert-ink:var(--siren-100);--alert:var(--siren-100);
+  color:var(--fg);}
+/* opaque elevated surfaces per band (alpha surfaces read wrong in QA + banding) */
+.band--data{--bg-surface:var(--coolsweep-400);--bg-surface-hi:var(--coolsweep-300);}
+.band--dark{--bg-surface:var(--carbon-200);--bg-surface-hi:var(--carbon-100);}
+.band--plum{--bg-surface:var(--flarepop-400);--bg-surface-hi:var(--flarepop-300);}
+.band--tint .stat-callout,.band--tint .lq-item{background:var(--halo-100);}
+body{overflow-x:clip;}
+/* banded pillar sections: restore band breathing room (outlier rule sets padding:0 at higher specificity) */
+.pillar-section.band,.section-block.band,.deep-dives.band,.leadership-questions.band,.conclusion-section.band{padding-top:72px;padding-bottom:80px;}
+.band--dark .outlier-banner,.band--data .outlier-banner,.band--plum .outlier-banner{background:var(--halo-100);color:var(--siren-200, #cc0036);}
+
+/* ── VizForge interactivity layer (2026-07-17): hover-sync, tooltips, legend filter ── */
+.radar-current-points circle{cursor:pointer;transition:r .18s cubic-bezier(.37,0,.63,1);}
+.radar-current-points circle.is-hot{r:9;}
+.radar-pillar-row{transition:background .2s,border-color .2s;cursor:default;}
+.radar-pillar-row.is-hot{background:var(--bg-surface-hi);border-color:var(--accent-ink);}
+.radar-legend-item{cursor:pointer;user-select:none;transition:opacity .2s;}
+.radar-legend-item.is-off{opacity:.35;text-decoration:line-through;}
+.radar-tooltip.is-on{opacity:1;transform:translateY(0);}
+
+/* Brand QA (Jon 07-28): no decorative accent rule-lines/highlight bars. */
+.read-progress{display:none!important;}
+.hero-numbers::before{display:none!important;}
+</style>
+</head>
+<body>
+
+<div class="read-progress" id="readProgress" aria-hidden="true"></div>
+<a class="skip" href="#brief-start">Skip to brief</a>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SVG DEFS · lockup + icons
+     ═══════════════════════════════════════════════════════════ -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="intercept-lockup" viewBox="0 0 324.005 76.2147">
+<path d="M297.818 26.7875l4.836-5.6776h17.566v5.6776h-22.402z" fill="#8846C9" transform="translate(0,0.22)"/>
+<path d="M272.002 8.52534h-6.859v4.31886h6.859v-4.31886z" fill="#8846C9" transform="translate(0,0.22)"/>
+<path d="M324.005 29.0518h-8.104v6.2437h8.104v-6.2437z" fill="#1DABC1" transform="translate(0,0.22)"/>
+<path d="M313.195 29.2138v34.6445h-53.918l29.447-34.6445h24.471z m0-2.4268h-22.408l14.339-16.87008h8.069v16.87008z m0-19.29684h-6.006l6.006-7.06542v7.06542z" fill="#FF00E5" transform="translate(0,0.22)"/>
+<path d="M303.01 32.5619h-3.947v2.8307h3.947v-2.8307z" fill="#5154C4" transform="translate(0,0.22)"/>
+<path d="M313.2 26.7875h-15.382l4.836-5.6776h10.546v5.6776z" fill="#FF44F9" transform="translate(0,0.22)"/>
+<path d="M307.183 7.49016l3.979-4.67468v4.67468h-3.979z" fill="#FFA9F8" transform="translate(0,0.22)"/>
+<path d="M299.063 32.5619h3.947v2.8307h-3.947v-2.8307z" fill="#FF52F9" transform="translate(0,0.22)"/>
+<path d="M4.85695 54.8039v-43.5892h9.26825v43.5892h-9.26825z m13.47545 0v-30.8757h8.847v7.2649h0.1806v23.6108h-9.0276z m21.3652 0v-19.1308c0-1.6952-0.4413-2.9665-1.324-3.8141-0.8426-0.8475-2.0864-1.2713-3.7314-1.2713-1.4043 0-2.6681 0.3229-3.7916 0.9686-1.0833 0.6458-1.9459 1.5337-2.5879 2.6638-0.6018 1.1301-0.9027 2.462-0.9027 3.9957l-0.7824-7.4465c1.0031-2.2602 2.4675-4.0562 4.3934-5.3881 1.966-1.3723 4.3733-2.0584 7.222-2.0584 3.4104 0 6.0184 0.9687 7.8239 2.906 1.8055 1.8969 2.7083 4.4598 2.7083 7.6886v20.8865h-9.0276z m26.761 0.6659c-3.932 0-6.8609-0.9484-8.7868-2.8454-1.8857-1.9373-2.8286-4.8634-2.8286-8.7783v-26.8195l9.0275-3.3903v30.5125c0 1.3722 0.3812 2.4014 1.1435 3.0875 0.7624 0.6861 1.946 1.0292 3.5509 1.0292 0.6018 0 1.1635-0.0605 1.6851-0.1816 0.5216-0.1211 1.0432-0.2624 1.5648-0.4238v6.9016c-0.5216 0.2825-1.2639 0.5045-2.2268 0.666-0.9228 0.1614-1.966 0.2421-3.1296 0.2421z m-17.3328-24.64v-6.9016h22.6892v6.9016h-22.6892z m39.0784 24.5795c-3.4104 0-6.3795-0.6659-8.9072-1.9978-2.5277-1.3723-4.4937-3.2692-5.898-5.6909-1.3641-2.4216-2.0462-5.2064-2.0462-8.3545 0-3.1885 0.6821-5.9734 2.0462-8.3546 1.4043-2.4217 3.3503-4.2984 5.8378-5.6303 2.4876-1.3723 5.3764-2.0584 8.6665-2.0584 3.1697 0 5.918 0.6458 8.2451 1.9373 2.3271 1.2915 4.1326 3.0876 5.4166 5.3881 1.284 2.3006 1.926 5.0047 1.926 8.1124 0 0.6458-0.02 1.2512-0.06 1.8163-0.04 0.5246-0.101 1.0291-0.181 1.5135h-26.6011v-5.9935h19.319l-1.5648 1.0897c0-2.5023-0.6018-4.3387-1.8055-5.5092-1.1636-1.2108-2.7684-1.8162-4.8147-1.8162-2.3672 0-4.2128 0.8072-5.5369 2.4216-1.2839 1.6144-1.9259 4.036-1.9259 7.2649 0 3.1481 0.642 5.489 1.9259 7.0227 1.3241 1.5337 3.2901 2.3005 5.898 2.3005 1.4444 0 2.6882-0.2421 3.7314-0.7265 1.0432-0.4843 1.8256-1.2713 2.3472-2.361h8.4854c-1.003 2.9866-2.7279 5.3477-5.1753 7.0832-2.4074 1.6951-5.5169 2.5427-9.3285 2.5427z m17.7068-0.6054v-30.8757h8.847v7.2649h0.181v23.6108h-9.028z m9.028-16.1038l-0.783-7.3254c0.723-2.6234 1.906-4.6213 3.551-5.9935 1.645-1.3723 3.692-2.0584 6.139-2.0584 0.762 0 1.324 0.0807 1.685 0.2422v8.4756c-0.2-0.0807-0.481-0.121-0.842-0.121-0.361-0.0404-0.803-0.0606-1.324-0.0606-2.889 0-5.016 0.5247-6.38 1.5741-1.364 1.009-2.046 2.7647-2.046 5.267z m25.977 16.7092c-3.21 0-6.039-0.6861-8.486-2.0584-2.448-1.3722-4.374-3.2692-5.778-5.6908-1.364-2.4216-2.046-5.1863-2.046-8.294 0-3.1078 0.682-5.8725 2.046-8.2941 1.404-2.4216 3.33-4.3186 5.778-5.6908 2.447-1.3723 5.276-2.0584 8.486-2.0584 2.688 0 5.095 0.5045 7.222 1.5135 2.166 0.9687 3.932 2.3207 5.296 4.0562 1.404 1.7355 2.307 3.7737 2.708 6.1146h-8.727c-0.441-1.4933-1.243-2.6234-2.407-3.3902-1.123-0.7669-2.447-1.1503-3.972-1.1503-1.444 0-2.708 0.3632-3.792 1.0897-1.043 0.7265-1.845 1.7557-2.407 3.0876-0.562 1.3319-0.842 2.9059-0.842 4.7222 0 1.8162 0.28 3.3902 0.842 4.7221 0.562 1.3319 1.364 2.3611 2.407 3.0876 1.084 0.7265 2.348 1.0897 3.792 1.0897 1.525 0 2.849-0.3834 3.972-1.1503 1.164-0.7668 1.966-1.8969 2.407-3.3902h8.727c-0.401 2.3409-1.304 4.3791-2.708 6.1146-1.364 1.7355-3.13 3.1077-5.296 4.1167-2.127 0.9687-4.534 1.453-7.222 1.453z m31.752 0c-3.41 0-6.379-0.6659-8.907-1.9978-2.528-1.3723-4.494-3.2692-5.898-5.6909-1.364-2.4216-2.046-5.2064-2.046-8.3545 0-3.1885 0.682-5.9734 2.046-8.3546 1.404-2.4217 3.35-4.2984 5.838-5.6303 2.487-1.3723 5.376-2.0584 8.666-2.0584 3.17 0 5.918 0.6458 8.245 1.9373 2.327 1.2915 4.133 3.0876 5.417 5.3881 1.284 2.3006 1.926 5.0047 1.926 8.1124 0 0.6458-0.02 1.2512-0.06 1.8163-0.041 0.5246-0.101 1.0291-0.181 1.5135h-26.601v-5.9935h19.319l-1.565 1.0897c0-2.5023-0.602-4.3387-1.805-5.5092-1.164-1.2108-2.769-1.8162-4.815-1.8162-2.367 0-4.213 0.8072-5.537 2.4216-1.284 1.6144-1.926 4.036-1.926 7.2649 0 3.1481 0.642 5.489 1.926 7.0227 1.324 1.5337 3.29 2.3005 5.898 2.3005 1.444 0 2.688-0.2421 3.731-0.7265 1.044-0.4843 1.826-1.2713 2.348-2.361h8.485c-1.003 2.9866-2.728 5.3477-5.175 7.0832-2.408 1.6951-5.517 2.5427-9.329 2.5427z m36.424 0c-2.929 0-5.276-0.6861-7.041-2.0584-1.765-1.3722-2.809-3.249-3.13-5.6303l0.482-0.0605v19.5546h-9.028v-43.2865h8.847v6.8411l-0.541-0.1211c0.441-2.2602 1.645-4.036 3.611-5.3276 1.966-1.3318 4.393-1.9978 7.282-1.9978 2.768 0 5.156 0.666 7.162 1.9978 2.046 1.2916 3.611 3.128 4.694 5.5092 1.123 2.3813 1.685 5.1863 1.685 8.4152 0 3.2692-0.582 6.1146-1.745 8.5362-1.164 2.4216-2.789 4.2984-4.875 5.6303-2.086 1.3319-4.554 1.9978-7.403 1.9978z m-2.527-7.2649c2.126 0 3.851-0.7668 5.175-2.3005 1.324-1.5337 1.987-3.7132 1.987-6.5384 0-2.8252-0.683-4.9845-2.047-6.4778-1.324-1.4934-3.069-2.24-5.236-2.24-2.086 0-3.811 0.7668-5.175 2.3005-1.325 1.4933-1.987 3.6526-1.987 6.4779 0 2.8252 0.662 5.0046 1.987 6.5383 1.364 1.4934 3.129 2.24 5.296 2.24z m32.936 7.3254c-3.932 0-6.861-0.9484-8.787-2.8454-1.886-1.9373-2.829-4.8634-2.829-8.7783v-26.8195l9.028-3.3903v30.5125c0 1.3722 0.381 2.4014 1.143 3.0875 0.763 0.6861 1.946 1.0292 3.551 1.0292 0.602 0 1.164-0.0605 1.685-0.1816 0.522-0.1211 1.043-0.2624 1.565-0.4238v6.9016c-0.522 0.2825-1.264 0.5045-2.227 0.666-0.923 0.1614-1.966 0.2421-3.129 0.2421z m-17.333-24.64v-6.9016h22.689v6.9016h-22.689z" fill="#0a0a0f" transform="translate(0,-1)"/>
+</symbol>
+  <symbol id="icon-arrow-right" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></g></symbol>
+  <symbol id="icon-download" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></g></symbol>
+  <symbol id="icon-arrow-down" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></g></symbol>
+</svg>
+
+<!-- ═══════════════════════════════════════════════════════════
+     TOPBAR
+     ═══════════════════════════════════════════════════════════ -->
+<header class="topbar">
+  <div class="row">
+    <a href="index.html" aria-label="Intercept home">
+      <svg class="logo" role="img" aria-label="Intercept"><use href="#intercept-lockup"/></svg>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="pages/explore/interceptos.html">InterceptOS</a>
+      <a href="pages/explore/labs.html">Intercept Labs</a>
+      <a href="pages/work.html">Work</a> <a href="about.html">About</a>
+      <a href="insights-hub.html" aria-current="page" style="color:var(--accent-ink);">Insights</a>
+      <a href="pages/contact.html" class="cta-nav" id="navContact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CHAPTER STRIP · always-visible horizontal nav
+     ═══════════════════════════════════════════════════════════ -->
+<nav class="chapter-strip" id="chapterStrip" aria-label="Brief contents">
+  <div class="chapter-strip-inner">
+    <span class="chapter-strip-label">Contents</span>
+    <div class="chapter-strip-scroll" id="chapterScroll">
+      <a href="#sec-start" data-label="Start"><span class="num">01</span><span>Start</span></a>
+      <a href="#sec-exec" data-label="Executive"><span class="num">02</span><span>Executive</span></a>
+      <a href="#sec-radar" data-label="The Radar"><span class="num">03</span><span>The Radar</span></a>
+      <a href="#sec-pillar-1" data-label="Pillar 1"><span class="num">04</span><span>P1 Proficiency</span></a>
+      <a href="#sec-pillar-2" data-label="Pillar 2"><span class="num">05</span><span>P2 Readiness</span></a>
+      <a href="#sec-pillar-3" data-label="Pillar 3"><span class="num">06</span><span>P3 Job Conf.</span></a>
+      <a href="#sec-pillar-4" data-label="Pillar 4"><span class="num">07</span><span>P4 Sentiment</span></a>
+      <a href="#sec-pillar-5" data-label="Pillar 5"><span class="num">08</span><span>P5 Adoption</span></a>
+      <a href="#sec-pillar-6" data-label="Pillar 6"><span class="num">09</span><span>P6 Outlook</span></a>
+      <a href="#sec-questions" data-label="Questions"><span class="num">10</span><span>Questions</span></a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════════ -->
+<section class="brief-hero">
+
+
+  <div class="hero-content">
+    <nav class="brief-breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <a href="insights-hub.html">Insights</a>
+      <span class="sep">/</span>
+      <a href="insights-hub.html?format=trends-brief">Trends Briefs</a>
+    </nav>
+    <p class="brief-kicker">H1 Trends Brief <span class="powered">Powered by <b>Watchtower</b></span></p>
+    <h1 class="brief-h1">When AI becomes an&nbsp;<em>operating&nbsp;model</em>.</h1>
+    <blockquote class="brief-epigraph">
+      The demand now is better, faster, and cheaper, not one at the expense of the others.
+      <cite>Andrew Au &middot; Co-CEO, Intercept</cite>
+    </blockquote>
+    <div class="brief-hero-ctas">
+      <a class="scroll-cue" href="#brief-start">
+        <span class="scroll-cue-icon"><svg aria-hidden="true"><use href="#icon-arrow-down"/></svg></span>
+        Begin reading
+      </a>
+      <a class="btn btn-primary" href="#" download aria-label="Download PDF version">
+        <svg aria-hidden="true"><use href="#icon-download"/></svg>
+        Download PDF
+      </a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-numbers">
+      <p class="hero-numbers-label">Inside This Brief</p>
+      <div class="hero-numbers-grid">
+        <div class="hn-stat">
+          <p class="hn-num" data-count="17" data-suffix="%">17%</p>
+          <p class="hn-label">of marketers expect AI to improve content quality this year. Differentiation matches it at 17%, ROI follows at 16%.</p>
+        </div>
+        <div class="hn-stat">
+          <p class="hn-num" data-count="500" data-prefix="$" data-suffix="M">$500M</p>
+          <p class="hn-label">single-month AI bill at one company after leaving employee usage ungoverned. Token cost is the new constraint.</p>
+        </div>
+        <div class="hn-stat">
+          <p class="hn-num" data-count="59" data-suffix="%">59%</p>
+          <p class="hn-label">of buying committees will demand more proof before signing off in 2026. Verifiable evidence is now table stakes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     KEY TAKEAWAYS
+     ═══════════════════════════════════════════════════════════ -->
+<aside class="brief-takeaways" aria-label="Key takeaways">
+  <div class="brief-takeaways-inner">
+    <span class="brief-takeaways-label">Key Takeaways</span>
+    <ul>
+      <li><b>Workflow design is now strategy.</b> Token costs are climbing as the subsidies fade, and the answer is right-sizing which model handles what. One company spent $500M on AI in a single month; Uber blew its 2026 budget by April.</li>
+      <li><b>"Agent" is being used before anyone agrees what it is.</b> Only 14% of marketers have configured prebuilt agents; the rest are calling everything an agent, assuming IT owns it, or admitting they don&rsquo;t really know.</li>
+      <li><b>59% of buying committees will demand more proof in 2026.</b> Half say the biggest change ahead is the need for content AI can actually read. The work is two-track: reformat for today&rsquo;s models, and feed the next training run.</li>
+    </ul>
+  </div>
+</aside>
+
+<!-- ═══════════════════════════════════════════════════════════
+     BODY · sticky rail + main content
+     ═══════════════════════════════════════════════════════════ -->
+<section class="brief-body" id="brief-start">
+  <div class="brief-grid">
+
+    <!-- MAIN CONTENT (full width — rail removed; sticky-top TOC handles navigation) -->
+    <div class="brief-content">
+
+      <!-- 01 THE QUESTION HAS CHANGED -->
+      <div class="section-block prose" id="sec-start">
+        <p class="chapter-num">Section 01 &middot; The Question Has Changed</p>
+        <h2 class="section-h2">The question is no longer whether to adopt AI.</h2>
+        <p>The conversation about AI continues to change. The question in the room is no longer whether to adopt it, but whether it is working, driving impact, and becoming part of a system the team can reliably run. Leadership wants to see the return.</p>
+        <p>We have been here before. In 1990, with companies pouring money into computers and seeing little of it reflected in productivity numbers, Michael Hammer made the case in the Harvard Business Review that the technology was not the problem. Companies were using computers to speed up the way they already worked, paving the cow paths instead of building new roads. The returns only arrived when they redesigned the work around the technology and built a more disciplined way to run it. Ford rebuilt its accounts payable process and cut headcount by roughly three quarters, where automating the old process would have saved a fifth.</p>
+        <p>The same logic governs AI now. The teams adding a copilot here and a chatbot there, on top of the workflow they already had, keep waiting for the return. The teams redesigning the work around AI, and turning that redesign into a repeatable operating model, are the ones who will see it.</p>
+        <p>This is the fourth report in our series on how AI is changing B2B marketing, and it captures the biggest shift yet.</p>
+        <p><b>AI has moved from something teams use to something teams increasingly run the function on, which makes workflow design and governance part of the work itself.</b></p>
+        <p>A year ago, leadership cared about adoption, about which tools the team had, how many people used them, and how fast it was moving. Today, leadership cares about outcomes, and about whether the system producing them can be trusted.</p>
+        <p>This report lays out where that shift appears in the data, what it means for how marketing teams are run, and what a more deliberate operating model now requires from leadership.</p>
+      </div>
+
+      <!-- 02 EXECUTIVE SUMMARY -->
+      <div class="section-block prose band band--tint" id="sec-exec">
+        <p class="chapter-num">Section 02 &middot; Executive Summary</p>
+        <h2 class="section-h2">AI stops sitting on the sidelines.</h2>
+        <p>Adoption is up again this quarter, but the more important change is what marketers now expect from AI, and from the systems forming around it. Acceptable output is cheap to produce, so volume no longer impresses anyone. The bar has shifted to whether AI can match the quality a strong team would produce while costing less and moving faster.</p>
+        <div class="stat-callout">
+          <p class="stat-num">17%</p>
+          <div class="stat-meta">
+            <p class="stat-lbl">expect AI to improve content quality. Differentiation from competitors ranks equally (17%), followed by marketing ROI (16%) and lead quality (9%).</p>
+            <cite>Q1 FY26 Watchtower Mastersheet &middot; n=11,249&ndash;467,863</cite>
+          </div>
+        </div>
+        <p>Marketers have stopped measuring AI by whether they are using the tools and started measuring it by whether it improves the business.</p>
+        <p>The conversation about agents is running well ahead of the systems needed to define, govern, and manage them. Teams use the word "agents" freely, while few have agreed internally on what an agent is, who builds one, or who is responsible for it when it does the wrong thing.</p>
+        <p>More broadly, AI concerns have moved in the same direction. A year ago, they were ethical and reputational, about copyright, hallucinations, and brand drift. Now they are operational, centered on whether teams have a reliable way to manage what AI is doing inside the funnel.</p>
+        <div class="stat-callout">
+          <p class="stat-num">14%</p>
+          <div class="stat-meta">
+            <p class="stat-lbl">name <b>attribution</b> as the top concern this quarter. Integration reliability, procurement slowdowns, automation errors, and rogue agents all cluster at 11&ndash;12%.</p>
+            <cite>Q1 FY26 Watchtower Mastersheet</cite>
+          </div>
+        </div>
+        <p>These shifts share one thing in common. When execution becomes abundant, judgment becomes the scarce resource, and the teams that win are the ones keeping the tightest collaboration between people and AI. That is what it means as AI moves from the edge of the marketing function into its operating model: the advantage shifts to teams that can build a repeatable system for judgment, execution, and accountability.</p>
+      </div>
+
+      <!-- 03 LESSONS FROM THE PAST -->
+      <div class="section-block prose band band--dark" id="sec-lessons">
+        <p class="chapter-num">Section 03 &middot; Lessons from the Past</p>
+        <h2 class="section-h2">The work changes when the system changes.</h2>
+        <p>The companies that won the last technology shift were the ones that redesigned the work rather than digitizing the old version of it, then made that redesign durable through the way the work was actually run. The same will hold for AI. Different this time is speed, because the 1990s redesign that took the better part of a decade is now expected inside a planning cycle.</p>
+        <blockquote class="pull-quote">
+          <p>"The gap between what AI can do and what most teams actually get out of it is not a technology problem. It is a design problem, and right now it is the most valuable problem in marketing. The teams that win the next few years will be the ones that stop bolting AI onto the old workflow and start rebuilding the workflow around it."</p>
+          <cite><b>Shaheen Yazdani</b> &middot; Co-CEO, Intercept</cite>
+        </blockquote>
+      </div>
+
+      <!-- 04 RADAR -->
+      <div class="radar-section" id="sec-radar">
+        <p class="radar-eyebrow">Section 04 &middot; On The Radar</p>
+        <h2 class="radar-title">Six signals that show where we&rsquo;re heading.</h2>
+        <p class="radar-intro"><b>Five of the six radar dimensions rose in the first quarter of 2026.</b> The sixth, Job Confidence, fell, and it is the most revealing number in the set.</p>
+
+        <div class="watchtower-legend">
+          <div class="watchtower-legend-text">
+            <b>Watchtower</b> is Intercept&rsquo;s proprietary intelligence engine, tracking sentiment and intent across a windowed sample of 20 million people globally. Each pillar is scored on a 5-point maturity scale.
+          </div>
+          <div class="watchtower-legend-scale">
+            <span>1 Low</span>
+            <span class="watchtower-legend-scale-track">
+              <span class="watchtower-legend-scale-dot"></span>
+              <span class="watchtower-legend-scale-dot"></span>
+              <span class="watchtower-legend-scale-dot is-current" title="Average across Q1 2026"></span>
+              <span class="watchtower-legend-scale-dot"></span>
+              <span class="watchtower-legend-scale-dot"></span>
+            </span>
+            <span>5 High</span>
+          </div>
+        </div>
+
+        <div class="radar-layout">
+
+          <!-- Radar chart · interactive (hover and click pillar points) -->
+          <div class="radar-chart" id="radarChart" aria-label="Watchtower radar chart, Q2 2025 to Q1 2026">
+            <div class="radar-tooltip" id="radarTooltip" role="tooltip" aria-hidden="true"></div>
+            <svg viewBox="-260 -260 520 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Concentric grid circles (1, 2, 3, 4, 5) -->
+              <circle class="radar-grid-line" cx="0" cy="0" r="40"/>
+              <circle class="radar-grid-line" cx="0" cy="0" r="80"/>
+              <circle class="radar-grid-line" cx="0" cy="0" r="120"/>
+              <circle class="radar-grid-line" cx="0" cy="0" r="160"/>
+              <circle class="radar-grid-line" cx="0" cy="0" r="200"/>
+              <!-- Six axes (60 degrees apart, starting at top = -90°) -->
+              <line class="radar-axis" x1="0" y1="0" x2="0" y2="-200"/>
+              <line class="radar-axis" x1="0" y1="0" x2="173.2" y2="-100"/>
+              <line class="radar-axis" x1="0" y1="0" x2="173.2" y2="100"/>
+              <line class="radar-axis" x1="0" y1="0" x2="0" y2="200"/>
+              <line class="radar-axis" x1="0" y1="0" x2="-173.2" y2="100"/>
+              <line class="radar-axis" x1="0" y1="0" x2="-173.2" y2="-100"/>
+
+              <!-- HISTORICAL QUARTERS · verified values from prior brief PDFs (Q2/Q3/Q4 2025) -->
+              <!-- Axis order: P1 top → P2 upper-right → P4 lower-right → P5 bottom → P6 lower-left → P3 upper-left -->
+              <!-- Q2 2025 · P1:3.35 P2:3.04 P3:2.88 P4:3.19 P5:3.48 P6:3.24 -->
+              <polygon class="radar-quarter radar-quarter--q2" points="0,-134 105.3,-60.8 110.5,63.8 0,139.2 -112.2,64.8 -99.8,-57.6"/>
+              <!-- Q3 2025 · P1:3.24 P2:2.89 P3:3.36 P4:3.41 P5:2.97 P6:2.96 -->
+              <polygon class="radar-quarter radar-quarter--q3" points="0,-129.6 100.1,-57.8 118.1,68.2 0,118.8 -102.5,59.2 -116.4,-67.2"/>
+              <!-- Q4 2025 · P1:3.17 P2:3.02 P3:2.85 P4:2.86 P5:3.22 P6:2.98 -->
+              <polygon class="radar-quarter radar-quarter--q4" points="0,-126.8 104.6,-60.4 99.1,57.2 0,128.8 -103.2,59.6 -98.7,-57"/>
+              <!-- Q1 2026 CURRENT — actual brief values:
+                   Individual AI Proficiency 3.4 → radius 136 (3.4 * 40)
+                   Organizational AI Readiness 3.1 → 124
+                   Sentiment 3.4 → 136
+                   Adoption 3.3 → 132
+                   Future Outlook 3.5 → 140
+                   Job Confidence 2.7 → 108
+                   Polygon points calculated: top (0, -136), upper-right (sin60*124, -cos60*124)=(107.4,-62), lower-right (sin60*136, cos60*136)=(117.8, 68), bottom (0, 132), lower-left (-sin60*140, cos60*140)=(-121.2, 70), upper-left (-sin60*108, -cos60*108)=(-93.5, -54)
+              -->
+              <polygon class="radar-current" points="0,-136 107.4,-62 117.8,68 0,132 -121.2,70 -93.5,-54"/>
+              <g class="radar-current-points">
+                <circle data-pillar="p1" data-score="3.4" data-name="Individual AI Proficiency" data-prev="3.17" data-href="#sec-pillar-1" cx="0" cy="-136" r="5"/>
+                <circle data-pillar="p2" data-score="3.1" data-name="Organizational AI Readiness" data-prev="3.02" data-href="#sec-pillar-2" cx="107.4" cy="-62" r="5"/>
+                <circle data-pillar="p4" data-score="3.4" data-name="Sentiment Toward AI" data-prev="2.86" data-href="#sec-pillar-4" cx="117.8" cy="68" r="5"/>
+                <circle data-pillar="p5" data-score="3.3" data-name="Organizational AI Adoption" data-prev="3.22" data-href="#sec-pillar-5" cx="0" cy="132" r="5"/>
+                <circle data-pillar="p6" data-score="3.5" data-name="Future Outlook" data-prev="2.98" data-href="#sec-pillar-6" cx="-121.2" cy="70" r="5"/>
+                <circle data-pillar="p3" data-score="2.7" data-name="Job Confidence" data-prev="2.85" data-href="#sec-pillar-3" data-outlier="true" class="is-outlier" cx="-93.5" cy="-54" r="6"/>
+              </g>
+
+              <!-- Axis labels -->
+              <text class="radar-axis-label" x="0" y="-228" text-anchor="middle">Proficiency 3.4</text>
+              <text class="radar-axis-label" x="195" y="-105" text-anchor="middle">Readiness 3.1</text>
+              <text class="radar-axis-label" x="195" y="118" text-anchor="middle">Sentiment 3.4</text>
+              <text class="radar-axis-label" x="0" y="228" text-anchor="middle">Adoption 3.3</text>
+              <text class="radar-axis-label" x="-195" y="118" text-anchor="middle">Outlook 3.5</text>
+              <text class="radar-axis-label is-outlier" x="-195" y="-105" text-anchor="middle">Job Conf 2.7 &darr;</text>
+            </svg>
+            <div class="radar-legend">
+              <span class="radar-legend-item"><span class="radar-legend-swatch q2"></span>Q2 2025</span>
+              <span class="radar-legend-item"><span class="radar-legend-swatch q3"></span>Q3 2025</span>
+              <span class="radar-legend-item"><span class="radar-legend-swatch q4"></span>Q4 2025</span>
+              <span class="radar-legend-item"><span class="radar-legend-swatch"></span>Q1 2026</span>
+            </div>
+          </div>
+
+          <!-- Radar pillar list (jumps to pillar sections) -->
+          <div class="radar-pillars">
+            <a class="radar-pillar-row" href="#sec-pillar-1">
+              <span class="radar-pillar-num">P1</span>
+              <span class="radar-pillar-name">Individual AI Proficiency</span>
+              <span class="radar-pillar-score">3.4<span class="radar-pillar-delta">&uarr;</span></span>
+            </a>
+            <a class="radar-pillar-row" href="#sec-pillar-2">
+              <span class="radar-pillar-num">P2</span>
+              <span class="radar-pillar-name">Organizational AI Readiness</span>
+              <span class="radar-pillar-score">3.1<span class="radar-pillar-delta">&uarr;</span></span>
+            </a>
+            <a class="radar-pillar-row is-outlier" href="#sec-pillar-3">
+              <span class="radar-pillar-num">P3</span>
+              <span class="radar-pillar-name">Job Confidence</span>
+              <span class="radar-pillar-score">2.7<span class="radar-pillar-delta is-negative">&darr;</span></span>
+            </a>
+            <a class="radar-pillar-row" href="#sec-pillar-4">
+              <span class="radar-pillar-num">P4</span>
+              <span class="radar-pillar-name">Sentiment Toward AI</span>
+              <span class="radar-pillar-score">3.4<span class="radar-pillar-delta">&uarr;</span></span>
+            </a>
+            <a class="radar-pillar-row" href="#sec-pillar-5">
+              <span class="radar-pillar-num">P5</span>
+              <span class="radar-pillar-name">Organizational AI Adoption</span>
+              <span class="radar-pillar-score">3.3<span class="radar-pillar-delta">&uarr;</span></span>
+            </a>
+            <a class="radar-pillar-row" href="#sec-pillar-6">
+              <span class="radar-pillar-num">P6</span>
+              <span class="radar-pillar-name">Future Outlook</span>
+              <span class="radar-pillar-score">3.5<span class="radar-pillar-delta">&uarr;</span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 PILLAR 1 — INDIVIDUAL AI PROFICIENCY (standard layout + rebound trajectory chart) -->
+      <div class="pillar-section" id="sec-pillar-1">
+        <header class="pillar-header">
+          <span class="pillar-num-large">01</span>
+          <div class="pillar-meta">
+            <span class="pillar-eyebrow">Pillar 01 &middot; Watchtower</span>
+            <h3 class="pillar-title">Individual AI Proficiency &middot; Self-taught, one person at a time</h3>
+          </div>
+          <div class="pillar-score-block">
+            <span class="pillar-score-number">3.4</span>
+            <span class="pillar-score-meta">vs Q4 2025</span>
+            <span class="pillar-score-delta">&uarr; rebound after three declines</span>
+          </div>
+        </header>
+        <div class="prose">
+          <p>Individual AI Proficiency climbed back to 3.4 this quarter after three straight reports of decline. As a general observation, AI is being used as a point solution rather than a shared capability, picked up ad hoc by the people motivated enough to teach themselves, rather than encoded into how the team works. The result is pockets of real productivity that never add up to enterprise value, because what one person figures out rarely reaches the person next to them.</p>
+
+          <!-- Rebound trajectory mini-chart -->
+          <div class="rebound-chart">
+            <p class="rebound-chart-eyebrow">The Rebound &middot; Four-Quarter Trajectory</p>
+            <svg class="rebound-chart-svg" viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg" aria-label="Individual AI Proficiency over four quarters">
+              <!-- Baseline track -->
+              <line class="rebound-track" x1="40" y1="60" x2="560" y2="60"/>
+              <!-- Real P1 values: Q2 3.35 → Q3 3.24 → Q4 3.17 → Q1 2026 3.4 (rebound above starting point) -->
+              <!-- Y-axis: lower y = higher score (SVG-inverted). 3.5→30, 3.0→80 -->
+              <!-- Dashed line for historical decline -->
+              <polyline class="rebound-line" points="100,41 240,49 380,54"/>
+              <!-- Solid current line for the rebound -->
+              <polyline class="rebound-current-line" points="380,54 520,38"/>
+              <!-- Quarter dots -->
+              <circle class="rebound-dot" cx="100" cy="41" r="5"/>
+              <circle class="rebound-dot" cx="240" cy="49" r="5"/>
+              <circle class="rebound-dot" cx="380" cy="54" r="5"/>
+              <circle class="rebound-dot is-current" cx="520" cy="38" r="6"/>
+              <!-- Labels with real values -->
+              <text class="rebound-label" x="100" y="105">Q2 &middot; 3.35</text>
+              <text class="rebound-label" x="240" y="105">Q3 &middot; 3.24</text>
+              <text class="rebound-label" x="380" y="105">Q4 &middot; 3.17</text>
+              <text class="rebound-label is-current" x="520" y="105">Q1 2026 &middot; 3.40</text>
+              <text class="rebound-callout" x="520" y="20">&uarr; Rebound</text>
+            </svg>
+          </div>
+
+          <p>Almost all of this proficiency is self-taught, since structured AI training inside most organizations is still largely missing. The value that does show up, in social content, workflow automation, SEO content, and AI search optimization, stays locked inside those few people and select use cases.</p>
+          <div class="pillar-callout-pair">
+            <div class="what-we-see"><h4>The Signal</h4><p>AI lands first where the work is repetitive, fast, and modular, which is also where confidence is highest. Confidence drops sharply on anything that crosses team boundaries or asks the tool to exercise judgment, which is exactly where the harder enterprise value sits.</p></div>
+            <div class="what-it-means"><h4>The Implication</h4><p>The fact that this skill is self-taught says as much about motivation as it does about ability. People are teaching themselves AI because they have a reason to, but self-teaching alone does not create the shared workflows, standards, or repeatability needed for organizational value.</p></div>
+          </div>
+          <blockquote class="pull-quote pull-quote--center">
+            <p>"AI is a reset moment for how people learn, and it rewards a growth mindset. Mindset is fast becoming the real divide."</p>
+            <cite><b>Shaheen Yazdani</b> &middot; Co-CEO, Intercept</cite>
+          </blockquote>
+        </div>
+      </div>
+
+      <!-- 06 PILLAR 2 — ORGANIZATIONAL AI READINESS (quote-first variant + Three Bets visualization) -->
+      <div class="pillar-section band band--tint" id="sec-pillar-2">
+        <header class="pillar-header">
+          <span class="pillar-num-large">02</span>
+          <div class="pillar-meta">
+            <span class="pillar-eyebrow">Pillar 02 &middot; Watchtower</span>
+            <h3 class="pillar-title">Organizational AI Readiness &middot; Nobody owns it yet</h3>
+          </div>
+          <div class="pillar-score-block">
+            <span class="pillar-score-number">3.1</span>
+            <span class="pillar-score-meta">vs Q4 2025</span>
+            <span class="pillar-score-delta">&uarr; modest rise</span>
+          </div>
+        </header>
+
+        <!-- Quote leads the section (variant layout) -->
+        <blockquote class="pull-quote pull-quote--mono">
+          <p>"Organizational AI readiness was never about turning a few people into power users. It is about lifting the whole organization, and that takes executive vision, a culture that builds a growth mindset into the everyday, and the infrastructure underneath it all. This is an organizational transformation, not a tooling upgrade."</p>
+          <cite><b>David Toto</b> &middot; Managing Director, Intercept</cite>
+        </blockquote>
+
+        <div class="prose">
+          <p>Organizational AI Readiness sits at 3.1 this quarter. Watchtower defines readiness as structural preparedness: the training, governance, and leadership alignment behind running AI. The data says that is the gap. The harder friction is not just getting people to use AI; it is coordinating it, prioritizing the use cases, creating strategic clarity, and putting a workable system around it across the function. The two most-reported blockers this quarter were difficulty prioritizing AI use cases (12.1%) and a lack of strategic clarity (8.5%) &mdash; a management problem, not a technology one.</p>
+
+          <!-- Three Different Bets visualization -->
+          <div class="three-bets">
+            <p class="three-bets-eyebrow">Same Goal &middot; Three Different Bets</p>
+            <p class="three-bets-title">How organizations are approaching AI ownership</p>
+            <div class="three-bets-grid">
+              <div class="bet-card bet-1">
+                <div class="bet-label">Bet 01</div>
+                <div class="bet-name">Hand It Off</div>
+                <p class="bet-desc">Give staff the models. Let them figure it out with little central guidance.</p>
+              </div>
+              <div class="bet-card bet-2">
+                <div class="bet-label">Bet 02</div>
+                <div class="bet-name">Central Control</div>
+                <p class="bet-desc">Lock everything behind a central AI function that controls access and policy.</p>
+              </div>
+              <div class="bet-card bet-3">
+                <div class="bet-label">Bet 03</div>
+                <div class="bet-name">Data First</div>
+                <p class="bet-desc">Start further back. Fix data estate and infrastructure so the organization is ready to use AI when it scales.</p>
+              </div>
+            </div>
+          </div>
+
+          <p>The common thread across all three is that progress stalls wherever ownership is unclear. Until a named owner decides how AI gets prioritized, governed, and resourced, there is no real operating system for the work, only scattered experimentation, and the readiness score stays stuck.</p>
+        </div>
+      </div>
+
+      <!-- 07 PILLAR 3 — JOB CONFIDENCE (OUTLIER · distinct full-bleed alert treatment) -->
+      <div class="pillar-section is-outlier band band--dark" id="sec-pillar-3">
+        <span class="outlier-banner">The Outlier &middot; Only Falling Pillar</span>
+        <header class="pillar-header">
+          <span class="pillar-num-large">03</span>
+          <div class="pillar-meta">
+            <span class="pillar-eyebrow">Pillar 03 &middot; Watchtower</span>
+            <h3 class="pillar-title">Job Confidence &middot; The exception in the rebound</h3>
+          </div>
+          <div class="pillar-score-block">
+            <span class="pillar-score-number">2.7</span>
+            <span class="pillar-score-meta">vs Q4 2025</span>
+            <span class="pillar-score-delta is-negative">&darr; lowest reading in the series</span>
+          </div>
+        </header>
+        <div class="prose">
+          <p>Job Confidence fell to 2.7 this quarter, its lowest point across the four reports, and it is the only dimension that dropped while every other one rose. That gap, between conviction in the technology and confidence in personal relevance, is the clearest signal in the data.</p>
+
+          <!-- All-pillar trajectory comparison: 5 up, 1 down. Real Q4 2025 → Q1 2026 deltas. -->
+          <div class="trajectory-comparison">
+            <p class="trajectory-eyebrow">All Six Pillars &middot; Q4 2025 to Q1 2026</p>
+            <p class="trajectory-title">Five pillars rose. Job Confidence fell.</p>
+            <div class="trajectory-row">
+              <span class="t-pillar">P1 Proficiency</span>
+              <span class="t-bar"><span class="t-bar-fill" style="width:68%"></span></span>
+              <span class="t-delta">+0.23</span>
+            </div>
+            <div class="trajectory-row">
+              <span class="t-pillar">P2 Readiness</span>
+              <span class="t-bar"><span class="t-bar-fill" style="width:62%"></span></span>
+              <span class="t-delta">+0.08</span>
+            </div>
+            <div class="trajectory-row is-outlier">
+              <span class="t-pillar">P3 Job Confidence</span>
+              <span class="t-bar"><span class="t-bar-fill" style="width:54%"></span></span>
+              <span class="t-delta">&minus;0.15</span>
+            </div>
+            <div class="trajectory-row">
+              <span class="t-pillar">P4 Sentiment</span>
+              <span class="t-bar"><span class="t-bar-fill" style="width:68%"></span></span>
+              <span class="t-delta">+0.54</span>
+            </div>
+            <div class="trajectory-row">
+              <span class="t-pillar">P5 Adoption</span>
+              <span class="t-bar"><span class="t-bar-fill" style="width:66%"></span></span>
+              <span class="t-delta">+0.08</span>
+            </div>
+            <div class="trajectory-row">
+              <span class="t-pillar">P6 Future Outlook</span>
+              <span class="t-bar"><span class="t-bar-fill" style="width:70%"></span></span>
+              <span class="t-delta">+0.52</span>
+            </div>
+          </div>
+
+          <div class="pillar-callout-pair">
+            <div class="what-we-see"><h4>The Signal</h4><p>Underneath the number is a broad discomfort with what comes next, and most of it is simply not knowing. The frontier labs have not been specific about how any of this benefits the people doing the work, and the message that comes through is a vague reassurance that it will all work itself out.</p></div>
+            <div class="what-it-means"><h4>The Implication</h4><p>Executives owe their teams a concrete account of what AI does to the labor market and to specific roles, and a real plan for reskilling, retraining, and how jobs evolve rather than simply disappear. The conversation that actually settles people is about new value creation, not efficiency.</p></div>
+          </div>
+          <blockquote class="pull-quote">
+            <p>"Using AI to chase efficiency is short-sighted. The real prize is new value creation, doing the things we could never do before. Keep doing the same work faster and all you get is 'ghost GDP.' Point it at new ideas and new possibilities, and the opportunity in front of us is abundant."</p>
+            <cite><b>Shaheen Yazdani</b> &middot; Co-CEO, Intercept</cite>
+          </blockquote>
+        </div>
+      </div>
+
+      <!-- 08 PILLAR 4 — SENTIMENT TOWARD AI -->
+      <div class="pillar-section band band--tint" id="sec-pillar-4">
+        <header class="pillar-header">
+          <span class="pillar-num-large">04</span>
+          <div class="pillar-meta">
+            <span class="pillar-eyebrow">Pillar 04 &middot; Watchtower</span>
+            <h3 class="pillar-title">Sentiment Toward AI &middot; Adopted faster than it&rsquo;s trusted</h3>
+          </div>
+          <div class="pillar-score-block">
+            <span class="pillar-score-number">3.4</span>
+            <span class="pillar-score-meta">vs Q4 2025</span>
+            <span class="pillar-score-delta">&uarr; inside marketing</span>
+          </div>
+        </header>
+        <div class="prose">
+          <p>Sentiment Toward AI sits at 3.4 inside the marketing teams we track, but the public mood is far colder.</p>
+
+          <!-- Inside vs Outside comparison -->
+          <div class="inside-outside">
+            <div class="io-side io-inside">
+              <p class="io-side-eyebrow">Inside Marketing</p>
+              <p class="io-side-stat">3.4</p>
+              <p class="io-side-label">Watchtower sentiment among the marketing teams we track. Trust grows where results are consistent.</p>
+            </div>
+            <div class="io-divider">vs</div>
+            <div class="io-side io-outside">
+              <p class="io-side-eyebrow">Public Sentiment</p>
+              <p class="io-side-stat">26 / 46</p>
+              <p class="io-side-label">Only 26% of Americans viewed AI positively; 46% negatively (NBC News poll). 70%+ believe it is moving too fast (Economist / YouGov).</p>
+            </div>
+          </div>
+
+          <p>Across North America this spring, commencement speakers who praised AI were booed off the stage, from Eric Schmidt at the University of Arizona to a speaker at the University of Central Florida who called it the next industrial revolution. NPR ran a segment advising 2026 speakers not to raise the subject at all.</p>
+          <div class="pillar-callout-pair">
+            <div class="what-we-see"><h4>The Signal</h4><p>Inside the teams using AI every day, the same split shows up. People who get reliable results from AI come to trust it, and people fighting tools that work brilliantly one day and break the next do not.</p></div>
+            <div class="what-it-means"><h4>The Implication</h4><p>Trust in AI grows when the results are consistent. That comes from building AI into a reliable operating system for the work, not from leaving outcomes to individual prompting habits.</p></div>
+          </div>
+
+          <!-- Signal Meter -->
+          <div class="signal-meter">
+            <p class="signal-meter-eyebrow">Watchtower Signal Meter</p>
+            <p class="signal-meter-title">Where trust breaks first this quarter</p>
+            <div class="signal-bar"><div class="signal-bar-row"><span class="signal-bar-label">Attribution gets harder</span><span class="signal-bar-vis"><span class="signal-bar-track"><span class="signal-bar-fill" style="--w:1"></span></span></span></div><span class="signal-bar-val">14%</span></div>
+            <div class="signal-bar"><div class="signal-bar-row"><span class="signal-bar-label">Poor integration reliability</span><span class="signal-bar-vis"><span class="signal-bar-track"><span class="signal-bar-fill" style="--w:.857"></span></span></span></div><span class="signal-bar-val">12%</span></div>
+            <div class="signal-bar"><div class="signal-bar-row"><span class="signal-bar-label">Procurement slows adoption</span><span class="signal-bar-vis"><span class="signal-bar-track"><span class="signal-bar-fill" style="--w:.857"></span></span></span></div><span class="signal-bar-val">12%</span></div>
+            <div class="signal-bar"><div class="signal-bar-row"><span class="signal-bar-label">Automation causes errors</span><span class="signal-bar-vis"><span class="signal-bar-track"><span class="signal-bar-fill" style="--w:.786"></span></span></span></div><span class="signal-bar-val">11%</span></div>
+            <div class="signal-bar"><div class="signal-bar-row"><span class="signal-bar-label">Agents take wrong actions</span><span class="signal-bar-vis"><span class="signal-bar-track"><span class="signal-bar-fill" style="--w:.786"></span></span></span></div><span class="signal-bar-val">11%</span></div>
+          </div>
+
+          <blockquote class="pull-quote pull-quote--mono">
+            <p>"Treat AI as a point solution and the experience swings wildly from one person to the next. Build agentic systems that give people consistent, reliable outputs without the guesswork, and trust starts to follow. Consistency is how you earn it."</p>
+            <cite><b>Francis Silva</b> &middot; Chief Technology Officer, Intercept</cite>
+          </blockquote>
+        </div>
+      </div>
+
+      <!-- 09 PILLAR 5 — ORGANIZATIONAL AI ADOPTION -->
+      <div class="pillar-section" id="sec-pillar-5">
+        <header class="pillar-header">
+          <span class="pillar-num-large">05</span>
+          <div class="pillar-meta">
+            <span class="pillar-eyebrow">Pillar 05 &middot; Watchtower</span>
+            <h3 class="pillar-title">Organizational AI Adoption &middot; Workflow design becomes strategy</h3>
+          </div>
+          <div class="pillar-score-block">
+            <span class="pillar-score-number">3.3</span>
+            <span class="pillar-score-meta">vs Q4 2025</span>
+            <span class="pillar-score-delta">&uarr; uneven but real</span>
+          </div>
+        </header>
+        <div class="prose">
+          <p>Organizational AI Adoption sits at 3.3 this quarter. The question is no longer whether to do this, but which of the existing pilots are solid enough to become part of the workflow infrastructure that actually runs the business. Adoption is real, but uneven.</p>
+
+          <!-- Adoption depth visualization -->
+          <div class="adoption-depth">
+            <p class="depth-eyebrow">Adoption Depth &middot; Where Workflows Actually Run</p>
+            <p class="depth-title">Embedded vs. agentic, this quarter</p>
+            <div class="depth-bar" style="--w:.72">
+              <div class="depth-bar-meta">
+                <span class="depth-bar-label">AI embedded directly in day-to-day workflows</span>
+                <span class="depth-bar-value">36%</span>
+              </div>
+              <div class="depth-bar-track"><div class="depth-bar-fill"></div></div>
+            </div>
+            <div class="depth-bar" style="--w:.26">
+              <div class="depth-bar-meta">
+                <span class="depth-bar-label">Agentic workflows running in production</span>
+                <span class="depth-bar-value">13%</span>
+              </div>
+              <div class="depth-bar-track"><div class="depth-bar-fill"></div></div>
+            </div>
+          </div>
+
+          <p>The bigger shift this quarter is the cost of running it all.</p>
+
+          <!-- Cost callout (full-bleed pinned moment) -->
+          <div class="cost-callout">
+            <p class="cost-callout-eyebrow">The Cost Reality</p>
+            <p class="cost-callout-title">Cheap tokens were subsidized to drive adoption. As the subsidy fades, the rates are climbing.</p>
+            <div class="cost-stats">
+              <div>
+                <p class="cost-stat-num">$500M</p>
+                <p class="cost-stat-label">single-month AI bill at one company after leaving employee usage ungoverned</p>
+              </div>
+              <div>
+                <p class="cost-stat-num">April</p>
+                <p class="cost-stat-label">when Uber burned through its entire 2026 AI budget, with its own COO questioning whether the spend was producing better products</p>
+              </div>
+            </div>
+            <p class="cost-callout-body">Cost governance was <b>an afterthought a year ago, and is becoming a hard constraint</b> on how far adoption can go. Some teams are already pulling back on AI subscriptions.</p>
+          </div>
+
+          <div class="pillar-callout-pair">
+            <div class="what-we-see"><h4>The Signal</h4><p>Teams have moved on to designing the workflows AI runs inside, and at the same time they are waking up to what those workflows cost. The token rates that made heavy experimentation painless were subsidized to win adoption, and they are going up.</p></div>
+            <div class="what-it-means"><h4>The Implication</h4><p>The next phase of adoption is about efficiency as much as capability. Design workflows that match the model to the job rather than routing everything through a frontier model. Keep routine tasks on smaller or on-device models and save the expensive frontier calls for the work that truly needs them.</p></div>
+          </div>
+          <blockquote class="pull-quote pull-quote--center">
+            <p>"A lot of what we are doing today is the equivalent of taking a Ferrari to drive one block. You do not need a frontier model to rename a file."</p>
+            <cite><b>Andrew Au</b> &middot; Co-CEO, Intercept</cite>
+          </blockquote>
+        </div>
+      </div>
+
+      <!-- 10 PILLAR 6 — FUTURE OUTLOOK -->
+      <div class="pillar-section band band--tint" id="sec-pillar-6">
+        <header class="pillar-header">
+          <span class="pillar-num-large">06</span>
+          <div class="pillar-meta">
+            <span class="pillar-eyebrow">Pillar 06 &middot; Watchtower &middot; Strongest Reading</span>
+            <h3 class="pillar-title">Future Outlook &middot; Recommendation is the new ranking</h3>
+          </div>
+          <div class="pillar-score-block">
+            <span class="pillar-score-number">3.5</span>
+            <span class="pillar-score-meta">vs Q4 2025</span>
+            <span class="pillar-score-delta">&uarr; highest in the set</span>
+          </div>
+        </header>
+        <div class="prose">
+          <p>Future Outlook sits at 3.5 this quarter, the strongest reading in the set, because marketers can see where buying is going even if they cannot yet control it. More of the early buying journey now runs through an LLM before a human is involved, and the question consuming marketers is how to get recommended when it does.</p>
+          <div class="stat-callout">
+            <p class="stat-num">59%</p>
+            <div class="stat-meta">
+              <p class="stat-lbl">of marketers expect their buying committee to demand <b>more proof</b> before a decision. Half (50%) say the biggest change ahead is the need for content AI can actually read.</p>
+              <cite>Q1 FY26 Watchtower Mastersheet</cite>
+            </div>
+          </div>
+          <div class="pillar-callout-pair">
+            <div class="what-we-see"><h4>The Signal</h4><p>Almost everyone is now trying to optimize for how often the models recommend them, because the LLM has become the first gate a buyer passes through. Nobody has a settled playbook for it, and the ground keeps moving, since every new model release can change which brands get surfaced and why.</p></div>
+            <div class="what-it-means"><h4>The Implication</h4><p>This rewards rapid, disciplined experimentation on two fronts at once.</p></div>
+          </div>
+
+          <!-- Two-front experimentation diagram -->
+          <div class="two-front">
+            <p class="two-front-eyebrow">Two-Front Experimentation</p>
+            <p class="two-front-title">Optimize for today&rsquo;s models. Feed the next training run.</p>
+            <div class="two-front-grid">
+              <div class="front-card front-1">
+                <p class="front-num">Front 01 &middot; Today&rsquo;s Models</p>
+                <p class="front-name">Win retrieval-based engines</p>
+                <p>Real-time engines that read current sources. Reformat existing content for findability and move visibility quickly.</p>
+                <div class="front-tags">
+                  <span class="front-tag">FAQs</span>
+                  <span class="front-tag">Schema</span>
+                  <span class="front-tag">Authorship</span>
+                  <span class="front-tag">Citations</span>
+                </div>
+              </div>
+              <div class="front-card front-2">
+                <p class="front-num">Front 02 &middot; The Next Training Run</p>
+                <p class="front-name">Be surfaced by default</p>
+                <p>Build a base of cited, credible content strong enough that the next generation of models surfaces you without prompting.</p>
+                <div class="front-tags">
+                  <span class="front-tag">Proof</span>
+                  <span class="front-tag">Structure</span>
+                  <span class="front-tag">Verifiable claims</span>
+                  <span class="front-tag">Earned coverage</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <blockquote class="pull-quote">
+            <p>"The market is moving toward proof, structure, and machine-readable credibility, and visibility alone will not be enough. The brands that win AI-mediated discovery will be the ones that give machines something worth citing, and buyers something worth trusting."</p>
+            <cite><b>Shaheen Yazdani</b> &middot; Co-CEO, Intercept</cite>
+          </blockquote>
+        </div>
+      </div>
+
+      <!-- 11 DEEP DIVES -->
+      <div class="deep-dives band band--tint" id="sec-deep">
+        <p class="chapter-num">Section 11 &middot; Deep Dives</p>
+        <h2 class="section-h2">Underneath the radar.</h2>
+        <div class="deep-dives-grid">
+          <div class="dd-card dd-card--agent">
+            <p class="dd-eyebrow">Agents &middot; Arriving Before The Rules</p>
+            <h4 class="dd-title">14% configured prebuilt agents. The rest still debating what an agent is.</h4>
+            <p>Asked about their grasp of AI agents, the largest group of marketers (14%) report they have configured prebuilt agents rather than built their own. The rest split fairly evenly between not knowing who is supposed to build an agent, assuming it has to be IT, calling everything an agent, and admitting they do not really understand what one is. Most teams meet agents through a vendor demo before they have agreed internally on what one is, who can deploy one, or what an agent is allowed to do. A meaningful number have switched on agents they cannot yet govern.</p>
+          </div>
+          <div class="dd-card dd-card--alert">
+            <p class="dd-eyebrow">Frictions &middot; Why Progress Fragments</p>
+            <h4 class="dd-title">Top pain points: prioritizing AI use cases (12%), strategic clarity (8%).</h4>
+            <p>All the top frictions are organizational rather than technical. The missing piece is less another tool than a clearer system for how AI use cases are chosen, owned, and run. The first move is narrowing to a few high-value workflows and naming who owns the agents before switching them on.</p>
+          </div>
+          <div class="dd-card dd-card--accent">
+            <p class="dd-eyebrow">Priorities &middot; What Marketers Expect AI To Improve</p>
+            <h4 class="dd-title">Content quality 17% &middot; Differentiation 17% &middot; ROI 16% &middot; Production 12% &middot; Lead quality 9% &middot; GEO 7%.</h4>
+            <p>Judgment has shifted from whether teams are using AI to what AI produced. The case for any new AI investment now has to lead with the business pressure it answers rather than the features it ships with, and every request that reaches leadership needs to tie to a quality number, a differentiation move, or a revenue growth strategy.</p>
+          </div>
+          <div class="dd-card dd-card--data">
+            <p class="dd-eyebrow">Concerns &middot; Where Trust Breaks First</p>
+            <h4 class="dd-title">Attribution 14%. Integration, procurement, automation errors, rogue agents all at 11&ndash;12%.</h4>
+            <p>The fear has moved from AI itself to losing control of the AI already running inside the function. Attribution standards must be set before AI gets near any workflow that matters, and the line between what an agent can do on its own and where it has to wait for a human has to be drawn before the agent is switched on.</p>
+          </div>
+          <div class="dd-card dd-card--signal">
+            <p class="dd-eyebrow">Role Shift &middot; The Marketer Becomes The System Manager</p>
+            <h4 class="dd-title">Managing AI agents leads role-change expectations at 18%.</h4>
+            <p>Strategic planning, specialized roles, and technical roles each follow at 10%. The job is shifting from producing the work to judging, supervising, and signing off on it, and the people being asked to do that are the same ones already managing the agents.</p>
+          </div>
+          <div class="dd-card dd-card--accent">
+            <p class="dd-eyebrow">Team &amp; Strategy Shift &middot; How The Work Reorganizes</p>
+            <h4 class="dd-title">Restructuring, not expansion. 59% of committees will demand more proof.</h4>
+            <p>The headcount signals describe restructuring: shifting budget into AI (19%), adding AI specialist roles (18%), reducing execution headcount (15%). Almost no one expects to simply add people. Meanwhile the buying committee itself is changing &mdash; as AI tools move into procurement, IT and security weigh in earlier, and 59% of marketers expect their committee to demand more proof before signing off.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12 LEADERSHIP QUESTIONS -->
+      <div class="leadership-questions band band--data" id="sec-questions">
+        <p class="chapter-num">Section 12 &middot; The Leadership Questions</p>
+        <h2 class="section-h2">Four questions that cannot be deferred.</h2>
+        <p class="section-intro">Each is worth answering before the end of 2026. Bring one to the next leadership conversation on the calendar, and see how aligned the room actually is.</p>
+        <div class="lq-grid">
+          <div class="lq-item fade-in"><span class="lq-num">01</span><div class="lq-body"><h3>What does "better" actually mean now?</h3><p>Leadership is asking for quality, differentiation, and ROI. The team needs to know where it is instead still tracking AI by hours saved, and what proof would show AI is improving the work itself, not just the speed of producing it.</p></div></div>
+          <div class="lq-item fade-in"><span class="lq-num">02</span><div class="lq-body"><h3>What exactly counts as an agent, and who owns its behavior?</h3><p>The same word now covers assistants, automations, copilots, and systems that act on their own. When one does the wrong thing, somebody carries the consequence, so marketing, IT, legal, and security have to agree on a single answer before an incident decides it for them.</p></div></div>
+          <div class="lq-item fade-in"><span class="lq-num">03</span><div class="lq-body"><h3>How will we defend AI investments if attribution keeps getting harder?</h3><p>Attribution is the strongest concern this quarter. The measurement standards must answer, in a defensible and repeatable way, how AI paid for itself when that question lands on the desk.</p></div></div>
+          <div class="lq-item fade-in"><span class="lq-num">04</span><div class="lq-body"><h3>What would a credible AI operating system look like by year-end?</h3><p>And who would own how it is governed, measured, and improved? The standardization question is which workflows need to be repeatable enough that any team member can pick one up without depending on a single internal expert. The ownership question is who is building the operating model itself, separate from the people running the daily work inside it.</p></div></div>
+        </div>
+      </div>
+
+      <!-- 13 CONCLUSION (trimmed) -->
+      <div class="conclusion-section prose band band--plum" id="sec-conclusion">
+        <p class="chapter-num">Section 13 &middot; Conclusion</p>
+        <h2 class="section-h2">The system is the advantage.</h2>
+        <p>When execution is abundant and judgment is scarce, the advantage goes to whoever can build the system that makes good judgment repeatable while running the work inside it. That is the partner this moment calls for, one that operates on the system and in the work at the same time.</p>
+        <blockquote class="pull-quote pull-quote--center">
+          <p>"It is not an experiment if you know it is going to work. There is no silver bullet for AI, and the only way through is to experiment quickly and take real risks. The job of marketing leadership is to make that safe for their teams, and it is why we built InterceptOS."</p>
+          <cite><b>Andrew Au</b> &middot; Co-CEO, Intercept</cite>
+        </blockquote>
+        <p><b>InterceptOS gives B2B tech marketers the system. Our team runs the work inside it.</b></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     TOOL TEASE · standalone transition between editorial and interactive
+     ═══════════════════════════════════════════════════════════ -->
+<section class="tool-tease-standalone">
+  <div class="tool-tease-standalone-inner">
+    <div>
+      <p class="tool-tease-eyebrow">Score Your Org</p>
+      <h3 class="tool-tease-title">Make this actionable with your team.</h3>
+      <p>The interactive assessment scores your org against the brief&rsquo;s four leadership questions and the agent-readiness signals. ~5 minutes. No email required.</p>
+    </div>
+    <a class="btn btn-primary" href="#assessment">Open the assessment <svg aria-hidden="true"><use href="#icon-arrow-right"/></svg></a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ASSESSMENT TOOL · full 9-question implementation with scoring + results
+     ═══════════════════════════════════════════════════════════ -->
+<section class="assessment" id="assessment">
+  <div class="assessment-inner">
+    <p class="assessment-eyebrow">Interactive Assessment</p>
+    <h2 class="assessment-title">Score your org against this quarter&rsquo;s signals.</h2>
+    <p class="assessment-lead">9 questions drawn from the brief. ~5 minutes. Your responses score your org&rsquo;s AI operating model against the Watchtower benchmarks. No email required.</p>
+
+    <!-- Question view -->
+    <div class="assessment-card" id="assessmentCard">
+      <div class="assessment-progress">
+        <span class="assessment-progress-label">Question</span>
+        <span class="assessment-progress-track"><span class="assessment-progress-fill" id="assessmentProgressFill" style="width:11%"></span></span>
+        <span class="assessment-progress-count" id="assessmentProgressCount">01 / 09</span>
+      </div>
+      <div class="assessment-question" id="assessmentQuestion">
+        <!-- Populated by JS -->
+      </div>
+      <div class="assessment-actions">
+        <button class="assessment-back" type="button" id="assessmentBack" disabled>&larr; Back</button>
+        <button class="assessment-next" type="button" id="assessmentNext" disabled>Next question <svg aria-hidden="true"><use href="#icon-arrow-right"/></svg></button>
+      </div>
+    </div>
+
+    <!-- Results view (hidden until completion) -->
+    <div class="assessment-results" id="assessmentResults" hidden>
+      <div class="results-header">
+        <p class="results-eyebrow">Your Assessment</p>
+        <h3 class="results-title" id="resultsHeadline">Your operating model maturity</h3>
+        <p class="results-lead" id="resultsLead"></p>
+      </div>
+
+      <div class="results-score-block">
+        <div class="results-overall">
+          <p class="results-overall-label">Overall Composite</p>
+          <p class="results-overall-number" id="resultsOverall">0.0</p>
+          <p class="results-overall-meta" id="resultsOverallMeta">vs Watchtower Q1 2026 benchmark: 3.2</p>
+        </div>
+        <div class="results-breakdown">
+          <p class="results-breakdown-label">By Theme</p>
+          <div class="results-theme-row" data-theme="proficiency">
+            <span class="results-theme-name">Individual Proficiency</span>
+            <span class="results-theme-bar"><span class="results-theme-fill"></span></span>
+            <span class="results-theme-score">&mdash;</span>
+          </div>
+          <div class="results-theme-row" data-theme="agents">
+            <span class="results-theme-name">Agent Readiness</span>
+            <span class="results-theme-bar"><span class="results-theme-fill"></span></span>
+            <span class="results-theme-score">&mdash;</span>
+          </div>
+          <div class="results-theme-row" data-theme="leadership">
+            <span class="results-theme-name">Leadership Operating Model</span>
+            <span class="results-theme-bar"><span class="results-theme-fill"></span></span>
+            <span class="results-theme-score">&mdash;</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-recommendations">
+        <p class="results-recs-label">What to Focus On Next</p>
+        <ol id="resultsRecs" class="results-recs-list">
+          <!-- Populated by JS -->
+        </ol>
+      </div>
+
+      <div class="results-cta">
+        <a class="btn btn-primary" href="pages/contact.html" id="resultsContact">
+          Want us to walk this through with your team?
+          <svg aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+        </a>
+        <button class="results-restart" type="button" id="resultsRestart">Restart the assessment</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     RELATED INSIGHTS
+     ═══════════════════════════════════════════════════════════ -->
+<section class="related" aria-label="Related insights">
+  <div class="wrap">
+    <p class="related-label">Related Insights</p>
+    <h2>Read next</h2>
+    <div class="related-grid">
+      <a class="related-card" href="insights-signals-findability-geo-b2b-tech.html">
+        <div class="chips">
+          <span class="chip pillar-visibility">Visibility</span>
+          <span class="chip format">Article</span>
+        </div>
+        <h3>SEO isn&rsquo;t dead. It&rsquo;s becoming findability in the age of AI buying.</h3>
+        <p>Buyers moved from searching to asking. The fight is no longer for a page rank, it&rsquo;s for being selected and cited inside the AI&rsquo;s answer.</p>
+        <span class="meta">Andrew Au &middot; 6 min read</span>
+      </a>
+      <a class="related-card" href="insights-signals-2026-two-sided-squeeze.html">
+        <div class="chips">
+          <span class="chip pillar-velocity">Velocity</span>
+          <span class="chip format">Article</span>
+        </div>
+        <h3>AI&rsquo;s two-sided squeeze on B2B tech marketing.</h3>
+        <p>AI is the first tech wave to both expand what marketing must deliver and compress the labor to deliver it. Why 2026 lands heavier than every prior shift.</p>
+        <span class="meta">Andrew Au &middot; 8 min read</span>
+      </a>
+      <a class="related-card" href="insights-the-next-era-of-ai-powered-research.html">
+        <div class="chips">
+          <span class="chip pillar-intelligence">Intelligence</span>
+          <span class="chip format">Article</span>
+        </div>
+        <h3>The next era of AI-powered research.</h3>
+        <p>Surveys are too slow and too biased for the pace B2B decisions move at. Listening to unprompted conversation is the new primitive.</p>
+        <span class="meta">Andrew Au &middot; 4 min read</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     END-OF-PAGE CTAs (template pattern — exploration primary, conversion secondary)
+     ═══════════════════════════════════════════════════════════ -->
+<section class="convert" id="convert">
+  <div class="wrap">
+    <h2 class="section-h2">See an operating model run end-to-end.</h2>
+    <p class="section-lead">InterceptOS is the system. Our team runs the work inside it. The Activation flow shows what that looks like in practice.</p>
+    <a class="convo-tile" href="pages/explore/interceptos.html" aria-label="Explore InterceptOS Activation flow">
+      <span class="convo-tile-eyebrow">InterceptOS &middot; Activation Flow</span>
+      <span class="convo-tile-heading">Open&nbsp;InterceptOS.</span>
+      <span class="convo-tile-sub">See the four-stage flow that takes the operating-model thesis from this brief and turns it into shipped, measured work.</span>
+      <span class="convo-tile-arrow" aria-hidden="true">&rarr;</span>
+    </a>
+    <div class="wayfinding">
+      <button class="wayfinding-pill" type="button" data-open="convoDrawer" data-context="Operating model conversation (from the H1 Trends Brief)">
+        <span class="wayfinding-meta">Or</span>
+        <span>Want us to walk this operating model through with your team?</span>
+        <svg aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SOURCES · accordion, collapsed by default
+     ═══════════════════════════════════════════════════════════ -->
+<section class="sources">
+  <div class="sources-inner">
+    <details>
+      <summary>Sources</summary>
+      <div class="sources-list">
+        <ol>
+          <li>Q1 FY26 AI in B2B Trends: B2B Marketers Watchtower Research Mastersheet. Source for all quantitative data in this report: executive priorities, agent-understanding signals, concern signals, adoption signals, value signals, role and team shift signals, buying-change signals, and Watchtower radar dimension scores. Data window: January 1 &ndash; March 4, 2026. n=11,249&ndash;467,863.</li>
+          <li>Michael Hammer, "Reengineering Work: Don&rsquo;t Automate, Obliterate," Harvard Business Review, July &ndash; August 1990.</li>
+          <li>AI at 2026 commencements: graduating classes booed speakers who praised AI (Eric Schmidt, University of Arizona; University of Central Florida). NBC News and NPR, "Advice for 2026 commencement speakers: Don&rsquo;t bring up AI," May 2026.</li>
+          <li>AI favorability and public sentiment: NBC News poll, February 27 to March 3, 2026 (1,000 registered voters); The Economist and YouGov, May 2026; Pew Research Center, March 2026.</li>
+          <li>AI cost and token economics: company $500M single-month AI bill (Fast Company and Yahoo Finance, May 2026); Uber 2026 AI budget exhausted by April (TechCrunch and Inc., June 2026); token pricing and subscription pullback (Tom&rsquo;s Hardware and The Economist, 2026).</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <svg class="logo sm" role="img" aria-label="Intercept"><use href="#intercept-lockup"/></svg>
+      </div>
+      <div class="foot-col">
+        <h4>Site</h4>
+        <a href="pages/explore/interceptos.html">InterceptOS</a>
+        <a href="pages/explore/labs.html">Intercept Labs</a>
+        <a href="pages/work.html">Work</a>
+        <a href="insights-hub.html">Insights</a>
+        <a href="pages/contact.html" id="footContact">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h4>Trust</h4>
+        <a href="ai-policy.html">AI Policy</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html">Terms of Service</a>
+      </div>
+      <div class="foot-col">
+        <h4>Socials</h4>
+        <a href="https://www.linkedin.com/company/interceptagency/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.youtube.com/@InterceptGroup" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://open.spotify.com/show/2RTmhzjHDlCRhqQb5XyRoO" target="_blank" rel="noopener">Spotify &middot; ChatB2B</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span class="curio">Powered by curiosity, built for the work</span>
+    </div>
+  </div>
+</footer>
+
+<!-- DRAWER -->
+<div class="drawer-scrim" id="scrim"></div>
+<aside class="drawer" id="convoDrawer" role="dialog" aria-modal="true" aria-label="Start the conversation">
+  <button class="x" data-close aria-label="Close">&times;</button>
+  <div class="d-type">Brief intake</div>
+  <h3>Start the conversation</h3>
+  <div class="d-role">Five short fields. Goes straight to a partner.</div>
+  <div class="convo-context" id="convoContext" hidden></div>
+  <form class="drawer-form" id="convoForm" novalidate>
+    <input type="hidden" name="context" id="convoContextField">
+    <div class="row-2">
+      <div class="field"><label for="coName">Name</label><input id="coName" name="name" type="text" required></div>
+      <div class="field"><label for="cRole">Role</label><input id="cRole" name="role" type="text" required></div>
+    </div>
+    <div class="row-2">
+      <div class="field"><label for="cCompany">Company</label><input id="cCompany" name="company" type="text" required></div>
+      <div class="field"><label for="cEmail">Email</label><input id="cEmail" name="email" type="email" required></div>
+    </div>
+    <div class="field"><label for="cBrief">What are you trying to do?</label><textarea id="cBrief" name="brief" required placeholder="The shape of the work, the buyer you&rsquo;re trying to reach, and the outcome you&rsquo;d need to prove."></textarea></div>
+    <div class="field"><label for="cTimeline">Timeline (optional)</label><input id="cTimeline" name="timeline" type="text" placeholder="When you&rsquo;d want to start, or the date you&rsquo;re trying to hit"></div>
+    <button type="submit" class="submit">Send it &rarr;</button>
+  </form>
+  <div id="convoSuccess" class="form-success" style="display:none">
+    <div class="h">Brief received.</div>
+    <p>A partner reads every brief that comes through. We&rsquo;ll be in touch.</p>
+  </div>
+</aside>
+
+<script>
+/* ─── Reading progress (chapter strip remains visible at all times) ─── */
+const progress = document.getElementById('readProgress');
+const stripScroll = document.getElementById('chapterScroll');
+
+function onScroll(){
+  const docH = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = docH > 0 ? (window.scrollY / docH) * 100 : 0;
+  progress.style.width = Math.min(100, Math.max(0, pct)) + '%';
+}
+document.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+/* ─── Section active highlighting + auto-scroll current pill into view ─── */
+const sections = document.querySelectorAll('[id^="sec-"]');
+const stripLinks = document.querySelectorAll('.chapter-strip-scroll a');
+
+function setActiveSection(id){
+  let activeLink = null;
+  stripLinks.forEach(link => {
+    const match = link.getAttribute('href') === '#' + id;
+    link.classList.toggle('is-current', match);
+    if(match) activeLink = link;
+  });
+  // Auto-scroll the active pill into view within the strip
+  if(activeLink && stripScroll){
+    const linkRect = activeLink.getBoundingClientRect();
+    const scrollRect = stripScroll.getBoundingClientRect();
+    if(linkRect.left < scrollRect.left + 20 || linkRect.right > scrollRect.right - 20){
+      const targetLeft = activeLink.offsetLeft - (stripScroll.clientWidth / 2) + (activeLink.offsetWidth / 2);
+      stripScroll.scrollTo({ left: targetLeft, behavior: 'smooth' });
+    }
+  }
+}
+if(sections.length > 0 && 'IntersectionObserver' in window){
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) setActiveSection(entry.target.id);
+    });
+  }, { rootMargin: '-25% 0px -60% 0px', threshold: 0 });
+  sections.forEach(s => observer.observe(s));
+  setActiveSection(sections[0].id);
+}
+
+/* ─── Fade-in pattern (Phase B1 placeholder for GSAP scrollytelling) ─── */
+const fadeEls = document.querySelectorAll('.fade-in, .signal-bar');
+if('IntersectionObserver' in window){
+  const fadeObs = new IntersectionObserver((entries) => {
+    entries.forEach((entry, idx) => {
+      if(entry.isIntersecting){
+        setTimeout(() => entry.target.classList.add('is-visible'), idx * 80);
+        fadeObs.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+  fadeEls.forEach(el => fadeObs.observe(el));
+}
+
+/* ─── Drawer ─── */
+const scrim = document.getElementById('scrim');
+function openDrawer(id, context){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.classList.add('open');
+  scrim.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  const ctxEl = document.getElementById('convoContext');
+  const ctxField = document.getElementById('convoContextField');
+  if(context && ctxEl){
+    ctxEl.innerHTML = 'Regarding &middot; <b>' + context + '</b>';
+    ctxEl.hidden = false;
+    if(ctxField) ctxField.value = context;
+  } else if(ctxEl){
+    ctxEl.hidden = true;
+    if(ctxField) ctxField.value = '';
+  }
+}
+function closeAll(){
+  document.querySelectorAll('.drawer.open').forEach(d => d.classList.remove('open'));
+  scrim.classList.remove('open');
+  document.body.style.overflow = '';
+}
+scrim.addEventListener('click', closeAll);
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeAll(); });
+document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', closeAll));
+document.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click', () => openDrawer(b.dataset.open, b.dataset.context || null)));
+
+const navContact = document.getElementById('navContact');
+if(navContact) navContact.addEventListener('click', e => { e.preventDefault(); openDrawer('convoDrawer'); });
+const footContact = document.getElementById('footContact');
+if(footContact) footContact.addEventListener('click', e => { e.preventDefault(); openDrawer('convoDrawer'); });
+
+document.getElementById('convoForm').addEventListener('submit', e => {
+  e.preventDefault();
+  document.getElementById('convoForm').style.display = 'none';
+  document.getElementById('convoSuccess').style.display = 'block';
+});
+
+/* ─── Radar chart interactivity (hover tooltip + click to navigate) ─── */
+(() => {
+  const tooltip = document.getElementById('radarTooltip');
+  const chart = document.getElementById('radarChart');
+  if(!tooltip || !chart) return;
+  const points = chart.querySelectorAll('circle[data-pillar]');
+  points.forEach(pt => {
+    pt.addEventListener('mouseenter', () => {
+      const name = pt.dataset.name;
+      const score = pt.dataset.score;
+      const prev = pt.dataset.prev;
+      const isOutlier = pt.dataset.outlier === 'true';
+      const delta = (parseFloat(score) - parseFloat(prev)).toFixed(2);
+      const deltaSign = parseFloat(delta) >= 0 ? '+' : '';
+      tooltip.innerHTML = `<span class="t-pillar">${name}</span><span class="t-score">${score}</span><span class="t-trend">${deltaSign}${delta} vs Q4 2025</span>`;
+      tooltip.classList.toggle('is-outlier', isOutlier);
+      const rect = pt.getBoundingClientRect();
+      const chartRect = chart.getBoundingClientRect();
+      tooltip.style.left = (rect.left - chartRect.left + rect.width / 2 - tooltip.offsetWidth / 2) + 'px';
+      tooltip.style.top = (rect.top - chartRect.top - tooltip.offsetHeight - 12) + 'px';
+      tooltip.classList.add('is-visible');
+      pt.classList.add('is-active');
+    });
+    pt.addEventListener('mouseleave', () => {
+      tooltip.classList.remove('is-visible');
+      pt.classList.remove('is-active');
+    });
+    pt.addEventListener('click', () => {
+      const href = pt.dataset.href;
+      if(href){
+        const target = document.querySelector(href);
+        if(target){
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+})();
+
+/* ─── Assessment Tool · full 9-question flow with scoring + results ─── */
+(() => {
+  const questions = [
+    {
+      theme: 'proficiency',
+      label: 'Pillar 1 · Individual AI Proficiency',
+      text: 'How would you describe AI proficiency on your team today?',
+      options: [
+        { value: 1, label: 'A few self-taught individuals; no shared workflows yet' },
+        { value: 2, label: 'Pockets of proficiency in specific functions, with informal sharing' },
+        { value: 3, label: 'Most of the team uses AI regularly; some shared playbooks exist' },
+        { value: 4, label: 'Structured training program plus shared workflows across the function' },
+        { value: 5, label: 'AI proficiency is a measured capability with org-wide standards and continuous learning' }
+      ]
+    },
+    {
+      theme: 'agents',
+      label: 'Agent Readiness · Definition',
+      text: 'Has your org agreed internally on what counts as an "agent"?',
+      options: [
+        { value: 1, label: 'No shared definition. Different teams use the word differently' },
+        { value: 2, label: 'Loose agreement, but it varies by function' },
+        { value: 3, label: 'Working definition exists, used by most teams' },
+        { value: 4, label: 'Documented definition with criteria for what does and doesn’t count' },
+        { value: 5, label: 'Defined, governed, and updated as the technology evolves' }
+      ]
+    },
+    {
+      theme: 'agents',
+      label: 'Agent Readiness · Ownership',
+      text: 'When an agent does the wrong thing, who carries the consequence?',
+      options: [
+        { value: 1, label: 'Unclear. We haven’t had to answer this yet' },
+        { value: 2, label: 'Probably the team that deployed it, by default' },
+        { value: 3, label: 'Documented owner per agent, but no cross-functional sign-off' },
+        { value: 4, label: 'Marketing, IT, legal, and security have agreed on the line for most agents' },
+        { value: 5, label: 'Single named owner per agent with a documented incident process' }
+      ]
+    },
+    {
+      theme: 'agents',
+      label: 'Agent Readiness · Governance',
+      text: 'What’s in place before an agent gets switched on?',
+      options: [
+        { value: 1, label: 'Nothing formal. Teams turn on agents and see what happens' },
+        { value: 2, label: 'Informal review with IT or security depending on the use case' },
+        { value: 3, label: 'Standard intake form covering security, data, and risk' },
+        { value: 4, label: 'Full pre-deployment review with documented decision rights' },
+        { value: 5, label: 'Continuous governance with monitoring, audit trails, and a kill switch' }
+      ]
+    },
+    {
+      theme: 'agents',
+      label: 'Agent Readiness · Reality Check',
+      text: 'Are there agents running right now that you cannot fully govern?',
+      options: [
+        { value: 1, label: 'Yes, several. We’re catching up' },
+        { value: 2, label: 'A few. We’re building governance around them as we go' },
+        { value: 3, label: 'Maybe one or two; we’re investigating' },
+        { value: 4, label: 'Not that we know of; we audit periodically' },
+        { value: 5, label: 'No. Every running agent has documented governance' }
+      ]
+    },
+    {
+      theme: 'leadership',
+      label: 'Leadership Q01 · What "Better" Means',
+      text: 'If leadership asked "is AI working?" today, what would you point to?',
+      options: [
+        { value: 1, label: 'Activity metrics: tool usage, prompts run, hours saved' },
+        { value: 2, label: 'Mostly speed signals: faster cycle times, more output volume' },
+        { value: 3, label: 'A mix of activity and some quality / outcome proxies' },
+        { value: 4, label: 'Clear quality, differentiation, and ROI metrics tied to AI work' },
+        { value: 5, label: 'Documented quality, differentiation, ROI, and lift, against a defensible baseline' }
+      ]
+    },
+    {
+      theme: 'leadership',
+      label: 'Leadership Q02 · Agent Accountability',
+      text: 'If an agent damaged a campaign tomorrow, how prepared is your org to respond?',
+      options: [
+        { value: 1, label: 'We’d figure it out in the moment. No playbook' },
+        { value: 2, label: 'Marketing would lead the response; we’d loop others in' },
+        { value: 3, label: 'A draft incident process exists; not yet tested' },
+        { value: 4, label: 'Cross-functional incident process exists and has been rehearsed' },
+        { value: 5, label: 'Tested process with clear roles for marketing, IT, legal, and security' }
+      ]
+    },
+    {
+      theme: 'leadership',
+      label: 'Leadership Q03 · Attribution Defense',
+      text: 'How confidently can your team prove what AI is driving in the funnel?',
+      options: [
+        { value: 1, label: 'We can’t. Attribution is largely intuition' },
+        { value: 2, label: 'Some signals; nothing we’d defend in a board review' },
+        { value: 3, label: 'Documented assumptions and rough impact estimates' },
+        { value: 4, label: 'Measurement framework in place, audited quarterly' },
+        { value: 5, label: 'Defensible, repeatable attribution with stakeholder buy-in' }
+      ]
+    },
+    {
+      theme: 'leadership',
+      label: 'Leadership Q04 · Operating System Vision',
+      text: 'How close are you to a credible AI operating system by year-end?',
+      options: [
+        { value: 1, label: 'Nowhere near. We’re still in scattered experimentation' },
+        { value: 2, label: 'Early-stage. A few workflows are stable; most aren’t' },
+        { value: 3, label: 'Drafted. Several workflows are repeatable, ownership is partial' },
+        { value: 4, label: 'Operational. Most workflows are repeatable with named owners' },
+        { value: 5, label: 'Mature. Documented, measured, governed, and continuously improving' }
+      ]
+    }
+  ];
+
+  const card = document.getElementById('assessmentCard');
+  const results = document.getElementById('assessmentResults');
+  const questionEl = document.getElementById('assessmentQuestion');
+  const progressFill = document.getElementById('assessmentProgressFill');
+  const progressCount = document.getElementById('assessmentProgressCount');
+  const backBtn = document.getElementById('assessmentBack');
+  const nextBtn = document.getElementById('assessmentNext');
+  if(!questionEl || !nextBtn) return;
+
+  let currentIdx = 0;
+  const answers = new Array(questions.length).fill(null);
+
+  function render(){
+    const q = questions[currentIdx];
+    const total = questions.length;
+    const pct = Math.round(((currentIdx + 1) / total) * 100);
+    progressFill.style.width = pct + '%';
+    progressCount.textContent = String(currentIdx + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+
+    const optionsHtml = q.options.map(opt => `
+      <label class="assessment-option">
+        <input type="radio" name="q${currentIdx}" value="${opt.value}"${answers[currentIdx] === opt.value ? ' checked' : ''}>
+        <span>${opt.label}</span>
+      </label>
+    `).join('');
+
+    questionEl.innerHTML = `
+      <p class="assessment-q-label">${q.label}</p>
+      <p class="assessment-q-text">${q.text}</p>
+      <div class="assessment-options">${optionsHtml}</div>
+    `;
+
+    // Wire radio change events
+    questionEl.querySelectorAll('input[type="radio"]').forEach(input => {
+      input.addEventListener('change', e => {
+        answers[currentIdx] = parseInt(e.target.value, 10);
+        nextBtn.disabled = false;
+      });
+    });
+
+    backBtn.disabled = currentIdx === 0;
+    nextBtn.disabled = answers[currentIdx] === null;
+    nextBtn.innerHTML = currentIdx === total - 1
+      ? 'See your results <svg aria-hidden="true"><use href="#icon-arrow-right"/></svg>'
+      : 'Next question <svg aria-hidden="true"><use href="#icon-arrow-right"/></svg>';
+  }
+
+  function showResults(){
+    // Aggregate by theme
+    const themeScores = { proficiency: [], agents: [], leadership: [] };
+    questions.forEach((q, idx) => {
+      if(answers[idx] !== null) themeScores[q.theme].push(answers[idx]);
+    });
+    const themeAvg = {};
+    Object.keys(themeScores).forEach(theme => {
+      const arr = themeScores[theme];
+      themeAvg[theme] = arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : 0;
+    });
+    const overall = (themeAvg.proficiency + themeAvg.agents + themeAvg.leadership) / 3;
+
+    // Render
+    document.getElementById('resultsOverall').textContent = overall.toFixed(1);
+
+    const headlines = {
+      low: 'Early-stage. The operating model is still scattered.',
+      mid: 'In motion. Pockets of operating model, scaling unevenly.',
+      high: 'Operational. The system is forming and earning its keep.'
+    };
+    const leads = {
+      low: 'Most of your AI work is still happening at the individual level. The next moves are about turning ad-hoc proficiency into shared, governed workflows.',
+      mid: 'You’ve moved past scattered experimentation but the operating model isn’t yet repeatable across the function. Focus on closing the governance and attribution gaps.',
+      high: 'You’re running ahead of most teams in Watchtower’s data. The frontier from here is treating the system itself as a product: measuring it, refining it, scaling judgment.'
+    };
+    const bucket = overall < 2.5 ? 'low' : overall < 3.5 ? 'mid' : 'high';
+    document.getElementById('resultsHeadline').textContent = headlines[bucket];
+    document.getElementById('resultsLead').textContent = leads[bucket];
+
+    // Render theme bars
+    document.querySelectorAll('.results-theme-row').forEach(row => {
+      const theme = row.dataset.theme;
+      const score = themeAvg[theme] || 0;
+      const pct = (score / 5) * 100;
+      row.querySelector('.results-theme-fill').style.width = pct + '%';
+      row.querySelector('.results-theme-score').textContent = score.toFixed(1);
+    });
+
+    // Build recommendations based on lowest-scoring theme
+    const themeNames = {
+      proficiency: 'Individual Proficiency',
+      agents: 'Agent Readiness',
+      leadership: 'Leadership Operating Model'
+    };
+    const sortedThemes = Object.keys(themeAvg).sort((a, b) => themeAvg[a] - themeAvg[b]);
+    const recsLow = {
+      proficiency: 'Move from self-taught to shared. Stand up a structured AI training program and document the workflows your strongest practitioners use, so they spread instead of staying locked to individuals.',
+      agents: 'Lock the definition first. Get marketing, IT, legal, and security in a room to agree on what counts as an agent, who can deploy one, and what each one is allowed to do, before the next agent goes live.',
+      leadership: 'Anchor "better" in a number. Replace activity metrics with quality, differentiation, and ROI metrics that you can defend in a board review, then build the attribution to back them.'
+    };
+    const recsMid = {
+      proficiency: 'Codify what’s working. Take the AI workflows your best operators run informally and turn them into documented, audited standards the whole function can follow.',
+      agents: 'Move from definition to incident readiness. Run a tabletop exercise: an agent does the wrong thing tomorrow. Who responds, in what order, with what authority?',
+      leadership: 'Connect AI investment to provable lift. Build the measurement framework that turns "we used AI" into "AI moved this number by this much, vs this baseline."'
+    };
+    const recsHigh = {
+      proficiency: 'Productize your operating model. The next move is making your AI proficiency a measured org-wide capability, not a function-by-function achievement.',
+      agents: 'Move from individual agent governance to system-level governance. How does your portfolio of agents behave together? Where do they conflict, compound, or compete for resources?',
+      leadership: 'Treat the system itself as the work. The frontier is operating-model-as-product: documented, governed, measured, and continuously improving with the same rigor you apply to a flagship campaign.'
+    };
+    const recsPool = bucket === 'low' ? recsLow : bucket === 'mid' ? recsMid : recsHigh;
+    const recsHtml = sortedThemes.map(theme => `<li><b>${themeNames[theme]} (${themeAvg[theme].toFixed(1)}):</b> ${recsPool[theme]}</li>`).join('');
+    document.getElementById('resultsRecs').innerHTML = recsHtml;
+
+    // Toggle views
+    card.hidden = true;
+    results.hidden = false;
+    results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function restart(){
+    currentIdx = 0;
+    for(let i = 0; i < answers.length; i++) answers[i] = null;
+    results.hidden = true;
+    card.hidden = false;
+    render();
+    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  backBtn.addEventListener('click', () => {
+    if(currentIdx > 0){
+      currentIdx--;
+      render();
+    }
+  });
+  nextBtn.addEventListener('click', () => {
+    if(answers[currentIdx] === null) return;
+    if(currentIdx === questions.length - 1){
+      showResults();
+    } else {
+      currentIdx++;
+      render();
+    }
+  });
+
+  const restartBtn = document.getElementById('resultsRestart');
+  if(restartBtn) restartBtn.addEventListener('click', restart);
+
+  // Hook contact CTA in results to open the convo drawer with context
+  const resultsContact = document.getElementById('resultsContact');
+  if(resultsContact){
+    resultsContact.addEventListener('click', e => {
+      e.preventDefault();
+      openDrawer('convoDrawer', 'Operating model assessment results (from the H1 Trends Brief)');
+    });
+  }
+
+  render();
+})();
+
+/* ═══════════════════════════════════════════════════════════
+   GSAP COMPREHENSIVE SCROLLYTELLING POLISH
+   - Hero stagger entrance
+   - Stat callout number count-ups
+   - Radar chart sequential build (Q2 → Q3 → Q4 → Q1)
+   - Section header reveals
+   - Pillar header score count-ups
+   - Trajectory/depth/signal bar animations
+   - Pull-quote dramatic entrances
+   - Cost callout choreography
+   - Leadership Questions sequential reveal
+   - Tool tease attention pulse
+   - Conclusion dramatic entrance
+   ═══════════════════════════════════════════════════════════ */
+(() => {
+  if(typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined'){
+    console.warn('GSAP failed to load — falling back to static rendering.');
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+  document.body.classList.add('gsap-ready');
+
+  // Respect reduced-motion preference
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const dur = reducedMotion ? 0 : 1;
+  const stagger = reducedMotion ? 0 : 0.12;
+
+  /* ───── Helper · animate a number from start to end ───── */
+  function animateNumber(el, end, prefix = '', suffix = '', decimals = 0){
+    const obj = { val: 0 };
+    gsap.to(obj, {
+      val: end,
+      duration: dur,
+      ease: 'power2.out',
+      onUpdate: () => {
+        el.textContent = prefix + obj.val.toFixed(decimals) + suffix;
+      }
+    });
+  }
+
+  /* ───── 1. Hero stagger entrance ───── */
+  gsap.set('.brief-kicker, .brief-h1, .brief-epigraph, .brief-hero-ctas, .hero-numbers', { opacity: 0, y: 40 });
+  gsap.timeline({ defaults: { duration: dur, ease: 'power3.out' } })
+    .to('.brief-kicker', { opacity: 1, y: 0 })
+    .to('.brief-h1', { opacity: 1, y: 0 }, '-=0.6')
+    .to('.brief-epigraph', { opacity: 1, y: 0 }, '-=0.5')
+    .to('.brief-hero-ctas', { opacity: 1, y: 0 }, '-=0.5')
+    .to('.hero-numbers', { opacity: 1, y: 0 }, '-=0.7');
+
+  // Animate the three Inside-This-Brief stats (count-up)
+  document.querySelectorAll('.hero-numbers .hn-num').forEach((el, i) => {
+    const target = parseFloat(el.dataset.count);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    gsap.from(el, {
+      opacity: 0,
+      y: 12,
+      duration: dur * 0.6,
+      delay: 0.8 + i * 0.18,
+      ease: 'power2.out',
+      onStart: () => animateNumber(el, target, prefix, suffix)
+    });
+  });
+
+  /* ───── 2. Key Takeaways ───── */
+  gsap.from('.brief-takeaways-label', {
+    opacity: 0, y: 20, duration: dur,
+    scrollTrigger: { trigger: '.brief-takeaways', start: 'top 75%' }
+  });
+  gsap.from('.brief-takeaways li', {
+    opacity: 0, y: 30, duration: dur, stagger,
+    scrollTrigger: { trigger: '.brief-takeaways', start: 'top 70%' }
+  });
+
+  /* ───── 3. Section header reveals (each section h2 + chapter-num) ───── */
+  document.querySelectorAll('.section-block, .pillar-section, .deep-dives, .leadership-questions, .conclusion-section').forEach(sec => {
+    const chapNum = sec.querySelector('.chapter-num');
+    const h2 = sec.querySelector('.section-h2, .pillar-title');
+    if(chapNum || h2){
+      gsap.from([chapNum, h2].filter(Boolean), {
+        opacity: 0, y: 30, duration: dur, stagger: 0.1,
+        scrollTrigger: { trigger: sec, start: 'top 78%' }
+      });
+    }
+    // Animate first paragraph too
+    const firstP = sec.querySelector('.prose > p:first-of-type');
+    if(firstP){
+      gsap.from(firstP, {
+        opacity: 0, y: 20, duration: dur,
+        scrollTrigger: { trigger: firstP, start: 'top 80%' }
+      });
+    }
+  });
+
+  /* ───── 4. Stat callouts · number count-ups ───── */
+  document.querySelectorAll('.stat-callout').forEach(callout => {
+    const numEl = callout.querySelector('.stat-num');
+    if(!numEl) return;
+    const raw = numEl.textContent.trim();
+    // Parse value (handles "13", "~95%", "$70M", "59%", "100+")
+    const match = raw.match(/(~?)(\$?)(\d+\.?\d*)([%MK+]*)/);
+    if(!match) return;
+    const tilde = match[1];
+    const prefix = tilde + match[2];
+    const target = parseFloat(match[3]);
+    const suffix = match[4];
+    ScrollTrigger.create({
+      trigger: callout,
+      start: 'top 80%',
+      onEnter: () => {
+        animateNumber(numEl, target, prefix, suffix, raw.includes('.') ? 1 : 0);
+      },
+      once: true
+    });
+    gsap.from(callout, {
+      opacity: 0, y: 30, duration: dur,
+      scrollTrigger: { trigger: callout, start: 'top 80%' }
+    });
+  });
+
+  /* ───── 5. Pillar header score count-ups ───── */
+  document.querySelectorAll('.pillar-header').forEach(header => {
+    const numLarge = header.querySelector('.pillar-num-large');
+    const scoreNum = header.querySelector('.pillar-score-number');
+    gsap.from(header, {
+      opacity: 0, y: 24, duration: dur,
+      scrollTrigger: { trigger: header, start: 'top 80%' }
+    });
+    if(scoreNum){
+      const target = parseFloat(scoreNum.textContent);
+      ScrollTrigger.create({
+        trigger: header,
+        start: 'top 75%',
+        onEnter: () => animateNumber(scoreNum, target, '', '', 1),
+        once: true
+      });
+    }
+  });
+
+  /* ───── 6. RADAR CHART · sequential build (Q2 → Q3 → Q4 → Q1) ───── */
+  const radarSection = document.querySelector('.radar-section');
+  if(radarSection){
+    const q2 = document.querySelector('.radar-quarter--q2');
+    const q3 = document.querySelector('.radar-quarter--q3');
+    const q4 = document.querySelector('.radar-quarter--q4');
+    const current = document.querySelector('.radar-current');
+    const points = document.querySelectorAll('.radar-current-points circle');
+
+    // Set initial state
+    gsap.set([q2, q3, q4, current], { opacity: 0 });
+    gsap.set(points, { opacity: 0, scale: 0, transformOrigin: '50% 50%' });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: radarSection,
+        start: 'top 65%',
+        toggleActions: 'play none none reverse'
+      }
+    });
+    tl.to(q2, { opacity: 0.45, duration: dur * 0.8 })
+      .to(q3, { opacity: 0.45, duration: dur * 0.8 }, '+=0.1')
+      .to(q4, { opacity: 0.45, duration: dur * 0.8 }, '+=0.1')
+      .to(current, { opacity: 1, duration: dur }, '+=0.15')
+      .to(points, { opacity: 1, scale: 1, duration: dur * 0.6, stagger: 0.08, ease: 'back.out(1.8)' }, '-=0.4');
+
+    // Also animate the pillar row list alongside
+    gsap.from('.radar-pillar-row', {
+      opacity: 0, x: 20, duration: dur * 0.8, stagger: 0.08,
+      scrollTrigger: { trigger: '.radar-pillars', start: 'top 75%' }
+    });
+
+    // Animate the legend
+    gsap.from('.watchtower-legend', {
+      opacity: 0, y: 20, duration: dur,
+      scrollTrigger: { trigger: '.watchtower-legend', start: 'top 85%' }
+    });
+  }
+
+  /* ───── 7. Pillar 1 · Rebound chart line draw ───── */
+  const reboundChart = document.querySelector('.rebound-chart-svg');
+  if(reboundChart){
+    const histLine = reboundChart.querySelector('.rebound-line');
+    const currLine = reboundChart.querySelector('.rebound-current-line');
+    const dots = reboundChart.querySelectorAll('.rebound-dot');
+    const labels = reboundChart.querySelectorAll('.rebound-label, .rebound-callout');
+    [histLine, currLine].forEach(line => {
+      if(!line) return;
+      const length = line.getTotalLength();
+      gsap.set(line, { strokeDasharray: length, strokeDashoffset: length });
+    });
+    gsap.set(dots, { opacity: 0, scale: 0, transformOrigin: '50% 50%' });
+    gsap.set(labels, { opacity: 0 });
+
+    const reboundTl = gsap.timeline({
+      scrollTrigger: { trigger: reboundChart, start: 'top 75%', toggleActions: 'play none none reverse' }
+    });
+    reboundTl
+      .to(histLine, { strokeDashoffset: 0, duration: dur * 1.2, ease: 'power1.inOut' })
+      .to(dots[0], { opacity: 1, scale: 1, duration: dur * 0.3 }, '-=1.0')
+      .to(dots[1], { opacity: 1, scale: 1, duration: dur * 0.3 }, '-=0.7')
+      .to(dots[2], { opacity: 1, scale: 1, duration: dur * 0.3 }, '-=0.4')
+      .to(currLine, { strokeDashoffset: 0, duration: dur * 0.8, ease: 'power2.out' })
+      .to(dots[3], { opacity: 1, scale: 1, duration: dur * 0.4, ease: 'back.out(2)' }, '-=0.3')
+      .to(labels, { opacity: 1, duration: dur * 0.6, stagger: 0.06 }, '-=0.4');
+  }
+
+  /* ───── 8. Three Bets cards · stagger ───── */
+  gsap.from('.bet-card', {
+    opacity: 0, y: 30, duration: dur, stagger,
+    scrollTrigger: { trigger: '.three-bets', start: 'top 75%' }
+  });
+
+  /* ───── 9. Trajectory comparison bars (Pillar 3) ───── */
+  document.querySelectorAll('.trajectory-comparison').forEach(comp => {
+    const fills = comp.querySelectorAll('.t-bar-fill');
+    const deltas = comp.querySelectorAll('.t-delta');
+    const pillars = comp.querySelectorAll('.t-pillar');
+    gsap.set(fills, { scaleX: 0, transformOrigin: 'left center' });
+    gsap.set([deltas, pillars], { opacity: 0, x: -10 });
+    gsap.timeline({
+      scrollTrigger: { trigger: comp, start: 'top 75%', toggleActions: 'play none none reverse' }
+    })
+    .to(pillars, { opacity: 1, x: 0, duration: dur * 0.5, stagger: 0.08 })
+    .to(fills, { scaleX: 1, duration: dur * 0.8, stagger: 0.08, ease: 'power2.out' }, '-=0.5')
+    .to(deltas, { opacity: 1, x: 0, duration: dur * 0.4, stagger: 0.08 }, '-=0.6');
+  });
+
+  /* ───── 10. Signal Meter bars (Pillar 4) ───── */
+  document.querySelectorAll('.signal-meter').forEach(meter => {
+    const fills = meter.querySelectorAll('.signal-bar-fill');
+    gsap.set(fills, { scaleX: 0, transformOrigin: 'left center' });
+    gsap.to(fills, {
+      scaleX: (i, target) => parseFloat(target.style.getPropertyValue('--w')) || 1,
+      duration: dur,
+      stagger: 0.1,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: meter, start: 'top 75%', toggleActions: 'play none none reverse' }
+    });
+  });
+
+  /* ───── 11. Inside vs Outside split (Pillar 4) ───── */
+  gsap.from('.io-side', {
+    opacity: 0, y: 30, duration: dur, stagger,
+    scrollTrigger: { trigger: '.inside-outside', start: 'top 75%' }
+  });
+  gsap.from('.io-divider', {
+    opacity: 0, scale: 0.5, duration: dur, delay: 0.3,
+    scrollTrigger: { trigger: '.inside-outside', start: 'top 75%' }
+  });
+
+  /* ───── 12. Adoption Depth bars (Pillar 5) ───── */
+  document.querySelectorAll('.adoption-depth').forEach(adept => {
+    const fills = adept.querySelectorAll('.depth-bar-fill');
+    const values = adept.querySelectorAll('.depth-bar-value');
+    gsap.set(fills, { scaleX: 0, transformOrigin: 'left center' });
+    gsap.set(values, { opacity: 0 });
+    gsap.timeline({
+      scrollTrigger: { trigger: adept, start: 'top 75%', toggleActions: 'play none none reverse' }
+    })
+    .to(fills, {
+      scaleX: (i, target) => {
+        const bar = target.closest('.depth-bar');
+        return parseFloat(bar?.style.getPropertyValue('--w')) || 1;
+      },
+      duration: dur,
+      stagger: 0.15,
+      ease: 'power2.out'
+    })
+    .to(values, { opacity: 1, duration: dur * 0.5, stagger: 0.15 }, '-=1.0');
+  });
+
+  /* ───── 13. Cost Callout · stats count-up + dramatic entrance ───── */
+  document.querySelectorAll('.cost-callout').forEach(callout => {
+    const stats = callout.querySelectorAll('.cost-stat-num');
+    gsap.from(callout, {
+      opacity: 0, y: 40, scale: 0.96, duration: dur * 1.2,
+      scrollTrigger: { trigger: callout, start: 'top 75%' }
+    });
+    stats.forEach(stat => {
+      const raw = stat.textContent.trim();
+      const match = raw.match(/(\$?)(\d+\.?\d*)([%MK+]*)/);
+      if(match){
+        const prefix = match[1];
+        const target = parseFloat(match[2]);
+        const suffix = match[3];
+        ScrollTrigger.create({
+          trigger: callout,
+          start: 'top 70%',
+          onEnter: () => animateNumber(stat, target, prefix, suffix),
+          once: true
+        });
+      }
+    });
+  });
+
+  /* ───── 14. Two-Front diagram cards ───── */
+  gsap.from('.front-card', {
+    opacity: 0, y: 30, duration: dur, stagger,
+    scrollTrigger: { trigger: '.two-front', start: 'top 75%' }
+  });
+
+  /* ───── 15. Pull-quotes · dramatic entrance ───── */
+  document.querySelectorAll('.pull-quote').forEach(pq => {
+    gsap.from(pq, {
+      opacity: 0, y: 30, scale: 0.97, duration: dur * 1.2,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: pq, start: 'top 80%' }
+    });
+  });
+
+  /* ───── 16. Deep Dives cards · stagger reveal ───── */
+  gsap.from('.dd-card', {
+    opacity: 0, y: 40, duration: dur, stagger,
+    scrollTrigger: { trigger: '.deep-dives-grid', start: 'top 75%' }
+  });
+
+  /* ───── 17. Leadership Questions · sequential reveal (upgraded from IO) ───── */
+  gsap.fromTo('.lq-item',
+    { opacity: 0, y: 40 },
+    {
+      opacity: 1, y: 0, duration: dur, stagger: stagger * 1.5,
+      scrollTrigger: { trigger: '.lq-grid', start: 'top 75%' }
+    }
+  );
+
+  /* ───── 18. Tool tease · attention pulse on entrance ───── */
+  const toolTease = document.querySelector('.tool-tease-standalone-inner');
+  if(toolTease){
+    gsap.from(toolTease, {
+      opacity: 0, y: 40, duration: dur * 1.2,
+      scrollTrigger: { trigger: toolTease, start: 'top 80%' }
+    });
+    if(!reducedMotion){
+      // Subtle attention pulse on entrance
+      gsap.to(toolTease, {
+        boxShadow: '0 0 0 6px rgba(255,0,229,.08)',
+        duration: 1.2,
+        delay: 0.5,
+        repeat: 2,
+        yoyo: true,
+        ease: 'sine.inOut',
+        scrollTrigger: { trigger: toolTease, start: 'top 80%', once: true }
+      });
+    }
+  }
+
+  /* ───── 19. Conclusion · dramatic entrance ───── */
+  const conclusion = document.querySelector('.conclusion-section');
+  if(conclusion){
+    gsap.from(conclusion, {
+      opacity: 0, y: 30, duration: dur,
+      scrollTrigger: { trigger: conclusion, start: 'top 75%' }
+    });
+  }
+
+  /* ───── 20. End-of-page CTAs ───── */
+  gsap.from('.convo-tile', {
+    opacity: 0, y: 30, duration: dur,
+    scrollTrigger: { trigger: '.convert', start: 'top 75%' }
+  });
+  gsap.from('.wayfinding', {
+    opacity: 0, y: 20, duration: dur, delay: 0.2,
+    scrollTrigger: { trigger: '.convert', start: 'top 75%' }
+  });
+
+  /* ───── 21. Related Insights cards · stagger ───── */
+  gsap.from('.related-card', {
+    opacity: 0, y: 30, duration: dur, stagger,
+    scrollTrigger: { trigger: '.related-grid', start: 'top 80%' }
+  });
+
+  /* Refresh ScrollTrigger once everything's wired (handles font-loading reflows) */
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(() => ScrollTrigger.refresh());
+  }
+})();
+
+</script>
+
+
+<script>
+/* VizForge interactivity: vertex tooltips, row↔vertex hover sync, legend series filter */
+(function(){
+  var chart = document.querySelector('.radar-chart'); if(!chart) return;
+  var tooltip = document.querySelector('.radar-tooltip');
+  var points = Array.prototype.slice.call(document.querySelectorAll('.radar-current-points circle'));
+  var rows = Array.prototype.slice.call(document.querySelectorAll('.radar-pillar-row'));
+  var data = rows.map(function(r){
+    var g = function(sel){ var el = r.querySelector(sel); return el ? el.textContent.trim() : ''; };
+    return { name: g('.radar-pillar-name'), score: g('.radar-pillar-score') || g('.radar-pillar-num'), delta: g('.radar-pillar-delta') };
+  });
+  function hot(i, on){
+    if (points[i]) points[i].classList.toggle('is-hot', on);
+    if (rows[i]) rows[i].classList.toggle('is-hot', on);
+    if (!tooltip) return;
+    if (on && points[i] && data[i]) {
+      var b = points[i].getBoundingClientRect(), c = chart.getBoundingClientRect();
+      tooltip.innerHTML = '<strong>' + data[i].name + '</strong> ' + data[i].score +
+        (data[i].delta ? ' <span class="tt-delta">' + data[i].delta + '</span>' : '');
+      tooltip.style.left = (b.left - c.left + b.width/2) + 'px';
+      tooltip.style.top  = (b.top - c.top - 12) + 'px';
+      tooltip.classList.add('is-on');
+    } else tooltip.classList.remove('is-on');
+  }
+  points.forEach(function(p, i){
+    p.addEventListener('mouseenter', function(){ hot(i, true); });
+    p.addEventListener('mouseleave', function(){ hot(i, false); });
+  });
+  rows.forEach(function(r, i){
+    r.addEventListener('mouseenter', function(){ hot(i, true); });
+    r.addEventListener('mouseleave', function(){ hot(i, false); });
+  });
+  /* legend click → toggle series (quarters + current) */
+  var seriesFor = function(item){
+    var t = (item.textContent || '').toLowerCase();
+    if (t.indexOf('q2') > -1) return '.radar-quarter--q2';
+    if (t.indexOf('q3') > -1) return '.radar-quarter--q3';
+    if (t.indexOf('q4') > -1) return '.radar-quarter--q4';
+    return '.radar-current, .radar-current-points';
+  };
+  document.querySelectorAll('.radar-legend-item').forEach(function(item){
+    item.setAttribute('role','button'); item.setAttribute('tabindex','0');
+    var toggle = function(){
+      var off = item.classList.toggle('is-off');
+      document.querySelectorAll(seriesFor(item)).forEach(function(el){
+        el.style.visibility = off ? 'hidden' : 'visible';
+      });
+    };
+    item.addEventListener('click', toggle);
+    item.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
+  });
+})();
+</script>
+</body>
+</html>

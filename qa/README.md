@@ -100,3 +100,20 @@ Checks `concept-d/index.html` and `concept-d/pages/explore/problems.html` at dev
 - **(e)** zero pageerrors
 
 Exits `0` only when every assertion passes; any failure exits `1` with a `FAIL` line naming the assertion. **The lockup must pass this gate before any concept-d work is shown to Jon.**
+
+---
+
+## The full gate suite — `qa/run-all.sh`
+
+`bash qa/run-all.sh` runs every gate in sequence and exits non-zero if any fail.
+The two rendered gates need the dev server up on :4340 (`./serve.py &`).
+
+| Gate | File | Catches |
+|---|---|---|
+| copy-diff | `copy-diff.py` | paraphrased / corrupted verbatim copy |
+| script-diff | `concept-d-script-diff.py` | drift from the deployed JS |
+| lockup-crisp | `lockup-crisp-check.mjs` | non-canon / warped / fractionally-placed wordmark |
+| **no-rule-lines** | `no-rule-lines-check.mjs` | decorative accent **rule-lines / highlight bars** (banned by the no-rule-lines brand rule). Static, cascade-aware: a bar is exempt if its selector is neutralised (`display:none`/`content:none`) elsewhere. Skips round-dot markers, short list dashes, data-viz swatches, and CSS-triangle icons. |
+| **lockup-contrast** | `lockup-contrast-check.mjs` | the wordmark rendering **invisible against its surface** (header + footer, dpr1 + dpr2). Resolves the wordmark's effective luminance (1× raster tone or vector ink/currentColor) vs the surface behind it — the dark-footer-in-light-theme raster mismatch that shipped 2026-07-28. |
+
+Both new gates ship with negative tests verified against the exact defects they were written for.

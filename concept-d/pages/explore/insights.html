@@ -4,13 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>(function(){try{var t=localStorage.getItem('ig_theme');if(t!=='light'&&t!=='dark'){t='light';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>
+<script>(function(){try{var d=document.documentElement;var p=localStorage.getItem('ig_palette');if(p!=='coolsweep'&&p!=='wiretree'){p='flarepop';}d.setAttribute('data-palette',p);var l=localStorage.getItem('ig_layout');if(l!=='split'&&l!=='expand'){l='stack';}d.setAttribute('data-layout',l);}catch(e){document.documentElement.setAttribute('data-palette','flarepop');document.documentElement.setAttribute('data-layout','stack');}})();</script>
 <script>document.documentElement.classList.add('has-js');</script>
 <title>Insights — Intercept</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600;1,700&family=Inter:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/css/deployed.css">
-<link rel="stylesheet" href="../../assets/css/concept-d.css">
+<link rel="stylesheet" href="../../assets/css/concept-d.css?v=r37">
+<link rel="stylesheet" href="../../assets/css/skins.css?v=r37">
 </head>
 <body class="explore-body">
 <svg aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden"
@@ -121,8 +123,8 @@
       <path d="M209.092 55.4093C206.163 55.4093 203.816 54.7232 202.051 53.3509C200.286 51.9787 199.242 50.1019 198.921 47.7206L199.403 47.6601V67.2147H190.375V23.9282H199.222V30.7693L198.681 30.6482C199.122 28.388 200.326 26.6122 202.292 25.3206C204.258 23.9888 206.685 23.3228 209.574 23.3228C212.342 23.3228 214.73 23.9888 216.736 25.3206C218.782 26.6122 220.347 28.4486 221.43 30.8298C222.553 33.2111 223.115 36.0161 223.115 39.245C223.115 42.5142 222.533 45.3596 221.37 47.7812C220.206 50.2028 218.581 52.0796 216.495 53.4115C214.409 54.7434 211.941 55.4093 209.092 55.4093ZM206.565 48.1444C208.691 48.1444 210.416 47.3776 211.74 45.8439C213.064 44.3102 213.727 42.1307 213.727 39.3055C213.727 36.4803 213.044 34.321 211.68 32.8277C210.356 31.3343 208.611 30.5877 206.444 30.5877C204.358 30.5877 202.633 31.3545 201.269 32.8882C199.944 34.3815 199.282 36.5408 199.282 39.3661C199.282 42.1913 199.944 44.3707 201.269 45.9044C202.633 47.3978 204.398 48.1444 206.565 48.1444Z"/>
       <path d="M239.501 55.4698C235.569 55.4698 232.64 54.5214 230.714 52.6244C228.828 50.6871 227.885 47.761 227.885 43.8461V17.0266L236.913 13.6363V44.1488C236.913 45.521 237.294 46.5502 238.056 47.2363C238.819 47.9224 240.002 48.2655 241.607 48.2655C242.209 48.2655 242.771 48.205 243.292 48.0839C243.814 47.9628 244.335 47.8215 244.857 47.6601V54.5617C244.335 54.8442 243.593 55.0662 242.63 55.2277C241.707 55.3891 240.664 55.4698 239.501 55.4698ZM222.168 30.8298V23.9282H244.857V30.8298H222.168Z"/></g><g id="mark-slot" transform="translate(0, 1.22)"></g></svg></a>
     <nav class="nav" aria-label="Primary">
-      <a href="../os.html">InterceptOS</a>
-      <a href="../labs.html">Intercept Labs</a>
+      <a href="interceptos.html">InterceptOS</a>
+      <a href="labs.html">Intercept Labs</a>
       <a href="../work.html">Work</a> <a href="../../about.html">About</a>
       <a href="../../insights-hub.html">Insights</a>
       <button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch color theme" title="Switch light / dark">
@@ -140,10 +142,9 @@
     <source src="../../assets/video/section-rings.mp4" type="video/mp4">
   </video>
 </div>
-<button type="button" class="video-toggle section-video-toggle" aria-pressed="true">Pause</button>
 
 <main id="main" class="explore-page">
-<div class="wrap explore-back-row"><a class="explore-back" href="../../index.html">&larr; Back to home</a></div>
+<div class="wrap explore-back-row"><a class="explore-back" href="../../index.html" aria-label="Back to home">&larr; Back</a></div>
 <section id="insights">
   <div class="wrap explore-split">
     <div class="explore-lede">
@@ -158,70 +159,61 @@
 
       <article class="ep-tile">
         <a class="ep-tile-image" href="https://open.spotify.com/episode/0vnMR61WLUmS94YUeNRTby" target="_blank" rel="noopener" aria-label="Listen to Episode 19 on Spotify">
-          <img src="https://cdn.pathfactory.com/assets/11256/contents/1183336/bc1b325e-8d02-4bd2-8f1e-8bc056c0442a.png" alt="ChatB2B Episode 19 cover" loading="lazy">
+          <img src="../../assets/podcast/chatb2b-ep19.jpg" alt="ChatB2B Episode 19 cover" loading="lazy">
         </a>
         <div class="ep-tile-body">
           <span class="ep-tile-num">Episode 19 &middot; ChatB2B</span>
-          <h3>Building the backend for AI agents</h3>
+          <h3><a class="ep-tile-title" href="https://open.spotify.com/episode/0vnMR61WLUmS94YUeNRTby" target="_blank" rel="noopener">Building the backend for AI agents</a></h3>
           <p class="ep-tile-guest">With <b>Patrick Vuong</b><br>Former Director of Product Management, Moderne</p>
-          <details class="q-more">
-            <summary>More +</summary>
-            <p class="ep-tile-summary">Patrick on the backend infrastructure that makes AI agents reliable. Multi-agent orchestration in production, why marketing teams lack backend readiness, and designing systems for agents alongside humans.</p>
-            <div class="ep-tile-listen">
-              <span class="listen-lbl">Listen On</span>
-              <div class="listen-row">
-                <a href="https://open.spotify.com/episode/0vnMR61WLUmS94YUeNRTby" target="_blank" rel="noopener">Spotify</a>
-                <a href="https://podcasts.apple.com/us/podcast/building-the-backend-for-ai-agents-with-patrick-vuong/id1840415344?i=1000770795263" target="_blank" rel="noopener">Apple</a>
-                <a href="https://www.youtube.com/watch?v=t3xY3tqU9YI" target="_blank" rel="noopener">YouTube</a>
-              </div>
+          <p class="ep-tile-summary">Patrick on the backend infrastructure that makes AI agents reliable. Multi-agent orchestration in production, why marketing teams lack backend readiness, and designing systems for agents alongside humans.</p>
+          <div class="ep-listen">
+            <span class="ep-listen-lbl">Listen on</span>
+            <div class="ep-plats">
+              <a class="ep-plat ep-plat--spotify" href="https://open.spotify.com/episode/0vnMR61WLUmS94YUeNRTby" target="_blank" rel="noopener" aria-label="Listen on Spotify"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.586 14.424a.623.623 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 11-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.623.623 0 01.207.857zm1.223-2.722a.78.78 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.78.78 0 11-.452-1.493c3.632-1.102 8.147-.568 11.232 1.329a.78.78 0 01.257 1.073zm.105-2.835C14.696 9.958 9.379 9.782 6.3 10.716a.935.935 0 11-.542-1.79c3.532-1.072 9.404-.865 13.115 1.338a.935.935 0 01-.955 1.608z"/></svg><span>Spotify</span></a>
+              <a class="ep-plat ep-plat--apple" href="https://podcasts.apple.com/us/podcast/building-the-backend-for-ai-agents-with-patrick-vuong/id1840415344?i=1000770795263" target="_blank" rel="noopener" aria-label="Listen on Apple Podcasts"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 15a3 3 0 003-3V6a3 3 0 00-6 0v6a3 3 0 003 3z"/><path d="M18 12a6 6 0 01-5 5.92V20h2v2H9v-2h2v-2.08A6 6 0 016 12h2a4 4 0 008 0h2z"/></svg><span>Apple</span></a>
+              <a class="ep-plat ep-plat--youtube" href="https://www.youtube.com/watch?v=t3xY3tqU9YI" target="_blank" rel="noopener" aria-label="Watch on YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 00-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 00.5 6.2 31.5 31.5 0 000 12a31.5 31.5 0 00.5 5.8 3.02 3.02 0 002.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51A3.02 3.02 0 0023.5 17.8 31.5 31.5 0 0024 12a31.5 31.5 0 00-.5-5.8zM9.6 15.6V8.4l6.24 3.6L9.6 15.6z"/></svg><span>YouTube</span></a>
             </div>
-          </details>
+          </div>
         </div>
       </article>
 
       <article class="ep-tile">
         <a class="ep-tile-image" href="https://open.spotify.com/episode/1vD0gtTpZppIt61dcVH56r" target="_blank" rel="noopener" aria-label="Listen to Episode 18 on Spotify">
-          <img src="https://cdn.pathfactory.com/assets/11256/contents/1180108/bdf068ae-6a22-49db-bd4a-cb1b1f122e5f.png" alt="ChatB2B Episode 18 cover" loading="lazy">
+          <img src="../../assets/podcast/chatb2b-ep18.jpg" alt="ChatB2B Episode 18 cover" loading="lazy">
         </a>
         <div class="ep-tile-body">
           <span class="ep-tile-num">Episode 18 &middot; ChatB2B</span>
-          <h3>The rise of the senior IC in the AI era</h3>
+          <h3><a class="ep-tile-title" href="https://open.spotify.com/episode/1vD0gtTpZppIt61dcVH56r" target="_blank" rel="noopener">The rise of the senior IC in the AI era</a></h3>
           <p class="ep-tile-guest">With <b>Jaynie Miller</b><br>Worldwide Product Marketing Lead, HP</p>
-          <details class="q-more">
-            <summary>More +</summary>
-            <p class="ep-tile-summary">Jaynie on transitioning from management to senior individual contributor at a major tech company. How AI is reshaping product marketing, sales enablement, and partner enablement, plus the organizational restructuring the AI era is forcing.</p>
-            <div class="ep-tile-listen">
-              <span class="listen-lbl">Listen On</span>
-              <div class="listen-row">
-                <a href="https://open.spotify.com/episode/1vD0gtTpZppIt61dcVH56r" target="_blank" rel="noopener">Spotify</a>
-                <a href="https://podcasts.apple.com/us/podcast/the-rise-of-the-senior-ic-in-the-ai-era-with-jaynie-miller/id1840415344?i=1000768597543" target="_blank" rel="noopener">Apple</a>
-                <a href="https://www.youtube.com/watch?v=uDJIwLfLeBA" target="_blank" rel="noopener">YouTube</a>
-              </div>
+          <p class="ep-tile-summary">Jaynie on transitioning from management to senior individual contributor at a major tech company. How AI is reshaping product marketing, sales enablement, and partner enablement, plus the organizational restructuring the AI era is forcing.</p>
+          <div class="ep-listen">
+            <span class="ep-listen-lbl">Listen on</span>
+            <div class="ep-plats">
+              <a class="ep-plat ep-plat--spotify" href="https://open.spotify.com/episode/1vD0gtTpZppIt61dcVH56r" target="_blank" rel="noopener" aria-label="Listen on Spotify"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.586 14.424a.623.623 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 11-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.623.623 0 01.207.857zm1.223-2.722a.78.78 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.78.78 0 11-.452-1.493c3.632-1.102 8.147-.568 11.232 1.329a.78.78 0 01.257 1.073zm.105-2.835C14.696 9.958 9.379 9.782 6.3 10.716a.935.935 0 11-.542-1.79c3.532-1.072 9.404-.865 13.115 1.338a.935.935 0 01-.955 1.608z"/></svg><span>Spotify</span></a>
+              <a class="ep-plat ep-plat--apple" href="https://podcasts.apple.com/us/podcast/the-rise-of-the-senior-ic-in-the-ai-era-with-jaynie-miller/id1840415344?i=1000768597543" target="_blank" rel="noopener" aria-label="Listen on Apple Podcasts"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 15a3 3 0 003-3V6a3 3 0 00-6 0v6a3 3 0 003 3z"/><path d="M18 12a6 6 0 01-5 5.92V20h2v2H9v-2h2v-2.08A6 6 0 016 12h2a4 4 0 008 0h2z"/></svg><span>Apple</span></a>
+              <a class="ep-plat ep-plat--youtube" href="https://www.youtube.com/watch?v=uDJIwLfLeBA" target="_blank" rel="noopener" aria-label="Watch on YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 00-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 00.5 6.2 31.5 31.5 0 000 12a31.5 31.5 0 00.5 5.8 3.02 3.02 0 002.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51A3.02 3.02 0 0023.5 17.8 31.5 31.5 0 0024 12a31.5 31.5 0 00-.5-5.8zM9.6 15.6V8.4l6.24 3.6L9.6 15.6z"/></svg><span>YouTube</span></a>
             </div>
-          </details>
+          </div>
         </div>
       </article>
 
       <article class="ep-tile">
         <a class="ep-tile-image" href="https://open.spotify.com/episode/63Cj9IIK1SYCgCS3BBdAtv" target="_blank" rel="noopener" aria-label="Listen to Episode 17 on Spotify">
-          <img src="https://cdn.pathfactory.com/assets/11256/contents/1170517/dbc1fad3-667a-45a8-b747-dad8c92c2a12.png" alt="ChatB2B Episode 17 cover" loading="lazy">
+          <img src="../../assets/podcast/chatb2b-ep17.jpg" alt="ChatB2B Episode 17 cover" loading="lazy">
         </a>
         <div class="ep-tile-body">
           <span class="ep-tile-num">Episode 17 &middot; ChatB2B</span>
-          <h3>Optimizing AI search: lessons from Sophos</h3>
+          <h3><a class="ep-tile-title" href="https://open.spotify.com/episode/63Cj9IIK1SYCgCS3BBdAtv" target="_blank" rel="noopener">Optimizing AI search: lessons from Sophos</a></h3>
           <p class="ep-tile-guest">With <b>Megan Cabrera</b><br>Former VP Marketing Operations, Sophos</p>
-          <details class="q-more">
-            <summary>More +</summary>
-            <p class="ep-tile-summary">Megan on building an enterprise AI search strategy. Algorithm navigation, community visibility (Reddit), AI procurement challenges, organizational placement of AI roles, and the cybersecurity implications of recent events.</p>
-            <div class="ep-tile-listen">
-              <span class="listen-lbl">Listen On</span>
-              <div class="listen-row">
-                <a href="https://open.spotify.com/episode/63Cj9IIK1SYCgCS3BBdAtv" target="_blank" rel="noopener">Spotify</a>
-                <a href="https://podcasts.apple.com/us/podcast/optimizing-ai-search-lessons-from-sophos-with-megan/id1840415344?i=1000762801591" target="_blank" rel="noopener">Apple</a>
-                <a href="https://www.youtube.com/watch?v=jIv_AFVh-Rc" target="_blank" rel="noopener">YouTube</a>
-              </div>
+          <p class="ep-tile-summary">Megan on building an enterprise AI search strategy. Algorithm navigation, community visibility (Reddit), AI procurement challenges, organizational placement of AI roles, and the cybersecurity implications of recent events.</p>
+          <div class="ep-listen">
+            <span class="ep-listen-lbl">Listen on</span>
+            <div class="ep-plats">
+              <a class="ep-plat ep-plat--spotify" href="https://open.spotify.com/episode/63Cj9IIK1SYCgCS3BBdAtv" target="_blank" rel="noopener" aria-label="Listen on Spotify"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.586 14.424a.623.623 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 11-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.623.623 0 01.207.857zm1.223-2.722a.78.78 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.78.78 0 11-.452-1.493c3.632-1.102 8.147-.568 11.232 1.329a.78.78 0 01.257 1.073zm.105-2.835C14.696 9.958 9.379 9.782 6.3 10.716a.935.935 0 11-.542-1.79c3.532-1.072 9.404-.865 13.115 1.338a.935.935 0 01-.955 1.608z"/></svg><span>Spotify</span></a>
+              <a class="ep-plat ep-plat--apple" href="https://podcasts.apple.com/us/podcast/optimizing-ai-search-lessons-from-sophos-with-megan/id1840415344?i=1000762801591" target="_blank" rel="noopener" aria-label="Listen on Apple Podcasts"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 15a3 3 0 003-3V6a3 3 0 00-6 0v6a3 3 0 003 3z"/><path d="M18 12a6 6 0 01-5 5.92V20h2v2H9v-2h2v-2.08A6 6 0 016 12h2a4 4 0 008 0h2z"/></svg><span>Apple</span></a>
+              <a class="ep-plat ep-plat--youtube" href="https://www.youtube.com/watch?v=jIv_AFVh-Rc" target="_blank" rel="noopener" aria-label="Watch on YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 00-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 00.5 6.2 31.5 31.5 0 000 12a31.5 31.5 0 00.5 5.8 3.02 3.02 0 002.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51A3.02 3.02 0 0023.5 17.8 31.5 31.5 0 0024 12a31.5 31.5 0 00-.5-5.8zM9.6 15.6V8.4l6.24 3.6L9.6 15.6z"/></svg><span>YouTube</span></a>
             </div>
-          </details>
+          </div>
         </div>
       </article>
 
@@ -291,8 +283,9 @@
   </div>
 </aside>
 
+<script src="../../assets/js/skin.js?v=r37"></script>
 <script src="../../assets/js/deployed.js"></script>
-<script src="../../assets/js/quiet-modules.js"></script>
-<script src="../../assets/js/section-video.js"></script>
+<script src="../../assets/js/quiet-modules.js?v=r37"></script>
+<script src="../../assets/js/section-video.js?v=r37"></script>
 </body>
 </html>

@@ -82,7 +82,10 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--sp-24);
-  padding: var(--sp-16) clamp(1.25rem, 4vw, 4rem);
+  /* round() keeps the fluid gutter on whole pixels — a fractional header
+     x-offset lands the lockup's stems between device pixels (round-12
+     lockup rule: canon geometry + integer position). */
+  padding: var(--sp-16) clamp(1.25rem, round(nearest, 4vw, 1px), 4rem);
   background: var(--surface);
 }
 .site-header .lockup img, .site-header .lockup svg { height: 1.75rem; width: auto; }

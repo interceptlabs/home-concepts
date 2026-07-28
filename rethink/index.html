@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rethinking the quiet pages — concepts for review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600;1,700&family=Inter:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ─── Review-page chrome (quiet; the demos carry the color) ─── */
+:root{
+  --ink:#0a0a0f; --ink-2:#2c2c3a; --ink-3:#55555f;
+  --flarepop:#FF00E5; --flarepop-aa:#a8008c; --flarepop-wash:rgba(255,0,229,.09);
+  --band-blue:#08285c; --cool:#1257c4; --cool-wash:rgba(26,122,255,.10);
+  --page:#f4f4f6; --card:#ffffff;
+  --disp:'Instrument Sans',system-ui,sans-serif;
+  --mono:'Geist Mono',ui-monospace,monospace;
+  --ui:'Inter',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--page);color:var(--ink);font-family:var(--disp);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+a{color:inherit}
+
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--flarepop-aa);display:block;margin-bottom:14px}
+
+header.doc{padding:72px 0 24px}
+header.doc h1{font-size:clamp(30px,3.4vw,44px);font-weight:700;letter-spacing:-.02em;line-height:1.08;max-width:20ch}
+header.doc .lead{margin-top:18px;max-width:66ch;font-size:16px;color:var(--ink-2)}
+header.doc .lead + .lead{margin-top:10px}
+
+.thread{margin:40px 0 0;background:var(--ink);color:#fff;border-radius:16px;padding:32px 36px}
+.thread .eyebrow{color:var(--flarepop)}
+.thread p{max-width:72ch;color:#d1d6e6}
+.thread p b{color:#fff}
+
+section.block{padding:64px 0 8px}
+section.block > .wrap > h2{font-size:clamp(24px,2.6vw,34px);font-weight:700;letter-spacing:-.02em}
+.framing{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:22px 0 8px}
+.framing .cell{background:var(--card);border-radius:12px;padding:22px 24px}
+.framing .cell .mono{color:var(--ink-3);display:block;margin-bottom:8px}
+.framing .cell p{font-size:14px;color:var(--ink-2)}
+.storyline{margin:16px 0 0;background:var(--flarepop-wash);border-radius:12px;padding:20px 24px;max-width:none}
+.storyline p{font-size:15px;font-weight:600;color:var(--ink)}
+.storyline p span{color:var(--flarepop-aa)}
+
+.concept{margin:40px 0 0}
+.concept-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.concept-head .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;background:var(--ink);color:#fff;border-radius:5px;padding:4px 8px}
+.concept-head h3{font-size:20px;font-weight:700;letter-spacing:-.01em}
+.concept .why{margin:10px 0 0;max-width:76ch;color:var(--ink-2);font-size:14.5px}
+.concept .tradeoff{margin:8px 0 16px;max-width:76ch;font-size:13px;color:var(--ink-3)}
+.concept .tradeoff b{color:var(--ink-2);font-weight:600}
+.demo{background:var(--card);border-radius:16px;padding:40px;box-shadow:0 12px 32px rgba(10,10,15,.08);overflow:hidden}
+
+footer.doc{padding:64px 0 96px}
+footer.doc .rec{background:var(--card);border-radius:16px;padding:32px 36px}
+footer.doc .rec p{max-width:76ch;color:var(--ink-2);font-size:15px}
+footer.doc .rec p + p{margin-top:10px}
+footer.doc .rec b{color:var(--ink)}
+
+/* ─── Shared demo atoms ─── */
+.chip{display:inline-flex;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:.04em;background:var(--cool-wash);color:var(--cool);border-radius:999px;padding:6px 12px}
+.chip--pink{background:var(--flarepop-wash);color:var(--flarepop-aa)}
+button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
+
+/* ═══ P-A · The Reading Room ═══ */
+.pa{display:grid;grid-template-columns:240px 1fr;gap:44px}
+.pa-index{position:sticky;top:0;align-self:start;display:flex;flex-direction:column;gap:2px}
+.pa-index button{text-align:left;padding:9px 10px;border-radius:8px;color:var(--ink-3);display:flex;gap:12px;align-items:baseline;transition:color .3s,background-color .3s}
+.pa-index button .n{font-family:var(--mono);font-size:10px}
+.pa-index button .t{font-size:14px;font-weight:500}
+.pa-index button.on{color:var(--ink);background:var(--page)}
+.pa-index button.on .n{color:var(--flarepop-aa)}
+.pa-index button.on .t{font-weight:700}
+.pa-scroll{height:520px;overflow-y:auto;scroll-behavior:smooth;padding-right:20px}
+.pa-item{padding:8px 0 44px}
+.pa-item .q{font-style:italic;font-weight:500;font-size:clamp(20px,2vw,26px);line-height:1.35;max-width:30ch}
+.pa-item .a{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:14px 0 18px}
+.pa-item .tells{list-style:none;display:flex;flex-direction:column;gap:8px;max-width:62ch}
+.pa-item .tells li{font-size:14px;color:var(--ink-2);padding-left:20px;position:relative}
+.pa-item .tells li::before{content:"·";position:absolute;left:4px;color:var(--flarepop-aa);font-weight:700}
+.pa-item .sig{display:flex;align-items:baseline;gap:16px;margin:22px 0;background:var(--flarepop-wash);border-radius:10px;padding:16px 20px;max-width:62ch}
+.pa-item .sig .n{font-weight:700;font-size:40px;line-height:1;color:var(--flarepop-aa);flex:none}
+.pa-item .sig .l{font-size:13px;color:var(--ink-2)}
+.pa-item .bridge{font-weight:600;font-size:15px;max-width:62ch}
+
+/* ═══ P-B · Problem / Answer ═══ */
+.pb-tabs{display:flex;gap:28px;flex-wrap:wrap;margin-bottom:34px}
+.pb-tabs button{display:flex;flex-direction:column;gap:3px;text-align:left;padding:2px 0;color:var(--ink-3);transition:color .3s}
+.pb-tabs button .n{font-family:var(--mono);font-size:10px;letter-spacing:.1em}
+.pb-tabs button .t{font-size:15px;font-weight:500;letter-spacing:-.01em}
+.pb-tabs button.on{color:var(--ink)}
+.pb-tabs button.on .n{color:var(--flarepop-aa)}
+.pb-tabs button.on .t{font-weight:700}
+.pb-panel{position:relative}
+.pb-view{display:none}
+.pb-view.on{display:grid;grid-template-columns:7fr 5fr;gap:44px;animation:pbfade .45s cubic-bezier(.37,0,.63,1)}
+@keyframes pbfade{from{opacity:0}to{opacity:1}}
+.pb-view .q{font-style:italic;font-weight:500;font-size:clamp(22px,2.3vw,30px);line-height:1.32}
+.pb-view .a{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:16px 0 22px}
+.pb-view .tells{list-style:none;display:flex;flex-direction:column;gap:10px}
+.pb-view .tells li{font-size:14.5px;color:var(--ink-2);display:grid;grid-template-columns:26px 1fr;gap:8px}
+.pb-view .tells li i{font-style:normal;font-family:var(--mono);font-size:10px;color:var(--flarepop-aa);padding-top:4px}
+.pb-side .sig{background:var(--band-blue);color:#fff;border-radius:14px;padding:28px}
+.pb-side .sig .n{font-weight:700;font-size:clamp(48px,4.6vw,72px);line-height:.95;color:var(--flarepop)}
+.pb-side .sig .l{font-size:13.5px;color:#d1d6e6;margin-top:12px}
+.pb-side .bridge{margin-top:20px;font-weight:600;font-size:14.5px}
+.pb-side .bridge b{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--flarepop-aa);margin-bottom:8px;font-weight:500}
+
+/* ═══ P-C · Four on the Wall ═══ */
+.pc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pc-cell{text-align:left;background:var(--page);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:12px;transition:background-color .35s,color .35s}
+.pc-cell .h{display:flex;gap:10px;align-items:baseline}
+.pc-cell .h .n{font-family:var(--mono);font-size:10px;color:var(--flarepop-aa)}
+.pc-cell .h .t{font-size:13px;font-weight:700;letter-spacing:.01em}
+.pc-cell .q{font-style:italic;font-size:15px;line-height:1.4;color:var(--ink-2)}
+.pc-cell .s{font-weight:700;font-size:26px;color:var(--flarepop-aa);margin-top:auto}
+.pc-cell.on{background:var(--ink);color:#fff}
+.pc-cell.on .q{color:#d1d6e6}
+.pc-cell.on .s{color:var(--flarepop)}
+.pc-detail{margin-top:14px;background:var(--flarepop-wash);border-radius:12px;padding:26px 28px}
+.pc-detail .tells{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.pc-detail .tells li{font-size:14px;color:var(--ink-2);padding-left:20px;position:relative}
+.pc-detail .tells li::before{content:"·";position:absolute;left:4px;color:var(--flarepop-aa);font-weight:700}
+.pc-detail .bridge{font-weight:600;font-size:14.5px}
+
+/* ═══ OS-A · The Assembly Line ═══ */
+.osa-tabs{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:26px}
+.osa-tabs button{font-size:14px;font-weight:500;color:var(--ink-3);padding:2px 0;transition:color .3s}
+.osa-tabs button.on{color:var(--ink);font-weight:700}
+.osa-head{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:26px}
+.osa-head .job{font-size:15px}
+.osa-head .job b{font-weight:700}
+.osa-line{display:grid;grid-template-columns:1fr 24px 1fr 24px 1fr 24px 1.15fr;align-items:stretch;gap:0}
+.osa-conn{display:flex;align-items:center;justify-content:center;font-family:var(--mono);color:var(--ink-3);font-size:13px}
+.osa-stage{background:var(--page);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.osa-stage .tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.osa-stage .nm{font-size:15.5px;font-weight:700;line-height:1.25;letter-spacing:-.01em}
+.osa-stage .agents{display:flex;flex-wrap:wrap;gap:5px}
+.osa-stage .agents .chip{font-size:10px;padding:4px 9px}
+.osa-stage .ds{font-size:12.5px;line-height:1.5;color:var(--ink-2)}
+.osa-stage.out{background:var(--band-blue);color:#fff}
+.osa-stage.out .tag{color:#b8bed1}
+.osa-stage.out .ds{color:#d1d6e6}
+.osa-stage.out .nm{color:var(--flarepop)}
+
+/* ═══ OS-B · The Rail ═══ */
+.osb{max-width:840px}
+.osb-head{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:30px}
+.osb-row{display:grid;grid-template-columns:150px 1fr;gap:28px;padding:20px 0}
+.osb-row .tag{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);padding-top:5px}
+.osb-row .nm{font-size:19px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
+.osb-row .ds{font-size:14px;color:var(--ink-2);max-width:60ch;margin-bottom:10px}
+.osb-row .agents{display:flex;flex-wrap:wrap;gap:6px}
+.osb-row.out{background:var(--flarepop-wash);border-radius:12px;padding:24px;grid-template-columns:126px 1fr}
+.osb-row.out .nm{color:var(--flarepop-aa);font-size:22px}
+
+/* ═══ OS-C · Input → OS → Output ═══ */
+.osc{display:grid;grid-template-columns:4fr 24px 5fr 24px 4fr;align-items:stretch}
+.osc-conn{display:flex;align-items:center;justify-content:center;font-family:var(--mono);color:var(--ink-3)}
+.osc-in{background:var(--page);border-radius:14px;padding:26px;display:flex;flex-direction:column}
+.osc-in .mono{color:var(--ink-3);display:block;margin-bottom:12px}
+.osc-in .nm{font-size:20px;font-weight:700;letter-spacing:-.01em;margin-bottom:10px}
+.osc-in .job{font-size:13.5px;color:var(--ink-2)}
+.osc-in .runs{margin-top:auto;padding-top:18px}
+.osc-os{background:var(--ink);color:#fff;border-radius:14px;padding:26px;display:flex;flex-direction:column;gap:14px}
+.osc-os .mono{color:var(--flarepop);display:block}
+.osc-os .st{display:flex;flex-direction:column;gap:5px;background:rgba(255,255,255,.07);border-radius:10px;padding:13px 15px}
+.osc-os .st .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#b8bed1}
+.osc-os .st .nm{font-size:13.5px;font-weight:600;line-height:1.3}
+.osc-os .st .agents{display:flex;flex-wrap:wrap;gap:4px}
+.osc-os .st .chip{background:rgba(255,255,255,.12);color:#fff;font-size:9.5px;padding:3px 8px}
+.osc-out{background:var(--band-blue);color:#fff;border-radius:14px;padding:26px;display:flex;flex-direction:column}
+.osc-out .mono{color:#b8bed1;display:block;margin-bottom:12px}
+.osc-out .nm{font-size:19px;font-weight:700;line-height:1.25;color:var(--flarepop);margin-bottom:10px}
+.osc-out .ds{font-size:13px;color:#d1d6e6}
+
+/* ═══ R-A · The Full Roster ═══ */
+.ra-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.ra-filters button{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;padding:8px 14px;border-radius:999px;background:var(--page);color:var(--ink-2);transition:background-color .25s,color .25s}
+.ra-filters button.on{background:var(--ink);color:#fff}
+.ra-list{display:flex;flex-direction:column}
+.ra-row{border-radius:12px;transition:background-color .25s}
+.ra-row.open{background:var(--page)}
+.ra-row-head{width:100%;display:grid;grid-template-columns:170px 200px 1fr auto;gap:18px;align-items:baseline;text-align:left;padding:15px 16px}
+.ra-row-head .nm{font-size:16.5px;font-weight:700;letter-spacing:-.01em}
+.ra-row-head .ty{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--flarepop-aa)}
+.ra-row-head .ro{font-size:13.5px;color:var(--ink-2)}
+.ra-row-head .ct{font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap}
+.ra-row-body{display:none;padding:2px 16px 20px;max-width:76ch}
+.ra-row.open .ra-row-body{display:block}
+.ra-row-body p{font-size:14px;color:var(--ink-2);margin-bottom:12px}
+.ra-row-body .solves{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.ra-row-body .sample{font-size:13px;color:var(--ink-3)}
+.ra-row-body .sample b{color:var(--ink-2);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:5px}
+
+/* ═══ R-B · The Bench ═══ */
+.rb-group{margin-bottom:26px}
+.rb-group:last-child{margin-bottom:0}
+.rb-group .gh{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px}
+.rb-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.rb-card{background:var(--page);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:6px;text-align:left;transition:background-color .3s,color .3s}
+.rb-card .nm{font-size:15.5px;font-weight:700;letter-spacing:-.01em}
+.rb-card .ty{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--flarepop-aa)}
+.rb-card .ro{font-size:12.5px;line-height:1.45;color:var(--ink-2)}
+.rb-card:hover{background:var(--ink);color:#fff}
+.rb-card:hover .ro{color:#d1d6e6}
+.rb-card:hover .ty{color:var(--flarepop)}
+
+/* ═══ R-C · Sorted by Problem ═══ */
+.rc-band{display:grid;grid-template-columns:300px 1fr;gap:30px;padding:22px 0}
+.rc-band + .rc-band{padding-top:26px}
+.rc-band .ph .n{font-family:var(--mono);font-size:10px;color:var(--flarepop-aa);display:block;margin-bottom:5px}
+.rc-band .ph .t{font-size:18px;font-weight:700;letter-spacing:-.01em;line-height:1.2}
+.rc-band .ph .j{font-size:12.5px;color:var(--ink-3);margin-top:8px;font-style:italic}
+.rc-agents{display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start}
+.rc-agent{background:var(--page);border-radius:10px;padding:12px 16px;display:flex;flex-direction:column;gap:2px;min-width:150px}
+.rc-agent .nm{font-size:14px;font-weight:700}
+.rc-agent .ty{font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3)}
+
+@media(max-width:900px){
+  .pa{grid-template-columns:1fr}
+  .pa-index{position:static;flex-direction:row;flex-wrap:wrap}
+  .pb-view.on{grid-template-columns:1fr}
+  .pc-grid{grid-template-columns:1fr}
+  .osa-line{grid-template-columns:1fr}
+  .osa-conn{transform:rotate(90deg);padding:4px 0}
+  .osc{grid-template-columns:1fr}
+  .osc-conn{transform:rotate(90deg);padding:6px 0}
+  .ra-row-head{grid-template-columns:1fr;gap:4px}
+  .rb-cards{grid-template-columns:repeat(2,1fr)}
+  .rc-band{grid-template-columns:1fr}
+  .framing{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="doc">
+  <div class="wrap">
+    <span class="eyebrow">Concept D &middot; explore pages &middot; for review</span>
+    <h1>Rethinking the quiet pages.</h1>
+    <p class="lead">Three of the explore pages — <b>What we solve</b>, <b>InterceptOS</b>, and <b>the agent roster</b> — have accumulated interaction machinery the content doesn&rsquo;t need: picker grids, steppers, prev/next, modals-behind-tabs. The live site&rsquo;s original sections were simpler and more confident: one surface, everything visible, one deliberate choice at most.</p>
+    <p class="lead">Below are three directions per page, each built as a working mock with the real copy. They&rsquo;re labeled (P&#8209;A, OS&#8209;B, R&#8209;C&hellip;) so you can call out winners, mixes, or kills per section.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="thread">
+    <span class="eyebrow">One through-line worth considering</span>
+    <p><b>The four problems are the story of all three pages.</b> The live site already implies it: What&nbsp;we&nbsp;solve names the four problems &rarr; InterceptOS shows the production line for each one &rarr; the agents are the people on that line. If each page keys off the same four problems — same names, same order, same accent — the three pages stop being three separate widgets and become chapters: <b>the problem &rarr; the system &rarr; the crew.</b> Concepts P&#8209;B, OS&#8209;A, and R&#8209;C form that trilogy.</p>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 1 · WHAT WE SOLVE ═══════════════ -->
+<section class="block">
+  <div class="wrap">
+    <span class="eyebrow">Section 1 &middot; What we solve</span>
+    <h2>We love a chewy problem.</h2>
+
+    <div class="framing">
+      <div class="cell">
+        <span class="mono">What the original did</span>
+        <p>Four plain tabs, one panel: quote, attribution, all three tells, the stat, and the bridge — everything visible at once, crossfading between problems. One choice, then you just read.</p>
+      </div>
+      <div class="cell">
+        <span class="mono">Where the current page drifted</span>
+        <p>The problem names now live in four boxed picker cards <em>and</em> repeat inside the panel. The tells hide behind a &ldquo;More&nbsp;+&rdquo; disclosure. The bridge floats at the panel bottom, detached from the quote it answers. Two dark surfaces compete for the same job.</p>
+      </div>
+    </div>
+    <div class="storyline"><p>The story this page needs to tell: <span>&ldquo;Your peers are saying this out loud &rarr; the data agrees &rarr; here&rsquo;s how we attack it.&rdquo;</span> Quote, proof, answer — in that order, no hiding.</p></div>
+
+    <!-- P-A -->
+    <div class="concept">
+      <div class="concept-head"><span class="tag">P-A</span><h3>The Reading Room</h3></div>
+      <p class="why">No selection state at all — the four problems become one continuous read, like a well-set editorial feature. A quiet index on the left tracks where you are and jumps on click; each problem runs quote &rarr; attribution &rarr; tells &rarr; stat &rarr; bridge in a single uninterrupted column. The page trusts the reader to scroll.</p>
+      <p class="tradeoff"><b>Trade-off:</b> strongest for reading all four; weakest if a visitor only cares about one and wants instant comparison. Scroll depth replaces clicks.</p>
+      <div class="demo">
+        <div class="pa">
+          <nav class="pa-index" id="paIndex"></nav>
+          <div class="pa-scroll" id="paScroll"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- P-B -->
+    <div class="concept">
+      <div class="concept-head"><span class="tag">P-B</span><h3>Problem / Answer</h3></div>
+      <p class="why">The original live-site model, restaged for a standalone page. Four typographic tabs — no boxes — and below them one composition: the quote and tells on the left (the problem, in the buyer&rsquo;s words), the stat and bridge on the right in the deep blue (the evidence and our answer). Choose a problem; everything else is just reading. The layout itself performs the story: problem on one side, answer on the other.</p>
+      <p class="tradeoff"><b>Trade-off:</b> one interaction to learn (the tabs), and the panel must fit the longest problem&rsquo;s content. Closest to the original&rsquo;s spirit.</p>
+      <div class="demo">
+        <div class="pb-tabs" id="pbTabs"></div>
+        <div class="pb-panel" id="pbPanel"></div>
+      </div>
+    </div>
+
+    <!-- P-C -->
+    <div class="concept">
+      <div class="concept-head"><span class="tag">P-C</span><h3>Four on the Wall</h3></div>
+      <p class="why">All four problems visible simultaneously — a 2&times;2 wall of quote cards, each carrying its stat. You see the whole landscape in one glance and recognize your own problem before touching anything. Selecting a card turns it ink-dark and opens the tells and bridge beneath the wall. Scanning first, depth on commit.</p>
+      <p class="tradeoff"><b>Trade-off:</b> best first-glance comprehension of &ldquo;there are four, which is mine?&rdquo;; the detail area sits below the fold-line of the wall, so the quote&rarr;answer pairing is less immediate than P&#8209;B.</p>
+      <div class="demo">
+        <div class="pc-grid" id="pcGrid"></div>
+        <div class="pc-detail" id="pcDetail"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SECTION 2 · INTERCEPTOS ═══════════════ -->
+<section class="block">
+  <div class="wrap">
+    <span class="eyebrow">Section 2 &middot; InterceptOS</span>
+    <h2>The AI-native layer behind better work.</h2>
+
+    <div class="framing">
+      <div class="cell">
+        <span class="mono">What the original did</span>
+        <p>Pick a problem, and the <em>whole</em> four-stage line renders at once — Diagnostic &rarr; Core &rarr; Innovation &rarr; Outcome — with connectors between stages and agent chips inside each. A pipeline you could see end-to-end.</p>
+      </div>
+      <div class="cell">
+        <span class="mono">Where the current page drifted</span>
+        <p>The pipeline became a stepper: one stage visible at a time, Prev/Next buttons, a rail of chips to track where you are. The one thing this section must communicate — <em>there is a system, and it runs end-to-end to an outcome</em> — is exactly what a stepper hides.</p>
+      </div>
+    </div>
+    <div class="storyline"><p>The story this page needs to tell: <span>&ldquo;Your problem goes in one end; a finished outcome comes out the other. Here is the line, and the agents working it.&rdquo;</span> Show the whole line.</p></div>
+
+    <!-- OS-A -->
+    <div class="concept">
+      <div class="concept-head"><span class="tag">OS-A</span><h3>The Assembly Line</h3></div>
+      <p class="why">The original pipeline, brought back and given room. All four stages sit in one horizontal line with connectors; the Outcome stage is staged differently — deep blue, Flarepop headline — because it&rsquo;s the payoff the other three exist for. Problem selection is four quiet text tabs. Nothing is hidden, nothing steps.</p>
+      <p class="tradeoff"><b>Trade-off:</b> four columns means tighter copy measure per stage; on narrow screens the line folds vertical (which is OS&#8209;B anyway).</p>
+      <div class="demo">
+        <div class="osa-tabs" id="osaTabs"></div>
+        <div class="osa-head" id="osaHead"></div>
+        <div class="osa-line" id="osaLine"></div>
+      </div>
+    </div>
+
+    <!-- OS-B -->
+    <div class="concept">
+      <div class="concept-head"><span class="tag">OS-B</span><h3>The Rail</h3></div>
+      <p class="why">The same full pipeline turned vertical — a project plan you read downward. Stage tags hold a strict left column; names, descriptions, and agent chips get a full comfortable measure on the right. The Outcome lands at the bottom in a Flarepop wash, like a delivered result. This is the most <em>readable</em> version of the system — alignment does all the structural work, no connectors needed.</p>
+      <p class="tradeoff"><b>Trade-off:</b> taller than one viewport with all four stages; less of a &ldquo;diagram&rdquo; feeling than OS&#8209;A. Naturally perfect on mobile.</p>
+      <div class="demo">
+        <div class="osb">
+          <div class="osb-head" id="osbHead"></div>
+          <div id="osbRail"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OS-C -->
+    <div class="concept">
+      <div class="concept-head"><span class="tag">OS-C</span><h3>Input &rarr; OS &rarr; Output</h3></div>
+      <p class="why">The most conceptual take: InterceptOS drawn as an actual operating system — a black chassis in the middle with the three working stages compacted inside it, the selected problem entering from the left, the outcome leaving on the right in blue. One diagram makes the whole claim: <em>this is a machine; problems become outcomes.</em> Best matched to the page&rsquo;s &ldquo;AI-native layer&rdquo; framing.</p>
+      <p class="tradeoff"><b>Trade-off:</b> stage descriptions compress to fit the chassis (full text could reveal on hover or below); the strongest visual metaphor of the three but the least room for copy.</p>
+      <div class="demo">
+        <div class="osa-tabs" id="oscTabs"></div>
+        <div class="osc" id="oscDiagram"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SECTION 3 · AGENT ROSTER ═══════════════ -->
+<section class="block">
+  <div class="wrap">
+    <span class="eyebrow">Section 3 &middot; The agent roster</span>
+    <h2>Meet the capabilities inside InterceptOS.</h2>
+
+    <div class="framing">
+      <div class="cell">
+        <span class="mono">What the original did</span>
+        <p>Category tabs over a card grid, with a compact detail on click. Reasonable on a homepage where the roster is one section among ten — the grid was a teaser, not a reference.</p>
+      </div>
+      <div class="cell">
+        <span class="mono">Where the current page drifted</span>
+        <p>A dedicated roster page kept the homepage&rsquo;s gating: four tabs &rarr; four visible cards &rarr; modal. Thirteen agents, and you can never see more than four names at once. On a page whose entire job is &ldquo;here&rsquo;s the bench,&rdquo; the bench is hidden.</p>
+      </div>
+    </div>
+    <div class="storyline"><p>The story this page needs to tell: <span>&ldquo;This is the whole crew — named, specialized, and already proven on work like yours. Find the ones your problem needs.&rdquo;</span> Show all thirteen.</p></div>
+
+    <!-- R-A -->
+    <div class="concept">
+      <div class="concept-head"><span class="tag">R-A</span><h3>The Full Roster</h3></div>
+      <p class="why">One scannable index of all thirteen — name, specialty, one-line role, category — like a masthead or a team sheet. Filters thin the list instead of paginating it; a row opens inline for the full description, the problems it solves, and the sample work. No modal, no tabs, nothing off-screen. The utilitarian honesty of a roster is the design.</p>
+      <p class="tradeoff"><b>Trade-off:</b> the least &ldquo;showcase&rdquo; of the three — typography carries everything. (Row-open below is live; try Watchtower.)</p>
+      <div class="demo">
+        <div class="ra-filters" id="raFilters"></div>
+        <div class="ra-list" id="raList"></div>
+      </div>
+    </div>
+
+    <!-- R-B -->
+    <div class="concept">
+      <div class="concept-head"><span class="tag">R-B</span><h3>The Bench</h3></div>
+      <p class="why">Every agent on the wall at once — a dense card wall grouped under the four category headers, so the categories organize instead of gate. Cards stay small (name, specialty, role line); hover flips a card to ink; click opens the approved case-modal-style detail. You get the full-bench impression in one screen and depth stays one click away.</p>
+      <p class="tradeoff"><b>Trade-off:</b> keeps the modal as the detail surface (already built and approved); cross-category agents live under their primary group with the overlap noted in the detail.</p>
+      <div class="demo" id="rbDemo"></div>
+    </div>
+
+    <!-- R-C -->
+    <div class="concept">
+      <div class="concept-head"><span class="tag">R-C</span><h3>Sorted by Problem</h3></div>
+      <p class="why">Flip the axis: organize the roster by the four problems instead of by discipline. Each problem band lists the agents that actually work it — some appear twice, which is the point: the roster stops being an org chart and becomes an answer to &ldquo;who&rsquo;s on <em>my</em> problem?&rdquo;. This is the concept that closes the trilogy — the same four problems that opened What&nbsp;we&nbsp;solve staff themselves here.</p>
+      <p class="tradeoff"><b>Trade-off:</b> agents repeat across bands (deliberate but unusual); discipline view disappears unless offered as a secondary sort.</p>
+      <div class="demo" id="rcDemo"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="doc">
+  <div class="wrap">
+    <div class="rec">
+      <span class="eyebrow">Where I&rsquo;d land</span>
+      <p><b>As a trilogy: P&#8209;B + OS&#8209;A + R&#8209;C.</b> All three key off the same four problems, all three show everything on one surface, and each page gets exactly one interaction (choose your problem) instead of nested machinery. It&rsquo;s also the closest return to what the live site already does well.</p>
+      <p><b>Safest single swaps:</b> P&#8209;B and OS&#8209;A are direct upgrades with no downside I can see. For the roster, R&#8209;A is the conservative pick if R&#8209;C&rsquo;s repeated agents feel odd — or R&#8209;B if you want to keep the new modal doing the detail work.</p>
+      <p>Call out winners by label and I&rsquo;ll build them into the explore pages.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ─── Verbatim content from deployed.js (PROBLEMS_RR / PROBLEM_FLOWS / AGENTS) ─── */
+const PROBLEMS = {
+  intelligence:{num:'01',name:'The Intelligence Problem',
+    quote:'My research is stale by the time we act on it, and we&rsquo;re always a step behind the market.',
+    attrib:'A CMO, networking infrastructure brand',
+    tells:['Traditional research is too slow and too expensive for the pace we move at.','The findings come back telling us what we already knew.','We can never be sure we&rsquo;re not hearing from the same panel of people again.'],
+    signalNum:'45%',
+    signalLbl:'of the data marketers use to make business decisions is incomplete, inaccurate, or out of date. (Adverity, State of Marketing Data Quality, 2025)',
+    bridge:'We triangulate live signals no single source can see on its own, keeping go-to-market current and putting on-demand account research in sellers&rsquo; hands.'},
+  visibility:{num:'02',name:'The Visibility Problem',
+    quote:'We&rsquo;ve spent our entire careers understanding human buyers. We have no idea how to influence the AI now deciding what they see.',
+    attrib:'A VP Marketing, semiconductor brand',
+    tells:['ChatGPT, Gemini, Copilot, and AI Overviews now sit between you and the buyer.','The content that persuades a human does not win an engine. Winning one takes content built for it on purpose.','Leadership wants the score moved now, but the training behind the answers is already locked.'],
+    signalNum:'51%',
+    signalLbl:'Of B2B software buyers now begin their research in an AI chatbot rather than a search engine. (G2 Buyer Behavior Report, 2025)',
+    bridge:'Through voice-of-customer research, we learn how buyers actually prompt the AI engines. We then simulate thousands of those prompts across industries, buying journeys, and personas to map where you show up and where you don&rsquo;t. From there, we build the content and campaigns that make you the answer buyers get.'},
+  velocity:{num:'03',name:'The Velocity Problem',
+    quote:'By the time our content and campaigns are ready, the moment has passed.',
+    attrib:'A Global Campaigns Director, enterprise platform',
+    tells:['Every persona, account, and buying stage needs its own version, and there are too many to pre-produce.','Too many review layers, and agencies that don&rsquo;t know the subject matter, so we end up rewriting everything.','The team keeps shrinking while the demand keeps growing, so we have to move faster with less.'],
+    signalNum:'78%',
+    signalLbl:'of marketers say they need more personalized content than they&rsquo;re able to produce. (Salesforce, State of Marketing, 2026)',
+    bridge:'We triangulate live signals, then run human-led ideas, hero content, and positioning through an AI-native content and campaign engine. It versions that work for every persona, account, stage, and language, and gets it to your execution teams fast enough to meet the moment.'},
+  activation:{num:'04',name:'The Activation Problem',
+    quote:'We produce more content and campaigns than ever, but most of it never reaches the right people, and our partners rarely pick it up.',
+    attrib:'A VP of Demand Generation, enterprise platform',
+    tells:['We produce more content and campaign kits than anyone can use, and no one knows what to reach for when.','Partners are buried in generic campaigns from every vendor, and adapting ours takes more resources than they have.','We can&rsquo;t always tell where our audience is paying attention, so we keep defaulting to the same channels.'],
+    signalNum:'',
+    signalLbl:'Most B2B technology revenue flows through indirect channels, yet most co-marketing content never gets activated.',
+    bridge:'We run activation through our 10-point go-to-market flywheel, so every stage fires together, and the right content reaches the right person at the right time. Then we equip your channel partners to extend that reach into markets your own team can&rsquo;t cover alone.'}
+};
+const FLOWS = {
+  intelligence:{job:'Bring every signal together so you&rsquo;re never a step behind.',layer:'Campaign Studio',stages:[
+    {tag:'Diagnostic',name:'Aggregate the signals',agents:['Watchtower','Signal','Dive'],desc:'Pull together real-time market signals, what buyers are downloading and the topics they&rsquo;re searching, and AI-powered desk research, so you see shifts as they happen.'},
+    {tag:'Core',name:'Scan the competition',agents:['Geo','Dive'],desc:'Run a continuous competitive scan across search, AI engines, paid social, content, and brand, and track how their messaging and positioning shift over time.'},
+    {tag:'Innovation',name:'Map the account',agents:['Radar'],desc:'Map each buying committee&rsquo;s priorities, pain points, and the events their execs attend, then recommend the content to put in front of them.'},
+    {tag:'Outcome',name:'Greater go-to-market precision',agents:[],desc:'You know the pain points, priorities, and buying triggers at the industry, persona, and account level, plus the competitive landscape, so you can design go-to-market campaigns with far greater precision.'}]},
+  visibility:{job:'Show up when buyers ask the AI engines, and build the content that gets you cited.',layer:'Campaign Studio',stages:[
+    {tag:'Diagnostic',name:'Test the prompts buyers actually use',agents:['Geo'],desc:'Learn how real buyers prompt the engines, then run those prompts across ChatGPT, Gemini, Copilot, and AI Overviews to see where you surface and where you&rsquo;re left out.'},
+    {tag:'Core',name:'Map the content gaps',agents:['Index'],desc:'Find where your content is missing, thin, or unreadable to search engines, compared to the questions buyers are actually asking.'},
+    {tag:'Innovation',name:'Build the content that gets cited',agents:['Atom'],desc:'We don&rsquo;t stop at the gaps. We build content that engines can read and cite, structured using our BETA framework (Best-fit, Evidence, Trade-offs, Answerability).'},
+    {tag:'Outcome',name:'You become the answer',agents:[],desc:'When buyers ask the AI engines, you&rsquo;re in the answer they get, because the content is built to be cited.'}]},
+  velocity:{job:'Produce the right content fast enough to move with the market.',layer:'Campaign Studio',stages:[
+    {tag:'Diagnostic',name:'Pinpoint what to produce',agents:['Watchtower'],desc:'Read what the market needs right now, from the shifts and gaps Intelligence and Visibility surfaced, and pinpoint the content and campaigns worth making.'},
+    {tag:'Core',name:'Audit what you have',agents:['Index'],desc:'Run an agentic audit of your existing content and campaigns to see how well-positioned you are to meet that, and where you fall short.'},
+    {tag:'Innovation',name:'Atomize and hyper-personalize',agents:['Atom','Cortex'],desc:'Atomize what you have into hyper-personalized variants by segment, account, and stage, pre-tested with neuroscience data so the strongest creative goes out.'},
+    {tag:'Outcome',name:'Right content, ready to activate',agents:[],desc:'You have the right content and campaigns to meet each customer segment&rsquo;s real-time needs, and you&rsquo;re set up to activate.'}]},
+  activation:{job:'Get the right content in front of the right people at the right time, across your channels and partners.',layer:'Partner Demand Center',stages:[
+    {tag:'Diagnostic',name:'Decide where to focus',agents:['Watchtower'],desc:'Pinpoint which segments, accounts, and markets need to move, global or regional, and the business impact you&rsquo;re driving. AI-powered propensity modeling narrows it to the accounts most likely to convert.'},
+    {tag:'Core',name:'Pick the right channels and the right content',agents:['Atom'],desc:'Whether your execution partners run it or we do, we pick the right channels for each audience and make sure the content is purpose-built for them.'},
+    {tag:'Innovation',name:'Arm the channel and the field',agents:['Taylor','Telly','Sales Dojo'],desc:'Channel partners get campaign agents that adapt your global campaigns and run them in market fast. AI call-downs generate and qualify regional leads, and sellers rehearse against simulated audiences.'},
+    {tag:'Outcome',name:'Your campaigns run in every market',agents:[],desc:'Everyone executing is aligned and equipped, whether that&rsquo;s your team, a partner, or us. The right regional accounts are in focus, and your channel partners are executing your campaigns in market.'}]}
+};
+const AGENTS = [
+  {k:'watchtower',primary:'strategy',type:'Audience signals',name:'Watchtower',role:'Real-time signals and persona playbooks.',desc:'Watchtower tracks stance and intent across a windowed sample of 20 million people globally, then surfaces sentiment shifts, trigger events, and buyer signals within hours.',solves:['The Intelligence Problem','The Visibility Problem'],sample:'For Microsoft, Watchtower ran global ITDM and BDM persona studies across SMC and Enterprise to shape the customer-journey toolkit its partners use.'},
+  {k:'dive',primary:'strategy',type:'Deep research',name:'Dive',role:'Deep research on markets, buyers, and competitors.',desc:'Dive researches vendor websites, public signals, analyst coverage, and competitor positioning shifts, then turns the findings into briefs your team can act on.',solves:['The Intelligence Problem','The Visibility Problem'],sample:'For AMD&rsquo;s PRO Component campaign, Dive mapped the system integrator landscape across five regions: APJ, EMEA, India, LATAM, and North America.'},
+  {k:'camille',primary:'strategy',type:'Synthetic buyer twins',name:'Camille',role:'Synthetic buyer twins for neuroscience-led message testing.',desc:'Camille tests messaging, content, and creative against modeled ITDM and BDM buyer reactions before the work reaches a real audience.',solves:['The Intelligence Problem','The Velocity Problem'],sample:'For Logitech, Camille scored three event-theme directions against a modeled enterprise buying committee on stopping power, buyer relevance, value clarity, and emotional resonance.'},
+  {k:'geo',primary:'strategy',type:'GEO performance tracking',name:'Geo',role:'GEO performance tracking and opportunity audits.',desc:'Geo tracks where your brand appears across ChatGPT, Gemini, Copilot, and AI Overviews. It shows where you are cited, where you are missed, and which content gaps to fix before the next leadership readout.',solves:['The Visibility Problem'],sample:'For Qualcomm, Geo ran 557 buyer-validated prompts across five AI engines, 2,785 responses, to show how Snapdragon is framed against competing silicon and Apple, and where to close the gaps.'},
+  {k:'cam',primary:'content',type:'Synthetic video',name:'Cam',role:'AI video production for stories and live-shoot style clips.',desc:'Cam creates synthetic-presenter videos in multiple languages, so teams can produce consistent video without coordinating every SME shoot.',solves:['The Velocity Problem'],sample:'For SAP, Cam piloted an AI avatar video series through Intercept Labs, producing synthetic-presenter videos that cut production costs 55% and timelines 23%.'},
+  {k:'cortex',primary:'content',type:'Creative intelligence',name:'Cortex',role:'Neuroscience-led creative validation.',desc:'Cortex tests creative for attention, recall, and emotional response before media spend is committed. It is trained on brainwave and eye-tracking data from 300,000+ users.',solves:['The Velocity Problem'],sample:'For Lenovo IDG, Cortex tested webinar creative and picked the direction that drove the strongest engagement.'},
+  {k:'atom',primary:'content',type:'Content atomization',name:'Atom',role:'Content atomization and upcycling engine.',desc:'Atom turns a hero asset into tailored variants for specific personas, segments, industries, and journey stages. Brand-safety scans help keep each version aligned before it goes live.',solves:['The Visibility Problem','The Velocity Problem'],sample:'For HP Workforce Solutions, Atom atomized hero content into tailored variants for each buying-committee persona, fueling a cross-sell campaign that drove 398% deal-size lift and 13.5&times; pipeline growth.'},
+  {k:'lens',primary:'content',type:'AI photography',name:'Lens',role:'Modular photoshoots with consistent people and devices.',desc:'Lens creates photorealistic lifestyle imagery with consistent characters, scenes, and devices, so teams can produce on-brand campaign visuals without booking a full shoot every time.',solves:['The Velocity Problem'],sample:'For Microsoft, Lens built an AI photography engine that produced culturally relevant, OEM-flexible imagery for channel partners worldwide.'},
+  {k:'index',primary:'content',type:'Content audit',name:'Index',role:'Content audit and journey mapping.',desc:'Index maps your content inventory against buyer-journey stages, identifies the gaps, and shows what needs to be created, updated, or retired.',solves:['The Visibility Problem','The Velocity Problem'],sample:'For AMD&rsquo;s PRO Technologies global relaunch, Index audited the existing content against the buyer journey and mapped the gaps to close before launch.'},
+  {k:'telly',primary:'sales',type:'Call-down agents',name:'Telly',role:'Call-down agents for outbound qualification.',desc:'Telly runs brand-trained call-down programs that qualify prospects, clean data, and prompt next-best actions such as webinar registration, trial activation, or follow-up.',solves:['The Activation Problem'],sample:'HP used Telly for the Concierge Program Junior BDR, delivering 1,600 live conversations, 320 sales-ready leads, and 3&times; more cost-effective outreach than human reps.'},
+  {k:'salesdojo',primary:'sales',type:'Customer scenario simulations',name:'Sales Dojo',role:'Customer scenario simulations for sales reps.',desc:'Sales Dojo gives reps a brand-trained buyer simulation where they can practice pitches, handle objections, and improve their talk track before a live customer conversation.',solves:['The Activation Problem','The Intelligence Problem'],sample:'As part of an exploration, we set up a Copilot+ PC practice environment in Sales Dojo where reps could rehearse pitching to different members of the buying committee.'},
+  {k:'radar',primary:'sales',type:'Account intelligence platform',name:'Radar',role:'Live account intelligence on demand for your sellers.',desc:'Radar identifies the members of each buying committee, reads the market signals and events around them, and recommends the sales plays to run for each account.',solves:['The Intelligence Problem','The Activation Problem'],sample:'HP used Radar to give sellers on-demand account intelligence, delivering account briefs within 48 hours.'},
+  {k:'taylor',primary:'channel',type:'Intelligent campaign assistant',name:'Taylor',role:'Campaign adaptation for channel partners.',desc:'Taylor gives your channel partners an agent trained on your brand guidelines and the campaign bill of materials. Partners upload their own assets, and Taylor shows them how to adapt the campaign to their brand and layer in their own offerings and services. A deterministic QA agent checks every output before it goes out.',solves:['The Activation Problem'],sample:'HP and Intel use Taylor to help their channel partners quickly create high-quality, on-brand marketing rooted in shared HP, Intel, and Windows 11 messaging.'}
+];
+const CATS = {strategy:'Strategy',content:'Content & Creative',sales:'Sales Enablement',channel:'Channel Empowerment'};
+const KEYS = Object.keys(PROBLEMS);
+
+/* ═══ P-A · Reading Room ═══ */
+(function(){
+  const index = document.getElementById('paIndex');
+  const scroll = document.getElementById('paScroll');
+  scroll.innerHTML = KEYS.map(k => {
+    const p = PROBLEMS[k];
+    const sig = p.signalNum ? '<div class="sig"><span class="n">'+p.signalNum+'</span><span class="l">'+p.signalLbl+'</span></div>'
+                            : '<div class="sig"><span class="l">'+p.signalLbl+'</span></div>';
+    return '<article class="pa-item" data-k="'+k+'">'+
+      '<p class="q">&ldquo;'+p.quote+'&rdquo;</p><p class="a">'+p.attrib+'</p>'+
+      '<ul class="tells">'+p.tells.map(t=>'<li>'+t+'</li>').join('')+'</ul>'+sig+
+      '<p class="bridge">'+p.bridge+'</p></article>';
+  }).join('');
+  index.innerHTML = KEYS.map(k => {
+    const p = PROBLEMS[k];
+    return '<button data-k="'+k+'"><span class="n">'+p.num+'</span><span class="t">'+p.name+'</span></button>';
+  }).join('');
+  const btns = [...index.querySelectorAll('button')];
+  const items = [...scroll.querySelectorAll('.pa-item')];
+  function setOn(k){ btns.forEach(b => b.classList.toggle('on', b.dataset.k === k)); }
+  setOn('intelligence');
+  btns.forEach(b => b.addEventListener('click', () => {
+    scroll.querySelector('.pa-item[data-k="'+b.dataset.k+'"]').scrollIntoView({block:'start',behavior:'smooth'});
+  }));
+  scroll.addEventListener('scroll', () => {
+    let cur = items[0];
+    items.forEach(it => { if (it.offsetTop <= scroll.scrollTop + 80) cur = it; });
+    setOn(cur.dataset.k);
+  }, {passive:true});
+})();
+
+/* ═══ P-B · Problem / Answer ═══ */
+(function(){
+  const tabs = document.getElementById('pbTabs');
+  const panel = document.getElementById('pbPanel');
+  tabs.innerHTML = KEYS.map(k => {
+    const p = PROBLEMS[k];
+    return '<button data-k="'+k+'"><span class="n">'+p.num+'</span><span class="t">'+p.name+'</span></button>';
+  }).join('');
+  panel.innerHTML = KEYS.map(k => {
+    const p = PROBLEMS[k];
+    const sig = p.signalNum ? '<div class="sig"><div class="n">'+p.signalNum+'</div><div class="l">'+p.signalLbl+'</div></div>'
+                            : '<div class="sig"><div class="l" style="font-size:16px;font-weight:600;color:#fff">'+p.signalLbl+'</div></div>';
+    return '<div class="pb-view" data-k="'+k+'"><div>'+
+      '<p class="q">&ldquo;'+p.quote+'&rdquo;</p><p class="a">'+p.attrib+'</p>'+
+      '<ul class="tells">'+p.tells.map((t,i)=>'<li><i>0'+(i+1)+'</i><span>'+t+'</span></li>').join('')+'</ul>'+
+      '</div><div class="pb-side">'+sig+
+      '<p class="bridge"><b>What we do about it</b>'+p.bridge+'</p></div></div>';
+  }).join('');
+  function activate(k){
+    tabs.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.k === k));
+    panel.querySelectorAll('.pb-view').forEach(v => v.classList.toggle('on', v.dataset.k === k));
+  }
+  tabs.querySelectorAll('button').forEach(b => b.addEventListener('click', () => activate(b.dataset.k)));
+  activate('intelligence');
+})();
+
+/* ═══ P-C · Four on the Wall ═══ */
+(function(){
+  const grid = document.getElementById('pcGrid');
+  const detail = document.getElementById('pcDetail');
+  grid.innerHTML = KEYS.map(k => {
+    const p = PROBLEMS[k];
+    return '<button class="pc-cell" data-k="'+k+'">'+
+      '<span class="h"><span class="n">'+p.num+'</span><span class="t">'+p.name+'</span></span>'+
+      '<span class="q">&ldquo;'+p.quote+'&rdquo;</span>'+
+      (p.signalNum ? '<span class="s">'+p.signalNum+'</span>' : '<span class="s" style="font-size:14px">Channel-critical</span>')+
+      '</button>';
+  }).join('');
+  function activate(k){
+    grid.querySelectorAll('.pc-cell').forEach(c => c.classList.toggle('on', c.dataset.k === k));
+    const p = PROBLEMS[k];
+    detail.innerHTML = '<ul class="tells">'+p.tells.map(t=>'<li>'+t+'</li>').join('')+'</ul>'+
+      '<p class="bridge">'+p.bridge+'</p>';
+  }
+  grid.querySelectorAll('.pc-cell').forEach(c => c.addEventListener('click', () => activate(c.dataset.k)));
+  activate('intelligence');
+})();
+
+/* ═══ OS-A · Assembly Line ═══ */
+(function(){
+  const tabs = document.getElementById('osaTabs');
+  const head = document.getElementById('osaHead');
+  const line = document.getElementById('osaLine');
+  tabs.innerHTML = KEYS.map(k => '<button data-k="'+k+'">'+PROBLEMS[k].name+'</button>').join('');
+  function activate(k){
+    tabs.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.k === k));
+    const f = FLOWS[k];
+    head.innerHTML = '<p class="job"><b>The job:</b> '+f.job+'</p><span class="chip">Runs on&nbsp;<b>'+f.layer+'</b></span>';
+    line.innerHTML = f.stages.map((s,i) => {
+      const out = s.tag === 'Outcome';
+      const agents = s.agents.length ? '<span class="agents">'+s.agents.map(a=>'<span class="chip">'+a+'</span>').join('')+'</span>' : '';
+      const conn = i < f.stages.length-1 ? '<span class="osa-conn">&rarr;</span>' : '';
+      return '<div class="osa-stage'+(out?' out':'')+'"><span class="tag">'+s.tag+'</span><span class="nm">'+s.name+'</span>'+agents+'<span class="ds">'+s.desc+'</span></div>'+conn;
+    }).join('');
+  }
+  tabs.querySelectorAll('button').forEach(b => b.addEventListener('click', () => activate(b.dataset.k)));
+  activate('intelligence');
+})();
+
+/* ═══ OS-B · The Rail ═══ */
+(function(){
+  const head = document.getElementById('osbHead');
+  const rail = document.getElementById('osbRail');
+  const tabsHtml = '<div class="osa-tabs" id="osbTabs">'+KEYS.map(k => '<button data-k="'+k+'">'+PROBLEMS[k].name+'</button>').join('')+'</div>';
+  head.insertAdjacentHTML('beforebegin', tabsHtml);
+  const tabs = document.getElementById('osbTabs');
+  function activate(k){
+    tabs.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.k === k));
+    const f = FLOWS[k];
+    head.innerHTML = '<p class="job"><b>The job:</b> '+f.job+'</p><span class="chip">Runs on&nbsp;<b>'+f.layer+'</b></span>';
+    rail.innerHTML = f.stages.map(s => {
+      const out = s.tag === 'Outcome';
+      const agents = s.agents.length ? '<div class="agents">'+s.agents.map(a=>'<span class="chip">'+a+'</span>').join('')+'</div>' : '';
+      return '<div class="osb-row'+(out?' out':'')+'"><span class="tag">'+s.tag+'</span><div><div class="nm">'+s.name+'</div><p class="ds">'+s.desc+'</p>'+agents+'</div></div>';
+    }).join('');
+  }
+  tabs.querySelectorAll('button').forEach(b => b.addEventListener('click', () => activate(b.dataset.k)));
+  activate('intelligence');
+})();
+
+/* ═══ OS-C · Input → OS → Output ═══ */
+(function(){
+  const tabs = document.getElementById('oscTabs');
+  const dia = document.getElementById('oscDiagram');
+  tabs.innerHTML = KEYS.map(k => '<button data-k="'+k+'">'+PROBLEMS[k].name+'</button>').join('');
+  function activate(k){
+    tabs.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.k === k));
+    const p = PROBLEMS[k], f = FLOWS[k];
+    const working = f.stages.filter(s => s.tag !== 'Outcome');
+    const out = f.stages.find(s => s.tag === 'Outcome');
+    dia.innerHTML =
+      '<div class="osc-in"><span class="mono">The problem in</span><div class="nm">'+p.name+'</div><p class="job">'+f.job+'</p>'+
+        '<div class="runs"><span class="chip">Runs on&nbsp;<b>'+f.layer+'</b></span></div></div>'+
+      '<span class="osc-conn">&rarr;</span>'+
+      '<div class="osc-os"><span class="mono">Inside InterceptOS</span>'+
+        working.map(s => '<div class="st"><span class="tag">'+s.tag+'</span><span class="nm">'+s.name+'</span>'+
+          (s.agents.length ? '<span class="agents">'+s.agents.map(a=>'<span class="chip">'+a+'</span>').join('')+'</span>' : '')+
+        '</div>').join('')+'</div>'+
+      '<span class="osc-conn">&rarr;</span>'+
+      '<div class="osc-out"><span class="mono">The outcome out</span><div class="nm">'+out.name+'</div><p class="ds">'+out.desc+'</p></div>';
+  }
+  tabs.querySelectorAll('button').forEach(b => b.addEventListener('click', () => activate(b.dataset.k)));
+  activate('intelligence');
+})();
+
+/* ═══ R-A · Full Roster ═══ */
+(function(){
+  const filters = document.getElementById('raFilters');
+  const list = document.getElementById('raList');
+  const F = [{k:'all',l:'All agents'}].concat(Object.keys(CATS).map(c => ({k:c,l:CATS[c]})));
+  filters.innerHTML = F.map(f => '<button data-f="'+f.k+'">'+f.l+'</button>').join('');
+  function render(filter){
+    filters.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.f === filter));
+    const rows = AGENTS.filter(a => filter === 'all' || a.primary === filter);
+    list.innerHTML = rows.map(a =>
+      '<div class="ra-row" data-k="'+a.k+'"><button class="ra-row-head">'+
+        '<span class="nm">'+a.name+'</span><span class="ty">'+a.type+'</span><span class="ro">'+a.role+'</span><span class="ct">'+CATS[a.primary]+'</span>'+
+      '</button><div class="ra-row-body">'+
+        '<p>'+a.desc+'</p>'+
+        '<div class="solves">'+a.solves.map(s=>'<span class="chip chip--pink">'+s+'</span>').join('')+'</div>'+
+        '<p class="sample"><b>Sample work</b>'+a.sample+'</p>'+
+      '</div></div>').join('');
+    list.querySelectorAll('.ra-row-head').forEach(h => h.addEventListener('click', () => {
+      h.parentElement.classList.toggle('open');
+    }));
+  }
+  filters.querySelectorAll('button').forEach(b => b.addEventListener('click', () => render(b.dataset.f)));
+  render('all');
+})();
+
+/* ═══ R-B · The Bench ═══ */
+(function(){
+  const demo = document.getElementById('rbDemo');
+  demo.innerHTML = Object.keys(CATS).map(c => {
+    const cards = AGENTS.filter(a => a.primary === c).map(a =>
+      '<button class="rb-card"><span class="nm">'+a.name+'</span><span class="ty">'+a.type+'</span><span class="ro">'+a.role+'</span></button>').join('');
+    return '<div class="rb-group"><div class="gh">'+CATS[c]+'</div><div class="rb-cards">'+cards+'</div></div>';
+  }).join('');
+})();
+
+/* ═══ R-C · Sorted by Problem ═══ */
+(function(){
+  const demo = document.getElementById('rcDemo');
+  demo.innerHTML = KEYS.map(k => {
+    const p = PROBLEMS[k];
+    const squad = AGENTS.filter(a => a.solves.indexOf(p.name) !== -1);
+    return '<div class="rc-band"><div class="ph">'+
+      '<span class="n">'+p.num+'</span><span class="t">'+p.name+'</span>'+
+      '<p class="j">&ldquo;'+p.quote+'&rdquo;</p></div>'+
+      '<div class="rc-agents">'+squad.map(a =>
+        '<div class="rc-agent"><span class="nm">'+a.name+'</span><span class="ty">'+a.type+'</span></div>').join('')+
+      '</div></div>';
+  }).join('');
+})();
+</script>
+</body>
+</html>

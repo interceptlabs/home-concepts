@@ -3,3 +3,7 @@ node_modules/
 .claude
 reference/video-source/
 qa/lockup-crops/
+
+# motion render build artifacts (source html/mjs kept)
+motion/frames/
+motion/*.png

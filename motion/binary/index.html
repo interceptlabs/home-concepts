@@ -1,0 +1,159 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Binary → people infinite zoom</title>
+<style>
+  html,body{margin:0;background:#0b0009;overflow:hidden}
+  canvas{display:block}
+</style>
+<canvas id="c" width="1280" height="720"></canvas>
+<script>
+/* ── Binary-matrix Droste zoom ──────────────────────────────────────────────
+   A field of 1s and 0s. Zoom in and each glyph resolves into a little person
+   with an emoticon smiley. Zoom further and each person is itself built from
+   1s and 0s — the opening matrix again. Perfect loop: the content is exactly
+   self-similar (every cell subdivides into the SAME G×G motif), and one loop
+   advances the zoom by exactly one level (factor G), so frame 0 == last frame.
+   "Human taste, AI scale": the human faces live INSIDE the machine's digits.
+──────────────────────────────────────────────────────────────────────────── */
+const W = 1280, H = 720;
+const cv = document.getElementById('c');
+const ctx = cv.getContext('2d');
+
+const INK = '#0b0009';
+const G = 5;                 // odd → a true centre cell to zoom into
+const BASE = 1500;           // top tile side at scale 1 (covers the viewport)
+const MAXDEPTH = 5;
+
+// Flarepop tones — bright foreground people, dimmer matrix depth behind.
+const HOT = '#ff00e5', WARM = '#df00be', MID = '#a8008c', DIM = '#6d0060';
+
+// A fixed 5×5 motif: each cell has a digit, a magenta tone, and a smiley mood.
+// Repeated fractally at every level, so the whole field is self-similar.
+const MOODS = ['smile', 'grin', 'wink', 'calm', 'smile', 'grin'];
+const MOTIF = [];
+(function buildMotif() {
+  // deterministic, hand-tuned spread of 1s/0s and tones (no RNG → loop-safe)
+  const digits = [
+    '10110',
+    '01101',
+    '11010',
+    '00111',
+    '10101',
+  ];
+  const bright = [
+    '01010',
+    '10101',
+    '01110',
+    '11011',
+    '00100',
+  ];
+  for (let j = 0; j < G; j++) {
+    const row = [];
+    for (let i = 0; i < G; i++) {
+      const isBright = bright[j][i] === '1';
+      row.push({
+        digit: digits[j][i],
+        glyphTone: isBright ? WARM : DIM,
+        personTone: isBright ? HOT : MID,
+        mood: MOODS[(i * 3 + j * 2) % MOODS.length],
+        // slight per-cell warmth so the "people" grid feels alive, not uniform
+      });
+    }
+    MOTIF.push(row);
+  }
+})();
+
+// Triangular envelope: 0 below a, ramp a→b to 1, hold to c, ramp c→d to 0.
+function env(s, a, b, c, d) {
+  if (s <= a || s >= d) return 0;
+  if (s < b) return (s - a) / (b - a);
+  if (s <= c) return 1;
+  return (d - s) / (d - c);
+}
+
+function hexA(hex, a) {
+  const n = parseInt(hex.slice(1), 16);
+  return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})`;
+}
+
+function drawGlyph(cx, cy, s, cell, alpha) {
+  ctx.fillStyle = hexA(cell.glyphTone, alpha);
+  ctx.font = `700 ${Math.round(s * 0.74)}px "SFMono-Regular","SF Mono",ui-monospace,Menlo,monospace`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(cell.digit, cx, cy + s * 0.02);
+}
+
+function drawPerson(cx, cy, s, cell, alpha) {
+  const col = hexA(cell.personTone, alpha);
+  ctx.fillStyle = col;
+  ctx.strokeStyle = col;
+  const r = s * 0.20;                    // head radius
+  const hy = cy - s * 0.14;              // head centre y
+  // shoulders / body
+  ctx.beginPath();
+  ctx.arc(cx, cy + s * 0.42, s * 0.34, Math.PI, 0);
+  ctx.rect(cx - s * 0.34, cy + s * 0.42, s * 0.68, s * 0.10);
+  ctx.fill();
+  // head
+  ctx.beginPath();
+  ctx.arc(cx, hy, r, 0, Math.PI * 2);
+  ctx.fill();
+  // face (punched out in ink so it reads as an emoticon)
+  ctx.fillStyle = hexA('#0b0009', alpha);
+  const ex = r * 0.42, ey = hy - r * 0.12, er = r * 0.15;
+  if (cell.mood === 'wink') {
+    ctx.beginPath(); ctx.arc(cx - ex, ey, er, 0, Math.PI * 2); ctx.fill();
+    ctx.lineWidth = er * 0.9; ctx.strokeStyle = hexA('#0b0009', alpha);
+    ctx.beginPath(); ctx.moveTo(cx + ex - er, ey); ctx.lineTo(cx + ex + er, ey); ctx.stroke();
+  } else {
+    ctx.beginPath(); ctx.arc(cx - ex, ey, er, 0, Math.PI * 2);
+    ctx.arc(cx + ex, ey, er, 0, Math.PI * 2); ctx.fill();
+  }
+  // mouth
+  ctx.lineWidth = Math.max(1, r * 0.16);
+  ctx.strokeStyle = hexA('#0b0009', alpha);
+  ctx.beginPath();
+  const my = hy + r * 0.20;
+  if (cell.mood === 'calm') {
+    ctx.moveTo(cx - r * 0.4, my + r * 0.15); ctx.lineTo(cx + r * 0.4, my + r * 0.15);
+  } else {
+    const open = cell.mood === 'grin' ? 0.62 : 0.42;
+    ctx.arc(cx, my, r * 0.5, Math.PI * (0.5 - open), Math.PI * (0.5 + open));
+  }
+  ctx.stroke();
+}
+
+function drawCell(x, y, s, cell) {
+  const cx = x + s / 2, cy = y + s / 2;
+  const gA = env(s, 3, 13, 34, 66);
+  const pA = env(s, 42, 96, 620, 1700);
+  if (gA > 0.003) drawGlyph(cx, cy, s, cell, gA);
+  if (pA > 0.003) drawPerson(cx, cy, s, cell, pA);
+}
+
+// Recurse: [x,y,size] is one tile = G×G cells; each cell is itself a tile.
+function recurse(x, y, size, depth) {
+  const child = size / G;
+  if (child < 2 || depth > MAXDEPTH) return;
+  for (let j = 0; j < G; j++) {
+    for (let i = 0; i < G; i++) {
+      const cx0 = x + i * child, cy0 = y + j * child;
+      if (cx0 + child < 0 || cx0 > W || cy0 + child < 0 || cy0 > H) continue;
+      drawCell(cx0, cy0, child, MOTIF[j][i]);
+      if (child / G >= 2) recurse(cx0, cy0, child, depth + 1);
+    }
+  }
+}
+
+function seek(frac) {
+  ctx.fillStyle = INK;
+  ctx.fillRect(0, 0, W, H);
+  const scale = Math.pow(G, frac);            // 1 → G over the loop
+  const top = BASE * scale;
+  recurse(W / 2 - top / 2, H / 2 - top / 2, top, 0);
+}
+window.seek = seek;
+seek(0);
+window.__ready = true;
+</script>
