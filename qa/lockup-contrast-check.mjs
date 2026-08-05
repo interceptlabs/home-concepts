@@ -15,9 +15,7 @@
  * Run:  node qa/lockup-contrast-check.mjs   (server must be up on :4340)
  */
 import path from 'node:path';
-const puppeteer = (await import(
-  'file:///Users/jontoewsinterceptgroup.com/node_modules/puppeteer/lib/esm/puppeteer/puppeteer.js'
-)).default;
+import puppeteer from 'puppeteer';
 
 const BASE = 'http://localhost:4340/concept-d';
 const PAGES = [

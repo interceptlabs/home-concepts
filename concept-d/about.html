@@ -362,6 +362,21 @@ a.foot-sub:hover{color:var(--halo-100);}
 .sec-h2{font-family:var(--font-display);font-weight:700;font-size:clamp(28px,3.6vw,44px);line-height:1.08;letter-spacing:-.02em;margin:var(--sp-12) 0 var(--sp-24);max-width:20ch;text-wrap:balance;}
 .sec-body{font-size:18px;line-height:1.65;color:var(--fg-2);max-width:64ch;text-wrap:pretty;}
 .sec-body + .sec-body{margin-top:var(--sp-16);}
+/* editorial split — heading rail left, copy right, so sections fill the measure
+   instead of stacking everything against the left edge. cta-band stays centred. */
+.about-sec:not(.cta-band) > .shell{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:clamp(28px,4.6vw,80px);row-gap:0;align-items:start;}
+.about-sec > .shell > .sec-lede{grid-column:1;}
+.about-sec > .shell > .sec-copy{grid-column:2;}
+.about-sec > .shell > .sec-lede--wide,
+.about-sec:not(.cta-band) > .shell > :not(.sec-lede):not(.sec-copy){grid-column:1 / -1;}
+.sec-lede .sec-h2{max-width:none;}
+.sec-copy .sec-body{max-width:none;}
+.sec-copy .faq{margin-top:0;max-width:none;}
+@media(max-width:900px){
+  .about-sec:not(.cta-band) > .shell{grid-template-columns:minmax(0,1fr);}
+  .about-sec > .shell > .sec-lede,.about-sec > .shell > .sec-copy{grid-column:1;}
+  .sec-copy{margin-top:var(--sp-20,20px);}
+}
 .band--dark .eyebrow{color:var(--flarepop-100);}
 .band--dark .sec-h2{color:var(--halo-100);}
 .band--dark .sec-body{color:var(--halo-400);}
@@ -507,6 +522,10 @@ body{background:var(--halo-300);}
    use existing Concept D background loops as subtle motion behind a couple of
    sections). Copy stays on top; opacity dialled down in dark mode. ── */
 .about-hero,.about-sec{position:relative;overflow:hidden;}
+.about-band{position:relative;width:100vw;margin-left:calc(50% - 50vw);height:clamp(240px,36vh,440px);overflow:hidden;background:var(--carbon-500);}
+.about-band-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+@media(prefers-reduced-motion:reduce){.about-band-video{display:none;}
+  .about-band{background-size:cover;background-position:center;}}
 .sec-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none;opacity:.5;}
 :root[data-theme="dark"] .sec-bg{opacity:.15;}
 .about-hero > .shell,.about-sec > .shell{position:relative;z-index:1;}
@@ -622,29 +641,49 @@ body{background:var(--halo-300);}
       <source src="assets/video/section-veil.webm" type="video/webm">
     </video>
     <div class="shell">
-      <span class="eyebrow">Our mission</span>
-      <h2 class="sec-h2">The outcomes that matter</h2>
-      <p class="sec-body">Our job is to do the B2B marketing work that gets global tech to the outcomes that matter. That means the campaigns, content, and go-to-market work that moves the numbers our clients are measured on.</p>
-      <p class="sec-body">And we do it at the frontier, ahead of where B2B tech goes next.</p>
+      <div class="sec-lede">
+        <span class="eyebrow">Our mission</span>
+        <h2 class="sec-h2">The outcomes that matter</h2>
+      </div>
+      <div class="sec-copy">
+        <p class="sec-body">Our job is to do the B2B marketing work that gets global tech to the outcomes that matter. That means the campaigns, content, and go-to-market work that moves the numbers our clients are measured on.</p>
+        <p class="sec-body">And we do it at the frontier, ahead of where B2B tech goes next.</p>
+      </div>
     </div>
   </section>
 
   <!-- WHAT WE DO -->
   <section class="about-sec">
     <div class="shell">
-      <span class="eyebrow">What we do</span>
-      <h2 class="sec-h2">Built for the complexity of global tech</h2>
-      <p class="sec-body">We do the B2B marketing that the world&rsquo;s largest technology companies depend on, from strategy and content to campaigns, go-to-market, and sales enablement.</p>
-      <p class="sec-body">Global tech is technical, high-stakes, and rarely simple. Embracing that complexity is what we were built for, and it is where our curiosity and AI-native model do their sharpest work.</p>
+      <div class="sec-lede">
+        <span class="eyebrow">What we do</span>
+        <h2 class="sec-h2">Built for the complexity of global tech</h2>
+      </div>
+      <div class="sec-copy">
+        <p class="sec-body">We do the B2B marketing that the world&rsquo;s largest technology companies depend on, from strategy and content to campaigns, go-to-market, and sales enablement.</p>
+        <p class="sec-body">Global tech is technical, high-stakes, and rarely simple. Embracing that complexity is what we were built for, and it is where our curiosity and AI-native model do their sharpest work.</p>
+      </div>
     </div>
   </section>
+
+  <!-- AMBIENT BAND -->
+  <div class="about-band" style="background-image:url(assets/video/about-band-room.jpg)">
+    <video class="about-band-video" autoplay muted loop playsinline aria-hidden="true" poster="assets/video/about-band-room.jpg">
+      <source src="assets/video/about-band-room.mp4" type="video/mp4">
+      <source src="assets/video/about-band-room.webm" type="video/webm">
+    </video>
+  </div>
 
   <!-- HOW WE WORK (v3: absorbs Where we're headed as three parts) -->
   <section class="about-sec band--dark">
     <div class="shell">
-      <span class="eyebrow">How we work</span>
-      <h2 class="sec-h2">Human taste, AI scale</h2>
-      <p class="sec-body">Our delivery model is AI-native, built on three parts that work as one.</p>
+      <div class="sec-lede">
+        <span class="eyebrow">How we work</span>
+        <h2 class="sec-h2">Human taste, AI scale</h2>
+      </div>
+      <div class="sec-copy">
+        <p class="sec-body">Our delivery model is AI-native, built on three parts that work as one.</p>
+      </div>
       <div class="parts-grid">
         <div class="part"><h3 class="part-h">Our people</h3><p class="part-p">The taste and judgment that years of enterprise work create. A human stays in the loop at every step, because it is the part no system can replicate.</p></div>
         <div class="part"><h3 class="part-h">InterceptOS</h3><p class="part-p">Our AI-native operating system runs the repeatable work and keeps the routine efficient. That frees the team for the innovation that redefines the buyer experience, like turning one hero e-book into 50,000 one-of-one experiences.</p></div>
@@ -657,17 +696,23 @@ body{background:var(--halo-300);}
   <!-- OUR STORY -->
   <section class="about-sec band--tint">
     <div class="shell">
-      <span class="eyebrow">Our story</span>
-      <h2 class="sec-h2">It started with a question</h2>
-      <p class="sec-body">Intercept began in 2006, when two students refused to accept that B2B marketing had to be done the way it always had been. That instinct, questioning the default, built one of the most awarded B2B agencies in global tech. It also made us one of the first to go AI-native from the inside out.</p>
+      <div class="sec-lede">
+        <span class="eyebrow">Our story</span>
+        <h2 class="sec-h2">It started with a question</h2>
+      </div>
+      <div class="sec-copy">
+        <p class="sec-body">Intercept began in 2006, when two students refused to accept that B2B marketing had to be done the way it always had been. That instinct, questioning the default, built one of the most awarded B2B agencies in global tech. It also made us one of the first to go AI-native from the inside out.</p>
+      </div>
     </div>
   </section>
 
   <!-- LEADERSHIP -->
   <section class="about-sec">
     <div class="shell">
-      <span class="eyebrow">Leadership</span>
-      <h2 class="sec-h2">The people behind Intercept</h2>
+      <div class="sec-lede sec-lede--wide">
+        <span class="eyebrow">Leadership</span>
+        <h2 class="sec-h2">The people behind Intercept</h2>
+      </div>
       <div class="lead-grid card-grid">
         <div class="lead-card">
           <span class="lead-name">Andrew Au</span>
@@ -698,12 +743,24 @@ body{background:var(--halo-300);}
     </div>
   </section>
 
+  <!-- AMBIENT BAND -->
+  <div class="about-band" style="background-image:url(assets/video/about-band-wall.jpg)">
+    <video class="about-band-video" autoplay muted loop playsinline aria-hidden="true" poster="assets/video/about-band-wall.jpg">
+      <source src="assets/video/about-band-wall.mp4" type="video/mp4">
+      <source src="assets/video/about-band-wall.webm" type="video/webm">
+    </video>
+  </div>
+
   <!-- BY THE NUMBERS -->
   <section class="about-sec band--dark">
     <div class="shell">
-      <span class="eyebrow">By the numbers</span>
-      <h2 class="sec-h2">20 years and counting</h2>
-      <p class="sec-body">Since 2006, the record speaks for itself. Our average client relationship runs nine years. We have won more than 130 industry awards since 2019 alone. And 95% of our work runs internationally, across North America, Europe, and Asia, in more than 20 languages.</p>
+      <div class="sec-lede">
+        <span class="eyebrow">By the numbers</span>
+        <h2 class="sec-h2">20 years and counting</h2>
+      </div>
+      <div class="sec-copy">
+        <p class="sec-body">Since 2006, the record speaks for itself. Our average client relationship runs nine years. We have won more than 130 industry awards since 2019 alone. And 95% of our work runs internationally, across North America, Europe, and Asia, in more than 20 languages.</p>
+      </div>
       <div class="strip strip-4 stat-strip" aria-label="Intercept by the numbers">
         <div class="strip-cell"><p class="strip-num">9</p><p class="strip-name">years, average client relationship</p></div>
         <div class="strip-cell"><p class="strip-num">130+</p><p class="strip-name">industry awards since 2019</p></div>
@@ -716,18 +773,26 @@ body{background:var(--halo-300);}
   <!-- ROOTS AND REACH -->
   <section class="about-sec band--tint">
     <div class="shell">
-      <span class="eyebrow">Where we are</span>
-      <h2 class="sec-h2">North American roots, global reach</h2>
-      <p class="sec-body">Intercept is headquartered in Toronto, with clients around the world. We support US and international marketing teams across North America, Europe, and Asia.</p>
+      <div class="sec-lede">
+        <span class="eyebrow">Where we are</span>
+        <h2 class="sec-h2">North American roots, global reach</h2>
+      </div>
+      <div class="sec-copy">
+        <p class="sec-body">Intercept is headquartered in Toronto, with clients around the world. We support US and international marketing teams across North America, Europe, and Asia.</p>
+      </div>
     </div>
   </section>
 
   <!-- WHAT SETS US APART -->
   <section class="about-sec">
     <div class="shell">
-      <span class="eyebrow">What sets us apart</span>
-      <h2 class="sec-h2">Time-tested expertise</h2>
-      <p class="sec-body">The best B2B work does not come from data alone. It comes from practitioners who know which signals matter and which proof points shift perception. That kind of pattern recognition takes years of strategy, content, and campaign work to build. It is the part of expertise AI cannot replicate, and it is what has earned us more than 130 industry awards.</p>
+      <div class="sec-lede">
+        <span class="eyebrow">What sets us apart</span>
+        <h2 class="sec-h2">Time-tested expertise</h2>
+      </div>
+      <div class="sec-copy">
+        <p class="sec-body">The best B2B work does not come from data alone. It comes from practitioners who know which signals matter and which proof points shift perception. That kind of pattern recognition takes years of strategy, content, and campaign work to build. It is the part of expertise AI cannot replicate, and it is what has earned us more than 130 industry awards.</p>
+      </div>
       <div class="values-grid">
         <div class="value-card">
           <h3 class="value-h">Proprietary B2B intelligence</h3>
@@ -745,23 +810,35 @@ body{background:var(--halo-300);}
     </div>
   </section>
 
+  <!-- AMBIENT BAND -->
+  <div class="about-band" style="background-image:url(assets/video/about-band-desk.jpg)">
+    <video class="about-band-video" autoplay muted loop playsinline aria-hidden="true" poster="assets/video/about-band-desk.jpg">
+      <source src="assets/video/about-band-desk.mp4" type="video/mp4">
+      <source src="assets/video/about-band-desk.webm" type="video/webm">
+    </video>
+  </div>
+
   <!-- FAQ -->
   <section class="about-sec band--tint">
     <div class="shell">
-      <span class="eyebrow">Common questions</span>
-      <h2 class="sec-h2">FAQs</h2>
-      <div class="faq">
-        <details class="faq-item"><summary>What is Intercept?</summary><p class="faq-a">Intercept is an award-winning B2B marketing agency built for the global technology sector. Established in 2006, we help the world&rsquo;s largest tech brands turn ambitious briefs into proven outcomes. The majority of our work supports US and international marketing teams across North America, Europe, and Asia. We run an AI-native delivery model that makes the keep-the-lights-on work more efficient, freeing room for the frontier work that redefines the buyer experience.</p></details>
-        <details class="faq-item"><summary>What is InterceptOS?</summary><p class="faq-a">InterceptOS is our AI-native operating system for B2B marketing. It standardizes how campaigns are strategized, produced, activated, and measured across teams and partners, built on Intercept&rsquo;s award-winning frameworks and run as a managed service that de-risks adoption.</p></details>
-        <details class="faq-item"><summary>What is Intercept Labs?</summary><p class="faq-a">Intercept Labs is our co-investment model for first-of-its-kind work. When a brief has no precedent, we co-fund up to 50% of the cost and share the risk to prove it, then fold the breakthrough back into the operating system. Recent Labs work includes an AI avatar video pilot with SAP.</p></details>
-        <details class="faq-item"><summary>What makes Intercept different?</summary><p class="faq-a">We&rsquo;ve spent more than 20 years inside global tech, so we speak your buyers&rsquo; language with no learning curve. That depth has earned more than 130 awards since 2019. We pair it with proprietary buyer intelligence that tracks what the market is really saying when you&rsquo;re not in the room, and an in-house technology practice that builds our own AI rather than waiting on outside vendors. And because we work with the world&rsquo;s largest enterprises, privacy, legal, and procurement review is built into how we operate, so innovation never slows the work.</p></details>
-        <details class="faq-item"><summary>What kinds of challenges do you help solve?</summary><p class="faq-a">Most agencies don&rsquo;t really understand the subject matter, so we bring deep expertise in B2B global tech and speak the language of product, channel, and engineering teams. They also miss how the value chain fits together, from ISVs to OEMs to distributors to channel partners, where we know the role each one plays. And right now, many clients are being told to sprint toward AI agents without a clear sense of what that even means. We give them a path through InterceptOS and our innovation sprints, where we identify the right AI use cases, build a proof of concept, and take what works to production.</p></details>
-        <details class="faq-item"><summary>How do you handle security, privacy, and compliance?</summary><p class="faq-a">We work with the world&rsquo;s largest enterprises, so enterprise rigor is built into how we operate. Privacy, legal, and procurement reviews happen from day one, and we sit in those reviews with you. Because we run our AI as a managed service, you don&rsquo;t have to stand up a new approval workflow every time the technology evolves. We protect the security and compliance posture and carry the model risk, so the innovation work stays above board.</p></details>
-        <details class="faq-item"><summary>Who are your clients?</summary><p class="faq-a">We work with global technology brands including Microsoft, SAP, HP, Lenovo, Cisco, AMD, Qualcomm, Logitech, BMC, Nokia, and TELUS.</p></details>
-        <details class="faq-item"><summary>What industries do you work in?</summary><p class="faq-a">We support the entire end-to-end technology value chain, from silicon and ISVs to OEMs, hyperscalers, networking infrastructure, distributors, and the channel and partner programs that bring it all to market.</p></details>
-        <details class="faq-item"><summary>How do I get started?</summary><p class="faq-a">Book a call to talk through your brief or your challenge, and we&rsquo;ll figure out the path forward together.</p></details>
-        <details class="faq-item"><summary>Can you work alongside our other agencies?</summary><p class="faq-a">Yes. We work with the largest enterprises in the world, where collaboration is the norm, so we partner easily with other agencies and specialists. We believe more good heads on a problem make the work better.</p></details>
-        <details class="faq-item"><summary>How do you measure success?</summary><p class="faq-a">We sit down with you at the start to define the KPIs and metrics that matter, then measure against them throughout. That runs from pre-launch testing of how the work will land to in-market tracking of campaign performance, brand health, and the lift the work drives over time.</p></details>
+      <div class="sec-lede">
+        <span class="eyebrow">Common questions</span>
+        <h2 class="sec-h2">FAQs</h2>
+      </div>
+      <div class="sec-copy">
+        <div class="faq">
+          <details class="faq-item"><summary>What is Intercept?</summary><p class="faq-a">Intercept is an award-winning B2B marketing agency built for the global technology sector. Established in 2006, we help the world&rsquo;s largest tech brands turn ambitious briefs into proven outcomes. The majority of our work supports US and international marketing teams across North America, Europe, and Asia. We run an AI-native delivery model that makes the keep-the-lights-on work more efficient, freeing room for the frontier work that redefines the buyer experience.</p></details>
+          <details class="faq-item"><summary>What is InterceptOS?</summary><p class="faq-a">InterceptOS is our AI-native operating system for B2B marketing. It standardizes how campaigns are strategized, produced, activated, and measured across teams and partners, built on Intercept&rsquo;s award-winning frameworks and run as a managed service that de-risks adoption.</p></details>
+          <details class="faq-item"><summary>What is Intercept Labs?</summary><p class="faq-a">Intercept Labs is our co-investment model for first-of-its-kind work. When a brief has no precedent, we co-fund up to 50% of the cost and share the risk to prove it, then fold the breakthrough back into the operating system. Recent Labs work includes an AI avatar video pilot with SAP.</p></details>
+          <details class="faq-item"><summary>What makes Intercept different?</summary><p class="faq-a">We&rsquo;ve spent more than 20 years inside global tech, so we speak your buyers&rsquo; language with no learning curve. That depth has earned more than 130 awards since 2019. We pair it with proprietary buyer intelligence that tracks what the market is really saying when you&rsquo;re not in the room, and an in-house technology practice that builds our own AI rather than waiting on outside vendors. And because we work with the world&rsquo;s largest enterprises, privacy, legal, and procurement review is built into how we operate, so innovation never slows the work.</p></details>
+          <details class="faq-item"><summary>What kinds of challenges do you help solve?</summary><p class="faq-a">Most agencies don&rsquo;t really understand the subject matter, so we bring deep expertise in B2B global tech and speak the language of product, channel, and engineering teams. They also miss how the value chain fits together, from ISVs to OEMs to distributors to channel partners, where we know the role each one plays. And right now, many clients are being told to sprint toward AI agents without a clear sense of what that even means. We give them a path through InterceptOS and our innovation sprints, where we identify the right AI use cases, build a proof of concept, and take what works to production.</p></details>
+          <details class="faq-item"><summary>How do you handle security, privacy, and compliance?</summary><p class="faq-a">We work with the world&rsquo;s largest enterprises, so enterprise rigor is built into how we operate. Privacy, legal, and procurement reviews happen from day one, and we sit in those reviews with you. Because we run our AI as a managed service, you don&rsquo;t have to stand up a new approval workflow every time the technology evolves. We protect the security and compliance posture and carry the model risk, so the innovation work stays above board.</p></details>
+          <details class="faq-item"><summary>Who are your clients?</summary><p class="faq-a">We work with global technology brands including Microsoft, SAP, HP, Lenovo, Cisco, AMD, Qualcomm, Logitech, BMC, Nokia, and TELUS.</p></details>
+          <details class="faq-item"><summary>What industries do you work in?</summary><p class="faq-a">We support the entire end-to-end technology value chain, from silicon and ISVs to OEMs, hyperscalers, networking infrastructure, distributors, and the channel and partner programs that bring it all to market.</p></details>
+          <details class="faq-item"><summary>How do I get started?</summary><p class="faq-a">Book a call to talk through your brief or your challenge, and we&rsquo;ll figure out the path forward together.</p></details>
+          <details class="faq-item"><summary>Can you work alongside our other agencies?</summary><p class="faq-a">Yes. We work with the largest enterprises in the world, where collaboration is the norm, so we partner easily with other agencies and specialists. We believe more good heads on a problem make the work better.</p></details>
+          <details class="faq-item"><summary>How do you measure success?</summary><p class="faq-a">We sit down with you at the start to define the KPIs and metrics that matter, then measure against them throughout. That runs from pre-launch testing of how the work will land to in-market tracking of campaign performance, brand health, and the lift the work drives over time.</p></details>
+        </div>
       </div>
     </div>
   </section>
