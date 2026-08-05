@@ -203,14 +203,26 @@
    ============================================================ */
 .skin-switch { position: relative; display: inline-flex; align-items: center; }
 .skin-switch-btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 32px; height: 32px; border-radius: 9999px;
-  border: 0; background: none; color: var(--fg-3); opacity: .6;
-  cursor: pointer; transition: color .16s, opacity .16s; flex: none;
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  height: 32px; padding: 0 10px; border-radius: 9999px;
+  border: 0; background: rgba(10,10,15,.045); color: var(--fg-2); opacity: 1;
+  cursor: pointer; transition: color .16s, background .16s; flex: none;
 }
 .skin-switch-btn:hover,
-.skin-switch-btn[aria-expanded="true"] { color: var(--flarepop); opacity: 1; }
+.skin-switch-btn[aria-expanded="true"] { color: var(--flarepop); background: rgba(10,10,15,.085); }
 .skin-switch-btn svg { width: 17px; height: 17px; display: block; }
+.skin-switch-lbl {
+  font: 600 10px/1 "Inter", system-ui, sans-serif;
+  letter-spacing: .14em; text-transform: uppercase; white-space: nowrap;
+}
+:root[data-theme="dark"] .skin-switch-btn { background: rgba(255,255,255,.09); }
+:root[data-theme="dark"] .skin-switch-btn:hover,
+:root[data-theme="dark"] .skin-switch-btn[aria-expanded="true"] { background: rgba(255,255,255,.16); }
+/* the nav has no room for the word below this width — the swatch carries it alone */
+@media (max-width: 1180px) {
+  .skin-switch-lbl { display: none; }
+  .skin-switch-btn { width: 32px; padding: 0; }
+}
 
 .skin-menu {
   position: absolute; top: calc(100% + 12px); right: 0; z-index: 220;
