@@ -1,0 +1,16 @@
+# GitHub Pages build config.
+#
+# There is no Jekyll templating anywhere in this repo — it is plain static HTML.
+# This file exists for one reason: to keep source material out of the published
+# site.
+#
+# concept-d/reference/ is ~186 MB of raw Weavy generation review footage that no
+# page links to. Pages was copying all of it on every build, which pushed the
+# legacy Jekyll build past its 10-minute timeout; builds started erroring and the
+# live site froze on an older commit. Dropping it takes the published payload
+# from ~416 MB to ~230 MB.
+#
+# Excluded, not deleted. The footage stays in the repo and in history — it just
+# stops being served.
+exclude:
+  - concept-d/reference
