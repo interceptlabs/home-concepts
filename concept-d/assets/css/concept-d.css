@@ -3154,3 +3154,466 @@ section { border-bottom: 0; }
   color: var(--fg-2);
   flex: none;
 }
+
+/* ================================================================
+   ROUND 16 (Jon, 2026-08-05) — ONE TYPE SYSTEM FOR THE PANELS
+   ================================================================
+   Jon on the problems panel: "there are too many text styles. It's
+   messy and doesn't look tight. Simplify the typography strategy.
+   Avoid using Geist as much as possible. Use Geist Mono for labels
+   discreetly but not all over the place like you do now, exchange
+   for Inter in most cases. Don't create so many sizes in a content
+   block like this. Think Swiss grid but modern. Don't create this
+   modal window so small it has to scroll, give it the room it
+   needs but focus content above the fold."
+
+   Measured before this round, ONE panel (problems) carried twelve
+   distinct text styles across nine sizes (10 / 10.5 / 11 / 12 /
+   12.5 / 13.5 / 14.5 / 17 / 30 / 36 / 66) and three separate Geist
+   Mono voices — an attribution, a section label, and a navigation
+   link — none of which is data.
+
+   THE SYSTEM
+   ----------
+   One ladder, eight rungs, and a hard budget: no single content
+   block spends more than FOUR of them.
+
+     --t-12  12px            label / eyebrow / caption   Inter 500-700
+     --t-14  14px            dense secondary text        Inter 400
+     --t-16  16px            ALL default running text    Inter 400/600
+     --t-18  18px            card heading (Instrument 700)
+                             + page lead (Inter 400)
+     (the lead shares the 18 rung — one fewer size, and the
+      family + weight already tell them apart)
+     --t-quote  ~29px        the one pull-quote beat     Instrument 500i
+     --t-h2     ~40px        section headline            Instrument 700
+     --t-stat   ~66px        the one stat figure         Instrument 700
+
+   FAMILY ROLES (this is the part that was leaking)
+     Instrument Sans -> display only: h2, card headings, the quote,
+                        the stat figure. Never body, never labels.
+     Inter           -> everything else, INCLUDING every label.
+                        Labels are Inter 600, uppercase, tracked.
+     Geist Mono      -> data readouts only, and there are none in
+                        these panels, so it appears ZERO times here.
+                        (Matches the standing /fritz rule: mono is a
+                        data voice, not a label voice.)
+
+   Rules 1-3 of the Fritz craft set still hold: no rule lines, no
+   invented numbering, flarepop is the only colored text.
+   deployed.css is never edited — everything below is additive.
+   ================================================================ */
+
+.explore-body,
+.case-body,
+.explore-solo,
+.explore-panel,
+.explore-lede {
+  --t-12: 12px;
+  --t-14: 14px;
+  --t-16: 16px;
+  --t-18: 18px;
+  --t-quote: clamp(23px, 2.05vw, 29px);
+  --t-h2: clamp(30px, 2.9vw, 40px);
+  --t-stat: clamp(42px, 4.1vw, 58px);
+  --lh-tight: 1.2;
+  --lh-body: 1.55;
+  /* one label recipe, used everywhere a label is wanted */
+  --label-track: 0.09em;
+}
+
+/* ---------- 16.1 The room (viewport lock released) ---------------
+   The panels were flex children of a hard `height:100dvh` body with
+   `overflow-y:auto` — a scroll box that got shorter as content grew,
+   which is exactly the "modal window so small it has to scroll" Jon
+   called out. The body now takes a MINIMUM of one viewport instead
+   of exactly one: short pages still fill the fold (the section is
+   still `flex:1`), long ones grow and the PAGE scrolls, and neither
+   panel ever clips its own content. `.explore-flow` (the agents
+   page's old per-page escape hatch) becomes the default. */
+@media (min-width: 900px) {
+  .explore-body {
+    height: auto;
+    min-height: 100dvh;
+  }
+  .explore-body main.explore-page {
+    padding-bottom: 16px;
+  }
+  /* the section's own frame, trimmed to match the tighter card */
+  .explore-page section {
+    padding: 14px 0 14px;
+  }
+  .explore-body footer {
+    padding: 10px 0 14px;
+  }
+  .explore-solo,
+  .explore-panel {
+    overflow-y: visible;
+  }
+  /* room to breathe now that the card is not fighting the fold */
+  .explore-solo {
+    padding: 32px 48px 34px;
+  }
+  /* The card is sized by its CONTENT, then centred in whatever space is
+     left. Stretching it to the full viewport (the old behaviour) left a
+     dead white band under short panels; centring turns that into equal
+     air above and below. Taller-than-viewport pages are unaffected. */
+  .explore-page section {
+    align-items: center;
+  }
+}
+/* The short-viewport compact pass existed only to claw back pixels
+   against the lock. With the lock gone it just cramps the card. */
+@media (min-width: 900px) and (max-height: 849.98px) {
+  .explore-solo {
+    padding: 28px 40px 32px;
+  }
+}
+
+/* ---------- 16.2 The header block: 3 sizes (12 / 40 / 18) -------- */
+.explore-solo .idx,
+.explore-lede .idx,
+.explore-panel .idx {
+  font-family: 'Inter', var(--font-body, system-ui, sans-serif);
+  font-size: var(--t-12);
+  font-weight: 600;
+  letter-spacing: var(--label-track);
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+.explore-solo .section-h2,
+.explore-lede .section-h2 {
+  font-size: var(--t-h2);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  max-width: 22ch;
+  margin-bottom: 0;
+}
+.explore-solo .section-lead,
+.explore-lede .section-lead {
+  font-size: var(--t-18);
+  line-height: 1.5;
+  font-weight: 400;
+  margin-top: 12px;
+}
+/* measure, not a fixed width: the full-bleed solo card gets a long
+   measure, the narrow lede rail is already its own column */
+.explore-solo .section-lead {
+  max-width: 92ch;
+}
+.explore-lede .section-lead {
+  max-width: none;
+}
+
+/* ---------- 16.3 The label recipe (replaces every mono label) ----
+   One recipe, one size, one weight. Ink is neutral by default;
+   flarepop is spent only where the label marks the brand's own
+   answer (the bridge) or the page's index (the eyebrow). */
+.explore-page .q-attrib,
+.explore-page .q-tab-eyebrow,
+.explore-page .q-more summary,
+.explore-page .q-stepper-tag,
+.explore-page .q-flow-chip,
+.explore-page .q-step,
+.explore-page .q-step-prev,
+.explore-page .q-step-next,
+.explore-page .q-flow-bridge a,
+.explore-page .explore-panel .ep-listen-lbl,
+.explore-page .explore-panel .ep-tile-num,
+.explore-solo .osa-stage .tag,
+.explore-solo .rc-agent .ty,
+.pb-bridge b,
+.explore-back {
+  font-family: 'Inter', var(--font-body, system-ui, sans-serif);
+  font-size: var(--t-12);
+  font-weight: 600;
+  letter-spacing: var(--label-track);
+  line-height: 1.4;
+}
+/* the label recipe overrides the old sub-11px mono metrics wholesale */
+.explore-solo .osa-stage .tag,
+.explore-solo .rc-agent .ty,
+.explore-page .explore-panel .ep-listen-lbl,
+.explore-page .explore-panel .ep-tile .ep-tile-num,
+.explore-page .q-flow-chip {
+  font-size: var(--t-12);
+}
+
+/* ---------- 16.4 Problems panel — body block: 4 sizes ------------
+   ~29 quote · 12 attribution + bridge label · 16 everything else
+   · ~58 the stat. Nothing else is allowed in here. */
+.explore-page .q-quote {
+  font-size: var(--t-quote);
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  margin: 0 0 16px;
+}
+.pb-main .q-quote {
+  text-wrap: balance;
+}
+.explore-page .q-attrib {
+  text-transform: uppercase;
+  color: var(--fg-3);
+  margin: 0 0 24px;
+}
+.pb-tells {
+  gap: 12px;
+}
+.pb-tells li {
+  font-size: var(--t-16);
+  line-height: var(--lh-body);
+  padding-left: 22px;
+}
+/* Swiss list marker: a square at cap height, not a middot floating
+   off-baseline. The accent square echoes the mark's own glitch
+   vocabulary without being the mark. */
+.pb-tells li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  background: var(--accent-ink, #a8008c);
+  font-weight: 400;
+}
+.pb-sig {
+  padding: 26px 28px;
+  border-radius: 12px;
+}
+.pb-sig .n {
+  font-size: var(--t-stat);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+}
+.pb-sig .l {
+  font-size: var(--t-16);
+  line-height: var(--lh-body);
+  margin-top: 12px;
+}
+.pb-sig--q .l {
+  font-size: var(--t-16);
+  font-weight: 500;
+  margin-top: 0;
+}
+.pb-bridge {
+  margin: 26px 0 0;
+  font-size: var(--t-16);
+  font-weight: 400;
+  line-height: var(--lh-body);
+  color: var(--fg);
+}
+.pb-bridge b {
+  display: block;
+  text-transform: uppercase;
+  color: var(--accent-ink, #a8008c);
+  margin-bottom: 8px;
+}
+/* the forward link is a LINK, not a machine label: body size,
+   sentence case, ink — the arrow carries the affordance */
+.pb-next {
+  margin: 24px 0 0;
+}
+.pb-next a,
+.rc-how,
+.explore-page .q-flow-bridge a {
+  font-family: 'Inter', var(--font-body, system-ui, sans-serif);
+  font-size: var(--t-16);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  text-transform: none;
+  color: var(--fg);
+}
+.rc-how {
+  font-size: var(--t-14);
+}
+/* The two columns as a real grid: ~7:5, one gutter, flush tops.
+   MUST stay inside the desktop query — the single-column collapse at
+   <900px is declared earlier in this file, so an unguarded rule here
+   would out-cascade it and leave two 45%-wide columns on a phone. */
+@media (min-width: 900px) {
+  .pb-view {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: 48px;
+  }
+  .pb-main .q-quote {
+    max-width: 24ch;
+  }
+}
+.pb-tabs {
+  gap: 8px;
+  margin: 22px 0 28px;
+}
+.pb-tab {
+  font-size: var(--t-16);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  padding: 11px 18px;
+}
+.pb-tab.is-active {
+  font-weight: 600;
+}
+
+/* ---------- 16.5 InterceptOS panel — 12 / 14 / 16 / 18 ----------- */
+.osa-head {
+  margin: 0 0 14px;
+}
+.osa-job {
+  font-size: var(--t-16);
+  line-height: var(--lh-body);
+}
+.explore-solo .q-flow-chip {
+  height: 30px;
+  padding: 0 14px;
+  text-transform: uppercase;
+}
+.osa-stage {
+  padding: 18px;
+  gap: 10px;
+}
+.osa-stage .tag {
+  text-transform: uppercase;
+}
+.osa-stage .nm {
+  font-size: var(--t-18);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.015em;
+}
+.osa-stage .ds {
+  font-size: var(--t-14);
+  line-height: 1.5;
+}
+.explore-solo .osa-stage .agent-chip {
+  height: 26px;
+  padding: 0 11px;
+  font-size: var(--t-12);
+  font-weight: 500;
+  gap: 4px;
+}
+.osa-conn {
+  font-family: 'Inter', var(--font-body, system-ui, sans-serif);
+  font-size: var(--t-16);
+}
+/* deployed.css sets .agent-chip in Geist Mono at 11px — the last mono
+   holdout on the assembly line. Agent names are names, not data. */
+.explore-page .agent-chip,
+.explore-page #os .explore-solo .agent-chip {
+  font-family: 'Inter', var(--font-body, system-ui, sans-serif);
+  font-size: var(--t-12);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+/* ---------- 16.6 Agent roster — 12 / 14 / 16 / 18 ---------------- */
+.rc-ph .t {
+  font-size: var(--t-18);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.015em;
+}
+.rc-ph .j {
+  font-size: var(--t-14);
+  line-height: 1.5;
+  margin: 10px 0 0;
+}
+.rc-agent .nm {
+  font-size: var(--t-16);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.rc-agent .ty {
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+/* ---------- 16.7 Insights tiles — 12 / 14 / 18 ------------------- */
+#insights .ep-tile .ep-tile-num,
+.explore-page .explore-panel .ep-tile-num {
+  font-size: var(--t-12);
+  text-transform: uppercase;
+}
+.explore-page .explore-panel .ep-tile-title {
+  font-family: var(--font-display);
+  font-size: var(--t-18);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.015em;
+}
+#insights .ep-tile .ep-tile-guest,
+.explore-page .explore-panel .ep-tile-guest {
+  font-family: 'Inter', var(--font-body, system-ui, sans-serif);
+  font-size: var(--t-14);
+  line-height: 1.45;
+}
+#insights .ep-tile h3,
+.explore-page .explore-panel .ep-tile h3 {
+  font-size: var(--t-18);
+  line-height: var(--lh-tight);
+}
+.explore-page .explore-panel .ep-tile .ep-tile-summary {
+  font-size: var(--t-14);
+}
+.explore-page .explore-panel .ep-listen-lbl {
+  text-transform: uppercase;
+}
+.explore-page .explore-panel .ep-plat {
+  font-size: var(--t-12);
+}
+
+/* ---------- 16.8 Case pages ---------------------------------------
+   The case pages are a DIFFERENT scope (`.case-body` / `.case-page`,
+   not `.explore-*`) — they were the densest mono surface left: an
+   eyebrow, a client/tag pair, a metric label, four section eyebrows
+   and a next-case label, all Geist Mono. Same label recipe, same
+   single size. (The scale tokens reach here via `.case-body`.) */
+.case-page .case-hero-eyebrow,
+.case-page .case-hero-eyebrow .c-client,
+.case-page .c-client,
+.case-page .c-tag,
+.case-page .case-metric-lbl,
+.case-page .case-cad .cad-eyebrow,
+.case-page .cad-eyebrow,
+.case-page .case-next-lbl {
+  font-family: 'Inter', var(--font-body, system-ui, sans-serif);
+  font-size: var(--t-12);
+  font-weight: 600;
+  letter-spacing: var(--label-track);
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+/* .cx-nb is a no-wrap utility that also lives INSIDE the title and
+   the summary paragraph — it is not a label, never restyle it. */
+.case-page .c-tag {
+  font-weight: 500;
+}
+/* the two remaining off-ladder rungs on the case pages */
+.case-body .case-back {
+  font-size: var(--t-12);
+  font-weight: 600;
+  letter-spacing: var(--label-track);
+  text-transform: uppercase;
+}
+.case-page .case-lead {
+  font-size: var(--t-18);
+  line-height: 1.5;
+}
+
+/* ---------- 16.9 Labs -------------------------------------------- */
+.explore-page .explore-panel .labs-stat-lbl {
+  font-family: 'Inter', var(--font-body, system-ui, sans-serif);
+  font-size: var(--t-12);
+  font-weight: 600;
+  letter-spacing: var(--label-track);
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+.explore-page .labs-intro p,
+.explore-page .labs-intro {
+  font-size: var(--t-16);
+  line-height: var(--lh-body);
+}
+
+/* ---------- 16.10 Chrome ----------------------------------------- */
+.explore-back {
+  text-transform: uppercase;
+}

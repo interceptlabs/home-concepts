@@ -12,5 +12,6 @@ run "script-diff      (deployed-JS parity)"              python3 qa/concept-d-sc
 run "lockup-crisp     (wordmark crisp, integer-placed)"  node qa/lockup-crisp-check.mjs
 run "no-rule-lines    (no decorative accent rule-lines)" node qa/no-rule-lines-check.mjs
 run "lockup-contrast  (wordmark visible on its surface)" node qa/lockup-contrast-check.mjs
+run "type-discipline  (one ladder, no mono, panels unclipped)" node qa/type-discipline-check.mjs
 
 if [ "$fail" -eq 0 ]; then echo "✅ ALL GATES PASS"; else echo "❌ SOME GATES FAILED"; exit 1; fi
